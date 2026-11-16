@@ -1,0 +1,319 @@
+{
+  "manifest_version": "heldout-v1",
+  "generator_version": "families-v2",
+  "notice": "Oracle file. Held-out D1 parameter sets for the attribution experiment (phase 11b): 6 fault and 6 innocent merchant variants written after both attribution approaches were developed (truth in heldout_variant_truth.json), paired only with each other, 24 entries. Read only by the generator, the evaluator and tests; runtime tools, packets and the model must never read it. Deliberately no seeds: seeds 13101 and up belong to the experiment, which binds one to each entry before families.FamilyRun validation. Balanced: harmless_position before/after/gap 8/8/8, onset prompt/delayed 12/12 (gap only with delayed onset), every fault and every innocent in 4 entries with no pair repeated, categories on in 12. Split is test.",
+  "runs": [
+    {
+      "run_key": "heldout_01",
+      "family": "D1",
+      "variant": "heldout_same_file_raises",
+      "split": "test",
+      "params": {
+        "fault": "payload@9",
+        "categories": false,
+        "harmless": "orders@3",
+        "harmless_position": "gap",
+        "onset": "delayed"
+      }
+    },
+    {
+      "run_key": "heldout_02",
+      "family": "D1",
+      "variant": "heldout_upstream_value_rejected",
+      "split": "test",
+      "params": {
+        "fault": "payload@7",
+        "categories": true,
+        "harmless": "orders@3",
+        "harmless_position": "gap",
+        "onset": "delayed"
+      }
+    },
+    {
+      "run_key": "heldout_03",
+      "family": "D1",
+      "variant": "heldout_configuration_only",
+      "split": "test",
+      "params": {
+        "fault": "config@8",
+        "categories": true,
+        "harmless": "handler@4",
+        "harmless_position": "before",
+        "onset": "prompt"
+      }
+    },
+    {
+      "run_key": "heldout_04",
+      "family": "D1",
+      "variant": "heldout_refactor_changes_behaviour",
+      "split": "test",
+      "params": {
+        "fault": "orders@4",
+        "categories": false,
+        "harmless": "handler@3",
+        "harmless_position": "after",
+        "onset": "prompt"
+      }
+    },
+    {
+      "run_key": "heldout_05",
+      "family": "D1",
+      "variant": "heldout_cross_module_contract",
+      "split": "test",
+      "params": {
+        "fault": "payload@8",
+        "categories": false,
+        "harmless": "handler@4",
+        "harmless_position": "gap",
+        "onset": "delayed"
+      }
+    },
+    {
+      "run_key": "heldout_06",
+      "family": "D1",
+      "variant": "heldout_unit_mismatch_partial",
+      "split": "test",
+      "params": {
+        "fault": "orders@6",
+        "categories": true,
+        "harmless": "handler@4",
+        "harmless_position": "after",
+        "onset": "delayed"
+      }
+    },
+    {
+      "run_key": "heldout_07",
+      "family": "D1",
+      "variant": "heldout_same_file_raises",
+      "split": "test",
+      "params": {
+        "fault": "payload@9",
+        "categories": false,
+        "harmless": "handler@3",
+        "harmless_position": "gap",
+        "onset": "delayed"
+      }
+    },
+    {
+      "run_key": "heldout_08",
+      "family": "D1",
+      "variant": "heldout_upstream_value_rejected",
+      "split": "test",
+      "params": {
+        "fault": "payload@7",
+        "categories": true,
+        "harmless": "handler@3",
+        "harmless_position": "before",
+        "onset": "prompt"
+      }
+    },
+    {
+      "run_key": "heldout_09",
+      "family": "D1",
+      "variant": "heldout_configuration_only",
+      "split": "test",
+      "params": {
+        "fault": "config@8",
+        "categories": false,
+        "harmless": "orders@3",
+        "harmless_position": "after",
+        "onset": "prompt"
+      }
+    },
+    {
+      "run_key": "heldout_10",
+      "family": "D1",
+      "variant": "heldout_refactor_changes_behaviour",
+      "split": "test",
+      "params": {
+        "fault": "orders@4",
+        "categories": true,
+        "harmless": "config@7",
+        "harmless_position": "gap",
+        "onset": "delayed"
+      }
+    },
+    {
+      "run_key": "heldout_11",
+      "family": "D1",
+      "variant": "heldout_cross_module_contract",
+      "split": "test",
+      "params": {
+        "fault": "payload@8",
+        "categories": false,
+        "harmless": "config@7",
+        "harmless_position": "before",
+        "onset": "delayed"
+      }
+    },
+    {
+      "run_key": "heldout_12",
+      "family": "D1",
+      "variant": "heldout_unit_mismatch_partial",
+      "split": "test",
+      "params": {
+        "fault": "orders@6",
+        "categories": false,
+        "harmless": "checkout@4",
+        "harmless_position": "before",
+        "onset": "prompt"
+      }
+    },
+    {
+      "run_key": "heldout_13",
+      "family": "D1",
+      "variant": "heldout_same_file_raises",
+      "split": "test",
+      "params": {
+        "fault": "payload@9",
+        "categories": true,
+        "harmless": "orders@5",
+        "harmless_position": "before",
+        "onset": "prompt"
+      }
+    },
+    {
+      "run_key": "heldout_14",
+      "family": "D1",
+      "variant": "heldout_upstream_value_rejected",
+      "split": "test",
+      "params": {
+        "fault": "payload@7",
+        "categories": false,
+        "harmless": "checkout@4",
+        "harmless_position": "after",
+        "onset": "prompt"
+      }
+    },
+    {
+      "run_key": "heldout_15",
+      "family": "D1",
+      "variant": "heldout_configuration_only",
+      "split": "test",
+      "params": {
+        "fault": "config@8",
+        "categories": true,
+        "harmless": "checkout@4",
+        "harmless_position": "gap",
+        "onset": "delayed"
+      }
+    },
+    {
+      "run_key": "heldout_16",
+      "family": "D1",
+      "variant": "heldout_refactor_changes_behaviour",
+      "split": "test",
+      "params": {
+        "fault": "orders@4",
+        "categories": true,
+        "harmless": "checkout@4",
+        "harmless_position": "after",
+        "onset": "delayed"
+      }
+    },
+    {
+      "run_key": "heldout_17",
+      "family": "D1",
+      "variant": "heldout_cross_module_contract",
+      "split": "test",
+      "params": {
+        "fault": "payload@8",
+        "categories": true,
+        "harmless": "orders@3",
+        "harmless_position": "before",
+        "onset": "prompt"
+      }
+    },
+    {
+      "run_key": "heldout_18",
+      "family": "D1",
+      "variant": "heldout_unit_mismatch_partial",
+      "split": "test",
+      "params": {
+        "fault": "orders@6",
+        "categories": false,
+        "harmless": "config@7",
+        "harmless_position": "after",
+        "onset": "prompt"
+      }
+    },
+    {
+      "run_key": "heldout_19",
+      "family": "D1",
+      "variant": "heldout_same_file_raises",
+      "split": "test",
+      "params": {
+        "fault": "payload@9",
+        "categories": true,
+        "harmless": "config@7",
+        "harmless_position": "after",
+        "onset": "prompt"
+      }
+    },
+    {
+      "run_key": "heldout_20",
+      "family": "D1",
+      "variant": "heldout_upstream_value_rejected",
+      "split": "test",
+      "params": {
+        "fault": "payload@7",
+        "categories": false,
+        "harmless": "orders@5",
+        "harmless_position": "gap",
+        "onset": "delayed"
+      }
+    },
+    {
+      "run_key": "heldout_21",
+      "family": "D1",
+      "variant": "heldout_configuration_only",
+      "split": "test",
+      "params": {
+        "fault": "config@8",
+        "categories": false,
+        "harmless": "orders@5",
+        "harmless_position": "before",
+        "onset": "delayed"
+      }
+    },
+    {
+      "run_key": "heldout_22",
+      "family": "D1",
+      "variant": "heldout_refactor_changes_behaviour",
+      "split": "test",
+      "params": {
+        "fault": "orders@4",
+        "categories": false,
+        "harmless": "handler@4",
+        "harmless_position": "before",
+        "onset": "prompt"
+      }
+    },
+    {
+      "run_key": "heldout_23",
+      "family": "D1",
+      "variant": "heldout_cross_module_contract",
+      "split": "test",
+      "params": {
+        "fault": "payload@8",
+        "categories": true,
+        "harmless": "orders@5",
+        "harmless_position": "after",
+        "onset": "prompt"
+      }
+    },
+    {
+      "run_key": "heldout_24",
+      "family": "D1",
+      "variant": "heldout_unit_mismatch_partial",
+      "split": "test",
+      "params": {
+        "fault": "orders@6",
+        "categories": true,
+        "harmless": "handler@3",
+        "harmless_position": "gap",
+        "onset": "delayed"
+      }
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.DS_Store
+
+# Runtime state is regenerated from the generator; never commit it.
+local_data/
+*.sqlite
+*.sqlite-wal
+*.sqlite-shm
+*.db
+
+# Secrets and local settings.
+.env
+
+# Frontend build output and dependencies.
+frontend/node_modules/
+frontend/dist/

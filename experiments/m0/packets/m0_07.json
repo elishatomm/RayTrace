@@ -1,0 +1,316 @@
+{
+  "packet_version": "m0-1",
+  "incident": {
+    "run_id": "run_c7e9011d",
+    "incident_id": "inc_ebdb828b",
+    "symptom": "Fewer orders are completing than usual",
+    "trigger": "order_completion_drop",
+    "cohort": {
+      "merchant_id": "mch_synthetic_01",
+      "integration_id": "int_webhook_01",
+      "methods": [
+        "upi",
+        "card",
+        "netbanking"
+      ]
+    },
+    "window_start_ms": 1794419400000,
+    "window_end_ms": 1794423000000,
+    "evidence_cutoff_ms": 1794423000000,
+    "summary_counts": {
+      "orders_with_attempts": 493,
+      "orders_completed": 214,
+      "payment_attempts": 489
+    }
+  },
+  "items": [
+    {
+      "evidence_id": "ev_trigger",
+      "kind": "incident_trigger",
+      "known_at_ms": 1794422940000,
+      "title": "Detector state at the evidence cutoff",
+      "facts": {
+        "fired": [
+          "order_completion_drop",
+          "delivery_rejection_rate"
+        ],
+        "not_fired": [
+          "authorisation_ratio_drop",
+          "processing_backlog_age"
+        ],
+        "order_completion_ratio": 0.041,
+        "baseline_order_completion_ratio": 0.901,
+        "delivery_rejection_ratio": 1.0,
+        "first_breach_ms": 1794421260000
+      },
+      "text": null
+    },
+    {
+      "evidence_id": "ev_metric_upi",
+      "kind": "metric",
+      "known_at_ms": 1794422940000,
+      "title": "Provider authorisation and capture for upi, mature cohort",
+      "facts": {
+        "method": "upi",
+        "mature_cohort_start_ms": 1794420600000,
+        "mature_cohort_end_ms": 1794422400000,
+        "attempts": 129,
+        "authorised": 119,
+        "captured": 118,
+        "unresolved": 1,
+        "authorisation_ratio": 0.922,
+        "authorisation_ratio_95ci": [
+          0.863,
+          0.957
+        ],
+        "baseline_attempts": 2190,
+        "baseline_authorisation_ratio": 0.92,
+        "baseline_95ci": [
+          0.908,
+          0.931
+        ]
+      },
+      "text": null
+    },
+    {
+      "evidence_id": "ev_metric_card",
+      "kind": "metric",
+      "known_at_ms": 1794422940000,
+      "title": "Provider authorisation and capture for card, mature cohort",
+      "facts": {
+        "method": "card",
+        "mature_cohort_start_ms": 1794420600000,
+        "mature_cohort_end_ms": 1794422400000,
+        "attempts": 74,
+        "authorised": 67,
+        "captured": 67,
+        "unresolved": 0,
+        "authorisation_ratio": 0.905,
+        "authorisation_ratio_95ci": [
+          0.817,
+          0.953
+        ],
+        "baseline_attempts": 1297,
+        "baseline_authorisation_ratio": 0.912,
+        "baseline_95ci": [
+          0.895,
+          0.926
+        ]
+      },
+      "text": null
+    },
+    {
+      "evidence_id": "ev_metric_netbanking",
+      "kind": "metric",
+      "known_at_ms": 1794422940000,
+      "title": "Provider authorisation and capture for netbanking, mature cohort",
+      "facts": {
+        "method": "netbanking",
+        "mature_cohort_start_ms": 1794420600000,
+        "mature_cohort_end_ms": 1794422400000,
+        "attempts": 28,
+        "authorised": 25,
+        "captured": 25,
+        "unresolved": 0,
+        "authorisation_ratio": 0.893,
+        "authorisation_ratio_95ci": [
+          0.728,
+          0.963
+        ],
+        "baseline_attempts": 481,
+        "baseline_authorisation_ratio": 0.892,
+        "baseline_95ci": [
+          0.861,
+          0.917
+        ]
+      },
+      "text": null
+    },
+    {
+      "evidence_id": "ev_processing",
+      "kind": "metric",
+      "known_at_ms": 1794422940000,
+      "title": "Merchant processing of captured payments, last 30 minutes",
+      "facts": {
+        "captured_orders_per_provider_snapshot": 231,
+        "captured_events_received": 0,
+        "processed": 0,
+        "processing_completion_ratio": 0.0,
+        "baseline_processing_completion_ratio": 0.998,
+        "note": "denominator from provider snapshots; no captured event was durably received since the first rejection"
+      },
+      "text": null
+    },
+    {
+      "evidence_id": "ev_provider_state",
+      "kind": "provider_state",
+      "known_at_ms": 1794422940000,
+      "title": "Provider payment states and snapshot freshness",
+      "facts": {
+        "snapshot_age_ms": 90000,
+        "observation_coverage": 0.97,
+        "payments_by_status_last_60m": {
+          "captured": 452,
+          "authorized": 5,
+          "failed": 38,
+          "created": 7
+        },
+        "captured_without_received_event": 231,
+        "failed_by_reason": {
+          "payment_declined": 23,
+          "customer_cancelled": 15
+        }
+      },
+      "text": null
+    },
+    {
+      "evidence_id": "ev_delivery",
+      "kind": "delivery_health",
+      "known_at_ms": 1794422940000,
+      "title": "Webhook delivery health for int_webhook_01",
+      "facts": {
+        "window": "last 60 minutes",
+        "delivery_attempts": 781,
+        "accepted": 247,
+        "duplicates": 9,
+        "conflicting_ids": 0,
+        "rejected_signature": 525,
+        "rejected_schema": 0,
+        "first_rejection_ms": 1794421032000,
+        "accepted_since_first_rejection": 0,
+        "distinct_events_rejected": 236,
+        "p95_ack_latency_ms": 12
+      },
+      "text": null
+    },
+    {
+      "evidence_id": "ev_worker",
+      "kind": "worker_health",
+      "known_at_ms": 1794422940000,
+      "title": "Order worker health",
+      "facts": {
+        "inbox_pending": 0,
+        "inbox_failed": 0,
+        "processed_last_30m": 0,
+        "oldest_unprocessed_age_ms": 0,
+        "failed_attempts_last_60m": 0,
+        "last_event_received_ms": 1794421014000
+      },
+      "text": null
+    },
+    {
+      "evidence_id": "ev_fixture",
+      "kind": "fixture_check",
+      "known_at_ms": 1794422880000,
+      "title": "Prewritten fixture tests against the deployed version dep_41eaa2",
+      "facts": {
+        "deployed_version": "dep_41eaa2",
+        "tests_run": 4,
+        "tests_failed": 1,
+        "results": [
+          {
+            "test_id": "captured_payment_builds_fulfilment",
+            "passed": true
+          },
+          {
+            "test_id": "authorized_payment_changes_nothing",
+            "passed": true
+          },
+          {
+            "test_id": "failed_payment_changes_nothing",
+            "passed": true
+          },
+          {
+            "test_id": "signed_delivery_verifies",
+            "passed": false,
+            "detail": "signature verification failed for a delivery signed by the provider"
+          }
+        ]
+      },
+      "text": null
+    },
+    {
+      "evidence_id": "ev_deploy_84130e",
+      "kind": "deployment",
+      "known_at_ms": 1794415220000,
+      "title": "Deployment dep_84130e to merchant-app",
+      "facts": {
+        "deploy_id": "dep_84130e",
+        "service": "merchant-app",
+        "kind": "code",
+        "deployed_at_ms": 1794415200000,
+        "files_changed": [
+          "merchant_app/checkout.py"
+        ],
+        "summary": "Reorder checkout methods: UPI, card, netbanking"
+      },
+      "text": "diff --git a/merchant_app/checkout.py b/merchant_app/checkout.py\nindex c21ef6c..98e6acc 100644\n--- a/merchant_app/checkout.py\n+++ b/merchant_app/checkout.py\n@@ -1,7 +1,7 @@\n \"\"\"Payment options the storefront offers at checkout.\"\"\"\n from merchant_app import config\n \n-METHOD_ORDER = (\"card\", \"upi\", \"netbanking\")\n+METHOD_ORDER = (\"upi\", \"card\", \"netbanking\")\n \n # Netbanking bank codes, most used first.\n NETBANKING_BANKS = (\"NB04\", \"NB01\", \"NB03\", \"NB02\")\n"
+    },
+    {
+      "evidence_id": "ev_deploy_bc3989",
+      "kind": "deployment",
+      "known_at_ms": 1794421040000,
+      "title": "Deployment dep_bc3989 to merchant-app",
+      "facts": {
+        "deploy_id": "dep_bc3989",
+        "service": "merchant-app",
+        "kind": "config",
+        "deployed_at_ms": 1794421020000,
+        "files_changed": [
+          "merchant_app/config.py"
+        ],
+        "summary": "Move webhook verification to the next signing secret"
+      },
+      "text": "diff --git a/merchant_app/config.py b/merchant_app/config.py\nindex 7e37456..c8b8231 100644\n--- a/merchant_app/config.py\n+++ b/merchant_app/config.py\n@@ -9,7 +9,7 @@\n FULFIL_ON_EVENTS = (\"payment.captured\",)\n \n # Name of the signing secret deliveries are verified with; the value lives in the secret store.\n-WEBHOOK_SECRET_REF = \"webhook_secret_primary\"\n+WEBHOOK_SECRET_REF = \"webhook_secret_next\"\n \n CHECKOUT_SESSION_TTL_SECONDS = 900\n \n"
+    },
+    {
+      "evidence_id": "ev_deploy_41eaa2",
+      "kind": "deployment",
+      "known_at_ms": 1794422300000,
+      "title": "Deployment dep_41eaa2 to merchant-app",
+      "facts": {
+        "deploy_id": "dep_41eaa2",
+        "service": "merchant-app",
+        "kind": "code",
+        "deployed_at_ms": 1794422280000,
+        "files_changed": [
+          "merchant_app/receiver.py"
+        ],
+        "summary": "Trim logged webhook bodies to 200 characters"
+      },
+      "text": "diff --git a/merchant_app/receiver.py b/merchant_app/receiver.py\nindex 9002893..e3d6224 100644\n--- a/merchant_app/receiver.py\n+++ b/merchant_app/receiver.py\n@@ -1,5 +1,7 @@\n \"\"\"What the webhook receiver does with a delivery before checking its signature.\"\"\"\n from merchant_app import config\n+\n+PREVIEW_CHARS = 200\n \n \n def body_for_verification(raw_body):\n@@ -7,6 +9,11 @@\n     return raw_body\n \n \n+def body_preview(raw_body):\n+    \"\"\"Short, printable start of a delivery body for receiver logs.\"\"\"\n+    return raw_body[:PREVIEW_CHARS].decode(\"utf-8\", errors=\"replace\")\n+\n+\n def verification_secret_ref():\n     \"\"\"Name of the signing secret deliveries are verified with.\"\"\"\n     return config.WEBHOOK_SECRET_REF\n"
+    },
+    {
+      "evidence_id": "ev_log_receiver",
+      "kind": "log",
+      "known_at_ms": 1794422763000,
+      "title": "WARN log from webhook-receiver",
+      "facts": {
+        "source": "webhook-receiver",
+        "level": "WARN"
+      },
+      "text": "2026-11-11T18:46:00.000Z WARN webhook-receiver: 401 for delivery evt_5d20c7e1 (attempt 4): signature does not match body"
+    },
+    {
+      "evidence_id": "ev_log_network",
+      "kind": "log",
+      "known_at_ms": 1794421443000,
+      "title": "WARN log from platform-alerts",
+      "facts": {
+        "source": "platform-alerts",
+        "level": "WARN"
+      },
+      "text": "2026-11-11T18:24:00.000Z WARN platform-alerts: edge-net: inbound webhook path p95 latency 210 ms (usual 60 ms) for 5 min; recovered"
+    }
+  ],
+  "candidate_change_ids": [
+    "dep_84130e",
+    "dep_bc3989",
+    "dep_41eaa2"
+  ],
+  "candidate_methods": [
+    "upi",
+    "card",
+    "netbanking"
+  ]
+}

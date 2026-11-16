@@ -1,0 +1,2738 @@
+{
+  "cases": [
+    {
+      "candidate_change_ids": [
+        "deploy_84bfba529a",
+        "deploy_b2c48c2225"
+      ],
+      "case_id": "heldout_01_13101",
+      "cutoff_ms": 1793968200000,
+      "expected": {
+        "acceptable_operations": [
+          "reprocess_inbox"
+        ],
+        "affected_method": "none",
+        "faulting_change_id": "deploy_84bfba529a",
+        "hypothesis": "merchant_worker_regression",
+        "operation": "reprocess_inbox"
+      },
+      "family": "D1",
+      "faulting_deploy_id": "deploy_84bfba529a",
+      "harmless_deploy_ids": [
+        "deploy_b2c48c2225"
+      ],
+      "observable_sha256": "928d07d8824b0d39d994b109dca91fce65eb97c2a5cd89bb876ec1928ec25fec",
+      "oracle_sha256": "b19cce138cfb331d3a9a791ac53b36ccd6586de8367a520092020ec9109c43fb",
+      "packet_file": "packets/heldout_01_13101.json",
+      "packet_hash": "5418ed78a109f495bc6da957cd5b69e51454203f05e4b8892dec5992e5872214",
+      "params": {
+        "categories": false,
+        "fault": "payload@9",
+        "harmless": "orders@3",
+        "harmless_position": "gap",
+        "onset": "delayed"
+      },
+      "role": "heldout",
+      "run_id": "run_a9f569f69b",
+      "seed": 13101,
+      "source": {
+        "manifest": "heldout-v1",
+        "replicate": 0,
+        "run_key": "heldout_01"
+      },
+      "split": "test",
+      "variant": "heldout_same_file_raises"
+    },
+    {
+      "candidate_change_ids": [
+        "deploy_c64c6b8c98",
+        "deploy_8266c3c48a"
+      ],
+      "case_id": "heldout_01_13102",
+      "cutoff_ms": 1794054600000,
+      "expected": {
+        "acceptable_operations": [
+          "reprocess_inbox"
+        ],
+        "affected_method": "none",
+        "faulting_change_id": "deploy_c64c6b8c98",
+        "hypothesis": "merchant_worker_regression",
+        "operation": "reprocess_inbox"
+      },
+      "family": "D1",
+      "faulting_deploy_id": "deploy_c64c6b8c98",
+      "harmless_deploy_ids": [
+        "deploy_8266c3c48a"
+      ],
+      "observable_sha256": "1a8c66ff99c6ecdaf5824c6ec0197e7236f84c4992102fd95463973fdcfc9d84",
+      "oracle_sha256": "fec2034beda2b956c64045dec0254d266d3155b6807895c724eafbdb60d833ad",
+      "packet_file": "packets/heldout_01_13102.json",
+      "packet_hash": "b2111130611d556e4047375babee2f8e93b6e3e624e27a4aeb42b0ca49fc8b11",
+      "params": {
+        "categories": false,
+        "fault": "payload@9",
+        "harmless": "orders@3",
+        "harmless_position": "gap",
+        "onset": "delayed"
+      },
+      "role": "heldout",
+      "run_id": "run_76a5f9e09f",
+      "seed": 13102,
+      "source": {
+        "manifest": "heldout-v1",
+        "replicate": 1,
+        "run_key": "heldout_01"
+      },
+      "split": "test",
+      "variant": "heldout_same_file_raises"
+    },
+    {
+      "candidate_change_ids": [
+        "deploy_ba4a432283",
+        "deploy_8f14fcea8e"
+      ],
+      "case_id": "heldout_02_13103",
+      "cutoff_ms": 1794141000000,
+      "expected": {
+        "acceptable_operations": [
+          "reprocess_inbox"
+        ],
+        "affected_method": "none",
+        "faulting_change_id": "deploy_ba4a432283",
+        "hypothesis": "merchant_worker_regression",
+        "operation": "reprocess_inbox"
+      },
+      "family": "D1",
+      "faulting_deploy_id": "deploy_ba4a432283",
+      "harmless_deploy_ids": [
+        "deploy_8f14fcea8e"
+      ],
+      "observable_sha256": "ffd43b5ae2323e0e7f567c030dcfa7cd4b339edb189304c4fd50074d834f3224",
+      "oracle_sha256": "b2d064bf898118eb32d219d9ee81f45e36128a33e988eb5807ea00295cad2969",
+      "packet_file": "packets/heldout_02_13103.json",
+      "packet_hash": "de71f582f5c27cfc93de7df90d1f26d2f3cea747523202654d0cda8a0dba9610",
+      "params": {
+        "categories": true,
+        "fault": "payload@7",
+        "harmless": "orders@3",
+        "harmless_position": "gap",
+        "onset": "delayed"
+      },
+      "role": "heldout",
+      "run_id": "run_ebef0c1cc2",
+      "seed": 13103,
+      "source": {
+        "manifest": "heldout-v1",
+        "replicate": 0,
+        "run_key": "heldout_02"
+      },
+      "split": "test",
+      "variant": "heldout_upstream_value_rejected"
+    },
+    {
+      "candidate_change_ids": [
+        "deploy_33e86872e3",
+        "deploy_ade07eeb2c"
+      ],
+      "case_id": "heldout_02_13104",
+      "cutoff_ms": 1793622600000,
+      "expected": {
+        "acceptable_operations": [
+          "reprocess_inbox"
+        ],
+        "affected_method": "none",
+        "faulting_change_id": "deploy_33e86872e3",
+        "hypothesis": "merchant_worker_regression",
+        "operation": "reprocess_inbox"
+      },
+      "family": "D1",
+      "faulting_deploy_id": "deploy_33e86872e3",
+      "harmless_deploy_ids": [
+        "deploy_ade07eeb2c"
+      ],
+      "observable_sha256": "9561311edc58c553c6b61836734c832816cb3eec76d16b6802ed4a7324d8c636",
+      "oracle_sha256": "2eeede8c410748e83f9e6db5658aed6091ad0bd850c052c494c6d0d76c5be335",
+      "packet_file": "packets/heldout_02_13104.json",
+      "packet_hash": "f8e09a2706534467b215dd844002cf3312518ff1a41145295dacada82b60ee36",
+      "params": {
+        "categories": true,
+        "fault": "payload@7",
+        "harmless": "orders@3",
+        "harmless_position": "gap",
+        "onset": "delayed"
+      },
+      "role": "heldout",
+      "run_id": "run_a23a7af486",
+      "seed": 13104,
+      "source": {
+        "manifest": "heldout-v1",
+        "replicate": 1,
+        "run_key": "heldout_02"
+      },
+      "split": "test",
+      "variant": "heldout_upstream_value_rejected"
+    },
+    {
+      "candidate_change_ids": [
+        "deploy_9567c32687",
+        "deploy_c247ab3c54"
+      ],
+      "case_id": "heldout_03_13105",
+      "cutoff_ms": 1793709000000,
+      "expected": {
+        "acceptable_operations": [
+          "reprocess_inbox"
+        ],
+        "affected_method": "none",
+        "faulting_change_id": "deploy_c247ab3c54",
+        "hypothesis": "merchant_worker_regression",
+        "operation": "reprocess_inbox"
+      },
+      "family": "D1",
+      "faulting_deploy_id": "deploy_c247ab3c54",
+      "harmless_deploy_ids": [
+        "deploy_9567c32687"
+      ],
+      "observable_sha256": "a54ecc49d69fe669da39b49633a50c1acfc426b2dcac5702262574fd17910131",
+      "oracle_sha256": "ab4e18b5e7f5a13a96ec1588c7af1139ebc633a4837dfa775745b0e551126569",
+      "packet_file": "packets/heldout_03_13105.json",
+      "packet_hash": "724c8ef176bef16fada3f181e914841ea0a807918f83584c1d154519d6ddd896",
+      "params": {
+        "categories": true,
+        "fault": "config@8",
+        "harmless": "handler@4",
+        "harmless_position": "before",
+        "onset": "prompt"
+      },
+      "role": "heldout",
+      "run_id": "run_31c65a66df",
+      "seed": 13105,
+      "source": {
+        "manifest": "heldout-v1",
+        "replicate": 0,
+        "run_key": "heldout_03"
+      },
+      "split": "test",
+      "variant": "heldout_configuration_only"
+    },
+    {
+      "candidate_change_ids": [
+        "deploy_d611bd0bf3",
+        "deploy_ec178d5cd0"
+      ],
+      "case_id": "heldout_03_13106",
+      "cutoff_ms": 1793795400000,
+      "expected": {
+        "acceptable_operations": [
+          "reprocess_inbox"
+        ],
+        "affected_method": "none",
+        "faulting_change_id": "deploy_ec178d5cd0",
+        "hypothesis": "merchant_worker_regression",
+        "operation": "reprocess_inbox"
+      },
+      "family": "D1",
+      "faulting_deploy_id": "deploy_ec178d5cd0",
+      "harmless_deploy_ids": [
+        "deploy_d611bd0bf3"
+      ],
+      "observable_sha256": "95896ef19bf6cfd25b9821b1fc9f467954dce7e91ec55e41dc18b309e52816a1",
+      "oracle_sha256": "5025a1c16c6a519af56004f1bdc7c4234b54a43768e0743cb7cf10eefa2b883c",
+      "packet_file": "packets/heldout_03_13106.json",
+      "packet_hash": "cb43395cc2b2ba34e3341fa8d267f39d13de119c034fc0290f65c944e14d4155",
+      "params": {
+        "categories": true,
+        "fault": "config@8",
+        "harmless": "handler@4",
+        "harmless_position": "before",
+        "onset": "prompt"
+      },
+      "role": "heldout",
+      "run_id": "run_50551e3cd1",
+      "seed": 13106,
+      "source": {
+        "manifest": "heldout-v1",
+        "replicate": 1,
+        "run_key": "heldout_03"
+      },
+      "split": "test",
+      "variant": "heldout_configuration_only"
+    },
+    {
+      "candidate_change_ids": [
+        "deploy_8bf24e69dc",
+        "deploy_d53c5b356e"
+      ],
+      "case_id": "heldout_04_13107",
+      "cutoff_ms": 1793881800000,
+      "expected": {
+        "acceptable_operations": [
+          "reprocess_inbox"
+        ],
+        "affected_method": "none",
+        "faulting_change_id": "deploy_8bf24e69dc",
+        "hypothesis": "merchant_worker_regression",
+        "operation": "reprocess_inbox"
+      },
+      "family": "D1",
+      "faulting_deploy_id": "deploy_8bf24e69dc",
+      "harmless_deploy_ids": [
+        "deploy_d53c5b356e"
+      ],
+      "observable_sha256": "4a4831ced953be03d67aec6a1df06fdfec05195588c949da175118f9627cf51c",
+      "oracle_sha256": "b473e2560bc476fd3e4645a404e43e14dfcaa7cb69b302a7c8fc0803d02877df",
+      "packet_file": "packets/heldout_04_13107.json",
+      "packet_hash": "48ccf9860f4d3b1dc1dce1bb93d042769185388f4c718a4e87096444a8df703f",
+      "params": {
+        "categories": false,
+        "fault": "orders@4",
+        "harmless": "handler@3",
+        "harmless_position": "after",
+        "onset": "prompt"
+      },
+      "role": "heldout",
+      "run_id": "run_d8e81b39a3",
+      "seed": 13107,
+      "source": {
+        "manifest": "heldout-v1",
+        "replicate": 0,
+        "run_key": "heldout_04"
+      },
+      "split": "test",
+      "variant": "heldout_refactor_changes_behaviour"
+    },
+    {
+      "candidate_change_ids": [
+        "deploy_3d5a8514a4",
+        "deploy_3f61a8344a"
+      ],
+      "case_id": "heldout_04_13108",
+      "cutoff_ms": 1793968200000,
+      "expected": {
+        "acceptable_operations": [
+          "reprocess_inbox"
+        ],
+        "affected_method": "none",
+        "faulting_change_id": "deploy_3d5a8514a4",
+        "hypothesis": "merchant_worker_regression",
+        "operation": "reprocess_inbox"
+      },
+      "family": "D1",
+      "faulting_deploy_id": "deploy_3d5a8514a4",
+      "harmless_deploy_ids": [
+        "deploy_3f61a8344a"
+      ],
+      "observable_sha256": "5399f884c4b17bdcebf348bd1c483373ab5c24c0a9561dd5b6f3424fb2df4d4a",
+      "oracle_sha256": "3d3b65f43b587190f2f94c2a29fa88a8a95b071f94ce0a14d0a3e3346c20d6bb",
+      "packet_file": "packets/heldout_04_13108.json",
+      "packet_hash": "6579187ef79758245f8ffe89aeff82625b91b4f6ca9d6889e0db52d506c832f6",
+      "params": {
+        "categories": false,
+        "fault": "orders@4",
+        "harmless": "handler@3",
+        "harmless_position": "after",
+        "onset": "prompt"
+      },
+      "role": "heldout",
+      "run_id": "run_5948a3eb8c",
+      "seed": 13108,
+      "source": {
+        "manifest": "heldout-v1",
+        "replicate": 1,
+        "run_key": "heldout_04"
+      },
+      "split": "test",
+      "variant": "heldout_refactor_changes_behaviour"
+    },
+    {
+      "candidate_change_ids": [
+        "deploy_aa8c156434",
+        "deploy_e18aec2b0e"
+      ],
+      "case_id": "heldout_05_13109",
+      "cutoff_ms": 1794054600000,
+      "expected": {
+        "acceptable_operations": [
+          "reprocess_inbox"
+        ],
+        "affected_method": "none",
+        "faulting_change_id": "deploy_aa8c156434",
+        "hypothesis": "merchant_worker_regression",
+        "operation": "reprocess_inbox"
+      },
+      "family": "D1",
+      "faulting_deploy_id": "deploy_aa8c156434",
+      "harmless_deploy_ids": [
+        "deploy_e18aec2b0e"
+      ],
+      "observable_sha256": "9c4cc25dfa2a8859e43ee26697dc92dd0a351b84ea5973daeaa95f13549a3248",
+      "oracle_sha256": "fb61ce0478aeeb7523ee082fe58af3fc5f20c0788dd0f77d386920f48131e6ac",
+      "packet_file": "packets/heldout_05_13109.json",
+      "packet_hash": "aa99ba47ecb152b1f0b4c494cb0abd726033083f67b0c97a2ae8269527a1927d",
+      "params": {
+        "categories": false,
+        "fault": "payload@8",
+        "harmless": "handler@4",
+        "harmless_position": "gap",
+        "onset": "delayed"
+      },
+      "role": "heldout",
+      "run_id": "run_68ba81f5ec",
+      "seed": 13109,
+      "source": {
+        "manifest": "heldout-v1",
+        "replicate": 0,
+        "run_key": "heldout_05"
+      },
+      "split": "test",
+      "variant": "heldout_cross_module_contract"
+    },
+    {
+      "candidate_change_ids": [
+        "deploy_b558c9f644",
+        "deploy_dfccdbab70"
+      ],
+      "case_id": "heldout_05_13110",
+      "cutoff_ms": 1794141000000,
+      "expected": {
+        "acceptable_operations": [
+          "reprocess_inbox"
+        ],
+        "affected_method": "none",
+        "faulting_change_id": "deploy_b558c9f644",
+        "hypothesis": "merchant_worker_regression",
+        "operation": "reprocess_inbox"
+      },
+      "family": "D1",
+      "faulting_deploy_id": "deploy_b558c9f644",
+      "harmless_deploy_ids": [
+        "deploy_dfccdbab70"
+      ],
+      "observable_sha256": "ca2a5c88b12955c09903ca6d94dbf8e6db94c77f11e3ce876289e740221b8d52",
+      "oracle_sha256": "d993def909b25e49372d0a1220050f2f8226916d2b1df0fbd4deaf82507c6031",
+      "packet_file": "packets/heldout_05_13110.json",
+      "packet_hash": "07d4ab9e25b88148570b02f77c84f88bb5f00096161e032ebd9fa5e2606dcf67",
+      "params": {
+        "categories": false,
+        "fault": "payload@8",
+        "harmless": "handler@4",
+        "harmless_position": "gap",
+        "onset": "delayed"
+      },
+      "role": "heldout",
+      "run_id": "run_61af648d4a",
+      "seed": 13110,
+      "source": {
+        "manifest": "heldout-v1",
+        "replicate": 1,
+        "run_key": "heldout_05"
+      },
+      "split": "test",
+      "variant": "heldout_cross_module_contract"
+    },
+    {
+      "candidate_change_ids": [
+        "deploy_e0937347c0",
+        "deploy_26ecba968c"
+      ],
+      "case_id": "heldout_06_13111",
+      "cutoff_ms": 1793622600000,
+      "expected": {
+        "acceptable_operations": [
+          "reprocess_inbox"
+        ],
+        "affected_method": "none",
+        "faulting_change_id": "deploy_e0937347c0",
+        "hypothesis": "merchant_worker_regression",
+        "operation": "reprocess_inbox"
+      },
+      "family": "D1",
+      "faulting_deploy_id": "deploy_e0937347c0",
+      "harmless_deploy_ids": [
+        "deploy_26ecba968c"
+      ],
+      "observable_sha256": "1f9566160bc3b38dca538ec62c49d8b2d84978fdfe00814317643cea4b0a6fce",
+      "oracle_sha256": "2386803df2cf1e779982c4c9ed31dada3c361e026d522c1d04957da09ff57053",
+      "packet_file": "packets/heldout_06_13111.json",
+      "packet_hash": "64df5bd18b922c055aabbcb3d07c5ca6bea3acf18a6a7344986015f77c0cc4c4",
+      "params": {
+        "categories": true,
+        "fault": "orders@6",
+        "harmless": "handler@4",
+        "harmless_position": "after",
+        "onset": "delayed"
+      },
+      "role": "heldout",
+      "run_id": "run_14e9b89c4c",
+      "seed": 13111,
+      "source": {
+        "manifest": "heldout-v1",
+        "replicate": 0,
+        "run_key": "heldout_06"
+      },
+      "split": "test",
+      "variant": "heldout_unit_mismatch_partial"
+    },
+    {
+      "candidate_change_ids": [
+        "deploy_bf89ffb04b",
+        "deploy_22c2caf2d8"
+      ],
+      "case_id": "heldout_06_13112",
+      "cutoff_ms": 1793709000000,
+      "expected": {
+        "acceptable_operations": [
+          "reprocess_inbox"
+        ],
+        "affected_method": "none",
+        "faulting_change_id": "deploy_bf89ffb04b",
+        "hypothesis": "merchant_worker_regression",
+        "operation": "reprocess_inbox"
+      },
+      "family": "D1",
+      "faulting_deploy_id": "deploy_bf89ffb04b",
+      "harmless_deploy_ids": [
+        "deploy_22c2caf2d8"
+      ],
+      "observable_sha256": "a6be74acef3a041db4a657f5abc13135599828ca0ed2f3c192ef902ee647a6ce",
+      "oracle_sha256": "11930e09d331d9a5b00d9a08e71803a4f6d33bc6954da7bd0538f10171787049",
+      "packet_file": "packets/heldout_06_13112.json",
+      "packet_hash": "850f4c523b3f0e524a496fe316b9b8458405922b7a43ef6c0d87fe24e1f9eeae",
+      "params": {
+        "categories": true,
+        "fault": "orders@6",
+        "harmless": "handler@4",
+        "harmless_position": "after",
+        "onset": "delayed"
+      },
+      "role": "heldout",
+      "run_id": "run_4a57c93d11",
+      "seed": 13112,
+      "source": {
+        "manifest": "heldout-v1",
+        "replicate": 1,
+        "run_key": "heldout_06"
+      },
+      "split": "test",
+      "variant": "heldout_unit_mismatch_partial"
+    },
+    {
+      "candidate_change_ids": [
+        "deploy_20e8af5099",
+        "deploy_b2dacd9886"
+      ],
+      "case_id": "heldout_07_13113",
+      "cutoff_ms": 1793795400000,
+      "expected": {
+        "acceptable_operations": [
+          "reprocess_inbox"
+        ],
+        "affected_method": "none",
+        "faulting_change_id": "deploy_20e8af5099",
+        "hypothesis": "merchant_worker_regression",
+        "operation": "reprocess_inbox"
+      },
+      "family": "D1",
+      "faulting_deploy_id": "deploy_20e8af5099",
+      "harmless_deploy_ids": [
+        "deploy_b2dacd9886"
+      ],
+      "observable_sha256": "23e261a3c03a442dc7626e40041252495d231154798ae00a5ef24d5d898698ce",
+      "oracle_sha256": "6eb171a866a00dd586c9cb20fc845595f2c6cfb7ec4f326ddb691fa03444fdd9",
+      "packet_file": "packets/heldout_07_13113.json",
+      "packet_hash": "272fc509d8eb880d6d895d42f537ae197584a5cf90c63d3c3df83e9b1f086ddb",
+      "params": {
+        "categories": false,
+        "fault": "payload@9",
+        "harmless": "handler@3",
+        "harmless_position": "gap",
+        "onset": "delayed"
+      },
+      "role": "heldout",
+      "run_id": "run_6210a9e894",
+      "seed": 13113,
+      "source": {
+        "manifest": "heldout-v1",
+        "replicate": 0,
+        "run_key": "heldout_07"
+      },
+      "split": "test",
+      "variant": "heldout_same_file_raises"
+    },
+    {
+      "candidate_change_ids": [
+        "deploy_5bb3da0c0b",
+        "deploy_174c1dc359"
+      ],
+      "case_id": "heldout_07_13114",
+      "cutoff_ms": 1793881800000,
+      "expected": {
+        "acceptable_operations": [
+          "reprocess_inbox"
+        ],
+        "affected_method": "none",
+        "faulting_change_id": "deploy_5bb3da0c0b",
+        "hypothesis": "merchant_worker_regression",
+        "operation": "reprocess_inbox"
+      },
+      "family": "D1",
+      "faulting_deploy_id": "deploy_5bb3da0c0b",
+      "harmless_deploy_ids": [
+        "deploy_174c1dc359"
+      ],
+      "observable_sha256": "52cbe0f118eba96fa7c5711de595e633289f7b858c6b95762e386645e166532e",
+      "oracle_sha256": "26329152974070d2577e43ad255a21c73104baa772f629607f202116bb3c72ef",
+      "packet_file": "packets/heldout_07_13114.json",
+      "packet_hash": "e7bc559587e81cfae07b689ebc2bdada9d202c214a2b6ac7d347930f41f07afc",
+      "params": {
+        "categories": false,
+        "fault": "payload@9",
+        "harmless": "handler@3",
+        "harmless_position": "gap",
+        "onset": "delayed"
+      },
+      "role": "heldout",
+      "run_id": "run_2ff6a89682",
+      "seed": 13114,
+      "source": {
+        "manifest": "heldout-v1",
+        "replicate": 1,
+        "run_key": "heldout_07"
+      },
+      "split": "test",
+      "variant": "heldout_same_file_raises"
+    },
+    {
+      "candidate_change_ids": [
+        "deploy_8a681bd5dc",
+        "deploy_af38e8dd34"
+      ],
+      "case_id": "heldout_08_13115",
+      "cutoff_ms": 1793968200000,
+      "expected": {
+        "acceptable_operations": [
+          "reprocess_inbox"
+        ],
+        "affected_method": "none",
+        "faulting_change_id": "deploy_af38e8dd34",
+        "hypothesis": "merchant_worker_regression",
+        "operation": "reprocess_inbox"
+      },
+      "family": "D1",
+      "faulting_deploy_id": "deploy_af38e8dd34",
+      "harmless_deploy_ids": [
+        "deploy_8a681bd5dc"
+      ],
+      "observable_sha256": "4e500326f14a55a2cc21cf9ca45466a5d47f347f7fc9cae85dc2d32113190f44",
+      "oracle_sha256": "ecc42f08795345fd9676e71d042028d855803674c5fe668bc6f9444246f1a570",
+      "packet_file": "packets/heldout_08_13115.json",
+      "packet_hash": "7a3b7d7b71a2e9fdf1f4e06697f2769226a983c91e50295d4c4d7307ec0797f0",
+      "params": {
+        "categories": true,
+        "fault": "payload@7",
+        "harmless": "handler@3",
+        "harmless_position": "before",
+        "onset": "prompt"
+      },
+      "role": "heldout",
+      "run_id": "run_288e89d8bc",
+      "seed": 13115,
+      "source": {
+        "manifest": "heldout-v1",
+        "replicate": 0,
+        "run_key": "heldout_08"
+      },
+      "split": "test",
+      "variant": "heldout_upstream_value_rejected"
+    },
+    {
+      "candidate_change_ids": [
+        "deploy_44314db77b",
+        "deploy_37165bd6e1"
+      ],
+      "case_id": "heldout_08_13116",
+      "cutoff_ms": 1794054600000,
+      "expected": {
+        "acceptable_operations": [
+          "reprocess_inbox"
+        ],
+        "affected_method": "none",
+        "faulting_change_id": "deploy_37165bd6e1",
+        "hypothesis": "merchant_worker_regression",
+        "operation": "reprocess_inbox"
+      },
+      "family": "D1",
+      "faulting_deploy_id": "deploy_37165bd6e1",
+      "harmless_deploy_ids": [
+        "deploy_44314db77b"
+      ],
+      "observable_sha256": "19ede35b2bc28d37bfcaf5c10ce2eb13a486608d687031b8772684e2ea6c209e",
+      "oracle_sha256": "ae9c763d940574825822f1dbfb0c2ffe2cc79c06a513aa8e4aeb1d7715d949d6",
+      "packet_file": "packets/heldout_08_13116.json",
+      "packet_hash": "7814d5c329362f382a53dbad3e1701ba3ebb788937dd892ad9f0870bfbce8026",
+      "params": {
+        "categories": true,
+        "fault": "payload@7",
+        "harmless": "handler@3",
+        "harmless_position": "before",
+        "onset": "prompt"
+      },
+      "role": "heldout",
+      "run_id": "run_5b61bfa09e",
+      "seed": 13116,
+      "source": {
+        "manifest": "heldout-v1",
+        "replicate": 1,
+        "run_key": "heldout_08"
+      },
+      "split": "test",
+      "variant": "heldout_upstream_value_rejected"
+    },
+    {
+      "candidate_change_ids": [
+        "deploy_f396d3cbc0",
+        "deploy_a48cd3bdfa"
+      ],
+      "case_id": "heldout_09_13117",
+      "cutoff_ms": 1794141000000,
+      "expected": {
+        "acceptable_operations": [
+          "reprocess_inbox"
+        ],
+        "affected_method": "none",
+        "faulting_change_id": "deploy_f396d3cbc0",
+        "hypothesis": "merchant_worker_regression",
+        "operation": "reprocess_inbox"
+      },
+      "family": "D1",
+      "faulting_deploy_id": "deploy_f396d3cbc0",
+      "harmless_deploy_ids": [
+        "deploy_a48cd3bdfa"
+      ],
+      "observable_sha256": "e58fcc25046f5f9c5ede190f90900e8b272c5e203998b980d1d4db6abfa2a0b7",
+      "oracle_sha256": "d2ede008ff314c03bf997e92242a8cd20cefb3ef929606139680baf93f443283",
+      "packet_file": "packets/heldout_09_13117.json",
+      "packet_hash": "06c4df559ac20ea43fbc3ebc556c6205917d00ddf12c3d275c1973551376e7b8",
+      "params": {
+        "categories": false,
+        "fault": "config@8",
+        "harmless": "orders@3",
+        "harmless_position": "after",
+        "onset": "prompt"
+      },
+      "role": "heldout",
+      "run_id": "run_6f9b506be7",
+      "seed": 13117,
+      "source": {
+        "manifest": "heldout-v1",
+        "replicate": 0,
+        "run_key": "heldout_09"
+      },
+      "split": "test",
+      "variant": "heldout_configuration_only"
+    },
+    {
+      "candidate_change_ids": [
+        "deploy_516282f110",
+        "deploy_08501339f6"
+      ],
+      "case_id": "heldout_09_13118",
+      "cutoff_ms": 1793622600000,
+      "expected": {
+        "acceptable_operations": [
+          "reprocess_inbox"
+        ],
+        "affected_method": "none",
+        "faulting_change_id": "deploy_516282f110",
+        "hypothesis": "merchant_worker_regression",
+        "operation": "reprocess_inbox"
+      },
+      "family": "D1",
+      "faulting_deploy_id": "deploy_516282f110",
+      "harmless_deploy_ids": [
+        "deploy_08501339f6"
+      ],
+      "observable_sha256": "c132dffcdf2eac4b2ff0bad3dc36937821afd785f766e2e81de20646fff66068",
+      "oracle_sha256": "a358e1e036dff544b994a72183fb9bbea40b5d5e3d6c8a78b27a7fad54abd493",
+      "packet_file": "packets/heldout_09_13118.json",
+      "packet_hash": "c5a68e3fda9e012525045ab34664c2abfa8a91a2dbc1b519ac0c2c904ecce98e",
+      "params": {
+        "categories": false,
+        "fault": "config@8",
+        "harmless": "orders@3",
+        "harmless_position": "after",
+        "onset": "prompt"
+      },
+      "role": "heldout",
+      "run_id": "run_82970b9261",
+      "seed": 13118,
+      "source": {
+        "manifest": "heldout-v1",
+        "replicate": 1,
+        "run_key": "heldout_09"
+      },
+      "split": "test",
+      "variant": "heldout_configuration_only"
+    },
+    {
+      "candidate_change_ids": [
+        "deploy_15fa9ea0be",
+        "deploy_a311abda49"
+      ],
+      "case_id": "heldout_10_13119",
+      "cutoff_ms": 1793709000000,
+      "expected": {
+        "acceptable_operations": [
+          "reprocess_inbox"
+        ],
+        "affected_method": "none",
+        "faulting_change_id": "deploy_15fa9ea0be",
+        "hypothesis": "merchant_worker_regression",
+        "operation": "reprocess_inbox"
+      },
+      "family": "D1",
+      "faulting_deploy_id": "deploy_15fa9ea0be",
+      "harmless_deploy_ids": [
+        "deploy_a311abda49"
+      ],
+      "observable_sha256": "d5df6b5038b4f7c8617c8ed027d16ad531800c687ab319f07d9a48cb7428a445",
+      "oracle_sha256": "25ffeebb08ef8ddea803ec7a3bf1e537788ff56921c8bcc66b24c24060ca28e3",
+      "packet_file": "packets/heldout_10_13119.json",
+      "packet_hash": "7a159e9b20efd7ee9d3b272c244075f59bfb11c065cd744bef9017c9297f5b9d",
+      "params": {
+        "categories": true,
+        "fault": "orders@4",
+        "harmless": "config@7",
+        "harmless_position": "gap",
+        "onset": "delayed"
+      },
+      "role": "heldout",
+      "run_id": "run_44c2f7d452",
+      "seed": 13119,
+      "source": {
+        "manifest": "heldout-v1",
+        "replicate": 0,
+        "run_key": "heldout_10"
+      },
+      "split": "test",
+      "variant": "heldout_refactor_changes_behaviour"
+    },
+    {
+      "candidate_change_ids": [
+        "deploy_5f8b335110",
+        "deploy_dec2236825"
+      ],
+      "case_id": "heldout_10_13120",
+      "cutoff_ms": 1793795400000,
+      "expected": {
+        "acceptable_operations": [
+          "reprocess_inbox"
+        ],
+        "affected_method": "none",
+        "faulting_change_id": "deploy_5f8b335110",
+        "hypothesis": "merchant_worker_regression",
+        "operation": "reprocess_inbox"
+      },
+      "family": "D1",
+      "faulting_deploy_id": "deploy_5f8b335110",
+      "harmless_deploy_ids": [
+        "deploy_dec2236825"
+      ],
+      "observable_sha256": "17c62fa064420a8d0e16f5f249dd01af7f6d504acc6e633824e1263bb7c11a34",
+      "oracle_sha256": "60a40e7a826dff74aab65a7938ec3f5cb824ab6196ceccc0d1b91b27db21d0f0",
+      "packet_file": "packets/heldout_10_13120.json",
+      "packet_hash": "d7d3f93197b5b5e8c8875d92eabc8570674fb13d8efc340844626eb1e7fb74f2",
+      "params": {
+        "categories": true,
+        "fault": "orders@4",
+        "harmless": "config@7",
+        "harmless_position": "gap",
+        "onset": "delayed"
+      },
+      "role": "heldout",
+      "run_id": "run_b9ff80e5cd",
+      "seed": 13120,
+      "source": {
+        "manifest": "heldout-v1",
+        "replicate": 1,
+        "run_key": "heldout_10"
+      },
+      "split": "test",
+      "variant": "heldout_refactor_changes_behaviour"
+    },
+    {
+      "candidate_change_ids": [
+        "deploy_6d7219a916",
+        "deploy_09b8995a73"
+      ],
+      "case_id": "heldout_11_13121",
+      "cutoff_ms": 1793881800000,
+      "expected": {
+        "acceptable_operations": [
+          "reprocess_inbox"
+        ],
+        "affected_method": "none",
+        "faulting_change_id": "deploy_09b8995a73",
+        "hypothesis": "merchant_worker_regression",
+        "operation": "reprocess_inbox"
+      },
+      "family": "D1",
+      "faulting_deploy_id": "deploy_09b8995a73",
+      "harmless_deploy_ids": [
+        "deploy_6d7219a916"
+      ],
+      "observable_sha256": "0fc8a45f5ea98e4836cc1da086aee21a910c02320cfe3f83f6bc83c6c1b45068",
+      "oracle_sha256": "e5ebfa74c39aeec4c085f7de66e3f8819742ef1535950e04aaec7c1d87e63040",
+      "packet_file": "packets/heldout_11_13121.json",
+      "packet_hash": "0192409fa150eeab934afeb0349aea149ee6d1b5479c1a9c33ad53ec3368a445",
+      "params": {
+        "categories": false,
+        "fault": "payload@8",
+        "harmless": "config@7",
+        "harmless_position": "before",
+        "onset": "delayed"
+      },
+      "role": "heldout",
+      "run_id": "run_ea59d81cc3",
+      "seed": 13121,
+      "source": {
+        "manifest": "heldout-v1",
+        "replicate": 0,
+        "run_key": "heldout_11"
+      },
+      "split": "test",
+      "variant": "heldout_cross_module_contract"
+    },
+    {
+      "candidate_change_ids": [
+        "deploy_4315f8d813",
+        "deploy_758d0898d9"
+      ],
+      "case_id": "heldout_11_13122",
+      "cutoff_ms": 1793968200000,
+      "expected": {
+        "acceptable_operations": [
+          "reprocess_inbox"
+        ],
+        "affected_method": "none",
+        "faulting_change_id": "deploy_758d0898d9",
+        "hypothesis": "merchant_worker_regression",
+        "operation": "reprocess_inbox"
+      },
+      "family": "D1",
+      "faulting_deploy_id": "deploy_758d0898d9",
+      "harmless_deploy_ids": [
+        "deploy_4315f8d813"
+      ],
+      "observable_sha256": "1d0b29a48d652acecf0d95644591c6a22840671197f7015af224aeb7be0ea042",
+      "oracle_sha256": "63799817f059e67db2c76af8529349e616467927c56d29bd84264c551492604e",
+      "packet_file": "packets/heldout_11_13122.json",
+      "packet_hash": "3584a6322398d33a17b8f1f7e437063b932fac9872b227a0e449f081c1e6df19",
+      "params": {
+        "categories": false,
+        "fault": "payload@8",
+        "harmless": "config@7",
+        "harmless_position": "before",
+        "onset": "delayed"
+      },
+      "role": "heldout",
+      "run_id": "run_86dd088ee3",
+      "seed": 13122,
+      "source": {
+        "manifest": "heldout-v1",
+        "replicate": 1,
+        "run_key": "heldout_11"
+      },
+      "split": "test",
+      "variant": "heldout_cross_module_contract"
+    },
+    {
+      "candidate_change_ids": [
+        "deploy_928d93f6aa",
+        "deploy_74a71ff29f"
+      ],
+      "case_id": "heldout_12_13123",
+      "cutoff_ms": 1794054600000,
+      "expected": {
+        "acceptable_operations": [
+          "reprocess_inbox"
+        ],
+        "affected_method": "none",
+        "faulting_change_id": "deploy_74a71ff29f",
+        "hypothesis": "merchant_worker_regression",
+        "operation": "reprocess_inbox"
+      },
+      "family": "D1",
+      "faulting_deploy_id": "deploy_74a71ff29f",
+      "harmless_deploy_ids": [
+        "deploy_928d93f6aa"
+      ],
+      "observable_sha256": "48477bb6540738ce949f796fe275457d2bbd1ac1278cec7add929e00201a7c78",
+      "oracle_sha256": "9d772b4592f8cc61c828ab76ce58d94904646d57411d95bd49138b895c735f32",
+      "packet_file": "packets/heldout_12_13123.json",
+      "packet_hash": "d642ec8034fa7e0dc0904332ffe157b73010a115a7491e95011091d9ba3df6bf",
+      "params": {
+        "categories": false,
+        "fault": "orders@6",
+        "harmless": "checkout@4",
+        "harmless_position": "before",
+        "onset": "prompt"
+      },
+      "role": "heldout",
+      "run_id": "run_06090611ad",
+      "seed": 13123,
+      "source": {
+        "manifest": "heldout-v1",
+        "replicate": 0,
+        "run_key": "heldout_12"
+      },
+      "split": "test",
+      "variant": "heldout_unit_mismatch_partial"
+    },
+    {
+      "candidate_change_ids": [
+        "deploy_6b73b76122",
+        "deploy_6cf3b3dee1"
+      ],
+      "case_id": "heldout_12_13124",
+      "cutoff_ms": 1794141000000,
+      "expected": {
+        "acceptable_operations": [
+          "reprocess_inbox"
+        ],
+        "affected_method": "none",
+        "faulting_change_id": "deploy_6cf3b3dee1",
+        "hypothesis": "merchant_worker_regression",
+        "operation": "reprocess_inbox"
+      },
+      "family": "D1",
+      "faulting_deploy_id": "deploy_6cf3b3dee1",
+      "harmless_deploy_ids": [
+        "deploy_6b73b76122"
+      ],
+      "observable_sha256": "09d9aaeae770f8cee2d0970bc3616504420f21fd03bb164eee4acfe182f8ed81",
+      "oracle_sha256": "19573f575500774b54e8dacd257ee1ab10b373074156a3d0537ba4686d81a2bc",
+      "packet_file": "packets/heldout_12_13124.json",
+      "packet_hash": "afd76a8ddbef56d25d0f5904e7fab674f01d556ff49a92ade297180dae950b74",
+      "params": {
+        "categories": false,
+        "fault": "orders@6",
+        "harmless": "checkout@4",
+        "harmless_position": "before",
+        "onset": "prompt"
+      },
+      "role": "heldout",
+      "run_id": "run_f5986bb9aa",
+      "seed": 13124,
+      "source": {
+        "manifest": "heldout-v1",
+        "replicate": 1,
+        "run_key": "heldout_12"
+      },
+      "split": "test",
+      "variant": "heldout_unit_mismatch_partial"
+    },
+    {
+      "candidate_change_ids": [
+        "deploy_0b9c23f6cb",
+        "deploy_036a3cae2d"
+      ],
+      "case_id": "heldout_13_13125",
+      "cutoff_ms": 1793622600000,
+      "expected": {
+        "acceptable_operations": [
+          "reprocess_inbox"
+        ],
+        "affected_method": "none",
+        "faulting_change_id": "deploy_036a3cae2d",
+        "hypothesis": "merchant_worker_regression",
+        "operation": "reprocess_inbox"
+      },
+      "family": "D1",
+      "faulting_deploy_id": "deploy_036a3cae2d",
+      "harmless_deploy_ids": [
+        "deploy_0b9c23f6cb"
+      ],
+      "observable_sha256": "ab87f7fcbabed1705f158afea97a7f9de53346cc05594d7f6e8479d3cfe1fdf8",
+      "oracle_sha256": "d220fcdce2d4efc89b60ad57b22a296b7731001b4f6e58205a1b08a9cc46d091",
+      "packet_file": "packets/heldout_13_13125.json",
+      "packet_hash": "c3a144dd9d4c69c5ede4d5f82ac0d820418b6b8d74c38091cb71bfdf88452fb1",
+      "params": {
+        "categories": true,
+        "fault": "payload@9",
+        "harmless": "orders@5",
+        "harmless_position": "before",
+        "onset": "prompt"
+      },
+      "role": "heldout",
+      "run_id": "run_bfc416f7ab",
+      "seed": 13125,
+      "source": {
+        "manifest": "heldout-v1",
+        "replicate": 0,
+        "run_key": "heldout_13"
+      },
+      "split": "test",
+      "variant": "heldout_same_file_raises"
+    },
+    {
+      "candidate_change_ids": [
+        "deploy_5770ab4735",
+        "deploy_219a426bc1"
+      ],
+      "case_id": "heldout_13_13126",
+      "cutoff_ms": 1793709000000,
+      "expected": {
+        "acceptable_operations": [
+          "reprocess_inbox"
+        ],
+        "affected_method": "none",
+        "faulting_change_id": "deploy_219a426bc1",
+        "hypothesis": "merchant_worker_regression",
+        "operation": "reprocess_inbox"
+      },
+      "family": "D1",
+      "faulting_deploy_id": "deploy_219a426bc1",
+      "harmless_deploy_ids": [
+        "deploy_5770ab4735"
+      ],
+      "observable_sha256": "e89e9ba6165780d08e835e26289942a8936c8ace7b6c9f51dc25956e5eb4da59",
+      "oracle_sha256": "29ce7de49b44fe800339afc008026d098c9b803841d4341ffa7566ace12a3a7f",
+      "packet_file": "packets/heldout_13_13126.json",
+      "packet_hash": "945726662b795a9ff36f7f011ab767c6ea526098bd2d6d490ede3f663ecb87b5",
+      "params": {
+        "categories": true,
+        "fault": "payload@9",
+        "harmless": "orders@5",
+        "harmless_position": "before",
+        "onset": "prompt"
+      },
+      "role": "heldout",
+      "run_id": "run_ab5e20c993",
+      "seed": 13126,
+      "source": {
+        "manifest": "heldout-v1",
+        "replicate": 1,
+        "run_key": "heldout_13"
+      },
+      "split": "test",
+      "variant": "heldout_same_file_raises"
+    },
+    {
+      "candidate_change_ids": [
+        "deploy_132b3bc6ef",
+        "deploy_0f8042efa9"
+      ],
+      "case_id": "heldout_14_13127",
+      "cutoff_ms": 1793795400000,
+      "expected": {
+        "acceptable_operations": [
+          "reprocess_inbox"
+        ],
+        "affected_method": "none",
+        "faulting_change_id": "deploy_132b3bc6ef",
+        "hypothesis": "merchant_worker_regression",
+        "operation": "reprocess_inbox"
+      },
+      "family": "D1",
+      "faulting_deploy_id": "deploy_132b3bc6ef",
+      "harmless_deploy_ids": [
+        "deploy_0f8042efa9"
+      ],
+      "observable_sha256": "589a9ddd690f8e59120adfba582446a317750b6c429343bb080e925f4df5a16c",
+      "oracle_sha256": "aa0d533e33e958b79cacac9ba2294255f92a561ebb3748c309d557361f587e28",
+      "packet_file": "packets/heldout_14_13127.json",
+      "packet_hash": "0919c93a3455a2318ec1114d2feaffbdcf38a0f951bea49582bde7d69b50d18e",
+      "params": {
+        "categories": false,
+        "fault": "payload@7",
+        "harmless": "checkout@4",
+        "harmless_position": "after",
+        "onset": "prompt"
+      },
+      "role": "heldout",
+      "run_id": "run_7861a33af6",
+      "seed": 13127,
+      "source": {
+        "manifest": "heldout-v1",
+        "replicate": 0,
+        "run_key": "heldout_14"
+      },
+      "split": "test",
+      "variant": "heldout_upstream_value_rejected"
+    },
+    {
+      "candidate_change_ids": [
+        "deploy_fe6e7734e3",
+        "deploy_20467f5434"
+      ],
+      "case_id": "heldout_14_13128",
+      "cutoff_ms": 1793881800000,
+      "expected": {
+        "acceptable_operations": [
+          "reprocess_inbox"
+        ],
+        "affected_method": "none",
+        "faulting_change_id": "deploy_fe6e7734e3",
+        "hypothesis": "merchant_worker_regression",
+        "operation": "reprocess_inbox"
+      },
+      "family": "D1",
+      "faulting_deploy_id": "deploy_fe6e7734e3",
+      "harmless_deploy_ids": [
+        "deploy_20467f5434"
+      ],
+      "observable_sha256": "bc2511ca2f48fe8d4b395090b395be32c26fd7b9414e2dd5845b040b8aeb044e",
+      "oracle_sha256": "081a205dffb214b6ea8204b18ad311f3a3a1ecd728a7803b4bfed86bcae57612",
+      "packet_file": "packets/heldout_14_13128.json",
+      "packet_hash": "81d24d7caa80ab36b99e054c161345888a0ed5f04d339f94ebe716f5c273eef4",
+      "params": {
+        "categories": false,
+        "fault": "payload@7",
+        "harmless": "checkout@4",
+        "harmless_position": "after",
+        "onset": "prompt"
+      },
+      "role": "heldout",
+      "run_id": "run_52eae87e74",
+      "seed": 13128,
+      "source": {
+        "manifest": "heldout-v1",
+        "replicate": 1,
+        "run_key": "heldout_14"
+      },
+      "split": "test",
+      "variant": "heldout_upstream_value_rejected"
+    },
+    {
+      "candidate_change_ids": [
+        "deploy_71e7625e4f",
+        "deploy_a4b7302c4d"
+      ],
+      "case_id": "heldout_15_13129",
+      "cutoff_ms": 1793968200000,
+      "expected": {
+        "acceptable_operations": [
+          "reprocess_inbox"
+        ],
+        "affected_method": "none",
+        "faulting_change_id": "deploy_71e7625e4f",
+        "hypothesis": "merchant_worker_regression",
+        "operation": "reprocess_inbox"
+      },
+      "family": "D1",
+      "faulting_deploy_id": "deploy_71e7625e4f",
+      "harmless_deploy_ids": [
+        "deploy_a4b7302c4d"
+      ],
+      "observable_sha256": "f523db8b10ba62b823e1e62df57b626c98357f620208e4a6c0cecbffaef016a6",
+      "oracle_sha256": "62f4b39aa92c91a05a831df91376c0690ebf05b51d6dd25e4bc20f6ffc20b17a",
+      "packet_file": "packets/heldout_15_13129.json",
+      "packet_hash": "9df1e3bbf5b6a82ca7ac7ff51ac3fa5fc97038a9fda77f77945113d440790280",
+      "params": {
+        "categories": true,
+        "fault": "config@8",
+        "harmless": "checkout@4",
+        "harmless_position": "gap",
+        "onset": "delayed"
+      },
+      "role": "heldout",
+      "run_id": "run_1a9a80a246",
+      "seed": 13129,
+      "source": {
+        "manifest": "heldout-v1",
+        "replicate": 0,
+        "run_key": "heldout_15"
+      },
+      "split": "test",
+      "variant": "heldout_configuration_only"
+    },
+    {
+      "candidate_change_ids": [
+        "deploy_3ff09a954c",
+        "deploy_bfe73341c1"
+      ],
+      "case_id": "heldout_15_13130",
+      "cutoff_ms": 1794054600000,
+      "expected": {
+        "acceptable_operations": [
+          "reprocess_inbox"
+        ],
+        "affected_method": "none",
+        "faulting_change_id": "deploy_3ff09a954c",
+        "hypothesis": "merchant_worker_regression",
+        "operation": "reprocess_inbox"
+      },
+      "family": "D1",
+      "faulting_deploy_id": "deploy_3ff09a954c",
+      "harmless_deploy_ids": [
+        "deploy_bfe73341c1"
+      ],
+      "observable_sha256": "2b16558bde076403279b52897cbca433f74944d43d23af7e641a3ab0e9d4fa22",
+      "oracle_sha256": "c5e3c4a9c4844c097d7a54b3175317b68173f48ff9b1c55fb70f9c1f00c26b2a",
+      "packet_file": "packets/heldout_15_13130.json",
+      "packet_hash": "158b75d87928b7f2221f19caf6720b95c56c7de9893f9d7661349dd8915744e6",
+      "params": {
+        "categories": true,
+        "fault": "config@8",
+        "harmless": "checkout@4",
+        "harmless_position": "gap",
+        "onset": "delayed"
+      },
+      "role": "heldout",
+      "run_id": "run_b28b47d66c",
+      "seed": 13130,
+      "source": {
+        "manifest": "heldout-v1",
+        "replicate": 1,
+        "run_key": "heldout_15"
+      },
+      "split": "test",
+      "variant": "heldout_configuration_only"
+    },
+    {
+      "candidate_change_ids": [
+        "deploy_5071ed22d1",
+        "deploy_e429626528"
+      ],
+      "case_id": "heldout_16_13131",
+      "cutoff_ms": 1794141000000,
+      "expected": {
+        "acceptable_operations": [
+          "reprocess_inbox"
+        ],
+        "affected_method": "none",
+        "faulting_change_id": "deploy_5071ed22d1",
+        "hypothesis": "merchant_worker_regression",
+        "operation": "reprocess_inbox"
+      },
+      "family": "D1",
+      "faulting_deploy_id": "deploy_5071ed22d1",
+      "harmless_deploy_ids": [
+        "deploy_e429626528"
+      ],
+      "observable_sha256": "cb949ec2f021274cf5a201bc6ed958d886218eed39dda600510f45714456b456",
+      "oracle_sha256": "c08df59be17fd49e01aea4231932c1a6bb17f16f2db0791cf777d23b134687a4",
+      "packet_file": "packets/heldout_16_13131.json",
+      "packet_hash": "1710f4a4818a5b3eea106894acb44423467286cad4b946617edc61176e0f0792",
+      "params": {
+        "categories": true,
+        "fault": "orders@4",
+        "harmless": "checkout@4",
+        "harmless_position": "after",
+        "onset": "delayed"
+      },
+      "role": "heldout",
+      "run_id": "run_80fe53b603",
+      "seed": 13131,
+      "source": {
+        "manifest": "heldout-v1",
+        "replicate": 0,
+        "run_key": "heldout_16"
+      },
+      "split": "test",
+      "variant": "heldout_refactor_changes_behaviour"
+    },
+    {
+      "candidate_change_ids": [
+        "deploy_b29a1732f0",
+        "deploy_c8f29f55c8"
+      ],
+      "case_id": "heldout_16_13132",
+      "cutoff_ms": 1793622600000,
+      "expected": {
+        "acceptable_operations": [
+          "reprocess_inbox"
+        ],
+        "affected_method": "none",
+        "faulting_change_id": "deploy_b29a1732f0",
+        "hypothesis": "merchant_worker_regression",
+        "operation": "reprocess_inbox"
+      },
+      "family": "D1",
+      "faulting_deploy_id": "deploy_b29a1732f0",
+      "harmless_deploy_ids": [
+        "deploy_c8f29f55c8"
+      ],
+      "observable_sha256": "7ac8ec55fc502f1daa90ae09e99939ebb367b4aaefa18483e3722f8f7f6ace5b",
+      "oracle_sha256": "8b2c58ed0140af9c10ff1069779ab911b1191df8990d79288e2685db03b3fa07",
+      "packet_file": "packets/heldout_16_13132.json",
+      "packet_hash": "fbae0dfae403dfe9692c3c0748c22200e4501ac5c1dcd92a18947151355ff87f",
+      "params": {
+        "categories": true,
+        "fault": "orders@4",
+        "harmless": "checkout@4",
+        "harmless_position": "after",
+        "onset": "delayed"
+      },
+      "role": "heldout",
+      "run_id": "run_89c20c648d",
+      "seed": 13132,
+      "source": {
+        "manifest": "heldout-v1",
+        "replicate": 1,
+        "run_key": "heldout_16"
+      },
+      "split": "test",
+      "variant": "heldout_refactor_changes_behaviour"
+    },
+    {
+      "candidate_change_ids": [
+        "deploy_79dd8b6257",
+        "deploy_7067019a52"
+      ],
+      "case_id": "heldout_17_13133",
+      "cutoff_ms": 1793709000000,
+      "expected": {
+        "acceptable_operations": [
+          "reprocess_inbox"
+        ],
+        "affected_method": "none",
+        "faulting_change_id": "deploy_7067019a52",
+        "hypothesis": "merchant_worker_regression",
+        "operation": "reprocess_inbox"
+      },
+      "family": "D1",
+      "faulting_deploy_id": "deploy_7067019a52",
+      "harmless_deploy_ids": [
+        "deploy_79dd8b6257"
+      ],
+      "observable_sha256": "9254f9e038da86f30e1e2a4905fcab997fe7021a12b611beca186fe1748d9731",
+      "oracle_sha256": "88f2f3983cde8ab3e7fd0c6e2bb87d1f7b4ae8bd919891a46560ac958c709a5a",
+      "packet_file": "packets/heldout_17_13133.json",
+      "packet_hash": "44e8bbe86339f1e5eea3452870d70a90c076afb6e533ee60125ce62559993b50",
+      "params": {
+        "categories": true,
+        "fault": "payload@8",
+        "harmless": "orders@3",
+        "harmless_position": "before",
+        "onset": "prompt"
+      },
+      "role": "heldout",
+      "run_id": "run_fbc1080d7d",
+      "seed": 13133,
+      "source": {
+        "manifest": "heldout-v1",
+        "replicate": 0,
+        "run_key": "heldout_17"
+      },
+      "split": "test",
+      "variant": "heldout_cross_module_contract"
+    },
+    {
+      "candidate_change_ids": [
+        "deploy_ec693ddd85",
+        "deploy_52fc996696"
+      ],
+      "case_id": "heldout_17_13134",
+      "cutoff_ms": 1793795400000,
+      "expected": {
+        "acceptable_operations": [
+          "reprocess_inbox"
+        ],
+        "affected_method": "none",
+        "faulting_change_id": "deploy_52fc996696",
+        "hypothesis": "merchant_worker_regression",
+        "operation": "reprocess_inbox"
+      },
+      "family": "D1",
+      "faulting_deploy_id": "deploy_52fc996696",
+      "harmless_deploy_ids": [
+        "deploy_ec693ddd85"
+      ],
+      "observable_sha256": "86012ab7a663e393a4eba485ffc05b67e1cad05a277ae9d7ca3282859ab838f9",
+      "oracle_sha256": "bccb311e1a198a28b702925e68d9d3a547ef26607dcf599c13ae73e6be1708ee",
+      "packet_file": "packets/heldout_17_13134.json",
+      "packet_hash": "5e605b6316e4f86bfcd1c9161a00056c8850355aaa5c7cd60c276c21f1dfefcd",
+      "params": {
+        "categories": true,
+        "fault": "payload@8",
+        "harmless": "orders@3",
+        "harmless_position": "before",
+        "onset": "prompt"
+      },
+      "role": "heldout",
+      "run_id": "run_f45cd5c062",
+      "seed": 13134,
+      "source": {
+        "manifest": "heldout-v1",
+        "replicate": 1,
+        "run_key": "heldout_17"
+      },
+      "split": "test",
+      "variant": "heldout_cross_module_contract"
+    },
+    {
+      "candidate_change_ids": [
+        "deploy_687c5c456c",
+        "deploy_5da3c4d0b4"
+      ],
+      "case_id": "heldout_18_13135",
+      "cutoff_ms": 1793881800000,
+      "expected": {
+        "acceptable_operations": [
+          "reprocess_inbox"
+        ],
+        "affected_method": "none",
+        "faulting_change_id": "deploy_687c5c456c",
+        "hypothesis": "merchant_worker_regression",
+        "operation": "reprocess_inbox"
+      },
+      "family": "D1",
+      "faulting_deploy_id": "deploy_687c5c456c",
+      "harmless_deploy_ids": [
+        "deploy_5da3c4d0b4"
+      ],
+      "observable_sha256": "f0ec2ddd294e72775b403bf0c39e953f2fd5df1a5bc84b79d1edf2cf1f95dc4a",
+      "oracle_sha256": "9632bb8921b6671373876d7905536ebd3fdcf0f3cd1a6cb1e52d2a42877d9254",
+      "packet_file": "packets/heldout_18_13135.json",
+      "packet_hash": "26d3f864ebe9228b69a2f78b48f3412181f61cfb55b899487e0ede7c0a41c6f1",
+      "params": {
+        "categories": false,
+        "fault": "orders@6",
+        "harmless": "config@7",
+        "harmless_position": "after",
+        "onset": "prompt"
+      },
+      "role": "heldout",
+      "run_id": "run_1bec2c5bce",
+      "seed": 13135,
+      "source": {
+        "manifest": "heldout-v1",
+        "replicate": 0,
+        "run_key": "heldout_18"
+      },
+      "split": "test",
+      "variant": "heldout_unit_mismatch_partial"
+    },
+    {
+      "candidate_change_ids": [
+        "deploy_dfd8282926",
+        "deploy_550b61c40f"
+      ],
+      "case_id": "heldout_18_13136",
+      "cutoff_ms": 1793968200000,
+      "expected": {
+        "acceptable_operations": [
+          "reprocess_inbox"
+        ],
+        "affected_method": "none",
+        "faulting_change_id": "deploy_dfd8282926",
+        "hypothesis": "merchant_worker_regression",
+        "operation": "reprocess_inbox"
+      },
+      "family": "D1",
+      "faulting_deploy_id": "deploy_dfd8282926",
+      "harmless_deploy_ids": [
+        "deploy_550b61c40f"
+      ],
+      "observable_sha256": "d76a5f8fcc9e196e99445b490a507b811d116a929a31e14397d031a738e04b09",
+      "oracle_sha256": "536077a897434a132653f7d8a56c6e86ccec5a70d0bdaf8a1d1212013111fcbd",
+      "packet_file": "packets/heldout_18_13136.json",
+      "packet_hash": "889718b1c9fec38bcdd62c2014e2c878a597a2a1935ff8a7805d6eeece93430c",
+      "params": {
+        "categories": false,
+        "fault": "orders@6",
+        "harmless": "config@7",
+        "harmless_position": "after",
+        "onset": "prompt"
+      },
+      "role": "heldout",
+      "run_id": "run_d36f8de275",
+      "seed": 13136,
+      "source": {
+        "manifest": "heldout-v1",
+        "replicate": 1,
+        "run_key": "heldout_18"
+      },
+      "split": "test",
+      "variant": "heldout_unit_mismatch_partial"
+    },
+    {
+      "candidate_change_ids": [
+        "deploy_fd3ccccf90",
+        "deploy_8ee8f5eb63"
+      ],
+      "case_id": "heldout_19_13137",
+      "cutoff_ms": 1794054600000,
+      "expected": {
+        "acceptable_operations": [
+          "reprocess_inbox"
+        ],
+        "affected_method": "none",
+        "faulting_change_id": "deploy_fd3ccccf90",
+        "hypothesis": "merchant_worker_regression",
+        "operation": "reprocess_inbox"
+      },
+      "family": "D1",
+      "faulting_deploy_id": "deploy_fd3ccccf90",
+      "harmless_deploy_ids": [
+        "deploy_8ee8f5eb63"
+      ],
+      "observable_sha256": "ab31c6da0aa0602448ae2bc5a114354a83b5f94109dadad3a8daa77b1314e834",
+      "oracle_sha256": "8df9578d46d4cd58c9fabd4447444ab3af730ca344493bbda9443e8be002d54b",
+      "packet_file": "packets/heldout_19_13137.json",
+      "packet_hash": "77152f4cff7a9089b1f53e9324be9a0f4ba4b4dd65ab4c6d691f0292e35a90bf",
+      "params": {
+        "categories": true,
+        "fault": "payload@9",
+        "harmless": "config@7",
+        "harmless_position": "after",
+        "onset": "prompt"
+      },
+      "role": "heldout",
+      "run_id": "run_b0b31426c7",
+      "seed": 13137,
+      "source": {
+        "manifest": "heldout-v1",
+        "replicate": 0,
+        "run_key": "heldout_19"
+      },
+      "split": "test",
+      "variant": "heldout_same_file_raises"
+    },
+    {
+      "candidate_change_ids": [
+        "deploy_605eda46b7",
+        "deploy_bac7ba2301"
+      ],
+      "case_id": "heldout_19_13138",
+      "cutoff_ms": 1794141000000,
+      "expected": {
+        "acceptable_operations": [
+          "reprocess_inbox"
+        ],
+        "affected_method": "none",
+        "faulting_change_id": "deploy_605eda46b7",
+        "hypothesis": "merchant_worker_regression",
+        "operation": "reprocess_inbox"
+      },
+      "family": "D1",
+      "faulting_deploy_id": "deploy_605eda46b7",
+      "harmless_deploy_ids": [
+        "deploy_bac7ba2301"
+      ],
+      "observable_sha256": "70c41a5894ab8f63696c55b6bd7252320b38c62c38c61aae7e63ae1ae73093c8",
+      "oracle_sha256": "62150b313858b3e44c4ac32d331778250d7a72f0b21901d336a8022968029348",
+      "packet_file": "packets/heldout_19_13138.json",
+      "packet_hash": "9bb8d6d380b923a67d4bafe6940f386c1da1eac36593a8b7fad9b0c98b97aed5",
+      "params": {
+        "categories": true,
+        "fault": "payload@9",
+        "harmless": "config@7",
+        "harmless_position": "after",
+        "onset": "prompt"
+      },
+      "role": "heldout",
+      "run_id": "run_4f8110532a",
+      "seed": 13138,
+      "source": {
+        "manifest": "heldout-v1",
+        "replicate": 1,
+        "run_key": "heldout_19"
+      },
+      "split": "test",
+      "variant": "heldout_same_file_raises"
+    },
+    {
+      "candidate_change_ids": [
+        "deploy_a4e6aecf3e",
+        "deploy_d5221d4374"
+      ],
+      "case_id": "heldout_20_13139",
+      "cutoff_ms": 1793622600000,
+      "expected": {
+        "acceptable_operations": [
+          "reprocess_inbox"
+        ],
+        "affected_method": "none",
+        "faulting_change_id": "deploy_a4e6aecf3e",
+        "hypothesis": "merchant_worker_regression",
+        "operation": "reprocess_inbox"
+      },
+      "family": "D1",
+      "faulting_deploy_id": "deploy_a4e6aecf3e",
+      "harmless_deploy_ids": [
+        "deploy_d5221d4374"
+      ],
+      "observable_sha256": "546713aade53196b1e56f4a430ca5d4096438310a1481fd36bc511dd2c844399",
+      "oracle_sha256": "0e371495a1bbf10e407c4921564b2982c61321b84ddea9d94c2c2647a8a0d046",
+      "packet_file": "packets/heldout_20_13139.json",
+      "packet_hash": "7434c86483b09067d5e131c33130d117824b535c0d1c3a26f81aeb585359dc68",
+      "params": {
+        "categories": false,
+        "fault": "payload@7",
+        "harmless": "orders@5",
+        "harmless_position": "gap",
+        "onset": "delayed"
+      },
+      "role": "heldout",
+      "run_id": "run_787c7191c8",
+      "seed": 13139,
+      "source": {
+        "manifest": "heldout-v1",
+        "replicate": 0,
+        "run_key": "heldout_20"
+      },
+      "split": "test",
+      "variant": "heldout_upstream_value_rejected"
+    },
+    {
+      "candidate_change_ids": [
+        "deploy_62eba24b17",
+        "deploy_ab967beaa1"
+      ],
+      "case_id": "heldout_20_13140",
+      "cutoff_ms": 1793709000000,
+      "expected": {
+        "acceptable_operations": [
+          "reprocess_inbox"
+        ],
+        "affected_method": "none",
+        "faulting_change_id": "deploy_62eba24b17",
+        "hypothesis": "merchant_worker_regression",
+        "operation": "reprocess_inbox"
+      },
+      "family": "D1",
+      "faulting_deploy_id": "deploy_62eba24b17",
+      "harmless_deploy_ids": [
+        "deploy_ab967beaa1"
+      ],
+      "observable_sha256": "154b2093ea9dfbb2e5d841319cd55142d7d5c60d4c935437a9bf2bb8a99019f7",
+      "oracle_sha256": "366d0c58bd5aeaa4b6ec88c7926642e3e812c722d835e3b55c1c4698113227a5",
+      "packet_file": "packets/heldout_20_13140.json",
+      "packet_hash": "89f3a68e9aa378a3a1f6c4ba50aae90ebfc6b1ba8a89f342c0034a0a2610894e",
+      "params": {
+        "categories": false,
+        "fault": "payload@7",
+        "harmless": "orders@5",
+        "harmless_position": "gap",
+        "onset": "delayed"
+      },
+      "role": "heldout",
+      "run_id": "run_a0e7fc0203",
+      "seed": 13140,
+      "source": {
+        "manifest": "heldout-v1",
+        "replicate": 1,
+        "run_key": "heldout_20"
+      },
+      "split": "test",
+      "variant": "heldout_upstream_value_rejected"
+    },
+    {
+      "candidate_change_ids": [
+        "deploy_e278e016aa",
+        "deploy_80a6239c63"
+      ],
+      "case_id": "heldout_21_13141",
+      "cutoff_ms": 1793795400000,
+      "expected": {
+        "acceptable_operations": [
+          "reprocess_inbox"
+        ],
+        "affected_method": "none",
+        "faulting_change_id": "deploy_80a6239c63",
+        "hypothesis": "merchant_worker_regression",
+        "operation": "reprocess_inbox"
+      },
+      "family": "D1",
+      "faulting_deploy_id": "deploy_80a6239c63",
+      "harmless_deploy_ids": [
+        "deploy_e278e016aa"
+      ],
+      "observable_sha256": "e500dc55e813a6a9130cb3a34eb42ceaa86293f4d93c6f471c6ac6f3271969ae",
+      "oracle_sha256": "addbf057ddb42a5b255472f87d86be65d0cfd324ff246475eac8121c1a77e7ab",
+      "packet_file": "packets/heldout_21_13141.json",
+      "packet_hash": "fea1f1ed9feb8eae6c0f60b9332fb242f9b03cc2854a621d55873abed95cb9f3",
+      "params": {
+        "categories": false,
+        "fault": "config@8",
+        "harmless": "orders@5",
+        "harmless_position": "before",
+        "onset": "delayed"
+      },
+      "role": "heldout",
+      "run_id": "run_f3b9da161b",
+      "seed": 13141,
+      "source": {
+        "manifest": "heldout-v1",
+        "replicate": 0,
+        "run_key": "heldout_21"
+      },
+      "split": "test",
+      "variant": "heldout_configuration_only"
+    },
+    {
+      "candidate_change_ids": [
+        "deploy_1bd266be83",
+        "deploy_daea35c756"
+      ],
+      "case_id": "heldout_21_13142",
+      "cutoff_ms": 1793881800000,
+      "expected": {
+        "acceptable_operations": [
+          "reprocess_inbox"
+        ],
+        "affected_method": "none",
+        "faulting_change_id": "deploy_daea35c756",
+        "hypothesis": "merchant_worker_regression",
+        "operation": "reprocess_inbox"
+      },
+      "family": "D1",
+      "faulting_deploy_id": "deploy_daea35c756",
+      "harmless_deploy_ids": [
+        "deploy_1bd266be83"
+      ],
+      "observable_sha256": "ac976c2bf8caf5bdf919373c908406bd2a35d1abef9159b2f706c130128dfb46",
+      "oracle_sha256": "e5f30013378ad9a2f6f595cb528300dbbc938dc145433bfcae6d8e2ddfc471e0",
+      "packet_file": "packets/heldout_21_13142.json",
+      "packet_hash": "47d7ed94e5b675aabaee53cfaf54ab0e1b35041dd817c065003a3746f7240d2e",
+      "params": {
+        "categories": false,
+        "fault": "config@8",
+        "harmless": "orders@5",
+        "harmless_position": "before",
+        "onset": "delayed"
+      },
+      "role": "heldout",
+      "run_id": "run_0cde40a313",
+      "seed": 13142,
+      "source": {
+        "manifest": "heldout-v1",
+        "replicate": 1,
+        "run_key": "heldout_21"
+      },
+      "split": "test",
+      "variant": "heldout_configuration_only"
+    },
+    {
+      "candidate_change_ids": [
+        "deploy_8b4337250b",
+        "deploy_d221b43a25"
+      ],
+      "case_id": "heldout_22_13143",
+      "cutoff_ms": 1793968200000,
+      "expected": {
+        "acceptable_operations": [
+          "reprocess_inbox"
+        ],
+        "affected_method": "none",
+        "faulting_change_id": "deploy_d221b43a25",
+        "hypothesis": "merchant_worker_regression",
+        "operation": "reprocess_inbox"
+      },
+      "family": "D1",
+      "faulting_deploy_id": "deploy_d221b43a25",
+      "harmless_deploy_ids": [
+        "deploy_8b4337250b"
+      ],
+      "observable_sha256": "8fc6c450f8791083d43135b7621f71afdb5cd43a31eff84db0280551e2af8ed6",
+      "oracle_sha256": "40e0025ebb48c699ddac4e5273b26bf5d4c2749ea5c26b1d3853a263e60654ba",
+      "packet_file": "packets/heldout_22_13143.json",
+      "packet_hash": "5f3d350f06c5cc466fa339c4b8c306744999f75737b4eda3ab4e983021c9fb2c",
+      "params": {
+        "categories": false,
+        "fault": "orders@4",
+        "harmless": "handler@4",
+        "harmless_position": "before",
+        "onset": "prompt"
+      },
+      "role": "heldout",
+      "run_id": "run_2d79ee3453",
+      "seed": 13143,
+      "source": {
+        "manifest": "heldout-v1",
+        "replicate": 0,
+        "run_key": "heldout_22"
+      },
+      "split": "test",
+      "variant": "heldout_refactor_changes_behaviour"
+    },
+    {
+      "candidate_change_ids": [
+        "deploy_7b7f725d44",
+        "deploy_015d37557f"
+      ],
+      "case_id": "heldout_22_13144",
+      "cutoff_ms": 1794054600000,
+      "expected": {
+        "acceptable_operations": [
+          "reprocess_inbox"
+        ],
+        "affected_method": "none",
+        "faulting_change_id": "deploy_015d37557f",
+        "hypothesis": "merchant_worker_regression",
+        "operation": "reprocess_inbox"
+      },
+      "family": "D1",
+      "faulting_deploy_id": "deploy_015d37557f",
+      "harmless_deploy_ids": [
+        "deploy_7b7f725d44"
+      ],
+      "observable_sha256": "d3d20ddac087fe901835c0920cd753ec7f507c9a6c0eff85e7290961aa9e96a1",
+      "oracle_sha256": "766bbed2577ae3e00aab92faaf8c3a7a04ea1d72e80fc83f7af3d8ec54a4bd9b",
+      "packet_file": "packets/heldout_22_13144.json",
+      "packet_hash": "0df593e4a368358a8f438d052f104d91a16faf25e1578e2ff5d41d3aa134cf04",
+      "params": {
+        "categories": false,
+        "fault": "orders@4",
+        "harmless": "handler@4",
+        "harmless_position": "before",
+        "onset": "prompt"
+      },
+      "role": "heldout",
+      "run_id": "run_b62010914a",
+      "seed": 13144,
+      "source": {
+        "manifest": "heldout-v1",
+        "replicate": 1,
+        "run_key": "heldout_22"
+      },
+      "split": "test",
+      "variant": "heldout_refactor_changes_behaviour"
+    },
+    {
+      "candidate_change_ids": [
+        "deploy_1986501d20",
+        "deploy_14eb31b6ca"
+      ],
+      "case_id": "heldout_23_13145",
+      "cutoff_ms": 1794141000000,
+      "expected": {
+        "acceptable_operations": [
+          "reprocess_inbox"
+        ],
+        "affected_method": "none",
+        "faulting_change_id": "deploy_1986501d20",
+        "hypothesis": "merchant_worker_regression",
+        "operation": "reprocess_inbox"
+      },
+      "family": "D1",
+      "faulting_deploy_id": "deploy_1986501d20",
+      "harmless_deploy_ids": [
+        "deploy_14eb31b6ca"
+      ],
+      "observable_sha256": "60189278ab09e81c1a799eb3167b0c82985e1419a7503b5263313e332ecab51c",
+      "oracle_sha256": "db30c4a4cc00ea6ec91172a27a8e1dd1c088abd0c5c7e6692cd4c0fdde31342b",
+      "packet_file": "packets/heldout_23_13145.json",
+      "packet_hash": "4159eaab33b170e021c5a48d0a4ae6c42073d249dacef7512b16c25d9cc5a3d7",
+      "params": {
+        "categories": true,
+        "fault": "payload@8",
+        "harmless": "orders@5",
+        "harmless_position": "after",
+        "onset": "prompt"
+      },
+      "role": "heldout",
+      "run_id": "run_782d7d5e99",
+      "seed": 13145,
+      "source": {
+        "manifest": "heldout-v1",
+        "replicate": 0,
+        "run_key": "heldout_23"
+      },
+      "split": "test",
+      "variant": "heldout_cross_module_contract"
+    },
+    {
+      "candidate_change_ids": [
+        "deploy_cfcf3a922c",
+        "deploy_1be6d8a9ca"
+      ],
+      "case_id": "heldout_23_13146",
+      "cutoff_ms": 1793622600000,
+      "expected": {
+        "acceptable_operations": [
+          "reprocess_inbox"
+        ],
+        "affected_method": "none",
+        "faulting_change_id": "deploy_cfcf3a922c",
+        "hypothesis": "merchant_worker_regression",
+        "operation": "reprocess_inbox"
+      },
+      "family": "D1",
+      "faulting_deploy_id": "deploy_cfcf3a922c",
+      "harmless_deploy_ids": [
+        "deploy_1be6d8a9ca"
+      ],
+      "observable_sha256": "071102e0ea68c09f9b455b1a9462f6991def438df4ea27ac7040c7fffd934741",
+      "oracle_sha256": "859e1fdd84c46863112f10b32f883f24d05ac1382aedadc904f5337fcafcdc6c",
+      "packet_file": "packets/heldout_23_13146.json",
+      "packet_hash": "93f90b25e4f7f061e859c401182a22d682a12cac4d10b3d489a6494e025e0c57",
+      "params": {
+        "categories": true,
+        "fault": "payload@8",
+        "harmless": "orders@5",
+        "harmless_position": "after",
+        "onset": "prompt"
+      },
+      "role": "heldout",
+      "run_id": "run_21c19e11aa",
+      "seed": 13146,
+      "source": {
+        "manifest": "heldout-v1",
+        "replicate": 1,
+        "run_key": "heldout_23"
+      },
+      "split": "test",
+      "variant": "heldout_cross_module_contract"
+    },
+    {
+      "candidate_change_ids": [
+        "deploy_6598029ec9",
+        "deploy_0e5ac33417"
+      ],
+      "case_id": "heldout_24_13147",
+      "cutoff_ms": 1793709000000,
+      "expected": {
+        "acceptable_operations": [
+          "reprocess_inbox"
+        ],
+        "affected_method": "none",
+        "faulting_change_id": "deploy_6598029ec9",
+        "hypothesis": "merchant_worker_regression",
+        "operation": "reprocess_inbox"
+      },
+      "family": "D1",
+      "faulting_deploy_id": "deploy_6598029ec9",
+      "harmless_deploy_ids": [
+        "deploy_0e5ac33417"
+      ],
+      "observable_sha256": "8767960bb2fb75140930ac3165cdd71e2e2b560885d1f8a4fa1088f7aefa2fa2",
+      "oracle_sha256": "9d1e8d9cfb3cadaffd50ac317a411eb331c2952e499f5b35e980e08baeb7f5ff",
+      "packet_file": "packets/heldout_24_13147.json",
+      "packet_hash": "54110fd48789d237a22e5cf543468812d1d86eba655928948204d1c7645ac7a7",
+      "params": {
+        "categories": true,
+        "fault": "orders@6",
+        "harmless": "handler@3",
+        "harmless_position": "gap",
+        "onset": "delayed"
+      },
+      "role": "heldout",
+      "run_id": "run_912a25e2cb",
+      "seed": 13147,
+      "source": {
+        "manifest": "heldout-v1",
+        "replicate": 0,
+        "run_key": "heldout_24"
+      },
+      "split": "test",
+      "variant": "heldout_unit_mismatch_partial"
+    },
+    {
+      "candidate_change_ids": [
+        "deploy_61630161d8",
+        "deploy_4c0972870c"
+      ],
+      "case_id": "heldout_24_13148",
+      "cutoff_ms": 1793795400000,
+      "expected": {
+        "acceptable_operations": [
+          "reprocess_inbox"
+        ],
+        "affected_method": "none",
+        "faulting_change_id": "deploy_61630161d8",
+        "hypothesis": "merchant_worker_regression",
+        "operation": "reprocess_inbox"
+      },
+      "family": "D1",
+      "faulting_deploy_id": "deploy_61630161d8",
+      "harmless_deploy_ids": [
+        "deploy_4c0972870c"
+      ],
+      "observable_sha256": "8594b4ddb12b395171117f4face8eedbf08c1824d859cfc8a0af08578a0a605a",
+      "oracle_sha256": "1b18e2b05a5c6c6b7444600576dc89659fc94b8eebf57d162cca3e3e66c911ff",
+      "packet_file": "packets/heldout_24_13148.json",
+      "packet_hash": "1a297cda7a9999ff2d97f84b1209f5659625dc132b37062fe37526c00896cb1c",
+      "params": {
+        "categories": true,
+        "fault": "orders@6",
+        "harmless": "handler@3",
+        "harmless_position": "gap",
+        "onset": "delayed"
+      },
+      "role": "heldout",
+      "run_id": "run_c7a93c2a92",
+      "seed": 13148,
+      "source": {
+        "manifest": "heldout-v1",
+        "replicate": 1,
+        "run_key": "heldout_24"
+      },
+      "split": "test",
+      "variant": "heldout_unit_mismatch_partial"
+    },
+    {
+      "candidate_change_ids": [],
+      "case_id": "control_d2_test_1_13149",
+      "cutoff_ms": 1793887200000,
+      "expected": {
+        "acceptable_operations": [
+          "escalate"
+        ],
+        "affected_method": "upi",
+        "faulting_change_id": "none",
+        "hypothesis": "provider_method_degradation",
+        "operation": "escalate"
+      },
+      "family": "D2",
+      "faulting_deploy_id": null,
+      "harmless_deploy_ids": [],
+      "observable_sha256": "9d6a7611391ab17cb8a1a46d8f7b4b582bc2044965f8a8ff3e2e9cfdd43db6de",
+      "oracle_sha256": "1e4e88c9e4d73f018530a79b4e220d9efa2cbabf081b5751ce25a5ab4dec5680",
+      "packet_file": "packets/control_d2_test_1_13149.json",
+      "packet_hash": "f0814fc7f723da47008a5d546f2fc42bf22c5fe9010e5753021a5916716784a0",
+      "params": {
+        "magnitude": "moderate",
+        "method": "upi"
+      },
+      "role": "control",
+      "run_id": "run_f4a02c3365",
+      "seed": 13149,
+      "source": {
+        "manifest": "eval-v2",
+        "replicate": 0,
+        "run_key": "d2_test_1"
+      },
+      "split": "test",
+      "variant": "moderate_method_drop"
+    },
+    {
+      "candidate_change_ids": [],
+      "case_id": "control_d2_test_2_13150",
+      "cutoff_ms": 1793973600000,
+      "expected": {
+        "acceptable_operations": [
+          "escalate"
+        ],
+        "affected_method": "card",
+        "faulting_change_id": "none",
+        "hypothesis": "provider_method_degradation",
+        "operation": "escalate"
+      },
+      "family": "D2",
+      "faulting_deploy_id": null,
+      "harmless_deploy_ids": [],
+      "observable_sha256": "9d287d3ef813b4d18bcda184838eca17bc757eea2b653af93033ef2c3d839214",
+      "oracle_sha256": "87dae00f7d176ce027f769c059aee0338515c6b0c8e15f57f6aee6b3104d026b",
+      "packet_file": "packets/control_d2_test_2_13150.json",
+      "packet_hash": "de63142a71f898d6c8a07a79dbb00e1ddaa44b4c310bcbe401462af03611c524",
+      "params": {
+        "magnitude": "severe",
+        "method": "card"
+      },
+      "role": "control",
+      "run_id": "run_acac4d7bfb",
+      "seed": 13150,
+      "source": {
+        "manifest": "eval-v2",
+        "replicate": 0,
+        "run_key": "d2_test_2"
+      },
+      "split": "test",
+      "variant": "severe_method_drop"
+    },
+    {
+      "candidate_change_ids": [
+        "deploy_0ef137a3ec"
+      ],
+      "case_id": "control_d3_test_1_13151",
+      "cutoff_ms": 1794051000000,
+      "expected": {
+        "acceptable_operations": [
+          "prepare_provider_replay",
+          "refresh_provider_state"
+        ],
+        "affected_method": "none",
+        "faulting_change_id": "deploy_0ef137a3ec",
+        "hypothesis": "receiver_rejecting_deliveries",
+        "operation": "prepare_provider_replay"
+      },
+      "family": "D3",
+      "faulting_deploy_id": "deploy_0ef137a3ec",
+      "harmless_deploy_ids": [],
+      "observable_sha256": "3a1fede0517a8918158ebaf9ded12d56f68e87b7efd561960e03b4e1eb1bf87f",
+      "oracle_sha256": "e9fa9363255e4ec5fe46283962d9c57ff710760c945e705b1638ca2be70dd7d7",
+      "packet_file": "packets/control_d3_test_1_13151.json",
+      "packet_hash": "f8dd4e62b9e8b6b0c43cb4acb67a4dcdd3cd29630b5171d114ea016bdc8b27ac",
+      "params": {
+        "fault": "receiver@2",
+        "harmless_position": "none"
+      },
+      "role": "control",
+      "run_id": "run_0309617439",
+      "seed": 13151,
+      "source": {
+        "manifest": "eval-v2",
+        "replicate": 0,
+        "run_key": "d3_test_1"
+      },
+      "split": "test",
+      "variant": "receiver_code"
+    },
+    {
+      "candidate_change_ids": [
+        "deploy_fed98a270d",
+        "deploy_c71ffe8dd3"
+      ],
+      "case_id": "control_d3_test_2_13152",
+      "cutoff_ms": 1794137400000,
+      "expected": {
+        "acceptable_operations": [
+          "prepare_provider_replay",
+          "refresh_provider_state"
+        ],
+        "affected_method": "none",
+        "faulting_change_id": "deploy_c71ffe8dd3",
+        "hypothesis": "receiver_rejecting_deliveries",
+        "operation": "prepare_provider_replay"
+      },
+      "family": "D3",
+      "faulting_deploy_id": "deploy_c71ffe8dd3",
+      "harmless_deploy_ids": [
+        "deploy_fed98a270d"
+      ],
+      "observable_sha256": "ad1569596b8f6544fcebaa99efcdb9ecea8c3d816de9fb5205a5ebe7b513ac64",
+      "oracle_sha256": "f46acbf3e75799be41d4fa6637441fbb5434b54bd1eeadb2e84f294f591446d1",
+      "packet_file": "packets/control_d3_test_2_13152.json",
+      "packet_hash": "8e2f38c97f30c2f5c3857ab248da04ec8928191dc4df382534b1ca99aa00144d",
+      "params": {
+        "fault": "config@3",
+        "harmless": "notifications@2",
+        "harmless_position": "before"
+      },
+      "role": "control",
+      "run_id": "run_68f5169e16",
+      "seed": 13152,
+      "source": {
+        "manifest": "eval-v2",
+        "replicate": 0,
+        "run_key": "d3_test_2"
+      },
+      "split": "test",
+      "variant": "receiver_config"
+    },
+    {
+      "candidate_change_ids": [],
+      "case_id": "control_d4_test_1_13153",
+      "cutoff_ms": 1793620800000,
+      "expected": {
+        "acceptable_operations": [
+          "escalate",
+          "refresh_provider_state"
+        ],
+        "affected_method": "none",
+        "faulting_change_id": "none",
+        "hypothesis": "ambiguous_payment_state",
+        "operation": "refresh_provider_state"
+      },
+      "family": "D4",
+      "faulting_deploy_id": null,
+      "harmless_deploy_ids": [],
+      "observable_sha256": "ef216940deab7e82a19f59e550beafe266a8700cfbb87e4d657eac75dc5d8f8d",
+      "oracle_sha256": "0955f3ab59fd7d128103977a00285d2aafa1b3c2088fdfde2917f46545ee559e",
+      "packet_file": "packets/control_d4_test_1_13153.json",
+      "packet_hash": "f0f82dc008a6c0b4cb62c90b7d6a905d275a23fe8831716848139d7a338626b7",
+      "params": {
+        "mode": "late_authorization"
+      },
+      "role": "control",
+      "run_id": "run_6f61379857",
+      "seed": 13153,
+      "source": {
+        "manifest": "eval-v2",
+        "replicate": 0,
+        "run_key": "d4_test_1"
+      },
+      "split": "test",
+      "variant": "late_authorization"
+    },
+    {
+      "candidate_change_ids": [],
+      "case_id": "control_d4_test_2_13154",
+      "cutoff_ms": 1793707200000,
+      "expected": {
+        "acceptable_operations": [
+          "escalate",
+          "refresh_provider_state"
+        ],
+        "affected_method": "none",
+        "faulting_change_id": "none",
+        "hypothesis": "ambiguous_payment_state",
+        "operation": "refresh_provider_state"
+      },
+      "family": "D4",
+      "faulting_deploy_id": null,
+      "harmless_deploy_ids": [],
+      "observable_sha256": "16a873cfe0d6029813a40d0a21438c44d39c181307e13602a21d421011c56ece",
+      "oracle_sha256": "824404c7004c16aa8738a3bed62d63df608ae5c387024b922f0a7a0a3d1de5fd",
+      "packet_file": "packets/control_d4_test_2_13154.json",
+      "packet_hash": "563ae8ffa75c78f5d6bb7548f764fa3041a49b6501e075c01a9974cd43f17238",
+      "params": {
+        "mode": "stale_snapshot"
+      },
+      "role": "control",
+      "run_id": "run_272066f1fb",
+      "seed": 13154,
+      "source": {
+        "manifest": "eval-v2",
+        "replicate": 0,
+        "run_key": "d4_test_2"
+      },
+      "split": "test",
+      "variant": "stale_snapshot"
+    },
+    {
+      "candidate_change_ids": [],
+      "case_id": "control_d5_test_1_13155",
+      "cutoff_ms": 1793797200000,
+      "expected": {
+        "acceptable_operations": [
+          "no_action"
+        ],
+        "affected_method": "none",
+        "faulting_change_id": "none",
+        "hypothesis": "no_incident",
+        "operation": "no_action"
+      },
+      "family": "D5",
+      "faulting_deploy_id": null,
+      "harmless_deploy_ids": [],
+      "observable_sha256": "c2ebc315dca99adfcd4202a763e672ac18ff6bfd742875d36ed234a32c1bf059",
+      "oracle_sha256": "b60cb9de5d4c57f9f7dc292d662ff578f887e20c2cacf390ee003ed30f49a8ac",
+      "packet_file": "packets/control_d5_test_1_13155.json",
+      "packet_hash": "9406228005fa093efe24c849d7a26fac619e7a36e8e2c606228f3d5344052da1",
+      "params": {
+        "mode": "mix_shift"
+      },
+      "role": "control",
+      "run_id": "run_2d0a1b9ba1",
+      "seed": 13155,
+      "source": {
+        "manifest": "eval-v2",
+        "replicate": 0,
+        "run_key": "d5_test_1"
+      },
+      "split": "test",
+      "variant": "mix_shift"
+    },
+    {
+      "candidate_change_ids": [],
+      "case_id": "control_d5_test_2_13156",
+      "cutoff_ms": 1793883600000,
+      "expected": {
+        "acceptable_operations": [
+          "no_action"
+        ],
+        "affected_method": "none",
+        "faulting_change_id": "none",
+        "hypothesis": "no_incident",
+        "operation": "no_action"
+      },
+      "family": "D5",
+      "faulting_deploy_id": null,
+      "harmless_deploy_ids": [],
+      "observable_sha256": "21c046f5b4990ae6c943848e4ba2e48800946de3f98123f137d4d74b97ac7061",
+      "oracle_sha256": "4526f11d628326ae6fc0e3b8cfcb5bb26f1771685fba8fb01205dc55eb4081f7",
+      "packet_file": "packets/control_d5_test_2_13156.json",
+      "packet_hash": "9df8e3c93fb184934b64b75d3def762e7dc0e9783f87afb689e0d7da19146395",
+      "params": {
+        "mode": "sparse_cohort"
+      },
+      "role": "control",
+      "run_id": "run_bc83acf938",
+      "seed": 13156,
+      "source": {
+        "manifest": "eval-v2",
+        "replicate": 0,
+        "run_key": "d5_test_2"
+      },
+      "split": "test",
+      "variant": "sparse_cohort"
+    },
+    {
+      "candidate_change_ids": [
+        "deploy_73392a4b2f"
+      ],
+      "case_id": "control_d6_test_1_13157",
+      "cutoff_ms": 1793973600000,
+      "expected": {
+        "acceptable_operations": [
+          "escalate"
+        ],
+        "affected_method": "netbanking",
+        "faulting_change_id": "none",
+        "hypothesis": "provider_method_degradation",
+        "operation": "escalate"
+      },
+      "family": "D6",
+      "faulting_deploy_id": null,
+      "harmless_deploy_ids": [
+        "deploy_73392a4b2f"
+      ],
+      "observable_sha256": "6da2aea05c0d97d2d2d2a18eddd2be7515083d7e62a070a2a1bfe9af9e787480",
+      "oracle_sha256": "17378be4241bfa54859e5f0601b227bebcf4de747ede58ecb35da1ba0a5264fa",
+      "packet_file": "packets/control_d6_test_1_13157.json",
+      "packet_hash": "50b91ffc7dfe1121af737b6a5e462ceb8d8ac6537a708406d8e035b67f896e38",
+      "params": {
+        "base": "D2",
+        "innocent": "notifications@2",
+        "magnitude": "severe",
+        "method": "netbanking"
+      },
+      "role": "control",
+      "run_id": "run_5b8ee9c7e5",
+      "seed": 13157,
+      "source": {
+        "manifest": "eval-v2",
+        "replicate": 0,
+        "run_key": "d6_test_1"
+      },
+      "split": "test",
+      "variant": "innocent_deploy_near_method_drop"
+    },
+    {
+      "candidate_change_ids": [
+        "deploy_b84eddf397"
+      ],
+      "case_id": "control_d6_test_2_13158",
+      "cutoff_ms": 1794056400000,
+      "expected": {
+        "acceptable_operations": [
+          "no_action"
+        ],
+        "affected_method": "none",
+        "faulting_change_id": "none",
+        "hypothesis": "no_incident",
+        "operation": "no_action"
+      },
+      "family": "D6",
+      "faulting_deploy_id": null,
+      "harmless_deploy_ids": [
+        "deploy_b84eddf397"
+      ],
+      "observable_sha256": "7e127c85dc5663e53ceba91bac198e094916ae357ee966e21a183fb21e279b0d",
+      "oracle_sha256": "bf35789f3a6f9df68412c99ad5b5778452ea35aa4f88345a9d195f489d6511f5",
+      "packet_file": "packets/control_d6_test_2_13158.json",
+      "packet_hash": "5838ec85136ec00331d74e7afddec0fbb5bfba48712bfcbff4d1f6b6d867ad1a",
+      "params": {
+        "base": "D5",
+        "innocent": "checkout@3"
+      },
+      "role": "control",
+      "run_id": "run_b35888d898",
+      "seed": 13158,
+      "source": {
+        "manifest": "eval-v2",
+        "replicate": 0,
+        "run_key": "d6_test_2"
+      },
+      "split": "test",
+      "variant": "innocent_deploy_near_mix_shift"
+    }
+  ],
+  "design": {
+    "alpha": "1/20",
+    "arms": {
+      "model_all_20261111": {
+        "answers_file": "answers_model_all_20261111.json",
+        "decides": false,
+        "model_seed": 20261111,
+        "system": "model_all",
+        "trace_file": "traces/model_all_20261111.jsonl"
+      },
+      "model_all_20261112": {
+        "answers_file": "answers_model_all_20261112.json",
+        "decides": false,
+        "model_seed": 20261112,
+        "system": "model_all",
+        "trace_file": "traces/model_all_20261112.jsonl"
+      },
+      "selective_20261111": {
+        "answers_file": "answers_selective_20261111.json",
+        "decides": true,
+        "model_seed": 20261111,
+        "system": "selective",
+        "trace_file": "traces/selective_20261111.jsonl"
+      },
+      "selective_20261112": {
+        "answers_file": "answers_selective_20261112.json",
+        "decides": true,
+        "model_seed": 20261112,
+        "system": "selective",
+        "trace_file": "traces/selective_20261112.jsonl"
+      }
+    },
+    "code_under_test": {
+      "commit": "43a160f2ad5e59562e0b5c896139abe546ed5cd4",
+      "frozen_sources": {
+        "attribution_rules.py": "a365f58abf9f9b3858efc42df58b5b981efc45efd2ff25d3cbf8d416affbf809",
+        "rules.py": "3b815b34ec37e87d23e8c44e895cf4a8e41ab55494f934450ef2f65b0419fc7a",
+        "selective.py": "a0efc21bc0c5fe25a3c632ba9cf596d6a60ad618bf385baa96ceeba1a583b619"
+      },
+      "package_sources_sha256": "d81eeb26d56adadebdda707e5d08c1d92bab63c650d5e2d106fe0c018eba4d92",
+      "versions": {
+        "attribution": "attribution-v1",
+        "packet": "pkt-2",
+        "prompt": "diag-p5",
+        "router": "router-v1",
+        "rules": "rules-v2",
+        "rules_v3": "rules-v3",
+        "validator": "val-6"
+      }
+    },
+    "controls": {
+      "families": [
+        "D2",
+        "D3",
+        "D4",
+        "D5",
+        "D6"
+      ],
+      "per_family": 2,
+      "seed_rule": "13149 onwards, in family order, each family's first TEST runs in manifest order"
+    },
+    "decision_1": {
+      "unit": "held-out manifest entry: 2 worlds x 2 model seeds",
+      "units": 24,
+      "wrong_attributions_over": "all 58 worlds, controls included"
+    },
+    "heldout": {
+      "entries": 24,
+      "seed_rule": "entry i (0-based, manifest order) takes 13101 + 2i and 13102 + 2i",
+      "worlds_per_entry": 2
+    },
+    "max_control_model_routes": 1,
+    "max_operational_failures": 2,
+    "model": {
+      "deadline_s": 180.0,
+      "max_repairs": 1,
+      "model_seeds": [
+        20261111,
+        20261112
+      ],
+      "settings": "evaluation/frozen_settings.json",
+      "think": false
+    },
+    "seed_block": [
+      13101,
+      13158
+    ],
+    "split": "test",
+    "systems": {
+      "M-all": "the model on every held-out world (descriptive)",
+      "R": "rules_v3 on every world",
+      "R2": "rules.diagnose (rules-v2)",
+      "S": "route; MODEL: the live local diagnosis; RULES: rules_v3"
+    }
+  },
+  "experiment": "Selective AI for deployment attribution (phase 11b): the one test. R (rules_v3), S (the router, then the local model or rules_v3), R2 (rules-v2) and M-all (the model everywhere), on 48 held-out worlds and 10 control worlds",
+  "inputs": {
+    "evaluation_manifest": {
+      "file": "fixtures/manifests/evaluation_manifest.json",
+      "sha256": "04ef3171488849d55f9427aa55d63d0e26731b1ca66fe628c12aa862f5378c56"
+    },
+    "heldout_manifest": {
+      "file": "fixtures/manifests/heldout_manifest.json",
+      "sha256": "9e23e393e566f286a4c585d3902ca46b959a92f393a8d5b04a6cfe80528ce6d7"
+    },
+    "heldout_variant_truth": {
+      "file": "fixtures/manifests/heldout_variant_truth.json",
+      "sha256": "b97cc09888237486f482cc58fd5b472fa748a43003b758053fbd8440a6f10896"
+    }
+  },
+  "notice": "Built in the test container; no system was run on these packets. expected, faulting_deploy_id and harmless_deploy_ids are oracle extracts used only for scoring; the arms send the packet files alone to the model.",
+  "preregistration": {
+    "file": "PREREGISTRATION.md",
+    "sha256": "cbc8298b4baf36bb803ec53def4e2103b56ac58fc138c7133131dfeaa216f77f"
+  },
+  "preregistration_draft": false,
+  "seed_check": {
+    "block": [
+      13101,
+      13158
+    ],
+    "manifest_seeds": [
+      1001,
+      1002,
+      1003,
+      1011,
+      1012,
+      1013,
+      1021,
+      1022,
+      1023,
+      1031,
+      1032,
+      1033,
+      1041,
+      1042,
+      1043,
+      1051,
+      1052,
+      1053,
+      2001,
+      2002,
+      2003,
+      2004,
+      2005,
+      2011,
+      2012,
+      2013,
+      2014,
+      2015,
+      2021,
+      2022,
+      2023,
+      2024,
+      2025,
+      2031,
+      2032,
+      2033,
+      2034,
+      2035,
+      2041,
+      2042,
+      2043,
+      2044,
+      2045,
+      2051,
+      2052,
+      2053,
+      2054,
+      2055
+    ],
+    "overlaps": {
+      "manifest": [],
+      "ranges": {},
+      "repeated": []
+    },
+    "seeds": [
+      13101,
+      13102,
+      13103,
+      13104,
+      13105,
+      13106,
+      13107,
+      13108,
+      13109,
+      13110,
+      13111,
+      13112,
+      13113,
+      13114,
+      13115,
+      13116,
+      13117,
+      13118,
+      13119,
+      13120,
+      13121,
+      13122,
+      13123,
+      13124,
+      13125,
+      13126,
+      13127,
+      13128,
+      13129,
+      13130,
+      13131,
+      13132,
+      13133,
+      13134,
+      13135,
+      13136,
+      13137,
+      13138,
+      13139,
+      13140,
+      13141,
+      13142,
+      13143,
+      13144,
+      13145,
+      13146,
+      13147,
+      13148,
+      13149,
+      13150,
+      13151,
+      13152,
+      13153,
+      13154,
+      13155,
+      13156,
+      13157,
+      13158
+    ],
+    "used_ranges": [
+      [
+        "M4 evaluation manifest",
+        1001,
+        2055
+      ],
+      [
+        "planted instruction, round 1",
+        7101,
+        7155
+      ],
+      [
+        "planted instruction, round 2",
+        8101,
+        8155
+      ],
+      [
+        "val-5 rules-only sweep",
+        9101,
+        9155
+      ],
+      [
+        "phase-8 measurement",
+        9501,
+        9700
+      ],
+      [
+        "planted instruction, round 3",
+        10101,
+        10158
+      ],
+      [
+        "val-6 rules-only sweep block",
+        11101,
+        12100
+      ],
+      [
+        "attribution-v1 development (A2)",
+        12101,
+        12600
+      ],
+      [
+        "order case classification (C)",
+        14101,
+        14200
+      ],
+      [
+        "held-out variant tests and probe (H, orchestrator)",
+        15101,
+        15200
+      ],
+      [
+        "router development (E)",
+        16101,
+        16400
+      ]
+    ]
+  },
+  "versions": {
+    "evaluation_manifest": "eval-v2",
+    "family_generator": "families-v2",
+    "heldout_manifest": "heldout-v1",
+    "packet": "pkt-2",
+    "workbench": "0.1.0",
+    "world_generator": "world-v3"
+  }
+}

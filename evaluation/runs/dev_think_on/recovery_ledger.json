@@ -1,0 +1,152 @@
+{
+  "entries": [
+    {
+      "additional_captured_paise": 0,
+      "blamed_change": "deploy_b619fd3a85",
+      "duplicate_fulfilments": 0,
+      "expected_fulfilments": 102,
+      "expected_not_fulfilled": [],
+      "fix_candidates": [
+        "payload@5",
+        "payload@6"
+      ],
+      "fix_id": "payload@5",
+      "fulfilled": 102,
+      "fulfilled_not_expected": [],
+      "matches_oracle": true,
+      "plan_targets": 102,
+      "refreshed_orders": [
+        "order_SYNTHETIC_7c1b2001_0080",
+        "order_SYNTHETIC_7c1b2001_0089",
+        "order_SYNTHETIC_7c1b2001_0104"
+      ],
+      "restored_processing_value_paise": 13023200,
+      "retry_fulfilled": 0,
+      "retry_replayed": true,
+      "run_id": "run_13237ecad9",
+      "status": "succeeded",
+      "system": "rules"
+    },
+    {
+      "additional_captured_paise": 0,
+      "blamed_change": "deploy_b619fd3a85",
+      "duplicate_fulfilments": 0,
+      "expected_fulfilments": 102,
+      "expected_not_fulfilled": [],
+      "fix_candidates": [
+        "payload@5",
+        "payload@6"
+      ],
+      "fix_id": "payload@5",
+      "fulfilled": 102,
+      "fulfilled_not_expected": [],
+      "matches_oracle": true,
+      "plan_targets": 102,
+      "refreshed_orders": [
+        "order_SYNTHETIC_7c1b2001_0080",
+        "order_SYNTHETIC_7c1b2001_0089",
+        "order_SYNTHETIC_7c1b2001_0104"
+      ],
+      "restored_processing_value_paise": 13023200,
+      "retry_fulfilled": 0,
+      "retry_replayed": true,
+      "run_id": "run_13237ecad9",
+      "status": "succeeded",
+      "system": "model"
+    },
+    {
+      "additional_captured_paise": 0,
+      "blamed_change": "deploy_c89f3e4126",
+      "duplicate_fulfilments": 0,
+      "expected_fulfilments": 95,
+      "expected_not_fulfilled": [],
+      "fix_candidates": [
+        "payload@5",
+        "payload@6"
+      ],
+      "fix_id": "payload@5",
+      "fulfilled": 95,
+      "fulfilled_not_expected": [],
+      "matches_oracle": true,
+      "plan_targets": 95,
+      "refreshed_orders": [
+        "order_SYNTHETIC_94001b5c_0062",
+        "order_SYNTHETIC_94001b5c_0088",
+        "order_SYNTHETIC_94001b5c_0104"
+      ],
+      "restored_processing_value_paise": 11938900,
+      "retry_fulfilled": 0,
+      "retry_replayed": true,
+      "run_id": "run_9bd818be77",
+      "status": "succeeded",
+      "system": "rules"
+    },
+    {
+      "additional_captured_paise": 0,
+      "blamed_change": "deploy_c89f3e4126",
+      "duplicate_fulfilments": 0,
+      "expected_fulfilments": 95,
+      "expected_not_fulfilled": [],
+      "fix_candidates": [
+        "payload@5",
+        "payload@6"
+      ],
+      "fix_id": "payload@5",
+      "fulfilled": 95,
+      "fulfilled_not_expected": [],
+      "matches_oracle": true,
+      "plan_targets": 95,
+      "refreshed_orders": [
+        "order_SYNTHETIC_94001b5c_0062",
+        "order_SYNTHETIC_94001b5c_0088",
+        "order_SYNTHETIC_94001b5c_0104"
+      ],
+      "restored_processing_value_paise": 11938900,
+      "retry_fulfilled": 0,
+      "retry_replayed": true,
+      "run_id": "run_9bd818be77",
+      "status": "succeeded",
+      "system": "model"
+    },
+    {
+      "blamed_change": "deploy_2eba2bd5a1",
+      "fix_candidates": [],
+      "reason": "no allowlisted fix changes the module the blamed deploy changed",
+      "run_id": "run_874097efac",
+      "status": "blocked",
+      "system": "rules"
+    },
+    {
+      "additional_captured_paise": 0,
+      "blamed_change": "deploy_603226fdc2",
+      "duplicate_fulfilments": 0,
+      "expected_fulfilments": 84,
+      "expected_not_fulfilled": [],
+      "fix_candidates": [
+        "config@5",
+        "config@6"
+      ],
+      "fix_id": "config@5",
+      "fulfilled": 84,
+      "fulfilled_not_expected": [],
+      "matches_oracle": true,
+      "plan_targets": 84,
+      "refreshed_orders": [],
+      "restored_processing_value_paise": 10410400,
+      "retry_fulfilled": 0,
+      "retry_replayed": true,
+      "run_id": "run_874097efac",
+      "status": "succeeded",
+      "system": "model"
+    },
+    {
+      "blamed_change": "none",
+      "fix_candidates": [],
+      "reason": "no allowlisted fix changes the module the blamed deploy changed",
+      "run_id": "run_56df9eb5de",
+      "status": "blocked",
+      "system": "model"
+    }
+  ],
+  "label": "dev_think_on"
+}

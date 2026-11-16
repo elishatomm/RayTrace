@@ -1,0 +1,20 @@
+{
+  "addenda": [
+    {
+      "file": "ADDENDUM_2026-11-12.md",
+      "sha256": "9e6526f3355b6ab572c5c06cd9a6ff9ef898a129fa8a5f813fc96ce5bad85457",
+      "recorded_wall_utc": "2026-11-12T08:20:35Z",
+      "written_after": "the val-4 arm (2026-11-12T08:04:49Z to 08:12:55Z)",
+      "written_before": "the val-5 arm",
+      "changes": "val-5 rule 1 refined by the orchestrator (orders_not_completing and unresolved_spike pass); seeds 9101 and up reserved for the rules-only property test; no case, seed, arm procedure, metric or decision rule changed"
+    },
+    {
+      "file": "ADDENDUM_2026-11-12_2.md",
+      "sha256": "00fe20a379fac83add39be485b51de957ce7e74db93b7829544456e2056e9dd5",
+      "recorded_wall_utc": "2026-11-12T09:09:27Z",
+      "written_after": "the val-4 arm and the first addendum",
+      "written_before": "the val-5 arm",
+      "changes": "val-5 rule 1, final wording, by the orchestrator: refuse no_incident when any detector other than orders_not_completing alerted, except unresolved_spike with the observation gap (diagnosis.observation_gap); no case, seed, arm procedure, metric or decision rule changed"
+    }
+  ]
+}

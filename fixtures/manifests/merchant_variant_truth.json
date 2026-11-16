@@ -1,0 +1,96 @@
+{
+  "schema_version": 1,
+  "oracle_notice": "Oracle file. Read only by the scenario generator, the evaluator and tests. Runtime tools, the evidence packet and the model must never read it.",
+  "fixture_repo": "fixtures/merchant_repo",
+  "baseline": {
+    "config": 1,
+    "payload": 1,
+    "orders": 1,
+    "handler": 1,
+    "receiver": 1,
+    "checkout": 1,
+    "notifications": 1
+  },
+  "variants": {
+    "payload@2": {
+      "role": "fault",
+      "family": "D1",
+      "fault_class": "top_frame_in_changed_file",
+      "meaning": "The new payment_entity() accessor returns payload.payment instead of payload.payment.entity, so every event fails on the first field read.",
+      "failing_fixture_tests": [
+        "captured_payment_builds_fulfilment",
+        "authorized_payment_changes_nothing",
+        "failed_payment_changes_nothing"
+      ],
+      "top_frame_file": "merchant_app/payload.py",
+      "exception_type": "KeyError",
+      "category_when_emitted": "event_parse_error",
+      "repaired_by": ["payload@5"]
+    },
+    "payload@3": {
+      "role": "fault",
+      "family": "D1",
+      "fault_class": "upstream_of_failing_frame",
+      "meaning": "The parser now returns amount_paise as Decimal rupees; the unchanged order builder rejects it, so captured events fail in orders.py.",
+      "failing_fixture_tests": ["captured_payment_builds_fulfilment"],
+      "top_frame_file": "merchant_app/orders.py",
+      "exception_type": "InvalidOrderAmount",
+      "category_when_emitted": "order_validation_error",
+      "repaired_by": ["payload@6"]
+    },
+    "config@2": {
+      "role": "fault",
+      "family": "D1",
+      "fault_class": "configuration_only",
+      "meaning": "ORDER_REFERENCE_FIELD becomes order_ref, a key the payment entity does not carry; the unchanged parser fails on every event.",
+      "failing_fixture_tests": [
+        "captured_payment_builds_fulfilment",
+        "authorized_payment_changes_nothing",
+        "failed_payment_changes_nothing"
+      ],
+      "top_frame_file": "merchant_app/payload.py",
+      "exception_type": "KeyError",
+      "category_when_emitted": "event_parse_error",
+      "repaired_by": ["config@5"]
+    },
+    "receiver@2": {
+      "role": "fault",
+      "family": "D3",
+      "fault_class": "receiver_code",
+      "meaning": "The receiver re-serialises the body before verification, so the signature never matches and valid deliveries are rejected before durable receipt.",
+      "failing_fixture_tests": ["signed_delivery_verifies"],
+      "top_frame_file": null,
+      "exception_type": null,
+      "category_when_emitted": null,
+      "repaired_by": ["receiver@4"]
+    },
+    "config@3": {
+      "role": "fault",
+      "family": "D3",
+      "fault_class": "receiver_config",
+      "meaning": "Verification switches to webhook_secret_next while the provider still signs with webhook_secret_primary, so valid deliveries are rejected before durable receipt.",
+      "failing_fixture_tests": ["signed_delivery_verifies"],
+      "top_frame_file": null,
+      "exception_type": null,
+      "category_when_emitted": null,
+      "repaired_by": ["config@6"]
+    },
+    "config@4": {"role": "harmless", "appears_in_worker_traces": false, "meaning": "Checkout session TTL 900 -> 1200 s."},
+    "payload@4": {"role": "harmless", "appears_in_worker_traces": true, "meaning": "Docstring only; shifts line numbers in payload.py."},
+    "orders@2": {"role": "harmless", "appears_in_worker_traces": true, "meaning": "Logging lines in orders.py; shifts line numbers."},
+    "handler@2": {"role": "harmless", "appears_in_worker_traces": true, "meaning": "Debug log on entry to handle_event."},
+    "receiver@3": {"role": "harmless", "appears_in_worker_traces": false, "meaning": "Log preview helper; verification bytes unchanged."},
+    "checkout@2": {"role": "harmless", "appears_in_worker_traces": false, "meaning": "UPI offered first at checkout; can shift the method mix, never a within-method ratio."},
+    "checkout@3": {"role": "harmless", "appears_in_worker_traces": false, "meaning": "Netbanking bank list shown in code order; display only."},
+    "notifications@2": {"role": "harmless", "appears_in_worker_traces": false, "meaning": "Customer message copy."},
+    "payload@5": {"role": "corrected", "repairs": "payload@2", "meaning": "Accessor returns payload.payment.entity."},
+    "payload@6": {"role": "corrected", "repairs": "payload@3", "meaning": "amount_paise stays integer paise; rupees move to amount_display."},
+    "config@5": {"role": "corrected", "repairs": "config@2", "meaning": "Entity key back to order_id; checkout label kept separately."},
+    "config@6": {"role": "corrected", "repairs": "config@3", "meaning": "Verify with the primary secret; next secret only staged."},
+    "receiver@4": {"role": "corrected", "repairs": "receiver@2", "meaning": "Verify the delivered bytes; stable layout only for stored copies."}
+  },
+  "expected_operation_by_family": {
+    "D1": "reprocess_inbox (only after the operator validates a corrected variant with the fixture test)",
+    "D3": "prepare_provider_replay (no inbox reprocessing: the events never reached durable receipt)"
+  }
+}

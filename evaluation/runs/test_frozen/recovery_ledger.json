@@ -1,0 +1,272 @@
+{
+  "entries": [
+    {
+      "blamed_change": "deploy_26d6dea7f0",
+      "fix_candidates": [],
+      "reason": "no allowlisted fix changes the module the blamed deploy changed",
+      "run_id": "run_a86d1bc7a8",
+      "status": "blocked",
+      "system": "rules"
+    },
+    {
+      "additional_captured_paise": 0,
+      "blamed_change": "deploy_972fbed74d",
+      "duplicate_fulfilments": 0,
+      "expected_fulfilments": 81,
+      "expected_not_fulfilled": [],
+      "fix_candidates": [
+        "payload@5",
+        "payload@6"
+      ],
+      "fix_id": "payload@5",
+      "fulfilled": 81,
+      "fulfilled_not_expected": [],
+      "matches_oracle": true,
+      "plan_targets": 81,
+      "refreshed_orders": [
+        "order_SYNTHETIC_9242d6a4_0071"
+      ],
+      "restored_processing_value_paise": 10587700,
+      "retry_fulfilled": 0,
+      "retry_replayed": true,
+      "run_id": "run_a86d1bc7a8",
+      "status": "succeeded",
+      "system": "model"
+    },
+    {
+      "additional_captured_paise": 0,
+      "blamed_change": "deploy_5896ddb7ce",
+      "duplicate_fulfilments": 0,
+      "expected_fulfilments": 104,
+      "expected_not_fulfilled": [],
+      "fix_candidates": [
+        "payload@5",
+        "payload@6"
+      ],
+      "fix_id": "payload@5",
+      "fulfilled": 104,
+      "fulfilled_not_expected": [],
+      "matches_oracle": true,
+      "plan_targets": 104,
+      "refreshed_orders": [],
+      "restored_processing_value_paise": 11792400,
+      "retry_fulfilled": 0,
+      "retry_replayed": true,
+      "run_id": "run_9c6a2c4f25",
+      "status": "succeeded",
+      "system": "rules"
+    },
+    {
+      "additional_captured_paise": 0,
+      "blamed_change": "deploy_5896ddb7ce",
+      "duplicate_fulfilments": 0,
+      "expected_fulfilments": 104,
+      "expected_not_fulfilled": [],
+      "fix_candidates": [
+        "payload@5",
+        "payload@6"
+      ],
+      "fix_id": "payload@5",
+      "fulfilled": 104,
+      "fulfilled_not_expected": [],
+      "matches_oracle": true,
+      "plan_targets": 104,
+      "refreshed_orders": [],
+      "restored_processing_value_paise": 11792400,
+      "retry_fulfilled": 0,
+      "retry_replayed": true,
+      "run_id": "run_9c6a2c4f25",
+      "status": "succeeded",
+      "system": "model"
+    },
+    {
+      "additional_captured_paise": 0,
+      "blamed_change": "deploy_7ac5837926",
+      "duplicate_fulfilments": 0,
+      "expected_fulfilments": 107,
+      "expected_not_fulfilled": [],
+      "fix_candidates": [
+        "payload@5",
+        "payload@6"
+      ],
+      "fix_id": "payload@5",
+      "fulfilled": 107,
+      "fulfilled_not_expected": [],
+      "matches_oracle": true,
+      "plan_targets": 107,
+      "refreshed_orders": [
+        "order_SYNTHETIC_de4f835a_0071",
+        "order_SYNTHETIC_de4f835a_0095",
+        "order_SYNTHETIC_de4f835a_0098",
+        "order_SYNTHETIC_de4f835a_0110"
+      ],
+      "restored_processing_value_paise": 11709100,
+      "retry_fulfilled": 0,
+      "retry_replayed": true,
+      "run_id": "run_a7b0e695eb",
+      "status": "succeeded",
+      "system": "rules"
+    },
+    {
+      "additional_captured_paise": 0,
+      "blamed_change": "deploy_7ac5837926",
+      "duplicate_fulfilments": 0,
+      "expected_fulfilments": 107,
+      "expected_not_fulfilled": [],
+      "fix_candidates": [
+        "payload@5",
+        "payload@6"
+      ],
+      "fix_id": "payload@5",
+      "fulfilled": 107,
+      "fulfilled_not_expected": [],
+      "matches_oracle": true,
+      "plan_targets": 107,
+      "refreshed_orders": [
+        "order_SYNTHETIC_de4f835a_0071",
+        "order_SYNTHETIC_de4f835a_0095",
+        "order_SYNTHETIC_de4f835a_0098",
+        "order_SYNTHETIC_de4f835a_0110"
+      ],
+      "restored_processing_value_paise": 11709100,
+      "retry_fulfilled": 0,
+      "retry_replayed": true,
+      "run_id": "run_a7b0e695eb",
+      "status": "succeeded",
+      "system": "model"
+    },
+    {
+      "blamed_change": "deploy_20e68482a7",
+      "fix_candidates": [],
+      "reason": "no allowlisted fix changes the module the blamed deploy changed",
+      "run_id": "run_7988d37192",
+      "status": "blocked",
+      "system": "rules"
+    },
+    {
+      "additional_captured_paise": 0,
+      "blamed_change": "deploy_a202f09a18",
+      "duplicate_fulfilments": 0,
+      "expected_fulfilments": 80,
+      "expected_not_fulfilled": [],
+      "fix_candidates": [
+        "payload@5",
+        "payload@6"
+      ],
+      "fix_id": "payload@5",
+      "fulfilled": 80,
+      "fulfilled_not_expected": [],
+      "matches_oracle": true,
+      "plan_targets": 80,
+      "refreshed_orders": [
+        "order_SYNTHETIC_011ddfdf_0084"
+      ],
+      "restored_processing_value_paise": 9696900,
+      "retry_fulfilled": 0,
+      "retry_replayed": true,
+      "run_id": "run_7988d37192",
+      "status": "succeeded",
+      "system": "model"
+    },
+    {
+      "additional_captured_paise": 0,
+      "blamed_change": "deploy_34eb5799e3",
+      "duplicate_fulfilments": 0,
+      "expected_fulfilments": 104,
+      "expected_not_fulfilled": [],
+      "fix_candidates": [
+        "config@5",
+        "config@6"
+      ],
+      "fix_id": "config@5",
+      "fulfilled": 104,
+      "fulfilled_not_expected": [],
+      "matches_oracle": true,
+      "plan_targets": 104,
+      "refreshed_orders": [
+        "order_SYNTHETIC_30cf4f29_0074"
+      ],
+      "restored_processing_value_paise": 14176200,
+      "retry_fulfilled": 0,
+      "retry_replayed": true,
+      "run_id": "run_31a3d4dffd",
+      "status": "succeeded",
+      "system": "rules"
+    },
+    {
+      "additional_captured_paise": 0,
+      "blamed_change": "deploy_34eb5799e3",
+      "duplicate_fulfilments": 0,
+      "expected_fulfilments": 104,
+      "expected_not_fulfilled": [],
+      "fix_candidates": [
+        "config@5",
+        "config@6"
+      ],
+      "fix_id": "config@5",
+      "fulfilled": 104,
+      "fulfilled_not_expected": [],
+      "matches_oracle": true,
+      "plan_targets": 104,
+      "refreshed_orders": [
+        "order_SYNTHETIC_30cf4f29_0074"
+      ],
+      "restored_processing_value_paise": 14176200,
+      "retry_fulfilled": 0,
+      "retry_replayed": true,
+      "run_id": "run_31a3d4dffd",
+      "status": "succeeded",
+      "system": "model"
+    },
+    {
+      "blamed_change": "deploy_a944e8d71b",
+      "fix_candidates": [
+        "receiver@4"
+      ],
+      "fix_id": "receiver@4",
+      "reason": "the plan found nothing eligible to reprocess",
+      "refreshed_orders": [],
+      "run_id": "run_33937cc14e",
+      "status": "no_targets",
+      "system": "model"
+    },
+    {
+      "blamed_change": "deploy_76c7b50ebc",
+      "fix_candidates": [
+        "config@5",
+        "config@6"
+      ],
+      "fix_id": "config@5",
+      "reason": "the plan found nothing eligible to reprocess",
+      "refreshed_orders": [],
+      "run_id": "run_3870fd2e0f",
+      "status": "no_targets",
+      "system": "model"
+    },
+    {
+      "blamed_change": "none",
+      "fix_candidates": [],
+      "reason": "no allowlisted fix changes the module the blamed deploy changed",
+      "run_id": "run_bde72f55f7",
+      "status": "blocked",
+      "system": "model"
+    },
+    {
+      "blamed_change": "none",
+      "fix_candidates": [],
+      "reason": "no allowlisted fix changes the module the blamed deploy changed",
+      "run_id": "run_6caff90398",
+      "status": "blocked",
+      "system": "model"
+    },
+    {
+      "blamed_change": "deploy_db3113fd95",
+      "fix_candidates": [],
+      "reason": "no allowlisted fix changes the module the blamed deploy changed",
+      "run_id": "run_0e37d9acca",
+      "status": "blocked",
+      "system": "model"
+    }
+  ],
+  "label": "test_frozen"
+}

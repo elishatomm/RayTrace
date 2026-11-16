@@ -1,0 +1,327 @@
+{
+  "packet_version": "m0-1",
+  "incident": {
+    "run_id": "run_f8a8bbee",
+    "incident_id": "inc_4292cbbc",
+    "symptom": "Fewer orders are completing than usual",
+    "trigger": "order_completion_drop",
+    "cohort": {
+      "merchant_id": "mch_synthetic_01",
+      "integration_id": "int_webhook_01",
+      "methods": [
+        "upi",
+        "card",
+        "netbanking"
+      ]
+    },
+    "window_start_ms": 1794396000000,
+    "window_end_ms": 1794399600000,
+    "evidence_cutoff_ms": 1794399600000,
+    "summary_counts": {
+      "orders_with_attempts": 456,
+      "orders_completed": 199,
+      "payment_attempts": 451
+    }
+  },
+  "items": [
+    {
+      "evidence_id": "ev_trigger",
+      "kind": "incident_trigger",
+      "known_at_ms": 1794399540000,
+      "title": "Detector state at the evidence cutoff",
+      "facts": {
+        "fired": [
+          "order_completion_drop",
+          "processing_backlog_age"
+        ],
+        "not_fired": [
+          "authorisation_ratio_drop",
+          "delivery_rejection_rate"
+        ],
+        "order_completion_ratio": 0.052,
+        "baseline_order_completion_ratio": 0.905,
+        "first_breach_ms": 1794397620000
+      },
+      "text": null
+    },
+    {
+      "evidence_id": "ev_metric_upi",
+      "kind": "metric",
+      "known_at_ms": 1794399540000,
+      "title": "Provider authorisation and capture for upi, mature cohort",
+      "facts": {
+        "method": "upi",
+        "mature_cohort_start_ms": 1794397200000,
+        "mature_cohort_end_ms": 1794399000000,
+        "attempts": 126,
+        "authorised": 117,
+        "captured": 115,
+        "unresolved": 1,
+        "authorisation_ratio": 0.929,
+        "authorisation_ratio_95ci": [
+          0.87,
+          0.962
+        ],
+        "baseline_attempts": 2087,
+        "baseline_authorisation_ratio": 0.922,
+        "baseline_95ci": [
+          0.91,
+          0.933
+        ]
+      },
+      "text": null
+    },
+    {
+      "evidence_id": "ev_metric_card",
+      "kind": "metric",
+      "known_at_ms": 1794399540000,
+      "title": "Provider authorisation and capture for card, mature cohort",
+      "facts": {
+        "method": "card",
+        "mature_cohort_start_ms": 1794397200000,
+        "mature_cohort_end_ms": 1794399000000,
+        "attempts": 81,
+        "authorised": 74,
+        "captured": 74,
+        "unresolved": 1,
+        "authorisation_ratio": 0.914,
+        "authorisation_ratio_95ci": [
+          0.832,
+          0.958
+        ],
+        "baseline_attempts": 1366,
+        "baseline_authorisation_ratio": 0.909,
+        "baseline_95ci": [
+          0.893,
+          0.923
+        ]
+      },
+      "text": null
+    },
+    {
+      "evidence_id": "ev_metric_netbanking",
+      "kind": "metric",
+      "known_at_ms": 1794399540000,
+      "title": "Provider authorisation and capture for netbanking, mature cohort",
+      "facts": {
+        "method": "netbanking",
+        "mature_cohort_start_ms": 1794397200000,
+        "mature_cohort_end_ms": 1794399000000,
+        "attempts": 27,
+        "authorised": 24,
+        "captured": 24,
+        "unresolved": 0,
+        "authorisation_ratio": 0.889,
+        "authorisation_ratio_95ci": [
+          0.719,
+          0.961
+        ],
+        "baseline_attempts": 455,
+        "baseline_authorisation_ratio": 0.89,
+        "baseline_95ci": [
+          0.858,
+          0.916
+        ]
+      },
+      "text": null
+    },
+    {
+      "evidence_id": "ev_processing",
+      "kind": "metric",
+      "known_at_ms": 1794399540000,
+      "title": "Merchant processing of captured payments, last 30 minutes",
+      "facts": {
+        "captured_orders": 198,
+        "processed": 0,
+        "pending_captured": 198,
+        "pending_captured_value_paise": 22749800,
+        "processing_completion_ratio": 0.0,
+        "baseline_processing_completion_ratio": 0.998
+      },
+      "text": null
+    },
+    {
+      "evidence_id": "ev_provider_state",
+      "kind": "provider_state",
+      "known_at_ms": 1794399540000,
+      "title": "Provider payment states and snapshot freshness",
+      "facts": {
+        "snapshot_age_ms": 81000,
+        "observation_coverage": 0.99,
+        "payments_by_status_last_60m": {
+          "captured": 409,
+          "authorized": 7,
+          "failed": 35,
+          "created": 5
+        },
+        "failed_by_reason": {
+          "payment_declined": 19,
+          "customer_cancelled": 16
+        }
+      },
+      "text": null
+    },
+    {
+      "evidence_id": "ev_delivery",
+      "kind": "delivery_health",
+      "known_at_ms": 1794399540000,
+      "title": "Webhook delivery health for int_webhook_01",
+      "facts": {
+        "window": "last 60 minutes",
+        "accepted": 455,
+        "duplicates": 17,
+        "conflicting_ids": 0,
+        "rejected_signature": 0,
+        "rejected_schema": 0,
+        "p95_ack_latency_ms": 38,
+        "delivery_attempts": 472
+      },
+      "text": null
+    },
+    {
+      "evidence_id": "ev_worker",
+      "kind": "worker_health",
+      "known_at_ms": 1794399540000,
+      "title": "Order worker health",
+      "facts": {
+        "inbox_pending": 2,
+        "inbox_failed": 263,
+        "processed_last_30m": 46,
+        "oldest_unprocessed_age_ms": 2460000,
+        "retry_policy": "3 attempts, then failed"
+      },
+      "text": null
+    },
+    {
+      "evidence_id": "ev_worker_errors",
+      "kind": "worker_error",
+      "known_at_ms": 1794399570000,
+      "title": "Order worker failures, most recent stack trace",
+      "facts": {
+        "exception_category": null,
+        "failed_events": 263,
+        "failed_by_event_type": {
+          "payment.captured": 263
+        },
+        "first_failure_ms": 1794397134000,
+        "last_failure_ms": 1794399564000
+      },
+      "text": "Traceback (most recent call last):\n  File \"merchant_app/handler.py\", line 24, in handle_event\n    return orders.build_instruction(parsed)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"merchant_app/orders.py\", line 19, in build_instruction\n    raise InvalidOrderAmount(f\"order {parsed['order_id']}: expected positive integer paise, got {amount_paise!r}\")\nmerchant_app.orders.InvalidOrderAmount: order order_SYN3K9P4: expected positive integer paise, got Decimal('1299')\n"
+    },
+    {
+      "evidence_id": "ev_fixture",
+      "kind": "fixture_check",
+      "known_at_ms": 1794399480000,
+      "title": "Prewritten fixture tests against the deployed version dep_2f882d",
+      "facts": {
+        "deployed_version": "dep_2f882d",
+        "tests_run": 4,
+        "tests_failed": 1,
+        "results": [
+          {
+            "test_id": "captured_payment_builds_fulfilment",
+            "passed": false,
+            "detail": "merchant_app.orders.InvalidOrderAmount: order order_SYNTHETIC_9001: expected positive integer paise, got Decimal('1200')",
+            "top_frame": "merchant_app/orders.py:19 in build_instruction"
+          },
+          {
+            "test_id": "authorized_payment_changes_nothing",
+            "passed": true
+          },
+          {
+            "test_id": "failed_payment_changes_nothing",
+            "passed": true
+          },
+          {
+            "test_id": "signed_delivery_verifies",
+            "passed": true
+          }
+        ]
+      },
+      "text": null
+    },
+    {
+      "evidence_id": "ev_deploy_0140d7",
+      "kind": "deployment",
+      "known_at_ms": 1794384620000,
+      "title": "Deployment dep_0140d7 to merchant-app",
+      "facts": {
+        "deploy_id": "dep_0140d7",
+        "service": "merchant-app",
+        "kind": "code",
+        "deployed_at_ms": 1794384600000,
+        "files_changed": [
+          "merchant_app/notifications.py"
+        ],
+        "summary": "Update receipt notification copy"
+      },
+      "text": "diff --git a/merchant_app/notifications.py b/merchant_app/notifications.py\nindex e97eb9e..295ced8 100644\n--- a/merchant_app/notifications.py\n+++ b/merchant_app/notifications.py\n@@ -6,8 +6,8 @@\n \n \n def order_confirmation(order_id, amount_paise):\n-    return f\"Your order {order_id} is confirmed. Amount paid: INR {rupees(amount_paise)}.\"\n+    return f\"Thanks for your order {order_id}. We received INR {rupees(amount_paise)} and are packing it now.\"\n \n \n def payment_pending(order_id):\n-    return f\"We are still waiting for payment confirmation for order {order_id}.\"\n+    return f\"Payment for order {order_id} has not been confirmed yet. We will email you as soon as it is.\"\n"
+    },
+    {
+      "evidence_id": "ev_deploy_791036",
+      "kind": "deployment",
+      "known_at_ms": 1794397142000,
+      "title": "Deployment dep_791036 to merchant-app",
+      "facts": {
+        "deploy_id": "dep_791036",
+        "service": "merchant-app",
+        "kind": "code",
+        "deployed_at_ms": 1794397122000,
+        "files_changed": [
+          "merchant_app/payload.py"
+        ],
+        "summary": "Carry order totals in rupees from the parser"
+      },
+      "text": "diff --git a/merchant_app/payload.py b/merchant_app/payload.py\nindex e881edd..f75c6e0 100644\n--- a/merchant_app/payload.py\n+++ b/merchant_app/payload.py\n@@ -1,4 +1,6 @@\n \"\"\"Turn a verified webhook event into the flat fields the order flow uses.\"\"\"\n+from decimal import Decimal\n+\n from merchant_app import config\n \n SUPPORTED_EVENTS = (\"payment.authorized\", \"payment.captured\", \"payment.failed\")\n@@ -6,6 +8,11 @@\n \n class UnsupportedEvent(ValueError):\n     \"\"\"The integration does not subscribe to this event type.\"\"\"\n+\n+\n+def to_rupees(amount_paise):\n+    \"\"\"Order totals are shown and stored in rupees.\"\"\"\n+    return Decimal(amount_paise) / 100\n \n \n def parse_event(event):\n@@ -19,6 +26,6 @@\n         \"order_id\": entity[config.ORDER_REFERENCE_FIELD],\n         \"status\": entity[\"status\"],\n         \"method\": entity.get(\"method\"),\n-        \"amount_paise\": entity[\"amount\"],\n+        \"amount_paise\": to_rupees(entity[\"amount\"]),\n         \"currency\": entity[\"currency\"],\n     }\n"
+    },
+    {
+      "evidence_id": "ev_deploy_2f882d",
+      "kind": "deployment",
+      "known_at_ms": 1794397232000,
+      "title": "Deployment dep_2f882d to merchant-app",
+      "facts": {
+        "deploy_id": "dep_2f882d",
+        "service": "merchant-app",
+        "kind": "code",
+        "deployed_at_ms": 1794397212000,
+        "files_changed": [
+          "merchant_app/orders.py"
+        ],
+        "summary": "Log fulfilment instructions at info level"
+      },
+      "text": "diff --git a/merchant_app/orders.py b/merchant_app/orders.py\nindex 14967cd..6c00451 100644\n--- a/merchant_app/orders.py\n+++ b/merchant_app/orders.py\n@@ -1,5 +1,9 @@\n \"\"\"Decide what the order system does with a parsed payment event.\"\"\"\n+import logging\n+\n from merchant_app import config\n+\n+log = logging.getLogger(__name__)\n \n \n class InvalidOrderAmount(ValueError):\n@@ -8,12 +12,14 @@\n \n def build_instruction(parsed):\n     if parsed[\"event_type\"] not in config.FULFIL_ON_EVENTS:\n+        log.debug(\"no order change for %s on %s\", parsed[\"event_type\"], parsed[\"order_id\"])\n         return {\"action\": \"ignore\"}\n     amount_paise = parsed[\"amount_paise\"]\n     if not isinstance(amount_paise, int) or amount_paise <= 0:\n         raise InvalidOrderAmount(f\"order {parsed['order_id']}: expected positive integer paise, got {amount_paise!r}\")\n     if parsed[\"currency\"] != config.CURRENCY:\n         raise InvalidOrderAmount(f\"order {parsed['order_id']}: unsupported currency {parsed['currency']!r}\")\n+    log.info(\"fulfilment instruction for %s via %s\", parsed[\"order_id\"], parsed[\"payment_id\"])\n     return {\n         \"action\": \"fulfil\",\n         \"order_id\": parsed[\"order_id\"],\n"
+    },
+    {
+      "evidence_id": "ev_log_worker",
+      "kind": "log",
+      "known_at_ms": 1794399423000,
+      "title": "ERROR log from order-worker",
+      "facts": {
+        "source": "order-worker",
+        "level": "ERROR"
+      },
+      "text": "2026-11-11T12:17:00.000Z ERROR order-worker: event evt_19be03f2 failed on attempt 3/3 and was moved to failed; authorised and failed events still process"
+    },
+    {
+      "evidence_id": "ev_log_support",
+      "kind": "log",
+      "known_at_ms": 1794398883000,
+      "title": "INFO log from support-desk",
+      "facts": {
+        "source": "support-desk",
+        "level": "INFO"
+      },
+      "text": "2026-11-11T12:08:00.000Z INFO support-desk: 11 tickets in 25 min: charged, but no order confirmation email"
+    }
+  ],
+  "candidate_change_ids": [
+    "dep_0140d7",
+    "dep_791036",
+    "dep_2f882d"
+  ],
+  "candidate_methods": [
+    "upi",
+    "card",
+    "netbanking"
+  ]
+}

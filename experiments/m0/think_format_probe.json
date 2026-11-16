@@ -1,0 +1,58 @@
+{
+  "ollama_version": "0.40.1",
+  "model": "qwen3:4b",
+  "results": [
+    {
+      "case": "think omitted, num_predict 1500",
+      "think_sent": null,
+      "num_predict": 1500,
+      "wall_s": 17.6,
+      "done_reason": "length",
+      "eval_count": 1500,
+      "thinking_chars": 6124,
+      "content_chars": 0,
+      "content_conforms_to_schema": false,
+      "detail": "empty content",
+      "content": ""
+    },
+    {
+      "case": "think false, num_predict 1500",
+      "think_sent": false,
+      "num_predict": 1500,
+      "wall_s": 0.6,
+      "done_reason": "stop",
+      "eval_count": 42,
+      "thinking_chars": 0,
+      "content_chars": 122,
+      "content_conforms_to_schema": true,
+      "detail": "note length 60 (limit 60)",
+      "content": "{\n  \"colour\": \"red\",\n  \"ids\": [\n    \"ev_c\"\n  ],\n  \"note\": \"The sign is red because stop signs are universally standard.\"\n}"
+    },
+    {
+      "case": "think true, num_predict 1500",
+      "think_sent": true,
+      "num_predict": 1500,
+      "wall_s": 16.9,
+      "done_reason": "length",
+      "eval_count": 1500,
+      "thinking_chars": 6124,
+      "content_chars": 0,
+      "content_conforms_to_schema": false,
+      "detail": "empty content",
+      "content": ""
+    },
+    {
+      "case": "think true, num_predict 6144",
+      "think_sent": true,
+      "num_predict": 6144,
+      "wall_s": 47.8,
+      "done_reason": "stop",
+      "eval_count": 4012,
+      "thinking_chars": 15262,
+      "content_chars": 114,
+      "content_conforms_to_schema": true,
+      "detail": "note length 60 (limit 60)",
+      "content": "{\"colour\": \"red\", \"ids\": [\"ev_c\", \"ev_a\"], \"note\": \"The stop sign is red. This is the standard color for stop in\"}"
+    }
+  ]
+}

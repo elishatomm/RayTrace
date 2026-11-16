@@ -1,0 +1,589 @@
+{
+  "packet_version": "pkt-2",
+  "incident": {
+    "run_id": "run_b9f9adfb3b",
+    "incident_id": "inc_0001",
+    "symptom": "Fewer orders are completing than usual",
+    "trigger": "merchant_processing_gap",
+    "cohort": {
+      "merchant_id": "merchant_SYNTHETIC_A",
+      "integration_id": "int_SYNTHETIC_MAIN",
+      "methods": [
+        "card",
+        "netbanking",
+        "upi"
+      ]
+    },
+    "window_start_ms": 1794130200000,
+    "window_end_ms": 1794133500000,
+    "evidence_cutoff_ms": 1794141000000,
+    "summary_counts": {
+      "orders_with_attempts": 168,
+      "orders_completed": 54,
+      "payment_attempts": 175
+    }
+  },
+  "items": [
+    {
+      "evidence_id": "ev_trigger",
+      "kind": "incident_trigger",
+      "known_at_ms": 1794141000000,
+      "title": "Detector state at the evidence cutoff",
+      "facts": {
+        "fired": [
+          "merchant_processing_gap",
+          "orders_not_completing"
+        ],
+        "not_fired": [
+          "delivery_rejection_spike",
+          "method_authorization_drop[card]",
+          "method_authorization_drop[netbanking]",
+          "method_authorization_drop[upi]",
+          "unresolved_spike"
+        ],
+        "fired_since_open": [
+          "merchant_processing_gap",
+          "orders_not_completing"
+        ],
+        "first_breach_ms": 1794133800000,
+        "reasons": {
+          "delivery_rejection_spike": "too_few_rejections",
+          "merchant_processing_gap": "captured_orders_unprocessed",
+          "method_authorization_drop[card]": "insufficient_samples",
+          "method_authorization_drop[netbanking]": "insufficient_samples",
+          "method_authorization_drop[upi]": "insufficient_samples",
+          "orders_not_completing": "degraded_in_two_successive_windows",
+          "unresolved_spike": "within_baseline"
+        }
+      },
+      "text": null
+    },
+    {
+      "evidence_id": "ev_metric_card",
+      "kind": "metric",
+      "known_at_ms": 1794141000000,
+      "title": "Provider authorisation and capture for card, mature cohort",
+      "facts": {
+        "method": "card",
+        "mature_cohort_start_ms": 1794138600000,
+        "mature_cohort_end_ms": 1794140400000,
+        "attempts": 8,
+        "authorised": 7,
+        "captured": 7,
+        "unresolved": 0,
+        "authorisation_ratio": 0.875,
+        "authorisation_ratio_95ci": [
+          0.529,
+          0.978
+        ],
+        "baseline_attempts": 31,
+        "baseline_authorisation_ratio": 0.935,
+        "baseline_95ci": [
+          0.793,
+          0.982
+        ],
+        "share_of_attempts": 0.267,
+        "baseline_share_of_attempts": 0.267
+      },
+      "text": null
+    },
+    {
+      "evidence_id": "ev_metric_netbanking",
+      "kind": "metric",
+      "known_at_ms": 1794141000000,
+      "title": "Provider authorisation and capture for netbanking, mature cohort",
+      "facts": {
+        "method": "netbanking",
+        "mature_cohort_start_ms": 1794138600000,
+        "mature_cohort_end_ms": 1794140400000,
+        "attempts": 8,
+        "authorised": 7,
+        "captured": 7,
+        "unresolved": 0,
+        "authorisation_ratio": 0.875,
+        "authorisation_ratio_95ci": [
+          0.529,
+          0.978
+        ],
+        "baseline_attempts": 23,
+        "baseline_authorisation_ratio": 0.913,
+        "baseline_95ci": [
+          0.732,
+          0.976
+        ],
+        "share_of_attempts": 0.267,
+        "baseline_share_of_attempts": 0.198
+      },
+      "text": null
+    },
+    {
+      "evidence_id": "ev_metric_upi",
+      "kind": "metric",
+      "known_at_ms": 1794141000000,
+      "title": "Provider authorisation and capture for upi, mature cohort",
+      "facts": {
+        "method": "upi",
+        "mature_cohort_start_ms": 1794138600000,
+        "mature_cohort_end_ms": 1794140400000,
+        "attempts": 14,
+        "authorised": 12,
+        "captured": 12,
+        "unresolved": 0,
+        "authorisation_ratio": 0.857,
+        "authorisation_ratio_95ci": [
+          0.601,
+          0.96
+        ],
+        "baseline_attempts": 62,
+        "baseline_authorisation_ratio": 0.935,
+        "baseline_95ci": [
+          0.846,
+          0.975
+        ],
+        "share_of_attempts": 0.467,
+        "baseline_share_of_attempts": 0.534
+      },
+      "text": null
+    },
+    {
+      "evidence_id": "ev_metric_all",
+      "kind": "metric",
+      "known_at_ms": 1794141000000,
+      "title": "Provider authorisation and capture for all, mature cohort",
+      "facts": {
+        "method": "all",
+        "mature_cohort_start_ms": 1794138600000,
+        "mature_cohort_end_ms": 1794140400000,
+        "attempts": 30,
+        "authorised": 26,
+        "captured": 26,
+        "unresolved": 0,
+        "authorisation_ratio": 0.867,
+        "authorisation_ratio_95ci": [
+          0.703,
+          0.947
+        ],
+        "baseline_attempts": 116,
+        "baseline_authorisation_ratio": 0.931,
+        "baseline_95ci": [
+          0.87,
+          0.965
+        ],
+        "share_of_attempts": 1.0,
+        "baseline_share_of_attempts": 1.0
+      },
+      "text": null
+    },
+    {
+      "evidence_id": "ev_metric_processing",
+      "kind": "metric",
+      "known_at_ms": 1794141000000,
+      "title": "Merchant processing of captured payments",
+      "facts": {
+        "captured_orders": 43,
+        "processed": 0,
+        "pending_captured": 43,
+        "held_for_review": 0,
+        "pending_captured_value_paise": 5887200,
+        "processing_completion_ratio": 0.0,
+        "baseline_processing_completion_ratio": 0.514,
+        "grace_ms": 300000,
+        "lookback_ms": 3600000
+      },
+      "text": null
+    },
+    {
+      "evidence_id": "ev_provider_state",
+      "kind": "provider_state",
+      "known_at_ms": 1794141000000,
+      "title": "Provider payment states and snapshot freshness",
+      "facts": {
+        "snapshot_age_ms": 0,
+        "observation_coverage": 1.0,
+        "payments_by_status": {
+          "captured": 161,
+          "failed": 14
+        },
+        "failed_by_reason": {
+          "authentication_failed": 4,
+          "bank_technical_error": 3,
+          "insufficient_balance": 7
+        },
+        "failed_by_method_and_reason": {
+          "card": {
+            "authentication_failed": 1,
+            "bank_technical_error": 1,
+            "insufficient_balance": 1
+          },
+          "netbanking": {
+            "authentication_failed": 2,
+            "insufficient_balance": 2
+          },
+          "upi": {
+            "authentication_failed": 1,
+            "bank_technical_error": 2,
+            "insufficient_balance": 4
+          }
+        },
+        "failed_by_error_source": {
+          "bank": 3,
+          "customer": 11
+        },
+        "failed_then_authorised_later": 2,
+        "authorised_not_captured": 0,
+        "captured_without_received_event": 0,
+        "payments_needing_reconciliation": 0,
+        "reconciliation_reasons": {},
+        "stale_payments": 0,
+        "lookback_start_ms": 1794119400000
+      },
+      "text": null
+    },
+    {
+      "evidence_id": "ev_delivery",
+      "kind": "delivery_health",
+      "known_at_ms": 1794141000000,
+      "title": "Webhook delivery health",
+      "facts": {
+        "window_start_ms": 1794119400000,
+        "delivery_attempts": 343,
+        "accepted": 338,
+        "duplicates": 5,
+        "conflicting_ids": 0,
+        "rejected_signature": 0,
+        "rejected_schema": 0,
+        "rejected_size": 0,
+        "distinct_events_rejected": 0,
+        "first_rejection_ms": null,
+        "accepted_since_first_rejection": null
+      },
+      "text": null
+    },
+    {
+      "evidence_id": "ev_worker",
+      "kind": "worker_health",
+      "known_at_ms": 1794141000000,
+      "title": "Order worker health",
+      "facts": {
+        "inbox_pending": 1,
+        "inbox_failed": 106,
+        "inbox_manual_review": 0,
+        "oldest_unprocessed_age_ms": 8141323,
+        "processed_last_30m": 23,
+        "failed_attempts_last_60m": 142,
+        "last_event_received_ms": 1794140955744,
+        "retry_policy": "3 attempts per event, then failed until approved reprocessing"
+      },
+      "text": null
+    },
+    {
+      "evidence_id": "ev_worker_errors",
+      "kind": "worker_error",
+      "known_at_ms": 1794141000000,
+      "title": "Order worker failures, most common stack trace",
+      "facts": {
+        "exception_category": null,
+        "failed_events": 107,
+        "failed_by_event_type": {
+          "payment.captured": 107
+        },
+        "first_failure_ms": 1794132870000,
+        "last_failure_ms": 1794141000000,
+        "worker_versions": {
+          "deploy_9f0912802a": 320
+        },
+        "distinct_trace_signatures": 1
+      },
+      "text": "Traceback (most recent call last):\n  File \"merchant_app/handler.py\", line 24, in handle_event\n    return orders.build_instruction(parsed)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"merchant_app/orders.py\", line 14, in build_instruction\n    raise InvalidOrderAmount(f\"order {parsed['order_id']}: expected positive integer paise, got {amount_paise!r}\")\nmerchant_app.orders.InvalidOrderAmount: order order_SYNTHETIC_cc2222c5_0166: expected positive integer paise, got Decimal('1259')\n"
+    },
+    {
+      "evidence_id": "ev_fixture",
+      "kind": "fixture_check",
+      "known_at_ms": 1794141000000,
+      "title": "Prewritten fixture tests against the deployed version deploy_9f0912802a",
+      "facts": {
+        "deployed_version": "deploy_9f0912802a",
+        "tests_run": 4,
+        "tests_failed": 1,
+        "results": [
+          {
+            "test_id": "captured_payment_builds_fulfilment",
+            "passed": false,
+            "detail": "merchant_app.orders.InvalidOrderAmount: order order_SYNTHETIC_9001: expected positive integer paise, got Decimal('1200')",
+            "top_frame": "merchant_app/orders.py:14 in build_instruction"
+          },
+          {
+            "test_id": "authorized_payment_changes_nothing",
+            "passed": true,
+            "detail": null,
+            "top_frame": null
+          },
+          {
+            "test_id": "failed_payment_changes_nothing",
+            "passed": true,
+            "detail": null,
+            "top_frame": null
+          },
+          {
+            "test_id": "signed_delivery_verifies",
+            "passed": true,
+            "detail": null,
+            "top_frame": null
+          }
+        ]
+      },
+      "text": "Traceback (most recent call last):\n  File \"merchant_app/handler.py\", line 24, in handle_event\n    return orders.build_instruction(parsed)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"merchant_app/orders.py\", line 14, in build_instruction\n    raise InvalidOrderAmount(f\"order {parsed['order_id']}: expected positive integer paise, got {amount_paise!r}\")\nmerchant_app.orders.InvalidOrderAmount: order order_SYNTHETIC_9001: expected positive integer paise, got Decimal('1200')\n"
+    },
+    {
+      "evidence_id": "ev_deploy_74ba47060c",
+      "kind": "deployment",
+      "known_at_ms": 1794130961000,
+      "title": "Deployment deploy_74ba47060c to storefront",
+      "facts": {
+        "deploy_id": "deploy_74ba47060c",
+        "service": "storefront",
+        "kind": "code",
+        "deployed_at_ms": 1794130961000,
+        "files_changed": [
+          "merchant_app/checkout.py"
+        ],
+        "summary": "Show netbanking banks in a stable order"
+      },
+      "text": "diff --git a/merchant_app/checkout.py b/merchant_app/checkout.py\nindex c21ef6c..73641d6 100644\n--- a/merchant_app/checkout.py\n+++ b/merchant_app/checkout.py\n@@ -3,8 +3,8 @@\n \n METHOD_ORDER = (\"card\", \"upi\", \"netbanking\")\n \n-# Netbanking bank codes, most used first.\n-NETBANKING_BANKS = (\"NB04\", \"NB01\", \"NB03\", \"NB02\")\n+# Netbanking bank codes, in code order so customers can scan the list.\n+NETBANKING_BANKS = (\"NB01\", \"NB02\", \"NB03\", \"NB04\")\n \n \n def checkout_options(order_id, amount_paise):\n"
+    },
+    {
+      "evidence_id": "ev_deploy_9f0912802a",
+      "kind": "deployment",
+      "known_at_ms": 1794132868000,
+      "title": "Deployment deploy_9f0912802a to order_worker",
+      "facts": {
+        "deploy_id": "deploy_9f0912802a",
+        "service": "order_worker",
+        "kind": "code",
+        "deployed_at_ms": 1794132868000,
+        "files_changed": [
+          "merchant_app/payload.py"
+        ],
+        "summary": "Carry order totals in rupees from the parser"
+      },
+      "text": "diff --git a/merchant_app/payload.py b/merchant_app/payload.py\nindex e881edd..f75c6e0 100644\n--- a/merchant_app/payload.py\n+++ b/merchant_app/payload.py\n@@ -1,4 +1,6 @@\n \"\"\"Turn a verified webhook event into the flat fields the order flow uses.\"\"\"\n+from decimal import Decimal\n+\n from merchant_app import config\n \n SUPPORTED_EVENTS = (\"payment.authorized\", \"payment.captured\", \"payment.failed\")\n@@ -6,6 +8,11 @@\n \n class UnsupportedEvent(ValueError):\n     \"\"\"The integration does not subscribe to this event type.\"\"\"\n+\n+\n+def to_rupees(amount_paise):\n+    \"\"\"Order totals are shown and stored in rupees.\"\"\"\n+    return Decimal(amount_paise) / 100\n \n \n def parse_event(event):\n@@ -19,6 +26,6 @@\n         \"order_id\": entity[config.ORDER_REFERENCE_FIELD],\n         \"status\": entity[\"status\"],\n         \"method\": entity.get(\"method\"),\n-        \"amount_paise\": entity[\"amount\"],\n+        \"amount_paise\": to_rupees(entity[\"amount\"]),\n         \"currency\": entity[\"currency\"],\n     }\n"
+    },
+    {
+      "evidence_id": "ev_log_01",
+      "kind": "log",
+      "known_at_ms": 1794130961000,
+      "title": "info log from deploy_pipeline",
+      "facts": {
+        "source": "deploy_pipeline",
+        "level": "info",
+        "occurred_at_ms": 1794130961000,
+        "occurrences": 1
+      },
+      "text": "deploy deploy_74ba47060c rolled out to storefront: Show netbanking banks in a stable order"
+    },
+    {
+      "evidence_id": "ev_log_02",
+      "kind": "log",
+      "known_at_ms": 1794132602000,
+      "title": "warning log from edge_network",
+      "facts": {
+        "source": "edge_network",
+        "level": "warning",
+        "occurred_at_ms": 1794132602000,
+        "occurrences": 1
+      },
+      "text": "TLS handshake time to the payments endpoint up 60 ms after a route change"
+    },
+    {
+      "evidence_id": "ev_log_03",
+      "kind": "log",
+      "known_at_ms": 1794132868000,
+      "title": "info log from deploy_pipeline",
+      "facts": {
+        "source": "deploy_pipeline",
+        "level": "info",
+        "occurred_at_ms": 1794132868000,
+        "occurrences": 1
+      },
+      "text": "deploy deploy_9f0912802a rolled out to order_worker: Carry order totals in rupees from the parser"
+    },
+    {
+      "evidence_id": "ev_log_04",
+      "kind": "log",
+      "known_at_ms": 1794137248000,
+      "title": "warning log from session_cache",
+      "facts": {
+        "source": "session_cache",
+        "level": "warning",
+        "occurred_at_ms": 1794137248000,
+        "occurrences": 1
+      },
+      "text": "eviction rate above 2k/min on cache c-1 for 4 min"
+    },
+    {
+      "evidence_id": "ev_log_05",
+      "kind": "log",
+      "known_at_ms": 1794141000000,
+      "title": "error log from order_worker",
+      "facts": {
+        "source": "order_worker",
+        "level": "error",
+        "occurred_at_ms": 1794141000000,
+        "occurrences": 320
+      },
+      "text": "event evt_SYNTHETIC_cc2222c5_000335 attempt 3 not completed: merchant_app.orders.InvalidOrderAmount: order order_SYNTHETIC_cc2222c5_0166: expected positive integer paise, got Decimal('1259')"
+    },
+    {
+      "evidence_id": "ev_journey_01",
+      "kind": "order_journey",
+      "known_at_ms": 1794141000000,
+      "title": "Order journey for order_SYNTHETIC_cc2222c5_0167",
+      "facts": {
+        "order_id": "order_SYNTHETIC_cc2222c5_0167",
+        "order_amount_paise": 151000,
+        "attempts": [
+          {
+            "payment_id": "pay_SYNTHETIC_cc2222c5_00174",
+            "method": "netbanking",
+            "observations": [
+              {
+                "status": "authorized",
+                "occurred_at_ms": 1794140879953,
+                "known_at_ms": 1794140883732,
+                "source": "webhook"
+              },
+              {
+                "status": "captured",
+                "occurred_at_ms": 1794140892953,
+                "known_at_ms": 1794140895934,
+                "source": "webhook"
+              },
+              {
+                "status": "captured",
+                "occurred_at_ms": 1794141000000,
+                "known_at_ms": 1794141000000,
+                "source": "snapshot"
+              }
+            ]
+          }
+        ],
+        "projection": {
+          "status": "captured",
+          "exclusions": [],
+          "late_authorization": false,
+          "conflicts": []
+        }
+      },
+      "text": null
+    },
+    {
+      "evidence_id": "ev_journey_02",
+      "kind": "order_journey",
+      "known_at_ms": 1794141000000,
+      "title": "Order journey for order_SYNTHETIC_cc2222c5_0079",
+      "facts": {
+        "order_id": "order_SYNTHETIC_cc2222c5_0079",
+        "order_amount_paise": 135900,
+        "attempts": [
+          {
+            "payment_id": "pay_SYNTHETIC_cc2222c5_00081",
+            "method": "upi",
+            "observations": [
+              {
+                "status": "failed",
+                "occurred_at_ms": 1794134156105,
+                "known_at_ms": 1794134158942,
+                "source": "webhook"
+              },
+              {
+                "status": "authorized",
+                "occurred_at_ms": 1794134636105,
+                "known_at_ms": 1794134636398,
+                "source": "webhook"
+              },
+              {
+                "status": "captured",
+                "occurred_at_ms": 1794134696105,
+                "known_at_ms": 1794134697063,
+                "source": "webhook"
+              },
+              {
+                "status": "captured",
+                "occurred_at_ms": 1794134700000,
+                "known_at_ms": 1794134700000,
+                "source": "snapshot"
+              },
+              {
+                "status": "captured",
+                "occurred_at_ms": 1794136500000,
+                "known_at_ms": 1794136500000,
+                "source": "snapshot"
+              },
+              {
+                "status": "captured",
+                "occurred_at_ms": 1794138300000,
+                "known_at_ms": 1794138300000,
+                "source": "snapshot"
+              },
+              {
+                "status": "captured",
+                "occurred_at_ms": 1794140100000,
+                "known_at_ms": 1794140100000,
+                "source": "snapshot"
+              }
+            ]
+          }
+        ],
+        "projection": {
+          "status": "captured",
+          "exclusions": [],
+          "late_authorization": true,
+          "conflicts": []
+        }
+      },
+      "text": null
+    },
+    {
+      "evidence_id": "ev_journey_03",
+      "kind": "order_journey",
+      "known_at_ms": 1794141000000,
+      "title": "Order journey for order_SYNTHETIC_cc2222c5_0168",
+      "facts": {
+        "order_id": "order_SYNTHETIC_cc2222c5_0168",
+        "order_amount_paise": 112000,
+        "attempts": [
+          {
+            "payment_id": "pay_SYNTHETIC_cc2222c5_00175",
+            "method": "upi",
+            "observations": [
+              {
+                "status": "failed",
+                "occurred_at_ms": 1794140952392,
+                "known_at_ms": 1794140955744,
+                "source": "webhook"
+              }
+            ]
+          }
+        ],
+        "projection": {
+          "status": "failed",
+          "exclusions": [
+            "not_captured"
+          ],
+          "late_authorization": false,
+          "conflicts": []
+        }
+      },
+      "text": null
+    }
+  ],
+  "candidate_change_ids": [
+    "deploy_74ba47060c",
+    "deploy_9f0912802a"
+  ],
+  "candidate_methods": [
+    "card",
+    "netbanking",
+    "upi"
+  ]
+}

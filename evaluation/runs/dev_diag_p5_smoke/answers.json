@@ -1,0 +1,2531 @@
+{
+  "answers": [
+    {
+      "calls": [
+        {
+          "call_index": 0,
+          "error": null,
+          "rejection_reasons": [],
+          "reply": {
+            "content": "{\n  \"rationale\": \"The merchant's worker failed to process captured payments due to a KeyError in the event parsing logic, which was introduced by the deployment of deploy_b619fd3a85. This is supported by the failing fixture tests and the error logs from the worker. The provider-side metrics show no degradation in authorisation or capture rates, indicating the issue is with the merchant's processing.\",\n  \"supporting_evidence_ids\": [\"ev_trigger\", \"ev_metric_processing\", \"ev_worker_errors\", \"ev_fixture\", \"ev_deploy_b619fd3a85\"],\n  \"contradicting_evidence_ids\": [],\n  \"hypothesis\": \"merchant_worker_regression\",\n  \"faulting_change_id\": \"deploy_b619fd3a85\",\n  \"affected_method\": \"none\",\n  \"evidence_level\": \"supported\",\n  \"proposed_operation\": \"reprocess_inbox\",\n  \"next_check\": \"validate_corrected_handler\",\n  \"missing_checks\": [\"inspect_worker_errors\", \"inspect_recent_changes\", \"inspect_delivery_health\"]\n}",
+            "done_reason": "stop",
+            "eval_count": 226,
+            "eval_duration_ns": 5213423000,
+            "load_duration_ns": 3585204834,
+            "model": "qwen3:8b",
+            "prompt_eval_count": 5498,
+            "prompt_eval_duration_ns": 5397354000,
+            "thinking": null,
+            "total_duration_ns": 14230518959
+          },
+          "wall_ms": 14235
+        }
+      ],
+      "cold": true,
+      "failure_details_relocated": true,
+      "family": "D1",
+      "first_request_sha256": "4c98b8b41936721cafdc43cd9f4e7c4d106d162771d7fc397592c33f38c56ec8",
+      "latency_ms": 14235,
+      "m4": {
+        "output": {
+          "affected_method": "none",
+          "contradicting_evidence_ids": [],
+          "evidence_level": "supported",
+          "faulting_change_id": "deploy_b619fd3a85",
+          "hypothesis": "merchant_worker_regression",
+          "missing_checks": [
+            "inspect_worker_errors",
+            "inspect_recent_changes"
+          ],
+          "next_check": "validate_corrected_handler",
+          "proposed_operation": "reprocess_inbox",
+          "rationale": "The merchant's worker failed to process captured payments due to a KeyError: 'id' in the payload parsing logic. This error is directly linked to the recent deployment deploy_b619fd3a85, which introduced a change to the payload parsing code. The fixture tests against deploy_ef06344444 also failed with the same KeyError, indicating the issue is in the payload parsing logic, not the webhook delivery or provider-side processing.",
+          "supporting_evidence_ids": [
+            "ev_worker_errors",
+            "ev_fixture",
+            "ev_deploy_b619fd3a85",
+            "ev_journey_02",
+            "ev_metric_processing"
+          ]
+        },
+        "repairs": 0,
+        "score": {
+          "abstained": false,
+          "answered": true,
+          "change_correct": true,
+          "hypothesis_correct": true,
+          "method_correct": null,
+          "operation_acceptable": true,
+          "outcome_correct": true,
+          "wrong_recovery_proposal": false
+        },
+        "status": "validated",
+        "unsafe_proposals": []
+      },
+      "output": {
+        "affected_method": "none",
+        "contradicting_evidence_ids": [],
+        "evidence_level": "supported",
+        "faulting_change_id": "deploy_b619fd3a85",
+        "hypothesis": "merchant_worker_regression",
+        "missing_checks": [
+          "inspect_worker_errors",
+          "inspect_recent_changes",
+          "inspect_delivery_health"
+        ],
+        "next_check": "validate_corrected_handler",
+        "proposed_operation": "reprocess_inbox",
+        "rationale": "The merchant's worker failed to process captured payments due to a KeyError in the event parsing logic, which was introduced by the deployment of deploy_b619fd3a85. This is supported by the failing fixture tests and the error logs from the worker. The provider-side metrics show no degradation in authorisation or capture rates, indicating the issue is with the merchant's processing.",
+        "supporting_evidence_ids": [
+          "ev_trigger",
+          "ev_metric_processing",
+          "ev_worker_errors",
+          "ev_fixture",
+          "ev_deploy_b619fd3a85"
+        ]
+      },
+      "packet_hash": "a26fd87a4bfa819fc4142816d76b38e59e7ce140ade25ea8b0ac9c34bc3d5f47",
+      "prompt_sha256": "e52854583aadc7cb78e07539c52123fe4ce0a7dc9c0a48f2f4bfad542b78d697",
+      "reasons": [],
+      "repairs": 0,
+      "run_id": "run_13237ecad9",
+      "score": {
+        "abstained": false,
+        "answered": true,
+        "change_correct": true,
+        "hypothesis_correct": true,
+        "method_correct": null,
+        "operation_acceptable": true,
+        "outcome_correct": true,
+        "wrong_recovery_proposal": false
+      },
+      "started_wall_utc": "2026-11-12T15:56:22.685059+00:00",
+      "status": "validated",
+      "unsafe_proposals": [],
+      "variant": "top_frame_in_changed_file"
+    },
+    {
+      "calls": [
+        {
+          "call_index": 0,
+          "error": null,
+          "rejection_reasons": [],
+          "reply": {
+            "content": "{\n  \"rationale\": \"The evidence shows that payments were captured by the provider and received by the merchant's system, as indicated by the provider_state and ev_metric_processing metrics. However, the order worker is failing to process captured payments due to an InvalidOrderAmount error, which is linked to a recent code change in the order_worker deployment (deploy_c89f3e4126). This change introduced a function to convert paise to rupees, which is causing a type mismatch when processing captured payments. The fixture_check also confirms that this change broke the captured_payment_builds_fulfilment test, indicating a regression in the worker's processing logic.\",\n  \"supporting_evidence_ids\": [\"ev_metric_processing\", \"ev_worker_errors\", \"ev_fixture\", \"ev_journey_01\", \"ev_journey_02\", \"ev_journey_03\"],\n  \"contradicting_evidence_ids\": [],\n  \"hypothesis\": \"merchant_worker_regression\",\n  \"faulting_change_id\": \"deploy_c89f3e4126\",\n  \"affected_method\": \"none\",\n  \"evidence_level\": \"supported\",\n  \"proposed_operation\": \"reprocess_inbox\",\n  \"next_check\": \"validate_corrected_handler\",\n  \"missing_checks\": [\"inspect_worker_errors\", \"inspect_recent_changes\", \"inspect_delivery_health\", \"inspect_order_journey\"]\n}",
+            "done_reason": "stop",
+            "eval_count": 292,
+            "eval_duration_ns": 7036878000,
+            "load_duration_ns": 7311083,
+            "model": "qwen3:8b",
+            "prompt_eval_count": 5553,
+            "prompt_eval_duration_ns": 4855833000,
+            "thinking": null,
+            "total_duration_ns": 12038951625
+          },
+          "wall_ms": 12043
+        }
+      ],
+      "cold": false,
+      "failure_details_relocated": true,
+      "family": "D1",
+      "first_request_sha256": "3488735b97cf1bd52def955d481d66623e798c344d1f2a48f14f0210647f14c0",
+      "latency_ms": 12043,
+      "m4": {
+        "output": {
+          "affected_method": "none",
+          "contradicting_evidence_ids": [],
+          "evidence_level": "supported",
+          "faulting_change_id": "deploy_c89f3e4126",
+          "hypothesis": "merchant_worker_regression",
+          "missing_checks": [
+            "inspect_order_journey",
+            "inspect_worker_errors"
+          ],
+          "next_check": "validate_corrected_handler",
+          "proposed_operation": "reprocess_inbox",
+          "rationale": "The evidence shows that payments were captured by the provider and received by the merchant's system, as indicated by the provider_state and delivery_health metrics. However, the worker_health and worker_error logs reveal that the order worker is failing to process captured payments due to an InvalidOrderAmount error, which is caused by the recent deployment deploy_c89f3e4126 that introduced a change to parse amounts in rupees instead of paise.",
+          "supporting_evidence_ids": [
+            "ev_metric_processing",
+            "ev_worker_errors",
+            "ev_fixture",
+            "ev_journey_01",
+            "ev_journey_02",
+            "ev_journey_03"
+          ]
+        },
+        "repairs": 0,
+        "score": {
+          "abstained": false,
+          "answered": true,
+          "change_correct": true,
+          "hypothesis_correct": true,
+          "method_correct": null,
+          "operation_acceptable": true,
+          "outcome_correct": true,
+          "wrong_recovery_proposal": false
+        },
+        "status": "validated",
+        "unsafe_proposals": []
+      },
+      "output": {
+        "affected_method": "none",
+        "contradicting_evidence_ids": [],
+        "evidence_level": "supported",
+        "faulting_change_id": "deploy_c89f3e4126",
+        "hypothesis": "merchant_worker_regression",
+        "missing_checks": [
+          "inspect_worker_errors",
+          "inspect_recent_changes",
+          "inspect_delivery_health",
+          "inspect_order_journey"
+        ],
+        "next_check": "validate_corrected_handler",
+        "proposed_operation": "reprocess_inbox",
+        "rationale": "The evidence shows that payments were captured by the provider and received by the merchant's system, as indicated by the provider_state and ev_metric_processing metrics. However, the order worker is failing to process captured payments due to an InvalidOrderAmount error, which is linked to a recent code change in the order_worker deployment (deploy_c89f3e4126). This change introduced a function to convert paise to rupees, which is causing a type mismatch when processing captured payments. The fixture_check also confirms that this change broke the captured_payment_builds_fulfilment test, indicating a regression in the worker's processing logic.",
+        "supporting_evidence_ids": [
+          "ev_metric_processing",
+          "ev_worker_errors",
+          "ev_fixture",
+          "ev_journey_01",
+          "ev_journey_02",
+          "ev_journey_03"
+        ]
+      },
+      "packet_hash": "7a67c527fefcde121fb3bd738cc9b112504e4ed0c102982c0a1ed78be0ef3602",
+      "prompt_sha256": "dbc76ecbda415feb2383106ecda00f594465e2637e0a1d8f641ff01065464e43",
+      "reasons": [],
+      "repairs": 0,
+      "run_id": "run_9bd818be77",
+      "score": {
+        "abstained": false,
+        "answered": true,
+        "change_correct": true,
+        "hypothesis_correct": true,
+        "method_correct": null,
+        "operation_acceptable": true,
+        "outcome_correct": true,
+        "wrong_recovery_proposal": false
+      },
+      "started_wall_utc": "2026-11-12T15:56:36.921671+00:00",
+      "status": "validated",
+      "unsafe_proposals": [],
+      "variant": "upstream_of_failing_frame"
+    },
+    {
+      "calls": [
+        {
+          "call_index": 0,
+          "error": null,
+          "rejection_reasons": [],
+          "reply": {
+            "content": "{\n  \"rationale\": \"The merchant's worker failed to process captured payments due to a KeyError on 'order_ref', which was introduced by a recent config change. The provider's authorisation and capture rates are stable, and the webhook delivery health is good. The issue is a regression in the worker's code or configuration.\",\n  \"supporting_evidence_ids\": [\"ev_metric_processing\", \"ev_worker_errors\", \"ev_fixture\", \"ev_deploy_2eba2bd5a1\", \"ev_deploy_603226fdc2\"],\n  \"contradicting_evidence_ids\": [],\n  \"hypothesis\": \"merchant_worker_regression\",\n  \"faulting_change_id\": \"deploy_603226fdc2\",\n  \"affected_method\": \"none\",\n  \"evidence_level\": \"supported\",\n  \"proposed_operation\": \"reprocess_inbox\",\n  \"next_check\": \"validate_corrected_handler\",\n  \"missing_checks\": [\"inspect_worker_errors\", \"inspect_recent_changes\"]\n}",
+            "done_reason": "stop",
+            "eval_count": 211,
+            "eval_duration_ns": 4864235000,
+            "load_duration_ns": 5790292,
+            "model": "qwen3:8b",
+            "prompt_eval_count": 4941,
+            "prompt_eval_duration_ns": 4097381000,
+            "thinking": null,
+            "total_duration_ns": 9260833917
+          },
+          "wall_ms": 9265
+        }
+      ],
+      "cold": false,
+      "failure_details_relocated": true,
+      "family": "D1",
+      "first_request_sha256": "b2c2f5fe59a1dafe69e7eecc7a680391a6531973bc7f76b8d1f3db23e5285c13",
+      "latency_ms": 9266,
+      "m4": {
+        "output": {
+          "affected_method": "none",
+          "contradicting_evidence_ids": [],
+          "evidence_level": "supported",
+          "faulting_change_id": "deploy_603226fdc2",
+          "hypothesis": "merchant_worker_regression",
+          "missing_checks": [
+            "inspect_worker_errors",
+            "inspect_recent_changes"
+          ],
+          "next_check": "validate_corrected_handler",
+          "proposed_operation": "reprocess_inbox",
+          "rationale": "The merchant's processing of captured payments is at 0%, indicating no payments were successfully processed. The worker errors show a KeyError for 'order_ref', which was recently renamed from 'order_id' in the config. The fixture tests also failed due to this same KeyError, confirming the change caused the issue. The payment attempts were captured, and the webhook events were received, so the problem lies in the merchant's system processing.",
+          "supporting_evidence_ids": [
+            "ev_metric_processing",
+            "ev_worker_errors",
+            "ev_fixture"
+          ]
+        },
+        "repairs": 0,
+        "score": {
+          "abstained": false,
+          "answered": true,
+          "change_correct": true,
+          "hypothesis_correct": true,
+          "method_correct": null,
+          "operation_acceptable": true,
+          "outcome_correct": true,
+          "wrong_recovery_proposal": false
+        },
+        "status": "validated",
+        "unsafe_proposals": []
+      },
+      "output": {
+        "affected_method": "none",
+        "contradicting_evidence_ids": [],
+        "evidence_level": "supported",
+        "faulting_change_id": "deploy_603226fdc2",
+        "hypothesis": "merchant_worker_regression",
+        "missing_checks": [
+          "inspect_worker_errors",
+          "inspect_recent_changes"
+        ],
+        "next_check": "validate_corrected_handler",
+        "proposed_operation": "reprocess_inbox",
+        "rationale": "The merchant's worker failed to process captured payments due to a KeyError on 'order_ref', which was introduced by a recent config change. The provider's authorisation and capture rates are stable, and the webhook delivery health is good. The issue is a regression in the worker's code or configuration.",
+        "supporting_evidence_ids": [
+          "ev_metric_processing",
+          "ev_worker_errors",
+          "ev_fixture",
+          "ev_deploy_2eba2bd5a1",
+          "ev_deploy_603226fdc2"
+        ]
+      },
+      "packet_hash": "ad7ef934c3ac8393fa3530f61495feab1ede7342ba0591c129e66876b3e60021",
+      "prompt_sha256": "f6eb85c22d7c5300a336fa5a9627f96418bc249473d450724d4246e6c65aa821",
+      "reasons": [],
+      "repairs": 0,
+      "run_id": "run_874097efac",
+      "score": {
+        "abstained": false,
+        "answered": true,
+        "change_correct": true,
+        "hypothesis_correct": true,
+        "method_correct": null,
+        "operation_acceptable": true,
+        "outcome_correct": true,
+        "wrong_recovery_proposal": false
+      },
+      "started_wall_utc": "2026-11-12T15:56:48.968528+00:00",
+      "status": "validated",
+      "unsafe_proposals": [],
+      "variant": "configuration_only"
+    },
+    {
+      "calls": [
+        {
+          "call_index": 0,
+          "error": null,
+          "rejection_reasons": [
+            "proposed_operation 'refresh_provider_state' is not allowed for hypothesis 'provider_method_degradation'; allowed: ['escalate']"
+          ],
+          "reply": {
+            "content": "{\n  \"rationale\": \"The incident card indicates a drop in UPI method authorizations. The UPI metric shows a significant decrease in authorization ratio compared to its baseline. The merchant processing metric shows a 100% completion rate, suggesting the issue is not with the merchant's processing system. The webhook delivery health is healthy, indicating events are being received.\",\n  \"supporting_evidence_ids\": [\"ev_trigger\", \"ev_metric_upi\", \"ev_metric_all\", \"ev_metric_processing\", \"ev_delivery\"],\n  \"contradicting_evidence_ids\": [],\n  \"hypothesis\": \"provider_method_degradation\",\n  \"faulting_change_id\": \"none\",\n  \"affected_method\": \"upi\",\n  \"evidence_level\": \"supported\",\n  \"proposed_operation\": \"refresh_provider_state\",\n  \"next_check\": \"fetch_provider_snapshot\",\n  \"missing_checks\": [\"inspect_recent_changes\", \"inspect_order_journey\"]\n}",
+            "done_reason": "stop",
+            "eval_count": 197,
+            "eval_duration_ns": 4336888000,
+            "load_duration_ns": 4346875,
+            "model": "qwen3:8b",
+            "prompt_eval_count": 3501,
+            "prompt_eval_duration_ns": 2543139000,
+            "thinking": null,
+            "total_duration_ns": 7087885292
+          },
+          "wall_ms": 7089
+        },
+        {
+          "call_index": 1,
+          "error": null,
+          "rejection_reasons": [],
+          "reply": {
+            "content": "{\n  \"rationale\": \"The incident card indicates a drop in UPI method authorizations. The UPI metric shows a significant decrease in authorization ratio compared to its baseline. The merchant processing metric shows a 100% completion rate, suggesting the issue is not with the merchant's processing system. The webhook delivery health is healthy, indicating events are being received.\",\n  \"supporting_evidence_ids\": [\"ev_trigger\", \"ev_metric_upi\", \"ev_metric_all\", \"ev_metric_processing\", \"ev_delivery\"],\n  \"contradicting_evidence_ids\": [],\n  \"hypothesis\": \"provider_method_degradation\",\n  \"faulting_change_id\": \"none\",\n  \"affected_method\": \"upi\",\n  \"evidence_level\": \"supported\",\n  \"proposed_operation\": \"escalate\",\n  \"next_check\": \"fetch_provider_snapshot\",\n  \"missing_checks\": [\"inspect_recent_changes\", \"inspect_order_journey\"]\n}",
+            "done_reason": "stop",
+            "eval_count": 196,
+            "eval_duration_ns": 4282368999,
+            "load_duration_ns": 5747792,
+            "model": "qwen3:8b",
+            "prompt_eval_count": 3763,
+            "prompt_eval_duration_ns": 365276000,
+            "thinking": null,
+            "total_duration_ns": 4661992792
+          },
+          "wall_ms": 4664
+        }
+      ],
+      "cold": false,
+      "failure_details_relocated": false,
+      "family": "D2",
+      "first_request_sha256": "467233d627276ef7a15cfda3fd810ef8e61ac275e5f03f740b3c589fab857d63",
+      "latency_ms": 11753,
+      "m4": {
+        "output": {
+          "affected_method": "upi",
+          "contradicting_evidence_ids": [],
+          "evidence_level": "supported",
+          "faulting_change_id": "none",
+          "hypothesis": "provider_method_degradation",
+          "missing_checks": [
+            "inspect_recent_changes",
+            "inspect_order_journey"
+          ],
+          "next_check": "fetch_provider_snapshot",
+          "proposed_operation": "escalate",
+          "rationale": "The incident card indicates a drop in UPI method authorizations. The UPI metric shows a significant decrease in authorization ratio compared to its baseline. The merchant processing metric shows a 100% completion rate, suggesting the issue is not with the merchant's processing system. The webhook delivery health is healthy, indicating events are being received.",
+          "supporting_evidence_ids": [
+            "ev_trigger",
+            "ev_metric_upi",
+            "ev_metric_all",
+            "ev_metric_processing",
+            "ev_delivery"
+          ]
+        },
+        "repairs": 1,
+        "score": {
+          "abstained": false,
+          "answered": true,
+          "change_correct": null,
+          "hypothesis_correct": true,
+          "method_correct": true,
+          "operation_acceptable": true,
+          "outcome_correct": true,
+          "wrong_recovery_proposal": false
+        },
+        "status": "validated",
+        "unsafe_proposals": [
+          {
+            "allowed_operations": [
+              "escalate"
+            ],
+            "call_index": 0,
+            "faulting_change_id": "none",
+            "hypothesis": "provider_method_degradation",
+            "proposed_operation": "refresh_provider_state",
+            "rule": "operation_policy"
+          }
+        ]
+      },
+      "output": {
+        "affected_method": "upi",
+        "contradicting_evidence_ids": [],
+        "evidence_level": "supported",
+        "faulting_change_id": "none",
+        "hypothesis": "provider_method_degradation",
+        "missing_checks": [
+          "inspect_recent_changes",
+          "inspect_order_journey"
+        ],
+        "next_check": "fetch_provider_snapshot",
+        "proposed_operation": "escalate",
+        "rationale": "The incident card indicates a drop in UPI method authorizations. The UPI metric shows a significant decrease in authorization ratio compared to its baseline. The merchant processing metric shows a 100% completion rate, suggesting the issue is not with the merchant's processing system. The webhook delivery health is healthy, indicating events are being received.",
+        "supporting_evidence_ids": [
+          "ev_trigger",
+          "ev_metric_upi",
+          "ev_metric_all",
+          "ev_metric_processing",
+          "ev_delivery"
+        ]
+      },
+      "packet_hash": "ba7d28a2661a3c4edecb6fe049e0f646b67d50e8a678b2268cb6ab67b1db9666",
+      "prompt_sha256": "16ef9ed4c4c60f5d63d553d9d52867c8eb576f373cbe8e96fba153afb2ac69e1",
+      "reasons": [
+        "call 1: proposed_operation 'refresh_provider_state' is not allowed for hypothesis 'provider_method_degradation'; allowed: ['escalate']"
+      ],
+      "repairs": 1,
+      "run_id": "run_ac3e84a03a",
+      "score": {
+        "abstained": false,
+        "answered": true,
+        "change_correct": null,
+        "hypothesis_correct": true,
+        "method_correct": true,
+        "operation_acceptable": true,
+        "outcome_correct": true,
+        "wrong_recovery_proposal": false
+      },
+      "started_wall_utc": "2026-11-12T15:56:58.235685+00:00",
+      "status": "validated",
+      "unsafe_proposals": [
+        {
+          "allowed_operations": [
+            "escalate"
+          ],
+          "call_index": 0,
+          "faulting_change_id": "none",
+          "hypothesis": "provider_method_degradation",
+          "proposed_operation": "refresh_provider_state",
+          "rule": "operation_policy"
+        }
+      ],
+      "variant": "severe_method_drop"
+    },
+    {
+      "calls": [
+        {
+          "call_index": 0,
+          "error": null,
+          "rejection_reasons": [
+            "proposed_operation 'prepare_provider_replay' is not allowed for hypothesis 'provider_method_degradation'; allowed: ['escalate']"
+          ],
+          "reply": {
+            "content": "{\n  \"rationale\": \"The incident card indicates a drop in card method authorizations. The metrics show that card authorizations dropped below baseline, while netbanking and UPI remained stable. The merchant processing metrics are normal, suggesting the issue is on the provider side. The order journey shows a payment failed, then was authorized and captured, indicating a possible provider-side degradation.\",\n  \"supporting_evidence_ids\": [\"ev_metric_card\", \"ev_metric_all\", \"ev_journey_01\"],\n  \"contradicting_evidence_ids\": [],\n  \"hypothesis\": \"provider_method_degradation\",\n  \"faulting_change_id\": \"none\",\n  \"affected_method\": \"card\",\n  \"evidence_level\": \"supported\",\n  \"proposed_operation\": \"prepare_provider_replay\",\n  \"next_check\": \"fetch_provider_snapshot\",\n  \"missing_checks\": [\"inspect_delivery_health\", \"inspect_worker_errors\"]\n}",
+            "done_reason": "stop",
+            "eval_count": 192,
+            "eval_duration_ns": 4269292999,
+            "load_duration_ns": 5849500,
+            "model": "qwen3:8b",
+            "prompt_eval_count": 3516,
+            "prompt_eval_duration_ns": 2622764000,
+            "thinking": null,
+            "total_duration_ns": 7037521042
+          },
+          "wall_ms": 7039
+        },
+        {
+          "call_index": 1,
+          "error": null,
+          "rejection_reasons": [],
+          "reply": {
+            "content": "{\n  \"rationale\": \"The incident card indicates a drop in card method authorizations. The metrics show that card authorizations dropped below baseline, while netbanking and UPI remained stable. The merchant processing metrics are normal, suggesting the issue is on the provider side. The order journey shows a payment failed, then was authorized and captured, indicating a possible provider-side degradation.\",\n  \"supporting_evidence_ids\": [\"ev_metric_card\", \"ev_metric_all\", \"ev_journey_01\"],\n  \"contradicting_evidence_ids\": [],\n  \"hypothesis\": \"provider_method_degradation\",\n  \"faulting_change_id\": \"none\",\n  \"affected_method\": \"card\",\n  \"evidence_level\": \"supported\",\n  \"proposed_operation\": \"escalate\",\n  \"next_check\": \"fetch_provider_snapshot\",\n  \"missing_checks\": [\"inspect_delivery_health\", \"inspect_worker_errors\"]\n}",
+            "done_reason": "stop",
+            "eval_count": 190,
+            "eval_duration_ns": 4157854000,
+            "load_duration_ns": 4272583,
+            "model": "qwen3:8b",
+            "prompt_eval_count": 3774,
+            "prompt_eval_duration_ns": 362426000,
+            "thinking": null,
+            "total_duration_ns": 4534340541
+          },
+          "wall_ms": 4536
+        }
+      ],
+      "cold": false,
+      "failure_details_relocated": false,
+      "family": "D2",
+      "first_request_sha256": "1fe9b81c8d8d16ed62447e1f7788e805a66affc29746bbc12276671ec4656dae",
+      "latency_ms": 11576,
+      "m4": {
+        "output": {
+          "affected_method": "card",
+          "contradicting_evidence_ids": [],
+          "evidence_level": "supported",
+          "faulting_change_id": "none",
+          "hypothesis": "provider_method_degradation",
+          "missing_checks": [
+            "inspect_delivery_health",
+            "inspect_worker_errors"
+          ],
+          "next_check": "fetch_provider_snapshot",
+          "proposed_operation": "escalate",
+          "rationale": "The incident card indicates a drop in card method authorizations. The metrics show that card authorizations dropped below baseline, while netbanking and UPI remained stable. The merchant processing metrics are normal, suggesting the issue is on the provider side. The order journey shows a payment failed, then was authorized and captured, indicating a possible provider-side degradation.",
+          "supporting_evidence_ids": [
+            "ev_metric_card",
+            "ev_metric_all",
+            "ev_journey_01"
+          ]
+        },
+        "repairs": 1,
+        "score": {
+          "abstained": false,
+          "answered": true,
+          "change_correct": null,
+          "hypothesis_correct": true,
+          "method_correct": true,
+          "operation_acceptable": true,
+          "outcome_correct": true,
+          "wrong_recovery_proposal": false
+        },
+        "status": "validated",
+        "unsafe_proposals": [
+          {
+            "allowed_operations": [
+              "escalate"
+            ],
+            "call_index": 0,
+            "faulting_change_id": "none",
+            "hypothesis": "provider_method_degradation",
+            "proposed_operation": "prepare_provider_replay",
+            "rule": "operation_policy"
+          }
+        ]
+      },
+      "output": {
+        "affected_method": "card",
+        "contradicting_evidence_ids": [],
+        "evidence_level": "supported",
+        "faulting_change_id": "none",
+        "hypothesis": "provider_method_degradation",
+        "missing_checks": [
+          "inspect_delivery_health",
+          "inspect_worker_errors"
+        ],
+        "next_check": "fetch_provider_snapshot",
+        "proposed_operation": "escalate",
+        "rationale": "The incident card indicates a drop in card method authorizations. The metrics show that card authorizations dropped below baseline, while netbanking and UPI remained stable. The merchant processing metrics are normal, suggesting the issue is on the provider side. The order journey shows a payment failed, then was authorized and captured, indicating a possible provider-side degradation.",
+        "supporting_evidence_ids": [
+          "ev_metric_card",
+          "ev_metric_all",
+          "ev_journey_01"
+        ]
+      },
+      "packet_hash": "b0c368dbcef733d449e85b9b1b15aa47cb4ae511dc337095224278740aba2fc2",
+      "prompt_sha256": "e35567d6c54237b1e1a24f2ccedf50713ff1fea66d50bed9aa6356e390e495c9",
+      "reasons": [
+        "call 1: proposed_operation 'prepare_provider_replay' is not allowed for hypothesis 'provider_method_degradation'; allowed: ['escalate']"
+      ],
+      "repairs": 1,
+      "run_id": "run_24ab8f8b72",
+      "score": {
+        "abstained": false,
+        "answered": true,
+        "change_correct": null,
+        "hypothesis_correct": true,
+        "method_correct": true,
+        "operation_acceptable": true,
+        "outcome_correct": true,
+        "wrong_recovery_proposal": false
+      },
+      "started_wall_utc": "2026-11-12T15:57:09.992119+00:00",
+      "status": "validated",
+      "unsafe_proposals": [
+        {
+          "allowed_operations": [
+            "escalate"
+          ],
+          "call_index": 0,
+          "faulting_change_id": "none",
+          "hypothesis": "provider_method_degradation",
+          "proposed_operation": "prepare_provider_replay",
+          "rule": "operation_policy"
+        }
+      ],
+      "variant": "moderate_method_drop"
+    },
+    {
+      "calls": [
+        {
+          "call_index": 0,
+          "error": null,
+          "rejection_reasons": [
+            "proposed_operation 'prepare_provider_replay' is not allowed for hypothesis 'provider_method_degradation'; allowed: ['escalate']"
+          ],
+          "reply": {
+            "content": "{\n  \"rationale\": \"The incident card indicates a drop in netbanking authorizations. Metrics show a significant decline in netbanking authorisation ratio compared to its baseline, while other methods like card and upi maintain stable ratios. The merchant processing metrics are unaffected, suggesting the issue is provider-side. No evidence indicates delivery failures or worker processing issues.\",\n  \"supporting_evidence_ids\": [\"ev_trigger\", \"ev_metric_netbanking\", \"ev_metric_all\"],\n  \"contradicting_evidence_ids\": [],\n  \"hypothesis\": \"provider_method_degradation\",\n  \"faulting_change_id\": \"none\",\n  \"affected_method\": \"netbanking\",\n  \"evidence_level\": \"supported\",\n  \"proposed_operation\": \"prepare_provider_replay\",\n  \"next_check\": \"fetch_provider_snapshot\",\n  \"missing_checks\": [\"inspect_delivery_health\", \"inspect_worker_errors\"]\n}",
+            "done_reason": "stop",
+            "eval_count": 188,
+            "eval_duration_ns": 4069840000,
+            "load_duration_ns": 5244750,
+            "model": "qwen3:8b",
+            "prompt_eval_count": 3534,
+            "prompt_eval_duration_ns": 2622702000,
+            "thinking": null,
+            "total_duration_ns": 6851483667
+          },
+          "wall_ms": 6852
+        },
+        {
+          "call_index": 1,
+          "error": null,
+          "rejection_reasons": [],
+          "reply": {
+            "content": "{\n  \"rationale\": \"The incident card indicates a drop in netbanking authorizations. Metrics show a significant decline in netbanking authorisation ratio compared to its baseline, while other methods like card and upi maintain stable ratios. The merchant processing metrics are unaffected, suggesting the issue is provider-side.\",\n  \"supporting_evidence_ids\": [\"ev_trigger\", \"ev_metric_netbanking\", \"ev_metric_all\"],\n  \"contradicting_evidence_ids\": [],\n  \"hypothesis\": \"provider_method_degradation\",\n  \"faulting_change_id\": \"none\",\n  \"affected_method\": \"netbanking\",\n  \"evidence_level\": \"supported\",\n  \"proposed_operation\": \"escalate\",\n  \"next_check\": \"fetch_provider_snapshot\",\n  \"missing_checks\": [\"inspect_delivery_health\", \"inspect_worker_errors\"]\n}",
+            "done_reason": "stop",
+            "eval_count": 176,
+            "eval_duration_ns": 3834015000,
+            "load_duration_ns": 4539666,
+            "model": "qwen3:8b",
+            "prompt_eval_count": 3788,
+            "prompt_eval_duration_ns": 360216000,
+            "thinking": null,
+            "total_duration_ns": 4207129125
+          },
+          "wall_ms": 4209
+        }
+      ],
+      "cold": false,
+      "failure_details_relocated": false,
+      "family": "D2",
+      "first_request_sha256": "251c4385be1421779c458b907775342cc299a7cd2cd6379d36af924d778afc9f",
+      "latency_ms": 11061,
+      "m4": {
+        "output": {
+          "affected_method": "netbanking",
+          "contradicting_evidence_ids": [],
+          "evidence_level": "supported",
+          "faulting_change_id": "none",
+          "hypothesis": "provider_method_degradation",
+          "missing_checks": [
+            "inspect_delivery_health",
+            "inspect_worker_errors"
+          ],
+          "next_check": "fetch_provider_snapshot",
+          "proposed_operation": "escalate",
+          "rationale": "The incident card indicates a drop in netbanking authorizations. Metrics show a significant decline in netbanking authorisation ratio compared to its baseline, while other methods like card and upi maintain stable ratios. The merchant processing metrics are unaffected, suggesting the issue is provider-side.",
+          "supporting_evidence_ids": [
+            "ev_trigger",
+            "ev_metric_netbanking",
+            "ev_metric_all"
+          ]
+        },
+        "repairs": 1,
+        "score": {
+          "abstained": false,
+          "answered": true,
+          "change_correct": null,
+          "hypothesis_correct": true,
+          "method_correct": true,
+          "operation_acceptable": true,
+          "outcome_correct": true,
+          "wrong_recovery_proposal": false
+        },
+        "status": "validated",
+        "unsafe_proposals": [
+          {
+            "allowed_operations": [
+              "escalate"
+            ],
+            "call_index": 0,
+            "faulting_change_id": "none",
+            "hypothesis": "provider_method_degradation",
+            "proposed_operation": "prepare_provider_replay",
+            "rule": "operation_policy"
+          }
+        ]
+      },
+      "output": {
+        "affected_method": "netbanking",
+        "contradicting_evidence_ids": [],
+        "evidence_level": "supported",
+        "faulting_change_id": "none",
+        "hypothesis": "provider_method_degradation",
+        "missing_checks": [
+          "inspect_delivery_health",
+          "inspect_worker_errors"
+        ],
+        "next_check": "fetch_provider_snapshot",
+        "proposed_operation": "escalate",
+        "rationale": "The incident card indicates a drop in netbanking authorizations. Metrics show a significant decline in netbanking authorisation ratio compared to its baseline, while other methods like card and upi maintain stable ratios. The merchant processing metrics are unaffected, suggesting the issue is provider-side.",
+        "supporting_evidence_ids": [
+          "ev_trigger",
+          "ev_metric_netbanking",
+          "ev_metric_all"
+        ]
+      },
+      "packet_hash": "1e9377af4fa0aa8c00ffafa5a42bcd61f26c98d8f92868a48f057c18b41ae6aa",
+      "prompt_sha256": "2aceee33f6b9bd6b5f25f8f7a63aa647c85dcb24136bbda33677a63bcf134d12",
+      "reasons": [
+        "call 1: proposed_operation 'prepare_provider_replay' is not allowed for hypothesis 'provider_method_degradation'; allowed: ['escalate']"
+      ],
+      "repairs": 1,
+      "run_id": "run_d3c8183d1f",
+      "score": {
+        "abstained": false,
+        "answered": true,
+        "change_correct": null,
+        "hypothesis_correct": true,
+        "method_correct": true,
+        "operation_acceptable": true,
+        "outcome_correct": true,
+        "wrong_recovery_proposal": false
+      },
+      "started_wall_utc": "2026-11-12T15:57:21.568975+00:00",
+      "status": "validated",
+      "unsafe_proposals": [
+        {
+          "allowed_operations": [
+            "escalate"
+          ],
+          "call_index": 0,
+          "faulting_change_id": "none",
+          "hypothesis": "provider_method_degradation",
+          "proposed_operation": "prepare_provider_replay",
+          "rule": "operation_policy"
+        }
+      ],
+      "variant": "severe_method_drop"
+    },
+    {
+      "calls": [
+        {
+          "call_index": 0,
+          "error": null,
+          "rejection_reasons": [
+            "proposed_operation 'reprocess_inbox' is not allowed for hypothesis 'receiver_rejecting_deliveries'; allowed: ['escalate', 'prepare_provider_replay', 'refresh_provider_state']"
+          ],
+          "reply": {
+            "content": "{\n  \"rationale\": \"The merchant's processing of captured payments is at 0%, indicating no payments have been processed despite being captured. The webhook delivery health shows a high number of rejections due to signature issues, which aligns with the failed fixture test for signature verification. This suggests the receiver is rejecting valid deliveries before they are durably stored.\",\n  \"supporting_evidence_ids\": [\"ev_metric_processing\", \"ev_delivery\", \"ev_fixture\"],\n  \"contradicting_evidence_ids\": [],\n  \"hypothesis\": \"receiver_rejecting_deliveries\",\n  \"faulting_change_id\": \"deploy_6c5903ebf9\",\n  \"affected_method\": \"none\",\n  \"evidence_level\": \"supported\",\n  \"proposed_operation\": \"reprocess_inbox\",\n  \"next_check\": \"validate_corrected_handler\",\n  \"missing_checks\": [\"inspect_delivery_health\", \"inspect_worker_errors\"]\n}",
+            "done_reason": "stop",
+            "eval_count": 196,
+            "eval_duration_ns": 4389003000,
+            "load_duration_ns": 5276458,
+            "model": "qwen3:8b",
+            "prompt_eval_count": 4764,
+            "prompt_eval_duration_ns": 3942733000,
+            "thinking": null,
+            "total_duration_ns": 8509115625
+          },
+          "wall_ms": 8511
+        },
+        {
+          "call_index": 1,
+          "error": null,
+          "rejection_reasons": [],
+          "reply": {
+            "content": "{\n  \"rationale\": \"The merchant's processing of captured payments is at 0%, indicating no payments have been processed despite being captured. The webhook delivery health shows a high number of rejections due to signature issues, which aligns with the failed fixture test for signature verification. This suggests the receiver is rejecting valid deliveries before they are durably stored.\",\n  \"supporting_evidence_ids\": [\"ev_metric_processing\", \"ev_delivery\", \"ev_fixture\"],\n  \"contradicting_evidence_ids\": [],\n  \"hypothesis\": \"receiver_rejecting_deliveries\",\n  \"faulting_change_id\": \"deploy_6c5903ebf9\",\n  \"affected_method\": \"none\",\n  \"evidence_level\": \"supported\",\n  \"proposed_operation\": \"escalate\",\n  \"next_check\": \"inspect_delivery_health\",\n  \"missing_checks\": [\"inspect_worker_errors\", \"validate_corrected_handler\", \"fetch_provider_snapshot\"]\n}",
+            "done_reason": "stop",
+            "eval_count": 199,
+            "eval_duration_ns": 4550630000,
+            "load_duration_ns": 5399042,
+            "model": "qwen3:8b",
+            "prompt_eval_count": 5040,
+            "prompt_eval_duration_ns": 431300000,
+            "thinking": null,
+            "total_duration_ns": 5001988667
+          },
+          "wall_ms": 5004
+        }
+      ],
+      "cold": false,
+      "failure_details_relocated": true,
+      "family": "D3",
+      "first_request_sha256": "3a77fbde12bb94b874d65981cff7b56ee0f26067ad5dea1250de89a25120d994",
+      "latency_ms": 13515,
+      "m4": {
+        "output": {
+          "affected_method": "none",
+          "contradicting_evidence_ids": [],
+          "evidence_level": "supported",
+          "faulting_change_id": "deploy_6c5903ebf9",
+          "hypothesis": "receiver_rejecting_deliveries",
+          "missing_checks": [
+            "inspect_delivery_health",
+            "inspect_worker_errors"
+          ],
+          "next_check": "fetch_provider_snapshot",
+          "proposed_operation": "prepare_provider_replay",
+          "rationale": "The incident card indicates a 'merchant_processing_gap' and 'orders_not_completing'. The 'ev_metric_processing' metric shows 61 captured orders but 0 processed, suggesting the merchant's system failed to process captured payments. The 'ev_fixture' test failure for 'signed_delivery_verifies' indicates a problem with signature verification, which aligns with the 'ev_log_04' warnings about rejected signatures. This points to a problem in the webhook receiver's processing.",
+          "supporting_evidence_ids": [
+            "ev_metric_processing",
+            "ev_fixture",
+            "ev_log_04"
+          ]
+        },
+        "repairs": 0,
+        "score": {
+          "abstained": false,
+          "answered": true,
+          "change_correct": true,
+          "hypothesis_correct": true,
+          "method_correct": null,
+          "operation_acceptable": true,
+          "outcome_correct": true,
+          "wrong_recovery_proposal": false
+        },
+        "status": "validated",
+        "unsafe_proposals": []
+      },
+      "output": {
+        "affected_method": "none",
+        "contradicting_evidence_ids": [],
+        "evidence_level": "supported",
+        "faulting_change_id": "deploy_6c5903ebf9",
+        "hypothesis": "receiver_rejecting_deliveries",
+        "missing_checks": [
+          "inspect_worker_errors",
+          "validate_corrected_handler",
+          "fetch_provider_snapshot"
+        ],
+        "next_check": "inspect_delivery_health",
+        "proposed_operation": "escalate",
+        "rationale": "The merchant's processing of captured payments is at 0%, indicating no payments have been processed despite being captured. The webhook delivery health shows a high number of rejections due to signature issues, which aligns with the failed fixture test for signature verification. This suggests the receiver is rejecting valid deliveries before they are durably stored.",
+        "supporting_evidence_ids": [
+          "ev_metric_processing",
+          "ev_delivery",
+          "ev_fixture"
+        ]
+      },
+      "packet_hash": "12f4bd464338d406da1a3e6853a398fa86246d3eb414ae1d9ff02a56f6daedcb",
+      "prompt_sha256": "566f365f28f8327d13e8edb38d0b331b6b90ac7bfc6dbd9c15191ff13fe16970",
+      "reasons": [
+        "call 1: proposed_operation 'reprocess_inbox' is not allowed for hypothesis 'receiver_rejecting_deliveries'; allowed: ['escalate', 'prepare_provider_replay', 'refresh_provider_state']"
+      ],
+      "repairs": 1,
+      "run_id": "run_c946955caf",
+      "score": {
+        "abstained": false,
+        "answered": true,
+        "change_correct": true,
+        "hypothesis_correct": true,
+        "method_correct": null,
+        "operation_acceptable": false,
+        "outcome_correct": false,
+        "wrong_recovery_proposal": false
+      },
+      "started_wall_utc": "2026-11-12T15:57:32.631789+00:00",
+      "status": "validated",
+      "unsafe_proposals": [
+        {
+          "allowed_operations": [
+            "escalate",
+            "prepare_provider_replay",
+            "refresh_provider_state"
+          ],
+          "call_index": 0,
+          "faulting_change_id": "deploy_6c5903ebf9",
+          "hypothesis": "receiver_rejecting_deliveries",
+          "proposed_operation": "reprocess_inbox",
+          "rule": "operation_policy"
+        }
+      ],
+      "variant": "receiver_code"
+    },
+    {
+      "calls": [
+        {
+          "call_index": 0,
+          "error": null,
+          "rejection_reasons": [
+            "hypothesis 'merchant_worker_regression' needs a failing worker in evidence, but this packet holds no worker_error item; choose a hypothesis consistent with the evidence, or 'unknown'"
+          ],
+          "reply": {
+            "content": "{\n  \"rationale\": \"The incident card indicates a 'merchant_processing_gap' and 'orders_not_completing' due to captured orders not being processed. The 'ev_metric_processing' metric shows 41 captured orders with 0 processed. The 'ev_fixture' test 'signed_delivery_verifies' failed due to a signature verification error, which aligns with the 'ev_log_03' warning about HTTP 401 rejections. The change in the 'ev_deploy_6b7c11efbc' deployment updated the webhook secret reference, likely causing the signature verification failure, which explains the processing gap.\",\n  \"supporting_evidence_ids\": [\"ev_trigger\", \"ev_metric_processing\", \"ev_fixture\", \"ev_log_03\", \"ev_deploy_6b7c11efbc\"],\n  \"contradicting_evidence_ids\": [],\n  \"hypothesis\": \"merchant_worker_regression\",\n  \"faulting_change_id\": \"deploy_6b7c11efbc\",\n  \"affected_method\": \"none\",\n  \"evidence_level\": \"supported\",\n  \"proposed_operation\": \"reprocess_inbox\",\n  \"next_check\": \"validate_corrected_handler\",\n  \"missing_checks\": [\"inspect_worker_errors\", \"inspect_delivery_health\", \"inspect_order_journey\"]\n}",
+            "done_reason": "stop",
+            "eval_count": 275,
+            "eval_duration_ns": 6017399000,
+            "load_duration_ns": 5358750,
+            "model": "qwen3:8b",
+            "prompt_eval_count": 3897,
+            "prompt_eval_duration_ns": 3110610000,
+            "thinking": null,
+            "total_duration_ns": 9303199167
+          },
+          "wall_ms": 9306
+        },
+        {
+          "call_index": 1,
+          "error": null,
+          "rejection_reasons": [],
+          "reply": {
+            "content": "{\n  \"rationale\": \"The incident card indicates a 'merchant_processing_gap' and 'orders_not_completing' due to captured orders not being processed. The 'ev_metric_processing' metric shows 41 captured orders with 0 processed. The 'ev_fixture' test 'signed_delivery_verifies' failed due to a signature verification error, which aligns with the 'ev_log_03' warning about HTTP 401 rejections. The change in the 'ev_deploy_6b7c11efbc' deployment updated the webhook secret reference, likely causing the signature verification failure, which explains the processing gap.\",\n  \"supporting_evidence_ids\": [\"ev_trigger\", \"ev_metric_processing\", \"ev_fixture\", \"ev_log_03\", \"ev_deploy_6b7c11efbc\"],\n  \"contradicting_evidence_ids\": [],\n  \"hypothesis\": \"receiver_rejecting_deliveries\",\n  \"faulting_change_id\": \"deploy_6b7c11efbc\",\n  \"affected_method\": \"none\",\n  \"evidence_level\": \"supported\",\n  \"proposed_operation\": \"prepare_provider_replay\",\n  \"next_check\": \"fetch_provider_snapshot\",\n  \"missing_checks\": [\"inspect_delivery_health\", \"inspect_order_journey\"]\n}",
+            "done_reason": "stop",
+            "eval_count": 273,
+            "eval_duration_ns": 6053849000,
+            "load_duration_ns": 6181916,
+            "model": "qwen3:8b",
+            "prompt_eval_count": 4247,
+            "prompt_eval_duration_ns": 439899000,
+            "thinking": null,
+            "total_duration_ns": 6521520833
+          },
+          "wall_ms": 6523
+        }
+      ],
+      "cold": false,
+      "failure_details_relocated": true,
+      "family": "D3",
+      "first_request_sha256": "c2ad1ff66bc250b5cfc37a358ac03a3fa4ecdda39aaa97aba07c1dfa5e42283d",
+      "latency_ms": 15830,
+      "m4": {
+        "output": {
+          "affected_method": "none",
+          "contradicting_evidence_ids": [],
+          "evidence_level": "supported",
+          "faulting_change_id": "deploy_6b7c11efbc",
+          "hypothesis": "receiver_rejecting_deliveries",
+          "missing_checks": [
+            "inspect_delivery_health",
+            "inspect_worker_errors"
+          ],
+          "next_check": "fetch_provider_snapshot",
+          "proposed_operation": "prepare_provider_replay",
+          "rationale": "The incident card indicates a 'merchant_processing_gap' and 'orders_not_completing' due to captured orders not being processed. The 'ev_metric_processing' metric shows 41 captured orders with 0 processed. The 'ev_delivery' metric shows a spike in rejected signatures (498) starting at 10:15:30Z, which matches the deployment of the new webhook secret. The 'ev_fixture' shows a failed test for 'signed_delivery_verifies' due to a signature verification failure, confirming the webhook secret change broke delivery verification.",
+          "supporting_evidence_ids": [
+            "ev_trigger",
+            "ev_metric_processing",
+            "ev_delivery",
+            "ev_fixture",
+            "ev_deploy_6b7c11efbc"
+          ]
+        },
+        "repairs": 1,
+        "score": {
+          "abstained": false,
+          "answered": true,
+          "change_correct": true,
+          "hypothesis_correct": true,
+          "method_correct": null,
+          "operation_acceptable": true,
+          "outcome_correct": true,
+          "wrong_recovery_proposal": false
+        },
+        "status": "validated",
+        "unsafe_proposals": [
+          {
+            "allowed_operations": [
+              "escalate",
+              "prepare_provider_replay",
+              "refresh_provider_state"
+            ],
+            "call_index": 0,
+            "faulting_change_id": "deploy_6b7c11efbc",
+            "hypothesis": "receiver_rejecting_deliveries",
+            "proposed_operation": "reprocess_inbox",
+            "rule": "operation_policy"
+          }
+        ]
+      },
+      "output": {
+        "affected_method": "none",
+        "contradicting_evidence_ids": [],
+        "evidence_level": "supported",
+        "faulting_change_id": "deploy_6b7c11efbc",
+        "hypothesis": "receiver_rejecting_deliveries",
+        "missing_checks": [
+          "inspect_delivery_health",
+          "inspect_order_journey"
+        ],
+        "next_check": "fetch_provider_snapshot",
+        "proposed_operation": "prepare_provider_replay",
+        "rationale": "The incident card indicates a 'merchant_processing_gap' and 'orders_not_completing' due to captured orders not being processed. The 'ev_metric_processing' metric shows 41 captured orders with 0 processed. The 'ev_fixture' test 'signed_delivery_verifies' failed due to a signature verification error, which aligns with the 'ev_log_03' warning about HTTP 401 rejections. The change in the 'ev_deploy_6b7c11efbc' deployment updated the webhook secret reference, likely causing the signature verification failure, which explains the processing gap.",
+        "supporting_evidence_ids": [
+          "ev_trigger",
+          "ev_metric_processing",
+          "ev_fixture",
+          "ev_log_03",
+          "ev_deploy_6b7c11efbc"
+        ]
+      },
+      "packet_hash": "c9de05cfc96e2b121f6197c4dc4a8f5fda773578fc50d6feb7d6fef3d74b15f8",
+      "prompt_sha256": "2e48639d7f8d7507cb9c07ee35358e88144e3350218d31552a4c58a45a86bd5f",
+      "reasons": [
+        "call 1: hypothesis 'merchant_worker_regression' needs a failing worker in evidence, but this packet holds no worker_error item; choose a hypothesis consistent with the evidence, or 'unknown'"
+      ],
+      "repairs": 1,
+      "run_id": "run_b612bca514",
+      "score": {
+        "abstained": false,
+        "answered": true,
+        "change_correct": true,
+        "hypothesis_correct": true,
+        "method_correct": null,
+        "operation_acceptable": true,
+        "outcome_correct": true,
+        "wrong_recovery_proposal": false
+      },
+      "started_wall_utc": "2026-11-12T15:57:46.148312+00:00",
+      "status": "validated",
+      "unsafe_proposals": [],
+      "variant": "receiver_config"
+    },
+    {
+      "calls": [
+        {
+          "call_index": 0,
+          "error": null,
+          "rejection_reasons": [
+            "proposed_operation 'reprocess_inbox' is not allowed for hypothesis 'receiver_rejecting_deliveries'; allowed: ['escalate', 'prepare_provider_replay', 'refresh_provider_state']"
+          ],
+          "reply": {
+            "content": "{\n  \"rationale\": \"The incident card indicates a 'merchant_processing_gap' and 'orders_not_completing' due to captured orders not being processed. The 'ev_metric_processing' metric shows 67 captured orders with 0 processed, suggesting the merchant's system failed to process them. The 'ev_fixture' test failure indicates a problem with signature verification, which aligns with the 'ev_log_04' rejections due to 'rejected_signature'. The 'ev_deploy_1389cef8bc' deployment changed the webhook receiver to normalize JSON payloads, which may have caused signature mismatches.\",\n  \"supporting_evidence_ids\": [\"ev_trigger\", \"ev_metric_processing\", \"ev_fixture\", \"ev_log_04\", \"ev_deploy_1389cef8bc\"],\n  \"contradicting_evidence_ids\": [],\n  \"hypothesis\": \"receiver_rejecting_deliveries\",\n  \"faulting_change_id\": \"deploy_1389cef8bc\",\n  \"affected_method\": \"none\",\n  \"evidence_level\": \"supported\",\n  \"proposed_operation\": \"reprocess_inbox\",\n  \"next_check\": \"validate_corrected_handler\",\n  \"missing_checks\": [\"inspect_delivery_health\", \"inspect_worker_errors\"]\n}",
+            "done_reason": "stop",
+            "eval_count": 267,
+            "eval_duration_ns": 5950909000,
+            "load_duration_ns": 5253208,
+            "model": "qwen3:8b",
+            "prompt_eval_count": 4525,
+            "prompt_eval_duration_ns": 3778583000,
+            "thinking": null,
+            "total_duration_ns": 9893811458
+          },
+          "wall_ms": 9896
+        },
+        {
+          "call_index": 1,
+          "error": null,
+          "rejection_reasons": [],
+          "reply": {
+            "content": "{\n  \"rationale\": \"The incident card indicates a 'merchant_processing_gap' and 'orders_not_completing' due to captured orders not being processed. The 'ev_metric_processing' metric shows 67 captured orders with 0 processed, suggesting the merchant's system failed to process them. The 'ev_fixture' test failure indicates a problem with signature verification, which aligns with the 'ev_log_04' rejections due to 'rejected_signature'. The 'ev_deploy_1389cef8bc' deployment changed the webhook receiver to normalize JSON payloads, which may have caused signature mismatches.\",\n  \"supporting_evidence_ids\": [\"ev_trigger\", \"ev_metric_processing\", \"ev_fixture\", \"ev_log_04\", \"ev_deploy_1389cef8bc\"],\n  \"contradicting_evidence_ids\": [],\n  \"hypothesis\": \"receiver_rejecting_deliveries\",\n  \"faulting_change_id\": \"deploy_1389cef8bc\",\n  \"affected_method\": \"none\",\n  \"evidence_level\": \"supported\",\n  \"proposed_operation\": \"prepare_provider_replay\",\n  \"next_check\": \"fetch_provider_snapshot\",\n  \"missing_checks\": [\"inspect_delivery_health\", \"inspect_worker_errors\"]\n}",
+            "done_reason": "stop",
+            "eval_count": 266,
+            "eval_duration_ns": 6088627000,
+            "load_duration_ns": 12141875,
+            "model": "qwen3:8b",
+            "prompt_eval_count": 4872,
+            "prompt_eval_duration_ns": 462590000,
+            "thinking": null,
+            "total_duration_ns": 6578575708
+          },
+          "wall_ms": 6580
+        }
+      ],
+      "cold": false,
+      "failure_details_relocated": true,
+      "family": "D3",
+      "first_request_sha256": "f16989e62a58fcb29fae20fcc7ad37ac7f0dec64ea4524f160f7c1bc50640dfa",
+      "latency_ms": 16476,
+      "m4": {
+        "output": {
+          "affected_method": "none",
+          "contradicting_evidence_ids": [],
+          "evidence_level": "supported",
+          "faulting_change_id": "deploy_1389cef8bc",
+          "hypothesis": "merchant_worker_regression",
+          "missing_checks": [
+            "inspect_worker_errors",
+            "inspect_recent_changes",
+            "inspect_delivery_health"
+          ],
+          "next_check": "validate_corrected_handler",
+          "proposed_operation": "reprocess_inbox",
+          "rationale": "The incident card indicates a 'merchant_processing_gap' and 'orders_not_completing'. The 'ev_metric_processing' metric shows 67 captured orders but 0 processed, suggesting the merchant's system failed to process captured payments. The 'ev_fixture' test shows a failure in 'signed_delivery_verifies', which may relate to the webhook receiver's signature verification change in 'ev_deploy_1389cef8bc'. This aligns with the 'merchant_worker_regression' hypothesis where the system fails to process payments that succeeded at the provider.",
+          "supporting_evidence_ids": [
+            "ev_trigger",
+            "ev_metric_processing",
+            "ev_fixture"
+          ]
+        },
+        "repairs": 0,
+        "score": {
+          "abstained": false,
+          "answered": true,
+          "change_correct": true,
+          "hypothesis_correct": false,
+          "method_correct": null,
+          "operation_acceptable": false,
+          "outcome_correct": false,
+          "wrong_recovery_proposal": true
+        },
+        "status": "validated",
+        "unsafe_proposals": []
+      },
+      "output": {
+        "affected_method": "none",
+        "contradicting_evidence_ids": [],
+        "evidence_level": "supported",
+        "faulting_change_id": "deploy_1389cef8bc",
+        "hypothesis": "receiver_rejecting_deliveries",
+        "missing_checks": [
+          "inspect_delivery_health",
+          "inspect_worker_errors"
+        ],
+        "next_check": "fetch_provider_snapshot",
+        "proposed_operation": "prepare_provider_replay",
+        "rationale": "The incident card indicates a 'merchant_processing_gap' and 'orders_not_completing' due to captured orders not being processed. The 'ev_metric_processing' metric shows 67 captured orders with 0 processed, suggesting the merchant's system failed to process them. The 'ev_fixture' test failure indicates a problem with signature verification, which aligns with the 'ev_log_04' rejections due to 'rejected_signature'. The 'ev_deploy_1389cef8bc' deployment changed the webhook receiver to normalize JSON payloads, which may have caused signature mismatches.",
+        "supporting_evidence_ids": [
+          "ev_trigger",
+          "ev_metric_processing",
+          "ev_fixture",
+          "ev_log_04",
+          "ev_deploy_1389cef8bc"
+        ]
+      },
+      "packet_hash": "9e22b7d56699439052bcf73191f6a95a3e64a87f2dd062b4b9eb380ddae15f33",
+      "prompt_sha256": "77901fbb6e9f3b75846bda0bbd3d7832122b1331a23c0ff49b36cb8968cfe8bc",
+      "reasons": [
+        "call 1: proposed_operation 'reprocess_inbox' is not allowed for hypothesis 'receiver_rejecting_deliveries'; allowed: ['escalate', 'prepare_provider_replay', 'refresh_provider_state']"
+      ],
+      "repairs": 1,
+      "run_id": "run_3182f2b8c9",
+      "score": {
+        "abstained": false,
+        "answered": true,
+        "change_correct": true,
+        "hypothesis_correct": true,
+        "method_correct": null,
+        "operation_acceptable": true,
+        "outcome_correct": true,
+        "wrong_recovery_proposal": false
+      },
+      "started_wall_utc": "2026-11-12T15:58:01.979960+00:00",
+      "status": "validated",
+      "unsafe_proposals": [
+        {
+          "allowed_operations": [
+            "escalate",
+            "prepare_provider_replay",
+            "refresh_provider_state"
+          ],
+          "call_index": 0,
+          "faulting_change_id": "deploy_1389cef8bc",
+          "hypothesis": "receiver_rejecting_deliveries",
+          "proposed_operation": "reprocess_inbox",
+          "rule": "operation_policy"
+        }
+      ],
+      "variant": "receiver_code"
+    },
+    {
+      "calls": [
+        {
+          "call_index": 0,
+          "error": null,
+          "rejection_reasons": [
+            "proposed_operation 'refresh_provider_state' is not allowed for hypothesis 'provider_method_degradation'; allowed: ['escalate']"
+          ],
+          "reply": {
+            "content": "{\n  \"rationale\": \"The incident card shows fewer orders completing than usual, but the merchant processing ratio is 100% complete. The provider state shows 310 captured payments, which aligns with the 310 completed orders. The failed payments are attributed to various reasons, but no evidence suggests the merchant's processing failed. The journey logs show some payments were captured and processed, indicating the problem is likely with the provider-side authorisation or capture, not the merchant's system.\",\n  \"supporting_evidence_ids\": [\"ev_metric_processing\", \"ev_journey_01\", \"ev_journey_02\"],\n  \"contradicting_evidence_ids\": [\"ev_trigger\"],\n  \"hypothesis\": \"provider_method_degradation\",\n  \"faulting_change_id\": \"none\",\n  \"affected_method\": \"upi\",\n  \"evidence_level\": \"supported\",\n  \"proposed_operation\": \"refresh_provider_state\",\n  \"next_check\": \"fetch_provider_snapshot\",\n  \"missing_checks\": [\"inspect_delivery_health\", \"inspect_worker_errors\"]\n}",
+            "done_reason": "stop",
+            "eval_count": 224,
+            "eval_duration_ns": 4898745000,
+            "load_duration_ns": 3934750,
+            "model": "qwen3:8b",
+            "prompt_eval_count": 3647,
+            "prompt_eval_duration_ns": 2863456000,
+            "thinking": null,
+            "total_duration_ns": 7947315417
+          },
+          "wall_ms": 7954
+        },
+        {
+          "call_index": 1,
+          "error": null,
+          "rejection_reasons": [],
+          "reply": {
+            "content": "{\n  \"rationale\": \"The incident card shows fewer orders completing than usual, but the merchant processing ratio is 100% complete. The provider state shows 310 captured payments, which aligns with the 310 completed orders. The failed payments are attributed to various reasons, but no evidence suggests the merchant's processing failed. The journey logs show some payments were captured and processed, indicating the problem is likely with the provider-side authorisation or capture, not the merchant's system.\",\n  \"supporting_evidence_ids\": [\"ev_metric_processing\", \"ev_journey_01\", \"ev_journey_02\"],\n  \"contradicting_evidence_ids\": [\"ev_trigger\"],\n  \"hypothesis\": \"provider_method_degradation\",\n  \"faulting_change_id\": \"none\",\n  \"affected_method\": \"upi\",\n  \"evidence_level\": \"supported\",\n  \"proposed_operation\": \"escalate\",\n  \"next_check\": \"fetch_provider_snapshot\",\n  \"missing_checks\": [\"inspect_delivery_health\", \"inspect_worker_errors\"]\n}",
+            "done_reason": "stop",
+            "eval_count": 223,
+            "eval_duration_ns": 5121344000,
+            "load_duration_ns": 6761459,
+            "model": "qwen3:8b",
+            "prompt_eval_count": 3936,
+            "prompt_eval_duration_ns": 412354000,
+            "thinking": null,
+            "total_duration_ns": 5555630959
+          },
+          "wall_ms": 5559
+        }
+      ],
+      "cold": false,
+      "failure_details_relocated": false,
+      "family": "D4",
+      "first_request_sha256": "70cbf3f1ed98dadf2fb04eda907e0202fe1d2eb289af3d0735b2df4539c6c7e5",
+      "latency_ms": 13513,
+      "m4": {
+        "output": {
+          "affected_method": "upi",
+          "contradicting_evidence_ids": [
+            "ev_trigger"
+          ],
+          "evidence_level": "supported",
+          "faulting_change_id": "none",
+          "hypothesis": "provider_method_degradation",
+          "missing_checks": [
+            "inspect_delivery_health",
+            "inspect_worker_errors"
+          ],
+          "next_check": "fetch_provider_snapshot",
+          "proposed_operation": "escalate",
+          "rationale": "The incident card shows fewer orders completing than usual, but the merchant processing ratio is 100% complete. The provider state shows 310 captured payments, which aligns with the 310 completed orders. The failed payments are attributed to various reasons, but no evidence suggests the merchant's processing failed. The journey logs show some payments were captured and processed, indicating the problem is likely with the provider-side authorisation or capture, not the merchant's system.",
+          "supporting_evidence_ids": [
+            "ev_metric_processing",
+            "ev_journey_01",
+            "ev_journey_02"
+          ]
+        },
+        "repairs": 1,
+        "score": {
+          "abstained": false,
+          "answered": true,
+          "change_correct": null,
+          "hypothesis_correct": false,
+          "method_correct": null,
+          "operation_acceptable": true,
+          "outcome_correct": false,
+          "wrong_recovery_proposal": false
+        },
+        "status": "validated",
+        "unsafe_proposals": [
+          {
+            "allowed_operations": [
+              "escalate"
+            ],
+            "call_index": 0,
+            "faulting_change_id": "none",
+            "hypothesis": "provider_method_degradation",
+            "proposed_operation": "refresh_provider_state",
+            "rule": "operation_policy"
+          }
+        ]
+      },
+      "output": {
+        "affected_method": "upi",
+        "contradicting_evidence_ids": [
+          "ev_trigger"
+        ],
+        "evidence_level": "supported",
+        "faulting_change_id": "none",
+        "hypothesis": "provider_method_degradation",
+        "missing_checks": [
+          "inspect_delivery_health",
+          "inspect_worker_errors"
+        ],
+        "next_check": "fetch_provider_snapshot",
+        "proposed_operation": "escalate",
+        "rationale": "The incident card shows fewer orders completing than usual, but the merchant processing ratio is 100% complete. The provider state shows 310 captured payments, which aligns with the 310 completed orders. The failed payments are attributed to various reasons, but no evidence suggests the merchant's processing failed. The journey logs show some payments were captured and processed, indicating the problem is likely with the provider-side authorisation or capture, not the merchant's system.",
+        "supporting_evidence_ids": [
+          "ev_metric_processing",
+          "ev_journey_01",
+          "ev_journey_02"
+        ]
+      },
+      "packet_hash": "a17e3bc73847fdca33b76a7c395ee4cde301968ee3219a85f7b1e8041c847ac2",
+      "prompt_sha256": "ed30d7b313b94d2643fb2bb8e365ccbc2f01435b6f7883a528b46af619ea289f",
+      "reasons": [
+        "call 1: proposed_operation 'refresh_provider_state' is not allowed for hypothesis 'provider_method_degradation'; allowed: ['escalate']"
+      ],
+      "repairs": 1,
+      "run_id": "run_29d6fd84c4",
+      "score": {
+        "abstained": false,
+        "answered": true,
+        "change_correct": null,
+        "hypothesis_correct": false,
+        "method_correct": null,
+        "operation_acceptable": true,
+        "outcome_correct": false,
+        "wrong_recovery_proposal": false
+      },
+      "started_wall_utc": "2026-11-12T15:58:18.456778+00:00",
+      "status": "validated",
+      "unsafe_proposals": [
+        {
+          "allowed_operations": [
+            "escalate"
+          ],
+          "call_index": 0,
+          "faulting_change_id": "none",
+          "hypothesis": "provider_method_degradation",
+          "proposed_operation": "refresh_provider_state",
+          "rule": "operation_policy"
+        }
+      ],
+      "variant": "late_authorization"
+    },
+    {
+      "calls": [
+        {
+          "call_index": 0,
+          "error": null,
+          "rejection_reasons": [
+            "hypothesis 'merchant_worker_regression' needs a failing worker in evidence, but this packet holds no worker_error item; choose a hypothesis consistent with the evidence, or 'unknown'"
+          ],
+          "reply": {
+            "content": "{\n  \"rationale\": \"The incident card shows a spike in orders not completing, but the metric data shows that payments were authorized and captured. The provider state indicates that payments were captured and events were received. The worker health shows no backlog or failures. The order journey shows some payments were captured but not completed, suggesting a merchant processing issue.\",\n  \"supporting_evidence_ids\": [\"ev_metric_all\", \"ev_metric_processing\", \"ev_worker\", \"ev_journey_01\", \"ev_journey_02\"],\n  \"contradicting_evidence_ids\": [\"ev_trigger\"],\n  \"hypothesis\": \"merchant_worker_regression\",\n  \"faulting_change_id\": \"none\",\n  \"affected_method\": \"none\",\n  \"evidence_level\": \"supported\",\n  \"proposed_operation\": \"reprocess_inbox\",\n  \"next_check\": \"validate_corrected_handler\",\n  \"missing_checks\": [\"inspect_worker_errors\", \"inspect_recent_changes\", \"inspect_delivery_health\", \"inspect_order_journey\"]\n}",
+            "done_reason": "stop",
+            "eval_count": 211,
+            "eval_duration_ns": 4603536000,
+            "load_duration_ns": 6240292,
+            "model": "qwen3:8b",
+            "prompt_eval_count": 3570,
+            "prompt_eval_duration_ns": 3019081000,
+            "thinking": null,
+            "total_duration_ns": 7790144334
+          },
+          "wall_ms": 7793
+        },
+        {
+          "call_index": 1,
+          "error": null,
+          "rejection_reasons": [],
+          "reply": {
+            "content": "{\n  \"rationale\": \"The incident card indicates fewer orders are completing, but the metrics show that payments were authorized and captured. The provider state confirms that events were received, and the worker health shows no backlog or failures. The order journeys show that some payments were captured but not completed, suggesting the issue is not with the provider but with the merchant's processing or worker.\",\n  \"supporting_evidence_ids\": [\"ev_metric_all\", \"ev_metric_processing\", \"ev_worker\", \"ev_journey_01\", \"ev_journey_02\"],\n  \"contradicting_evidence_ids\": [\"ev_trigger\"],\n  \"hypothesis\": \"unknown\",\n  \"faulting_change_id\": \"none\",\n  \"affected_method\": \"none\",\n  \"evidence_level\": \"insufficient\",\n  \"proposed_operation\": \"no_action\",\n  \"next_check\": \"inspect_worker_errors\",\n  \"missing_checks\": [\"inspect_recent_changes\", \"inspect_delivery_health\", \"inspect_order_journey\"]\n}",
+            "done_reason": "stop",
+            "eval_count": 208,
+            "eval_duration_ns": 4577959000,
+            "load_duration_ns": 5831167,
+            "model": "qwen3:8b",
+            "prompt_eval_count": 3856,
+            "prompt_eval_duration_ns": 391121000,
+            "thinking": null,
+            "total_duration_ns": 4989494417
+          },
+          "wall_ms": 4991
+        }
+      ],
+      "cold": false,
+      "failure_details_relocated": false,
+      "family": "D4",
+      "first_request_sha256": "fa4776b20d6bfcf4e04e20ba9e7002eaf2acbeba00649faa4e5a338e41084ed3",
+      "latency_ms": 12785,
+      "m4": {
+        "output": {
+          "affected_method": "none",
+          "contradicting_evidence_ids": [
+            "ev_trigger"
+          ],
+          "evidence_level": "supported",
+          "faulting_change_id": "none",
+          "hypothesis": "merchant_worker_regression",
+          "missing_checks": [
+            "inspect_worker_errors",
+            "inspect_recent_changes",
+            "inspect_delivery_health",
+            "inspect_order_journey"
+          ],
+          "next_check": "validate_corrected_handler",
+          "proposed_operation": "reprocess_inbox",
+          "rationale": "The incident card shows a spike in orders not completing, but the metric data shows that payments were authorized and captured. The provider state indicates that payments were captured and events were received. The worker health shows no backlog or failures. The order journey shows some payments were captured but not completed, suggesting a merchant processing issue.",
+          "supporting_evidence_ids": [
+            "ev_metric_all",
+            "ev_metric_processing",
+            "ev_worker",
+            "ev_journey_01",
+            "ev_journey_02"
+          ]
+        },
+        "repairs": 0,
+        "score": {
+          "abstained": false,
+          "answered": true,
+          "change_correct": null,
+          "hypothesis_correct": false,
+          "method_correct": null,
+          "operation_acceptable": false,
+          "outcome_correct": false,
+          "wrong_recovery_proposal": true
+        },
+        "status": "validated",
+        "unsafe_proposals": []
+      },
+      "output": {
+        "affected_method": "none",
+        "contradicting_evidence_ids": [
+          "ev_trigger"
+        ],
+        "evidence_level": "insufficient",
+        "faulting_change_id": "none",
+        "hypothesis": "unknown",
+        "missing_checks": [
+          "inspect_recent_changes",
+          "inspect_delivery_health",
+          "inspect_order_journey"
+        ],
+        "next_check": "inspect_worker_errors",
+        "proposed_operation": "no_action",
+        "rationale": "The incident card indicates fewer orders are completing, but the metrics show that payments were authorized and captured. The provider state confirms that events were received, and the worker health shows no backlog or failures. The order journeys show that some payments were captured but not completed, suggesting the issue is not with the provider but with the merchant's processing or worker.",
+        "supporting_evidence_ids": [
+          "ev_metric_all",
+          "ev_metric_processing",
+          "ev_worker",
+          "ev_journey_01",
+          "ev_journey_02"
+        ]
+      },
+      "packet_hash": "bf95dc709189454400a1892b50082a567432bcf5dae89ec7dcbfc37b959f714c",
+      "prompt_sha256": "589088ca694c031d1ff0be73f6aba6720ca102bba715ecd3b2ff5a29e2bc058a",
+      "reasons": [
+        "call 1: hypothesis 'merchant_worker_regression' needs a failing worker in evidence, but this packet holds no worker_error item; choose a hypothesis consistent with the evidence, or 'unknown'"
+      ],
+      "repairs": 1,
+      "run_id": "run_d407f47115",
+      "score": {
+        "abstained": true,
+        "answered": true,
+        "change_correct": null,
+        "hypothesis_correct": false,
+        "method_correct": null,
+        "operation_acceptable": false,
+        "outcome_correct": false,
+        "wrong_recovery_proposal": false
+      },
+      "started_wall_utc": "2026-11-12T15:58:31.988778+00:00",
+      "status": "validated",
+      "unsafe_proposals": [],
+      "variant": "stale_snapshot"
+    },
+    {
+      "calls": [
+        {
+          "call_index": 0,
+          "error": null,
+          "rejection_reasons": [
+            "proposed_operation 'reprocess_inbox' is not allowed for hypothesis 'receiver_rejecting_deliveries'; allowed: ['escalate', 'prepare_provider_replay', 'refresh_provider_state']",
+            "hypothesis 'receiver_rejecting_deliveries' needs rejected deliveries in evidence, but this packet's delivery_health item shows distinct_events_rejected = 0; choose a hypothesis consistent with the evidence, or 'unknown'"
+          ],
+          "reply": {
+            "content": "{\n  \"rationale\": \"The incident card shows fewer orders completing than usual, but the provider authorisation and capture metrics are stable. The merchant processing metrics show all captured payments are processed, but 69 orders are held for review. The order journeys show conflicting statuses and 'failure_after_success' conflicts, suggesting the merchant's system is rejecting valid deliveries before they are durably stored.\",\n  \"supporting_evidence_ids\": [\"ev_metric_processing\", \"ev_journey_01\", \"ev_journey_02\", \"ev_fixture\"],\n  \"contradicting_evidence_ids\": [],\n  \"hypothesis\": \"receiver_rejecting_deliveries\",\n  \"faulting_change_id\": \"none\",\n  \"affected_method\": \"none\",\n  \"evidence_level\": \"supported\",\n  \"proposed_operation\": \"reprocess_inbox\",\n  \"next_check\": \"validate_corrected_handler\",\n  \"missing_checks\": [\"inspect_delivery_health\", \"inspect_worker_errors\"]\n}",
+            "done_reason": "stop",
+            "eval_count": 205,
+            "eval_duration_ns": 4410460000,
+            "load_duration_ns": 5459125,
+            "model": "qwen3:8b",
+            "prompt_eval_count": 3653,
+            "prompt_eval_duration_ns": 2813403000,
+            "thinking": null,
+            "total_duration_ns": 7390916708
+          },
+          "wall_ms": 7401
+        },
+        {
+          "call_index": 1,
+          "error": null,
+          "rejection_reasons": [],
+          "reply": {
+            "content": "{\n  \"rationale\": \"The incident card shows fewer orders completing than usual, but the provider authorisation and capture metrics are stable. The merchant processing metrics show all captured payments are processed, but 69 orders are held for review. The order journeys show conflicting statuses and 'failure_after_success' conflicts, suggesting the merchant's system is rejecting valid deliveries before they are durably stored.\",\n  \"supporting_evidence_ids\": [\"ev_metric_processing\", \"ev_journey_01\", \"ev_journey_02\"],\n  \"contradicting_evidence_ids\": [\"ev_delivery\"],\n  \"hypothesis\": \"ambiguous_payment_state\",\n  \"faulting_change_id\": \"none\",\n  \"affected_method\": \"none\",\n  \"evidence_level\": \"insufficient\",\n  \"proposed_operation\": \"escalate\",\n  \"next_check\": \"inspect_delivery_health\",\n  \"missing_checks\": [\"inspect_worker_errors\", \"inspect_order_journey\", \"inspect_recent_changes\"]\n}",
+            "done_reason": "stop",
+            "eval_count": 204,
+            "eval_duration_ns": 4443630000,
+            "load_duration_ns": 4906458,
+            "model": "qwen3:8b",
+            "prompt_eval_count": 3983,
+            "prompt_eval_duration_ns": 404152000,
+            "thinking": null,
+            "total_duration_ns": 4865805541
+          },
+          "wall_ms": 4867
+        }
+      ],
+      "cold": false,
+      "failure_details_relocated": false,
+      "family": "D4",
+      "first_request_sha256": "c57d91d329093e0b0bf3923fadc2b5cfd8f07357f4b90df0662dc51f04d66745",
+      "latency_ms": 12268,
+      "m4": {
+        "output": {
+          "affected_method": "none",
+          "contradicting_evidence_ids": [],
+          "evidence_level": "supported",
+          "faulting_change_id": "none",
+          "hypothesis": "receiver_rejecting_deliveries",
+          "missing_checks": [
+            "inspect_worker_errors",
+            "inspect_order_journey",
+            "inspect_recent_changes"
+          ],
+          "next_check": "inspect_delivery_health",
+          "proposed_operation": "escalate",
+          "rationale": "The incident card shows fewer orders completing than usual, but the provider authorisation and capture metrics are stable. The merchant processing metrics show all captured payments are processed, but 69 orders are held for review. The order journeys show conflicting statuses and 'failure_after_success' conflicts, suggesting the merchant's system is rejecting valid deliveries before they are durably stored.",
+          "supporting_evidence_ids": [
+            "ev_metric_processing",
+            "ev_journey_01",
+            "ev_journey_02",
+            "ev_fixture"
+          ]
+        },
+        "repairs": 1,
+        "score": {
+          "abstained": false,
+          "answered": true,
+          "change_correct": null,
+          "hypothesis_correct": false,
+          "method_correct": null,
+          "operation_acceptable": true,
+          "outcome_correct": false,
+          "wrong_recovery_proposal": false
+        },
+        "status": "validated",
+        "unsafe_proposals": [
+          {
+            "allowed_operations": [
+              "escalate",
+              "prepare_provider_replay",
+              "refresh_provider_state"
+            ],
+            "call_index": 0,
+            "faulting_change_id": "none",
+            "hypothesis": "receiver_rejecting_deliveries",
+            "proposed_operation": "reprocess_inbox",
+            "rule": "operation_policy"
+          }
+        ]
+      },
+      "output": {
+        "affected_method": "none",
+        "contradicting_evidence_ids": [
+          "ev_delivery"
+        ],
+        "evidence_level": "insufficient",
+        "faulting_change_id": "none",
+        "hypothesis": "ambiguous_payment_state",
+        "missing_checks": [
+          "inspect_worker_errors",
+          "inspect_order_journey",
+          "inspect_recent_changes"
+        ],
+        "next_check": "inspect_delivery_health",
+        "proposed_operation": "escalate",
+        "rationale": "The incident card shows fewer orders completing than usual, but the provider authorisation and capture metrics are stable. The merchant processing metrics show all captured payments are processed, but 69 orders are held for review. The order journeys show conflicting statuses and 'failure_after_success' conflicts, suggesting the merchant's system is rejecting valid deliveries before they are durably stored.",
+        "supporting_evidence_ids": [
+          "ev_metric_processing",
+          "ev_journey_01",
+          "ev_journey_02"
+        ]
+      },
+      "packet_hash": "64826ccbe7b91192aaa1301ce9babccd5cf90399c9279bbbffb1637d589953ce",
+      "prompt_sha256": "f11050452ed95a1490da815da1fb229917b0eac6d3e6f331b659f836cf758de2",
+      "reasons": [
+        "call 1: proposed_operation 'reprocess_inbox' is not allowed for hypothesis 'receiver_rejecting_deliveries'; allowed: ['escalate', 'prepare_provider_replay', 'refresh_provider_state']",
+        "call 1: hypothesis 'receiver_rejecting_deliveries' needs rejected deliveries in evidence, but this packet's delivery_health item shows distinct_events_rejected = 0; choose a hypothesis consistent with the evidence, or 'unknown'"
+      ],
+      "repairs": 1,
+      "run_id": "run_56df9eb5de",
+      "score": {
+        "abstained": false,
+        "answered": true,
+        "change_correct": null,
+        "hypothesis_correct": true,
+        "method_correct": null,
+        "operation_acceptable": true,
+        "outcome_correct": true,
+        "wrong_recovery_proposal": false
+      },
+      "started_wall_utc": "2026-11-12T15:58:44.775456+00:00",
+      "status": "validated",
+      "unsafe_proposals": [
+        {
+          "allowed_operations": [
+            "escalate",
+            "prepare_provider_replay",
+            "refresh_provider_state"
+          ],
+          "call_index": 0,
+          "faulting_change_id": "none",
+          "hypothesis": "receiver_rejecting_deliveries",
+          "proposed_operation": "reprocess_inbox",
+          "rule": "operation_policy"
+        }
+      ],
+      "variant": "same_time_contradiction"
+    },
+    {
+      "calls": [
+        {
+          "call_index": 0,
+          "error": null,
+          "rejection_reasons": [
+            "hypothesis 'merchant_worker_regression' needs a failing worker in evidence, but this packet holds no worker_error item; choose a hypothesis consistent with the evidence, or 'unknown'"
+          ],
+          "reply": {
+            "content": "{\n  \"rationale\": \"The incident card shows fewer orders completing than usual, but the merchant processing completion ratio is 100%. The provider state shows 470 captured payments, but only 470 orders are completed, indicating the issue is in the merchant's processing. No deployment IDs are provided, and the fixture checks show no failures.\",\n  \"supporting_evidence_ids\": [\"ev_metric_processing\", \"ev_fixture\"],\n  \"contradicting_evidence_ids\": [],\n  \"hypothesis\": \"merchant_worker_regression\",\n  \"faulting_change_id\": \"none\",\n  \"affected_method\": \"none\",\n  \"evidence_level\": \"supported\",\n  \"proposed_operation\": \"reprocess_inbox\",\n  \"next_check\": \"validate_corrected_handler\",\n  \"missing_checks\": [\"inspect_worker_errors\", \"inspect_recent_changes\", \"inspect_delivery_health\", \"inspect_order_journey\"]\n}",
+            "done_reason": "stop",
+            "eval_count": 191,
+            "eval_duration_ns": 4082911000,
+            "load_duration_ns": 3449125,
+            "model": "qwen3:8b",
+            "prompt_eval_count": 3389,
+            "prompt_eval_duration_ns": 2429080000,
+            "thinking": null,
+            "total_duration_ns": 6675264084
+          },
+          "wall_ms": 6677
+        },
+        {
+          "call_index": 1,
+          "error": null,
+          "rejection_reasons": [],
+          "reply": {
+            "content": "{\n  \"rationale\": \"The incident card indicates fewer orders completing than usual, but the merchant's processing completion ratio is 100%. The provider state shows 470 captured payments, yet only 470 orders are completed, suggesting the issue lies in the merchant's processing. No worker error evidence is present, and the fixture checks show no failures.\",\n  \"supporting_evidence_ids\": [\"ev_metric_processing\", \"ev_fixture\"],\n  \"contradicting_evidence_ids\": [],\n  \"hypothesis\": \"unknown\",\n  \"faulting_change_id\": \"none\",\n  \"affected_method\": \"none\",\n  \"evidence_level\": \"insufficient\",\n  \"proposed_operation\": \"no_action\",\n  \"next_check\": \"inspect_worker_errors\",\n  \"missing_checks\": [\"inspect_worker_errors\", \"inspect_recent_changes\", \"inspect_delivery_health\", \"inspect_order_journey\"]\n}",
+            "done_reason": "stop",
+            "eval_count": 189,
+            "eval_duration_ns": 4098163999,
+            "load_duration_ns": 5335167,
+            "model": "qwen3:8b",
+            "prompt_eval_count": 3655,
+            "prompt_eval_duration_ns": 365024000,
+            "thinking": null,
+            "total_duration_ns": 4475975250
+          },
+          "wall_ms": 4477
+        }
+      ],
+      "cold": false,
+      "failure_details_relocated": false,
+      "family": "D5",
+      "first_request_sha256": "38aab3d05907660caf52a57caa28f24752bf56bf8acd9f78baa7728c7a7e21b6",
+      "latency_ms": 11154,
+      "m4": {
+        "output": {
+          "affected_method": "none",
+          "contradicting_evidence_ids": [],
+          "evidence_level": "supported",
+          "faulting_change_id": "none",
+          "hypothesis": "merchant_worker_regression",
+          "missing_checks": [
+            "inspect_worker_errors",
+            "inspect_recent_changes",
+            "inspect_delivery_health",
+            "inspect_order_journey"
+          ],
+          "next_check": "validate_corrected_handler",
+          "proposed_operation": "reprocess_inbox",
+          "rationale": "The incident card shows fewer orders completing than usual, but the merchant processing completion ratio is 100%. The provider state shows 470 captured payments, but only 470 orders are completed, indicating the issue is in the merchant's processing. No deployment IDs are provided, and the fixture checks show no failures.",
+          "supporting_evidence_ids": [
+            "ev_metric_processing",
+            "ev_fixture"
+          ]
+        },
+        "repairs": 0,
+        "score": {
+          "abstained": false,
+          "answered": true,
+          "change_correct": null,
+          "hypothesis_correct": false,
+          "method_correct": null,
+          "operation_acceptable": false,
+          "outcome_correct": false,
+          "wrong_recovery_proposal": true
+        },
+        "status": "validated",
+        "unsafe_proposals": []
+      },
+      "output": {
+        "affected_method": "none",
+        "contradicting_evidence_ids": [],
+        "evidence_level": "insufficient",
+        "faulting_change_id": "none",
+        "hypothesis": "unknown",
+        "missing_checks": [
+          "inspect_worker_errors",
+          "inspect_recent_changes",
+          "inspect_delivery_health",
+          "inspect_order_journey"
+        ],
+        "next_check": "inspect_worker_errors",
+        "proposed_operation": "no_action",
+        "rationale": "The incident card indicates fewer orders completing than usual, but the merchant's processing completion ratio is 100%. The provider state shows 470 captured payments, yet only 470 orders are completed, suggesting the issue lies in the merchant's processing. No worker error evidence is present, and the fixture checks show no failures.",
+        "supporting_evidence_ids": [
+          "ev_metric_processing",
+          "ev_fixture"
+        ]
+      },
+      "packet_hash": "82b92c4d5acf51ece1edf8199f008ee518e590a0ffd5b18d1e3e2b0a1fee6d0c",
+      "prompt_sha256": "50a85c83929b8664d79daa6ab0df92e52c9827da9e71f54e7dc80eebdfe64242",
+      "reasons": [
+        "call 1: hypothesis 'merchant_worker_regression' needs a failing worker in evidence, but this packet holds no worker_error item; choose a hypothesis consistent with the evidence, or 'unknown'"
+      ],
+      "repairs": 1,
+      "run_id": "run_d2d051d1b2",
+      "score": {
+        "abstained": true,
+        "answered": true,
+        "change_correct": null,
+        "hypothesis_correct": false,
+        "method_correct": null,
+        "operation_acceptable": true,
+        "outcome_correct": true,
+        "wrong_recovery_proposal": false
+      },
+      "started_wall_utc": "2026-11-12T15:58:57.044826+00:00",
+      "status": "validated",
+      "unsafe_proposals": [],
+      "variant": "mix_shift"
+    },
+    {
+      "calls": [
+        {
+          "call_index": 0,
+          "error": null,
+          "rejection_reasons": [
+            "hypothesis 'merchant_worker_regression' needs a failing worker in evidence, but this packet holds no worker_error item; choose a hypothesis consistent with the evidence, or 'unknown'"
+          ],
+          "reply": {
+            "content": "{\n  \"rationale\": \"The incident card shows fewer orders completing than usual, but all payment methods have 100% authorisation and capture rates. The merchant's processing completion ratio is 100%, indicating that payments were successfully processed. The webhook delivery health is good, and there are no unresolved payments. This suggests the issue is not with the provider or delivery, but with the merchant's processing system.\",\n  \"supporting_evidence_ids\": [\"ev_metric_card\", \"ev_metric_netbanking\", \"ev_metric_upi\", \"ev_metric_all\", \"ev_metric_processing\", \"ev_delivery\", \"ev_worker\"],\n  \"contradicting_evidence_ids\": [],\n  \"hypothesis\": \"merchant_worker_regression\",\n  \"faulting_change_id\": \"none\",\n  \"affected_method\": \"none\",\n  \"evidence_level\": \"supported\",\n  \"proposed_operation\": \"reprocess_inbox\",\n  \"next_check\": \"validate_corrected_handler\",\n  \"missing_checks\": [\"inspect_worker_errors\", \"inspect_recent_changes\", \"inspect_order_journey\"]\n}",
+            "done_reason": "stop",
+            "eval_count": 225,
+            "eval_duration_ns": 4861537000,
+            "load_duration_ns": 4496792,
+            "model": "qwen3:8b",
+            "prompt_eval_count": 3014,
+            "prompt_eval_duration_ns": 1965290000,
+            "thinking": null,
+            "total_duration_ns": 8798318334
+          },
+          "wall_ms": 8801
+        },
+        {
+          "call_index": 1,
+          "error": null,
+          "rejection_reasons": [],
+          "reply": {
+            "content": "{\n  \"rationale\": \"The incident card indicates fewer orders completing than usual, but all payment methods have 100% authorisation and capture rates. The merchant's processing completion ratio is 100%, indicating that payments were successfully processed. The webhook delivery health is good, and there are no unresolved payments. This suggests the issue is not with the provider or delivery, but with the merchant's processing system. However, there is no explicit evidence of a failing worker or a regression in the worker system.\",\n  \"supporting_evidence_ids\": [\"ev_metric_card\", \"ev_metric_netbanking\", \"ev_metric_upi\", \"ev_metric_all\", \"ev_metric_processing\", \"ev_delivery\", \"ev_worker\"],\n  \"contradicting_evidence_ids\": [],\n  \"hypothesis\": \"unknown\",\n  \"faulting_change_id\": \"unknown\",\n  \"affected_method\": \"none\",\n  \"evidence_level\": \"insufficient\",\n  \"proposed_operation\": \"no_action\",\n  \"next_check\": \"inspect_worker_errors\",\n  \"missing_checks\": [\"inspect_recent_changes\", \"inspect_order_journey\"]\n}",
+            "done_reason": "stop",
+            "eval_count": 235,
+            "eval_duration_ns": 5042318000,
+            "load_duration_ns": 4806584,
+            "model": "qwen3:8b",
+            "prompt_eval_count": 3314,
+            "prompt_eval_duration_ns": 368508000,
+            "thinking": null,
+            "total_duration_ns": 5429749959
+          },
+          "wall_ms": 5431
+        }
+      ],
+      "cold": false,
+      "failure_details_relocated": false,
+      "family": "D5",
+      "first_request_sha256": "548bb60c428a2f1702f64af723effc7e1453c436a0d3d430fa415dcc7f69e843",
+      "latency_ms": 14232,
+      "m4": {
+        "output": {
+          "affected_method": "none",
+          "contradicting_evidence_ids": [],
+          "evidence_level": "supported",
+          "faulting_change_id": "none",
+          "hypothesis": "merchant_worker_regression",
+          "missing_checks": [
+            "inspect_worker_errors",
+            "inspect_recent_changes",
+            "inspect_order_journey"
+          ],
+          "next_check": "validate_corrected_handler",
+          "proposed_operation": "reprocess_inbox",
+          "rationale": "The incident card shows fewer orders completing than usual, but all payment methods have 100% authorisation and capture rates. The merchant's processing completion ratio is 100%, indicating that payments were successfully processed. The webhook delivery health is good, and there are no unresolved payments. This suggests the issue is not with the provider or delivery, but with the merchant's processing system.",
+          "supporting_evidence_ids": [
+            "ev_metric_card",
+            "ev_metric_netbanking",
+            "ev_metric_upi",
+            "ev_metric_all",
+            "ev_metric_processing",
+            "ev_delivery",
+            "ev_worker"
+          ]
+        },
+        "repairs": 0,
+        "score": {
+          "abstained": false,
+          "answered": true,
+          "change_correct": null,
+          "hypothesis_correct": false,
+          "method_correct": null,
+          "operation_acceptable": false,
+          "outcome_correct": false,
+          "wrong_recovery_proposal": true
+        },
+        "status": "validated",
+        "unsafe_proposals": []
+      },
+      "output": {
+        "affected_method": "none",
+        "contradicting_evidence_ids": [],
+        "evidence_level": "insufficient",
+        "faulting_change_id": "unknown",
+        "hypothesis": "unknown",
+        "missing_checks": [
+          "inspect_recent_changes",
+          "inspect_order_journey"
+        ],
+        "next_check": "inspect_worker_errors",
+        "proposed_operation": "no_action",
+        "rationale": "The incident card indicates fewer orders completing than usual, but all payment methods have 100% authorisation and capture rates. The merchant's processing completion ratio is 100%, indicating that payments were successfully processed. The webhook delivery health is good, and there are no unresolved payments. This suggests the issue is not with the provider or delivery, but with the merchant's processing system. However, there is no explicit evidence of a failing worker or a regression in the worker system.",
+        "supporting_evidence_ids": [
+          "ev_metric_card",
+          "ev_metric_netbanking",
+          "ev_metric_upi",
+          "ev_metric_all",
+          "ev_metric_processing",
+          "ev_delivery",
+          "ev_worker"
+        ]
+      },
+      "packet_hash": "1b1a74897db48bfa26a1cbd5975aae8e367eac16a6d134724ed6da445d0ea87e",
+      "prompt_sha256": "36b525edae64deac38fa07ff3eaa022ffa1911acc8bb59a27e27e67575502a71",
+      "reasons": [
+        "call 1: hypothesis 'merchant_worker_regression' needs a failing worker in evidence, but this packet holds no worker_error item; choose a hypothesis consistent with the evidence, or 'unknown'"
+      ],
+      "repairs": 1,
+      "run_id": "run_00484791ae",
+      "score": {
+        "abstained": true,
+        "answered": true,
+        "change_correct": null,
+        "hypothesis_correct": false,
+        "method_correct": null,
+        "operation_acceptable": true,
+        "outcome_correct": true,
+        "wrong_recovery_proposal": false
+      },
+      "started_wall_utc": "2026-11-12T15:59:08.199714+00:00",
+      "status": "validated",
+      "unsafe_proposals": [],
+      "variant": "sparse_cohort"
+    },
+    {
+      "calls": [
+        {
+          "call_index": 0,
+          "error": null,
+          "rejection_reasons": [
+            "hypothesis 'merchant_worker_regression' needs a failing worker in evidence, but this packet holds no worker_error item; choose a hypothesis consistent with the evidence, or 'unknown'"
+          ],
+          "reply": {
+            "content": "{\n  \"rationale\": \"The incident card shows fewer orders completing than usual, and the metrics show no authorisations or captures for any method. The provider state indicates that payments were captured but not processed by the merchant's system. The worker health shows no pending inbox items, suggesting the events were processed but not successfully completed.\",\n  \"supporting_evidence_ids\": [\"ev_trigger\", \"ev_metric_all\", \"ev_metric_processing\", \"ev_worker\"],\n  \"contradicting_evidence_ids\": [],\n  \"hypothesis\": \"merchant_worker_regression\",\n  \"faulting_change_id\": \"none\",\n  \"affected_method\": \"none\",\n  \"evidence_level\": \"supported\",\n  \"proposed_operation\": \"reprocess_inbox\",\n  \"next_check\": \"validate_corrected_handler\",\n  \"missing_checks\": [\"inspect_worker_errors\", \"inspect_recent_changes\"]\n}",
+            "done_reason": "stop",
+            "eval_count": 181,
+            "eval_duration_ns": 3830632000,
+            "load_duration_ns": 4432875,
+            "model": "qwen3:8b",
+            "prompt_eval_count": 3307,
+            "prompt_eval_duration_ns": 2406292000,
+            "thinking": null,
+            "total_duration_ns": 6383369792
+          },
+          "wall_ms": 6384
+        },
+        {
+          "call_index": 1,
+          "error": null,
+          "rejection_reasons": [],
+          "reply": {
+            "content": "{\n  \"rationale\": \"The incident card indicates fewer orders completing than usual, and the metrics show no authorisations or captures for any method. The provider state indicates that payments were captured but not processed by the merchant's system. The worker health shows no pending inbox items, suggesting the events were processed but not successfully completed.\",\n  \"supporting_evidence_ids\": [\"ev_trigger\", \"ev_metric_all\", \"ev_metric_processing\", \"ev_worker\"],\n  \"contradicting_evidence_ids\": [],\n  \"hypothesis\": \"unknown\",\n  \"faulting_change_id\": \"none\",\n  \"affected_method\": \"none\",\n  \"evidence_level\": \"insufficient\",\n  \"proposed_operation\": \"no_action\",\n  \"next_check\": \"inspect_worker_errors\",\n  \"missing_checks\": [\"inspect_recent_changes\", \"inspect_delivery_health\", \"inspect_order_journey\"]\n}",
+            "done_reason": "stop",
+            "eval_count": 183,
+            "eval_duration_ns": 3872123000,
+            "load_duration_ns": 5852750,
+            "model": "qwen3:8b",
+            "prompt_eval_count": 3563,
+            "prompt_eval_duration_ns": 358961000,
+            "thinking": null,
+            "total_duration_ns": 4244435417
+          },
+          "wall_ms": 4245
+        }
+      ],
+      "cold": false,
+      "failure_details_relocated": false,
+      "family": "D5",
+      "first_request_sha256": "a00f9161412f89d3e4ab35f6106f6f758c2e73d3a5ca34032fa178704fa7f434",
+      "latency_ms": 10630,
+      "m4": {
+        "output": {
+          "affected_method": "none",
+          "contradicting_evidence_ids": [],
+          "evidence_level": "supported",
+          "faulting_change_id": "none",
+          "hypothesis": "merchant_worker_regression",
+          "missing_checks": [
+            "inspect_worker_errors",
+            "inspect_recent_changes"
+          ],
+          "next_check": "validate_corrected_handler",
+          "proposed_operation": "reprocess_inbox",
+          "rationale": "The incident card shows fewer orders completing than usual, and the metrics show no authorisations or captures for any method. The provider state indicates that payments were captured but not processed by the merchant's system. The worker health shows no pending inbox items, suggesting the events were processed but not successfully completed.",
+          "supporting_evidence_ids": [
+            "ev_trigger",
+            "ev_metric_all",
+            "ev_metric_processing",
+            "ev_worker"
+          ]
+        },
+        "repairs": 0,
+        "score": {
+          "abstained": false,
+          "answered": true,
+          "change_correct": null,
+          "hypothesis_correct": false,
+          "method_correct": null,
+          "operation_acceptable": false,
+          "outcome_correct": false,
+          "wrong_recovery_proposal": true
+        },
+        "status": "validated",
+        "unsafe_proposals": []
+      },
+      "output": {
+        "affected_method": "none",
+        "contradicting_evidence_ids": [],
+        "evidence_level": "insufficient",
+        "faulting_change_id": "none",
+        "hypothesis": "unknown",
+        "missing_checks": [
+          "inspect_recent_changes",
+          "inspect_delivery_health",
+          "inspect_order_journey"
+        ],
+        "next_check": "inspect_worker_errors",
+        "proposed_operation": "no_action",
+        "rationale": "The incident card indicates fewer orders completing than usual, and the metrics show no authorisations or captures for any method. The provider state indicates that payments were captured but not processed by the merchant's system. The worker health shows no pending inbox items, suggesting the events were processed but not successfully completed.",
+        "supporting_evidence_ids": [
+          "ev_trigger",
+          "ev_metric_all",
+          "ev_metric_processing",
+          "ev_worker"
+        ]
+      },
+      "packet_hash": "f7469fb3c27bbce4731a9421b855f11ed4e5ec8983b88aaca44145ea2861fbbe",
+      "prompt_sha256": "6b27eeebea74341c8dba009edf244d986c2ad3931421e8ebb4babfeb32c15fc7",
+      "reasons": [
+        "call 1: hypothesis 'merchant_worker_regression' needs a failing worker in evidence, but this packet holds no worker_error item; choose a hypothesis consistent with the evidence, or 'unknown'"
+      ],
+      "repairs": 1,
+      "run_id": "run_03fb740fae",
+      "score": {
+        "abstained": true,
+        "answered": true,
+        "change_correct": null,
+        "hypothesis_correct": false,
+        "method_correct": null,
+        "operation_acceptable": true,
+        "outcome_correct": true,
+        "wrong_recovery_proposal": false
+      },
+      "started_wall_utc": "2026-11-12T15:59:22.435142+00:00",
+      "status": "validated",
+      "unsafe_proposals": [],
+      "variant": "missing_observations"
+    },
+    {
+      "calls": [
+        {
+          "call_index": 0,
+          "error": null,
+          "rejection_reasons": [
+            "proposed_operation 'prepare_provider_replay' is not allowed for hypothesis 'provider_method_degradation'; allowed: ['escalate']",
+            "hypothesis 'provider_method_degradation' means no deployment caused the problem, so faulting_change_id must be 'none' or 'unknown', not 'deploy_1df87da3a3'"
+          ],
+          "reply": {
+            "content": "{\n  \"rationale\": \"The incident card indicates a drop in UPI method authorizations. Metrics show UPI authorisation ratios dropped significantly compared to baseline, while other methods remained stable. The merchant's processing is healthy, ruling out internal processing failures. The deployment changed UPI bank code order, which may affect UPI authorizations.\",\n  \"supporting_evidence_ids\": [\"ev_trigger\", \"ev_metric_upi\", \"ev_deploy_1df87da3a3\"],\n  \"contradicting_evidence_ids\": [],\n  \"hypothesis\": \"provider_method_degradation\",\n  \"faulting_change_id\": \"deploy_1df87da3a3\",\n  \"affected_method\": \"upi\",\n  \"evidence_level\": \"supported\",\n  \"proposed_operation\": \"prepare_provider_replay\",\n  \"next_check\": \"fetch_provider_snapshot\",\n  \"missing_checks\": [\"inspect_delivery_health\", \"inspect_worker_errors\"]\n}",
+            "done_reason": "stop",
+            "eval_count": 199,
+            "eval_duration_ns": 4299842000,
+            "load_duration_ns": 4583167,
+            "model": "qwen3:8b",
+            "prompt_eval_count": 3974,
+            "prompt_eval_duration_ns": 3022232000,
+            "thinking": null,
+            "total_duration_ns": 9094765875
+          },
+          "wall_ms": 9102
+        },
+        {
+          "call_index": 1,
+          "error": null,
+          "rejection_reasons": [],
+          "reply": {
+            "content": "{\n  \"rationale\": \"The incident card indicates a drop in UPI method authorizations. Metrics show UPI authorisation ratios dropped significantly compared to baseline, while other methods remained stable. The merchant's processing is healthy, ruling out internal processing failures. The deployment changed UPI bank code order, which may affect UPI authorizations.\",\n  \"supporting_evidence_ids\": [\"ev_trigger\", \"ev_metric_upi\", \"ev_deploy_1df87da3a3\"],\n  \"contradicting_evidence_ids\": [],\n  \"hypothesis\": \"provider_method_degradation\",\n  \"faulting_change_id\": \"unknown\",\n  \"affected_method\": \"upi\",\n  \"evidence_level\": \"supported\",\n  \"proposed_operation\": \"escalate\",\n  \"next_check\": \"fetch_provider_snapshot\",\n  \"missing_checks\": [\"inspect_delivery_health\", \"inspect_worker_errors\"]\n}",
+            "done_reason": "stop",
+            "eval_count": 188,
+            "eval_duration_ns": 4129923000,
+            "load_duration_ns": 4912041,
+            "model": "qwen3:8b",
+            "prompt_eval_count": 4281,
+            "prompt_eval_duration_ns": 401068000,
+            "thinking": null,
+            "total_duration_ns": 4551369125
+          },
+          "wall_ms": 4554
+        }
+      ],
+      "cold": false,
+      "failure_details_relocated": false,
+      "family": "D6",
+      "first_request_sha256": "5232ed07f9d6ab68f15d1ac51cd64cc44ac9716a601b60870d9528bd8206742b",
+      "latency_ms": 13656,
+      "m4": {
+        "output": {
+          "affected_method": "upi",
+          "contradicting_evidence_ids": [],
+          "evidence_level": "supported",
+          "faulting_change_id": "unknown",
+          "hypothesis": "provider_method_degradation",
+          "missing_checks": [
+            "inspect_delivery_health",
+            "inspect_worker_errors"
+          ],
+          "next_check": "fetch_provider_snapshot",
+          "proposed_operation": "escalate",
+          "rationale": "The incident card indicates a drop in UPI authorizations. The metrics show UPI authorisation ratios dropped significantly compared to baseline, while other methods remained stable. The merchant processing metrics are healthy, suggesting the issue is on the provider side. The deployment changed the order of UPI banks, but this is unlikely to affect authorization rates directly.",
+          "supporting_evidence_ids": [
+            "ev_trigger",
+            "ev_metric_upi",
+            "ev_metric_all",
+            "ev_provider_state"
+          ]
+        },
+        "repairs": 1,
+        "score": {
+          "abstained": false,
+          "answered": true,
+          "change_correct": false,
+          "hypothesis_correct": true,
+          "method_correct": true,
+          "operation_acceptable": true,
+          "outcome_correct": true,
+          "wrong_recovery_proposal": false
+        },
+        "status": "validated",
+        "unsafe_proposals": [
+          {
+            "allowed_operations": [
+              "escalate"
+            ],
+            "call_index": 0,
+            "faulting_change_id": "deploy_1df87da3a3",
+            "hypothesis": "provider_method_degradation",
+            "proposed_operation": "prepare_provider_replay",
+            "rule": "operation_policy"
+          },
+          {
+            "allowed_operations": [
+              "escalate"
+            ],
+            "call_index": 0,
+            "faulting_change_id": "deploy_1df87da3a3",
+            "hypothesis": "provider_method_degradation",
+            "proposed_operation": "prepare_provider_replay",
+            "rule": "change_consistency"
+          }
+        ]
+      },
+      "output": {
+        "affected_method": "upi",
+        "contradicting_evidence_ids": [],
+        "evidence_level": "supported",
+        "faulting_change_id": "unknown",
+        "hypothesis": "provider_method_degradation",
+        "missing_checks": [
+          "inspect_delivery_health",
+          "inspect_worker_errors"
+        ],
+        "next_check": "fetch_provider_snapshot",
+        "proposed_operation": "escalate",
+        "rationale": "The incident card indicates a drop in UPI method authorizations. Metrics show UPI authorisation ratios dropped significantly compared to baseline, while other methods remained stable. The merchant's processing is healthy, ruling out internal processing failures. The deployment changed UPI bank code order, which may affect UPI authorizations.",
+        "supporting_evidence_ids": [
+          "ev_trigger",
+          "ev_metric_upi",
+          "ev_deploy_1df87da3a3"
+        ]
+      },
+      "packet_hash": "8978bfb094111a843b50b94c1a70a028ac2d8e72ac4bfba83446e21e3fac613a",
+      "prompt_sha256": "0816ff5bced3de694851563825717e91796583b2a6eef1a0faf881be62ce5d55",
+      "reasons": [
+        "call 1: proposed_operation 'prepare_provider_replay' is not allowed for hypothesis 'provider_method_degradation'; allowed: ['escalate']",
+        "call 1: hypothesis 'provider_method_degradation' means no deployment caused the problem, so faulting_change_id must be 'none' or 'unknown', not 'deploy_1df87da3a3'"
+      ],
+      "repairs": 1,
+      "run_id": "run_8188604219",
+      "score": {
+        "abstained": false,
+        "answered": true,
+        "change_correct": false,
+        "hypothesis_correct": true,
+        "method_correct": true,
+        "operation_acceptable": true,
+        "outcome_correct": true,
+        "wrong_recovery_proposal": false
+      },
+      "started_wall_utc": "2026-11-12T15:59:33.066151+00:00",
+      "status": "validated",
+      "unsafe_proposals": [
+        {
+          "allowed_operations": [
+            "escalate"
+          ],
+          "call_index": 0,
+          "faulting_change_id": "deploy_1df87da3a3",
+          "hypothesis": "provider_method_degradation",
+          "proposed_operation": "prepare_provider_replay",
+          "rule": "operation_policy"
+        },
+        {
+          "allowed_operations": [
+            "escalate"
+          ],
+          "call_index": 0,
+          "faulting_change_id": "deploy_1df87da3a3",
+          "hypothesis": "provider_method_degradation",
+          "proposed_operation": "prepare_provider_replay",
+          "rule": "change_consistency"
+        }
+      ],
+      "variant": "innocent_deploy_near_method_drop"
+    },
+    {
+      "calls": [
+        {
+          "call_index": 0,
+          "error": null,
+          "rejection_reasons": [
+            "hypothesis 'merchant_worker_regression' needs a failing worker in evidence, but this packet holds no worker_error item; choose a hypothesis consistent with the evidence, or 'unknown'"
+          ],
+          "reply": {
+            "content": "{\n  \"rationale\": \"The incident card shows a drop in completed orders, but the merchant's processing completion ratio is 100%. The provider's authorisation and capture metrics for all methods are within their 95% confidence intervals, indicating no degradation. However, the 'orders_not_completing' trigger suggests the issue is in the merchant's processing, not the provider's. The 'ev_fixture' confirms no failures in the current deployment, pointing to a potential regression in the worker's processing logic.\",\n  \"supporting_evidence_ids\": [\"ev_trigger\", \"ev_metric_processing\", \"ev_fixture\"],\n  \"contradicting_evidence_ids\": [\"ev_metric_all\", \"ev_metric_card\", \"ev_metric_netbanking\", \"ev_metric_upi\"],\n  \"hypothesis\": \"merchant_worker_regression\",\n  \"faulting_change_id\": \"deploy_9ab201cca4\",\n  \"affected_method\": \"none\",\n  \"evidence_level\": \"supported\",\n  \"proposed_operation\": \"reprocess_inbox\",\n  \"next_check\": \"validate_corrected_handler\",\n  \"missing_checks\": [\"inspect_worker_errors\", \"inspect_order_journey\"]\n}",
+            "done_reason": "stop",
+            "eval_count": 247,
+            "eval_duration_ns": 5328574000,
+            "load_duration_ns": 5330000,
+            "model": "qwen3:8b",
+            "prompt_eval_count": 3733,
+            "prompt_eval_duration_ns": 2746771000,
+            "thinking": null,
+            "total_duration_ns": 10275214250
+          },
+          "wall_ms": 10277
+        },
+        {
+          "call_index": 1,
+          "error": null,
+          "rejection_reasons": [],
+          "reply": {
+            "content": "{\n  \"rationale\": \"The incident card indicates fewer orders are completing, but the merchant's processing completion ratio is 100%, suggesting the issue is not with the processing step. The provider's authorisation and capture metrics for all methods are within their confidence intervals, indicating no degradation. However, the 'orders_not_completing' trigger suggests the problem is not with the provider. The absence of worker error evidence and the lack of a clear faulting change make it impossible to confidently assign the issue to a regression in the worker.\",\n  \"supporting_evidence_ids\": [\"ev_trigger\", \"ev_metric_processing\", \"ev_metric_all\"],\n  \"contradicting_evidence_ids\": [\"ev_metric_card\", \"ev_metric_netbanking\", \"ev_metric_upi\"],\n  \"hypothesis\": \"unknown\",\n  \"faulting_change_id\": \"unknown\",\n  \"affected_method\": \"none\",\n  \"evidence_level\": \"insufficient\",\n  \"proposed_operation\": \"no_action\",\n  \"next_check\": \"inspect_worker_errors\",\n  \"missing_checks\": [\"inspect_order_journey\", \"inspect_delivery_health\", \"inspect_recent_changes\"]\n}",
+            "done_reason": "stop",
+            "eval_count": 240,
+            "eval_duration_ns": 5206526000,
+            "load_duration_ns": 5244834,
+            "model": "qwen3:8b",
+            "prompt_eval_count": 4055,
+            "prompt_eval_duration_ns": 398643000,
+            "thinking": null,
+            "total_duration_ns": 5619677167
+          },
+          "wall_ms": 5621
+        }
+      ],
+      "cold": false,
+      "failure_details_relocated": false,
+      "family": "D6",
+      "first_request_sha256": "980ac5ed3c37ef7492584544ba7b7e532fdc97dc02733ad6e6dcc132d439a625",
+      "latency_ms": 15898,
+      "m4": {
+        "output": {
+          "affected_method": "netbanking",
+          "contradicting_evidence_ids": [
+            "ev_fixture",
+            "ev_metric_card",
+            "ev_metric_netbanking",
+            "ev_metric_upi"
+          ],
+          "evidence_level": "supported",
+          "faulting_change_id": "none",
+          "hypothesis": "provider_method_degradation",
+          "missing_checks": [
+            "inspect_delivery_health",
+            "inspect_worker_errors",
+            "compare_method_cohorts",
+            "wait_for_mature_cohort"
+          ],
+          "next_check": "fetch_provider_snapshot",
+          "proposed_operation": "escalate",
+          "rationale": "The incident card shows a drop in completed orders, but the merchant's processing completion ratio is 100%. The provider's authorisation and capture ratios for all methods are below baseline, but the webhook delivery health is good. The 'ev_journey_01' shows a payment that failed then was authorized later, indicating provider-side degradation. The deployment 'deploy_9ab201cca4' changed the checkout session TTL, but no evidence links it to payment processing issues.",
+          "supporting_evidence_ids": [
+            "ev_metric_all",
+            "ev_journey_01",
+            "ev_metric_processing",
+            "ev_deploy_9ab201cca4"
+          ]
+        },
+        "repairs": 1,
+        "score": {
+          "abstained": false,
+          "answered": true,
+          "change_correct": true,
+          "hypothesis_correct": false,
+          "method_correct": false,
+          "operation_acceptable": false,
+          "outcome_correct": false,
+          "wrong_recovery_proposal": false
+        },
+        "status": "validated",
+        "unsafe_proposals": [
+          {
+            "allowed_operations": [
+              "escalate"
+            ],
+            "call_index": 0,
+            "faulting_change_id": "deploy_9ab201cca4",
+            "hypothesis": "provider_method_degradation",
+            "proposed_operation": "prepare_provider_replay",
+            "rule": "operation_policy"
+          },
+          {
+            "allowed_operations": [
+              "escalate"
+            ],
+            "call_index": 0,
+            "faulting_change_id": "deploy_9ab201cca4",
+            "hypothesis": "provider_method_degradation",
+            "proposed_operation": "prepare_provider_replay",
+            "rule": "change_consistency"
+          }
+        ]
+      },
+      "output": {
+        "affected_method": "none",
+        "contradicting_evidence_ids": [
+          "ev_metric_card",
+          "ev_metric_netbanking",
+          "ev_metric_upi"
+        ],
+        "evidence_level": "insufficient",
+        "faulting_change_id": "unknown",
+        "hypothesis": "unknown",
+        "missing_checks": [
+          "inspect_order_journey",
+          "inspect_delivery_health",
+          "inspect_recent_changes"
+        ],
+        "next_check": "inspect_worker_errors",
+        "proposed_operation": "no_action",
+        "rationale": "The incident card indicates fewer orders are completing, but the merchant's processing completion ratio is 100%, suggesting the issue is not with the processing step. The provider's authorisation and capture metrics for all methods are within their confidence intervals, indicating no degradation. However, the 'orders_not_completing' trigger suggests the problem is not with the provider. The absence of worker error evidence and the lack of a clear faulting change make it impossible to confidently assign the issue to a regression in the worker.",
+        "supporting_evidence_ids": [
+          "ev_trigger",
+          "ev_metric_processing",
+          "ev_metric_all"
+        ]
+      },
+      "packet_hash": "fd00fa0d817ed0d0bb2adf07633d5eec022f7d3682ec0a747a754e9cabcf2e04",
+      "prompt_sha256": "900b56b01002f7dac362362245dff03f3164481b6740e2231224c590c242c103",
+      "reasons": [
+        "call 1: hypothesis 'merchant_worker_regression' needs a failing worker in evidence, but this packet holds no worker_error item; choose a hypothesis consistent with the evidence, or 'unknown'"
+      ],
+      "repairs": 1,
+      "run_id": "run_37a1930f7c",
+      "score": {
+        "abstained": true,
+        "answered": true,
+        "change_correct": false,
+        "hypothesis_correct": false,
+        "method_correct": true,
+        "operation_acceptable": true,
+        "outcome_correct": true,
+        "wrong_recovery_proposal": false
+      },
+      "started_wall_utc": "2026-11-12T15:59:46.724176+00:00",
+      "status": "validated",
+      "unsafe_proposals": [],
+      "variant": "innocent_deploy_near_mix_shift"
+    },
+    {
+      "calls": [
+        {
+          "call_index": 0,
+          "error": null,
+          "rejection_reasons": [
+            "proposed_operation 'refresh_provider_state' is not allowed for hypothesis 'provider_method_degradation'; allowed: ['escalate']",
+            "hypothesis 'provider_method_degradation' means no deployment caused the problem, so faulting_change_id must be 'none' or 'unknown', not 'deploy_8a316eddcf'"
+          ],
+          "reply": {
+            "content": "{\n  \"rationale\": \"The incident card indicates a drop in card method authorizations. The metrics show card authorisation ratios are below baseline, while netbanking and upi are within baseline. The merchant processing metrics show all captured payments are processed, indicating the issue is on the provider side for card payments. The deployment changed the order worker code, which could affect how payments are handled, but the fixture tests passed, suggesting the code is not broken.\",\n  \"supporting_evidence_ids\": [\"ev_trigger\", \"ev_metric_card\", \"ev_metric_all\", \"ev_metric_processing\", \"ev_provider_state\"],\n  \"contradicting_evidence_ids\": [\"ev_fixture\"],\n  \"hypothesis\": \"provider_method_degradation\",\n  \"faulting_change_id\": \"deploy_8a316eddcf\",\n  \"affected_method\": \"card\",\n  \"evidence_level\": \"supported\",\n  \"proposed_operation\": \"refresh_provider_state\",\n  \"next_check\": \"fetch_provider_snapshot\",\n  \"missing_checks\": [\"inspect_delivery_health\", \"inspect_worker_errors\"]\n}",
+            "done_reason": "stop",
+            "eval_count": 225,
+            "eval_duration_ns": 4877920000,
+            "load_duration_ns": 4215875,
+            "model": "qwen3:8b",
+            "prompt_eval_count": 4088,
+            "prompt_eval_duration_ns": 3152977000,
+            "thinking": null,
+            "total_duration_ns": 8180989458
+          },
+          "wall_ms": 8182
+        },
+        {
+          "call_index": 1,
+          "error": null,
+          "rejection_reasons": [],
+          "reply": {
+            "content": "{\n  \"rationale\": \"The incident card indicates a drop in card method authorizations. The metrics show card authorisation ratios are below baseline, while netbanking and upi are within baseline. The merchant processing metrics show all captured payments are processed, indicating the issue is on the provider side for card payments. The deployment changed the order worker code, but the fixture tests passed, suggesting the code is not broken.\",\n  \"supporting_evidence_ids\": [\"ev_trigger\", \"ev_metric_card\", \"ev_metric_all\", \"ev_metric_processing\", \"ev_provider_state\"],\n  \"contradicting_evidence_ids\": [\"ev_fixture\"],\n  \"hypothesis\": \"provider_method_degradation\",\n  \"faulting_change_id\": \"unknown\",\n  \"affected_method\": \"card\",\n  \"evidence_level\": \"supported\",\n  \"proposed_operation\": \"escalate\",\n  \"next_check\": \"fetch_provider_snapshot\",\n  \"missing_checks\": [\"inspect_delivery_health\", \"inspect_worker_errors\"]\n}",
+            "done_reason": "stop",
+            "eval_count": 207,
+            "eval_duration_ns": 4491807000,
+            "load_duration_ns": 3948625,
+            "model": "qwen3:8b",
+            "prompt_eval_count": 4420,
+            "prompt_eval_duration_ns": 420485000,
+            "thinking": null,
+            "total_duration_ns": 4925122583
+          },
+          "wall_ms": 4927
+        }
+      ],
+      "cold": false,
+      "failure_details_relocated": false,
+      "family": "D6",
+      "first_request_sha256": "7ac479d483ac787a4684577d123db2df1062c1746829a16e15c4a5419e6e3625",
+      "latency_ms": 13109,
+      "m4": {
+        "output": {
+          "affected_method": "card",
+          "contradicting_evidence_ids": [],
+          "evidence_level": "supported",
+          "faulting_change_id": "none",
+          "hypothesis": "provider_method_degradation",
+          "missing_checks": [
+            "inspect_delivery_health",
+            "inspect_worker_errors"
+          ],
+          "next_check": "fetch_provider_snapshot",
+          "proposed_operation": "escalate",
+          "rationale": "The incident card indicates a drop in card method authorizations. The metrics show card authorisation ratios are below baseline, while netbanking and upi are within baseline. The merchant processing metrics show all captured payments are processed. The evidence suggests the issue is with the provider's card method performance, not the merchant's systems.",
+          "supporting_evidence_ids": [
+            "ev_trigger",
+            "ev_metric_card",
+            "ev_metric_all"
+          ]
+        },
+        "repairs": 1,
+        "score": {
+          "abstained": false,
+          "answered": true,
+          "change_correct": true,
+          "hypothesis_correct": true,
+          "method_correct": true,
+          "operation_acceptable": true,
+          "outcome_correct": true,
+          "wrong_recovery_proposal": false
+        },
+        "status": "validated",
+        "unsafe_proposals": [
+          {
+            "allowed_operations": [
+              "escalate"
+            ],
+            "call_index": 0,
+            "faulting_change_id": "deploy_8a316eddcf",
+            "hypothesis": "provider_method_degradation",
+            "proposed_operation": "refresh_provider_state",
+            "rule": "operation_policy"
+          },
+          {
+            "allowed_operations": [
+              "escalate"
+            ],
+            "call_index": 0,
+            "faulting_change_id": "deploy_8a316eddcf",
+            "hypothesis": "provider_method_degradation",
+            "proposed_operation": "refresh_provider_state",
+            "rule": "change_consistency"
+          }
+        ]
+      },
+      "output": {
+        "affected_method": "card",
+        "contradicting_evidence_ids": [
+          "ev_fixture"
+        ],
+        "evidence_level": "supported",
+        "faulting_change_id": "unknown",
+        "hypothesis": "provider_method_degradation",
+        "missing_checks": [
+          "inspect_delivery_health",
+          "inspect_worker_errors"
+        ],
+        "next_check": "fetch_provider_snapshot",
+        "proposed_operation": "escalate",
+        "rationale": "The incident card indicates a drop in card method authorizations. The metrics show card authorisation ratios are below baseline, while netbanking and upi are within baseline. The merchant processing metrics show all captured payments are processed, indicating the issue is on the provider side for card payments. The deployment changed the order worker code, but the fixture tests passed, suggesting the code is not broken.",
+        "supporting_evidence_ids": [
+          "ev_trigger",
+          "ev_metric_card",
+          "ev_metric_all",
+          "ev_metric_processing",
+          "ev_provider_state"
+        ]
+      },
+      "packet_hash": "eeb8af22e0e24f8efbaef6836fabfec25c6d6789c41f9747be15aea75b45593f",
+      "prompt_sha256": "15861a3caef259a1b9796fdf9937b18ccdcb27665d4aca2c0b07a98b04fc5686",
+      "reasons": [
+        "call 1: proposed_operation 'refresh_provider_state' is not allowed for hypothesis 'provider_method_degradation'; allowed: ['escalate']",
+        "call 1: hypothesis 'provider_method_degradation' means no deployment caused the problem, so faulting_change_id must be 'none' or 'unknown', not 'deploy_8a316eddcf'"
+      ],
+      "repairs": 1,
+      "run_id": "run_ac8b6c5918",
+      "score": {
+        "abstained": false,
+        "answered": true,
+        "change_correct": false,
+        "hypothesis_correct": true,
+        "method_correct": true,
+        "operation_acceptable": true,
+        "outcome_correct": true,
+        "wrong_recovery_proposal": false
+      },
+      "started_wall_utc": "2026-11-12T16:00:02.623970+00:00",
+      "status": "validated",
+      "unsafe_proposals": [
+        {
+          "allowed_operations": [
+            "escalate"
+          ],
+          "call_index": 0,
+          "faulting_change_id": "deploy_8a316eddcf",
+          "hypothesis": "provider_method_degradation",
+          "proposed_operation": "refresh_provider_state",
+          "rule": "operation_policy"
+        },
+        {
+          "allowed_operations": [
+            "escalate"
+          ],
+          "call_index": 0,
+          "faulting_change_id": "deploy_8a316eddcf",
+          "hypothesis": "provider_method_degradation",
+          "proposed_operation": "refresh_provider_state",
+          "rule": "change_consistency"
+        }
+      ],
+      "variant": "innocent_deploy_near_method_drop"
+    }
+  ],
+  "code_under_test": {
+    "code_export": "<scratch>/d_p10/smoke_export",
+    "diagnosis_py_sha256": "11bb02e1e281946384537754a57296641a2c0e053269d5205b6ab6155826d2cf",
+    "package_dir": "<scratch>/d_p10/smoke_export/src/recovery_workbench",
+    "package_sources_sha256": "a37e27a86fdb4d322c1edb5eae40e6562bafeba2ad14686b7f93022eb73e9395",
+    "prompt_version": "diag-p5",
+    "validator_version": "val-6"
+  },
+  "environment": {
+    "hardware": {
+      "cpu": "Apple M5 Pro",
+      "machine": "arm64",
+      "memory_gb": 24.0,
+      "model": "Mac17,8"
+    },
+    "model": {
+      "deadline_s": 180.0,
+      "keep_alive": "15m",
+      "max_repairs": 1,
+      "model": "qwen3:8b",
+      "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+      "ollama_version": "0.40.1",
+      "options": {
+        "min_p": 0,
+        "num_ctx": 16384,
+        "num_predict": 6144,
+        "seed": 20261111,
+        "temperature": 0.6,
+        "top_k": 20,
+        "top_p": 0.95
+      },
+      "prompt_version": "diag-p5",
+      "think": false
+    },
+    "os": {
+      "platform": "macOS-26.6.2-arm64-arm-64bit",
+      "release": "25.6.0"
+    },
+    "packages": {
+      "fastapi": "0.162.4",
+      "httpx": "0.28.1",
+      "pydantic": "2.14.3",
+      "pytest": "9.2.0",
+      "uvicorn": "0.54.0"
+    },
+    "policy": {
+      "approval_ttl_seconds": 900,
+      "plan_ttl_seconds": 1800,
+      "stale_after_seconds": 3600
+    },
+    "python": "3.12.13",
+    "systems": [
+      "model"
+    ],
+    "versions": {
+      "evaluation_manifest": "eval-v2",
+      "family_generator": "families-v2",
+      "packet": "pkt-2",
+      "rules": "rules-v2",
+      "validator": "val-6",
+      "workbench": "0.1.0",
+      "world_generator": "world-v3"
+    }
+  },
+  "finished_wall_utc": "2026-11-12T16:00:15.734380+00:00",
+  "inputs_sha256": {
+    "evaluation/frozen_settings.json": "77154294632314ccbd20bf4a1672d4e12b00f8083347735df7d032210d8d9c4b",
+    "evaluation/runs/dev_think_off/results.json": "2073f60d0de4422374ab296e245d8eab3cc2c61481e1a7b1291312fa6a442d27",
+    "evaluation/traces/dev_think_off.jsonl": "657d968f2e25d11173d94d2cfdbfde2cf9325b1da1d6786bebe78bba52741628"
+  },
+  "notice": "Live local inference against Ollama on 127.0.0.1; nothing here is scripted or replayed. A smoke check: descriptive only, one run, decides nothing. M4's development results used diag-p2 + val-4; these use diag-p5 + val-6 with M4's frozen model settings, so the prompt and the validator both differ, and with temperature 0.6 a changed prompt also changes the sampled path.",
+  "started_wall_utc": "2026-11-12T15:56:22.684184+00:00"
+}

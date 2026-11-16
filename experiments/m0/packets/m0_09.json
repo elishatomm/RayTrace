@@ -1,0 +1,365 @@
+{
+  "packet_version": "m0-1",
+  "incident": {
+    "run_id": "run_0389559a",
+    "incident_id": "inc_442cfbb7",
+    "symptom": "Fewer orders are completing than usual",
+    "trigger": "order_completion_drop",
+    "cohort": {
+      "merchant_id": "mch_synthetic_01",
+      "integration_id": "int_webhook_01",
+      "methods": [
+        "upi",
+        "card",
+        "netbanking"
+      ]
+    },
+    "window_start_ms": 1794429300000,
+    "window_end_ms": 1794432900000,
+    "evidence_cutoff_ms": 1794432900000,
+    "summary_counts": {
+      "orders_with_attempts": 571,
+      "orders_completed": 446,
+      "payment_attempts": 603
+    }
+  },
+  "items": [
+    {
+      "evidence_id": "ev_trigger",
+      "kind": "incident_trigger",
+      "known_at_ms": 1794432840000,
+      "title": "Detector state at the evidence cutoff",
+      "facts": {
+        "fired": [
+          "order_completion_drop"
+        ],
+        "not_fired": [
+          "authorisation_ratio_drop",
+          "processing_backlog_age",
+          "delivery_rejection_rate"
+        ],
+        "order_completion_ratio": 0.781,
+        "baseline_order_completion_ratio": 0.901,
+        "first_breach_ms": 1794431460000,
+        "note": "authorisation ratios are judged on the mature cohort only"
+      },
+      "text": null
+    },
+    {
+      "evidence_id": "ev_metric_upi",
+      "kind": "metric",
+      "known_at_ms": 1794432840000,
+      "title": "Provider authorisation and capture for upi, mature cohort",
+      "facts": {
+        "method": "upi",
+        "mature_cohort_start_ms": 1794430500000,
+        "mature_cohort_end_ms": 1794432300000,
+        "attempts": 139,
+        "authorised": 125,
+        "captured": 109,
+        "unresolved": 9,
+        "authorisation_ratio": 0.899,
+        "authorisation_ratio_95ci": [
+          0.838,
+          0.939
+        ],
+        "baseline_attempts": 2201,
+        "baseline_authorisation_ratio": 0.917,
+        "baseline_95ci": [
+          0.905,
+          0.928
+        ]
+      },
+      "text": null
+    },
+    {
+      "evidence_id": "ev_metric_card",
+      "kind": "metric",
+      "known_at_ms": 1794432840000,
+      "title": "Provider authorisation and capture for card, mature cohort",
+      "facts": {
+        "method": "card",
+        "mature_cohort_start_ms": 1794430500000,
+        "mature_cohort_end_ms": 1794432300000,
+        "attempts": 79,
+        "authorised": 71,
+        "captured": 59,
+        "unresolved": 4,
+        "authorisation_ratio": 0.899,
+        "authorisation_ratio_95ci": [
+          0.813,
+          0.948
+        ],
+        "baseline_attempts": 1318,
+        "baseline_authorisation_ratio": 0.91,
+        "baseline_95ci": [
+          0.893,
+          0.924
+        ]
+      },
+      "text": null
+    },
+    {
+      "evidence_id": "ev_metric_netbanking",
+      "kind": "metric",
+      "known_at_ms": 1794432840000,
+      "title": "Provider authorisation and capture for netbanking, mature cohort",
+      "facts": {
+        "method": "netbanking",
+        "mature_cohort_start_ms": 1794430500000,
+        "mature_cohort_end_ms": 1794432300000,
+        "attempts": 27,
+        "authorised": 24,
+        "captured": 24,
+        "unresolved": 0,
+        "authorisation_ratio": 0.889,
+        "authorisation_ratio_95ci": [
+          0.719,
+          0.961
+        ],
+        "baseline_attempts": 467,
+        "baseline_authorisation_ratio": 0.891,
+        "baseline_95ci": [
+          0.859,
+          0.916
+        ]
+      },
+      "text": null
+    },
+    {
+      "evidence_id": "ev_processing",
+      "kind": "metric",
+      "known_at_ms": 1794432840000,
+      "title": "Merchant processing of captured payments, last 30 minutes",
+      "facts": {
+        "captured_orders": 196,
+        "processed": 195,
+        "pending_captured": 1,
+        "pending_captured_value_paise": 54900,
+        "processing_completion_ratio": 0.997,
+        "baseline_processing_completion_ratio": 0.998
+      },
+      "text": null
+    },
+    {
+      "evidence_id": "ev_provider_state",
+      "kind": "provider_state",
+      "known_at_ms": 1794432840000,
+      "title": "Provider payment states and snapshot freshness",
+      "facts": {
+        "snapshot_age_ms": 840000,
+        "observation_coverage": 0.93,
+        "payments_by_status_last_60m": {
+          "captured": 399,
+          "authorized": 41,
+          "failed": 70,
+          "created": 6
+        },
+        "failed_with_reason_timeout": 61,
+        "failed_then_authorised_later": 37,
+        "authorised_not_captured": 37,
+        "timeouts_without_later_evidence": 24,
+        "late_authorisation_delay_ms_range": [
+          262000,
+          571000
+        ]
+      },
+      "text": null
+    },
+    {
+      "evidence_id": "ev_delivery",
+      "kind": "delivery_health",
+      "known_at_ms": 1794432840000,
+      "title": "Webhook delivery health for int_webhook_01",
+      "facts": {
+        "window": "last 60 minutes",
+        "accepted": 538,
+        "duplicates": 18,
+        "conflicting_ids": 0,
+        "rejected_signature": 0,
+        "rejected_schema": 0,
+        "p95_ack_latency_ms": 38,
+        "delivery_attempts": 556
+      },
+      "text": null
+    },
+    {
+      "evidence_id": "ev_worker",
+      "kind": "worker_health",
+      "known_at_ms": 1794432840000,
+      "title": "Order worker health",
+      "facts": {
+        "inbox_pending": 1,
+        "inbox_failed": 0,
+        "processed_last_30m": 266,
+        "oldest_unprocessed_age_ms": 3000,
+        "failed_attempts_last_60m": 0
+      },
+      "text": null
+    },
+    {
+      "evidence_id": "ev_journey_order",
+      "kind": "order_journey",
+      "known_at_ms": 1794432540000,
+      "title": "Order journey for order_SYN6C3J8",
+      "facts": {
+        "order_id": "order_SYN6C3J8",
+        "order_amount_paise": 159900,
+        "attempts": [
+          {
+            "payment_id": "pay_SYN5P1R7WB",
+            "method": "upi",
+            "observations": [
+              {
+                "status": "failed",
+                "occurred_at_ms": 1794431047000,
+                "known_at_ms": 1794431049000,
+                "error_reason": "timeout",
+                "amount_paise": 159900
+              },
+              {
+                "status": "authorized",
+                "occurred_at_ms": 1794431471000,
+                "known_at_ms": 1794431473500,
+                "amount_paise": 159900
+              }
+            ]
+          },
+          {
+            "payment_id": "pay_SYN9E4M2TA",
+            "method": "card",
+            "observations": [
+              {
+                "status": "captured",
+                "occurred_at_ms": 1794431136000,
+                "known_at_ms": 1794431138400,
+                "amount_paise": 159900
+              }
+            ]
+          }
+        ],
+        "projection": {
+          "order_paid_by": "pay_SYN9E4M2TA",
+          "late_authorization": [
+            "pay_SYN5P1R7WB"
+          ],
+          "fulfilment": "fulfilled"
+        }
+      },
+      "text": null
+    },
+    {
+      "evidence_id": "ev_fixture",
+      "kind": "fixture_check",
+      "known_at_ms": 1794432780000,
+      "title": "Prewritten fixture tests against the deployed version dep_7ff788",
+      "facts": {
+        "deployed_version": "dep_7ff788",
+        "tests_run": 4,
+        "tests_failed": 0,
+        "results": [
+          {
+            "test_id": "captured_payment_builds_fulfilment",
+            "passed": true
+          },
+          {
+            "test_id": "authorized_payment_changes_nothing",
+            "passed": true
+          },
+          {
+            "test_id": "failed_payment_changes_nothing",
+            "passed": true
+          },
+          {
+            "test_id": "signed_delivery_verifies",
+            "passed": true
+          }
+        ]
+      },
+      "text": null
+    },
+    {
+      "evidence_id": "ev_deploy_b4836f",
+      "kind": "deployment",
+      "known_at_ms": 1794418520000,
+      "title": "Deployment dep_b4836f to merchant-app",
+      "facts": {
+        "deploy_id": "dep_b4836f",
+        "service": "merchant-app",
+        "kind": "code",
+        "deployed_at_ms": 1794418500000,
+        "files_changed": [
+          "merchant_app/receiver.py"
+        ],
+        "summary": "Shorten receiver log previews"
+      },
+      "text": "diff --git a/merchant_app/receiver.py b/merchant_app/receiver.py\nindex 9002893..e3d6224 100644\n--- a/merchant_app/receiver.py\n+++ b/merchant_app/receiver.py\n@@ -1,5 +1,7 @@\n \"\"\"What the webhook receiver does with a delivery before checking its signature.\"\"\"\n from merchant_app import config\n+\n+PREVIEW_CHARS = 200\n \n \n def body_for_verification(raw_body):\n@@ -7,6 +9,11 @@\n     return raw_body\n \n \n+def body_preview(raw_body):\n+    \"\"\"Short, printable start of a delivery body for receiver logs.\"\"\"\n+    return raw_body[:PREVIEW_CHARS].decode(\"utf-8\", errors=\"replace\")\n+\n+\n def verification_secret_ref():\n     \"\"\"Name of the signing secret deliveries are verified with.\"\"\"\n     return config.WEBHOOK_SECRET_REF\n"
+    },
+    {
+      "evidence_id": "ev_deploy_04d9de",
+      "kind": "deployment",
+      "known_at_ms": 1794425720000,
+      "title": "Deployment dep_04d9de to merchant-app",
+      "facts": {
+        "deploy_id": "dep_04d9de",
+        "service": "merchant-app",
+        "kind": "config",
+        "deployed_at_ms": 1794425700000,
+        "files_changed": [
+          "merchant_app/config.py"
+        ],
+        "summary": "Tune checkout session expiry"
+      },
+      "text": "diff --git a/merchant_app/config.py b/merchant_app/config.py\nindex 7e37456..466c57b 100644\n--- a/merchant_app/config.py\n+++ b/merchant_app/config.py\n@@ -11,6 +11,6 @@\n # Name of the signing secret deliveries are verified with; the value lives in the secret store.\n WEBHOOK_SECRET_REF = \"webhook_secret_primary\"\n \n-CHECKOUT_SESSION_TTL_SECONDS = 900\n+CHECKOUT_SESSION_TTL_SECONDS = 1200\n \n RECEIPT_CHANNEL = \"email\"\n"
+    },
+    {
+      "evidence_id": "ev_deploy_7ff788",
+      "kind": "deployment",
+      "known_at_ms": 1794430640000,
+      "title": "Deployment dep_7ff788 to merchant-app",
+      "facts": {
+        "deploy_id": "dep_7ff788",
+        "service": "merchant-app",
+        "kind": "code",
+        "deployed_at_ms": 1794430620000,
+        "files_changed": [
+          "merchant_app/orders.py"
+        ],
+        "summary": "Log ignored events at debug level"
+      },
+      "text": "diff --git a/merchant_app/orders.py b/merchant_app/orders.py\nindex 14967cd..6c00451 100644\n--- a/merchant_app/orders.py\n+++ b/merchant_app/orders.py\n@@ -1,5 +1,9 @@\n \"\"\"Decide what the order system does with a parsed payment event.\"\"\"\n+import logging\n+\n from merchant_app import config\n+\n+log = logging.getLogger(__name__)\n \n \n class InvalidOrderAmount(ValueError):\n@@ -8,12 +12,14 @@\n \n def build_instruction(parsed):\n     if parsed[\"event_type\"] not in config.FULFIL_ON_EVENTS:\n+        log.debug(\"no order change for %s on %s\", parsed[\"event_type\"], parsed[\"order_id\"])\n         return {\"action\": \"ignore\"}\n     amount_paise = parsed[\"amount_paise\"]\n     if not isinstance(amount_paise, int) or amount_paise <= 0:\n         raise InvalidOrderAmount(f\"order {parsed['order_id']}: expected positive integer paise, got {amount_paise!r}\")\n     if parsed[\"currency\"] != config.CURRENCY:\n         raise InvalidOrderAmount(f\"order {parsed['order_id']}: unsupported currency {parsed['currency']!r}\")\n+    log.info(\"fulfilment instruction for %s via %s\", parsed[\"order_id\"], parsed[\"payment_id\"])\n     return {\n         \"action\": \"fulfil\",\n         \"order_id\": parsed[\"order_id\"],\n"
+    },
+    {
+      "evidence_id": "ev_log_checkout",
+      "kind": "log",
+      "known_at_ms": 1794431403000,
+      "title": "INFO log from storefront",
+      "facts": {
+        "source": "storefront",
+        "level": "INFO"
+      },
+      "text": "2026-11-11T21:10:00.000Z INFO storefront: showed 'payment failed, please try again' on 61 orders after provider timeouts between 21:04 and 21:14"
+    },
+    {
+      "evidence_id": "ev_log_network",
+      "kind": "log",
+      "known_at_ms": 1794431103000,
+      "title": "WARN log from platform-alerts",
+      "facts": {
+        "source": "platform-alerts",
+        "level": "WARN"
+      },
+      "text": "2026-11-11T21:05:00.000Z WARN platform-alerts: edge-net: egress packet loss 3.1% to provider API (threshold 1.0%) for 10 min; recovered"
+    }
+  ],
+  "candidate_change_ids": [
+    "dep_b4836f",
+    "dep_04d9de",
+    "dep_7ff788"
+  ],
+  "candidate_methods": [
+    "upi",
+    "card",
+    "netbanking"
+  ]
+}

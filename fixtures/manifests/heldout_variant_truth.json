@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "oracle_notice": "Oracle file. Held-out merchant variants (phase 11b), written after both attribution approaches were developed and kept apart from merchant_variant_truth.json so neither development nor tuning ever iterates them. Read only by the scenario generator, the evaluator and tests. Runtime tools, the evidence packet and the model must never read it.",
+  "fixture_repo": "fixtures/merchant_repo",
+  "baseline": {
+    "config": 1,
+    "payload": 1,
+    "orders": 1,
+    "handler": 1,
+    "receiver": 1,
+    "checkout": 1,
+    "notifications": 1
+  },
+  "variants": {
+    "payload@9": {
+      "role": "fault",
+      "family": "D1",
+      "fault_class": "heldout_same_file_raises",
+      "meaning": "On payment.captured the parser now reads entity.captured_at to start a dispatch SLA clock; the payment entity carries created_at and a captured flag but no captured_at, so every captured event fails in payload.py.",
+      "failing_fixture_tests": ["captured_payment_builds_fulfilment"],
+      "top_frame_file": "merchant_app/payload.py",
+      "exception_type": "KeyError",
+      "category_when_emitted": "event_parse_error",
+      "repaired_by": []
+    },
+    "payload@7": {
+      "role": "fault",
+      "family": "D1",
+      "fault_class": "heldout_upstream_value_rejected",
+      "meaning": "The parser lower-cases provider codes, currency included; the unchanged order builder compares the currency with config.CURRENCY ('INR') and rejects 'inr', so captured events fail in orders.py.",
+      "failing_fixture_tests": ["captured_payment_builds_fulfilment"],
+      "top_frame_file": "merchant_app/orders.py",
+      "exception_type": "InvalidOrderAmount",
+      "category_when_emitted": "order_validation_error",
+      "repaired_by": []
+    },
+    "config@8": {
+      "role": "fault",
+      "family": "D1",
+      "fault_class": "heldout_configuration_only",
+      "meaning": "FULFIL_ON_EVENTS becomes a compiled regular expression; the unchanged order builder tests membership with 'in', which raises TypeError for every event.",
+      "failing_fixture_tests": [
+        "captured_payment_builds_fulfilment",
+        "authorized_payment_changes_nothing",
+        "failed_payment_changes_nothing"
+      ],
+      "top_frame_file": "merchant_app/orders.py",
+      "exception_type": "TypeError",
+      "category_when_emitted": "order_validation_error",
+      "repaired_by": []
+    },
+    "orders@4": {
+      "role": "fault",
+      "family": "D1",
+      "fault_class": "heldout_refactor_changes_behaviour",
+      "meaning": "A refactor moves the checks into fulfilment(order_id, payment_id, amount_paise, currency) and calls it as fulfilment(**parsed); parsed also carries event_type, status and method, so every captured event raises TypeError at the call in orders.py.",
+      "failing_fixture_tests": ["captured_payment_builds_fulfilment"],
+      "top_frame_file": "merchant_app/orders.py",
+      "exception_type": "TypeError",
+      "category_when_emitted": "order_validation_error",
+      "repaired_by": []
+    },
+    "payload@8": {
+      "role": "fault",
+      "family": "D1",
+      "fault_class": "heldout_cross_module_contract",
+      "meaning": "The parser replaces amount_paise and currency with one 'amount' object; the unchanged order builder still reads parsed['amount_paise'], so captured events fail with KeyError in orders.py.",
+      "failing_fixture_tests": ["captured_payment_builds_fulfilment"],
+      "top_frame_file": "merchant_app/orders.py",
+      "exception_type": "KeyError",
+      "category_when_emitted": "order_validation_error",
+      "repaired_by": []
+    },
+    "orders@6": {
+      "role": "fault",
+      "family": "D1",
+      "fault_class": "heldout_unit_mismatch_partial",
+      "meaning": "A new per-order limit meant as 1,00,000 rupees is written as 1_00_000 paise (1,000 rupees), so only captures above 1,000 rupees fail in orders.py (about half of captures at the D1 amount distribution) while smaller ones still fulfil; the fixture capture is 1,200 rupees.",
+      "failing_fixture_tests": ["captured_payment_builds_fulfilment"],
+      "top_frame_file": "merchant_app/orders.py",
+      "exception_type": "InvalidOrderAmount",
+      "category_when_emitted": "order_validation_error",
+      "repaired_by": []
+    },
+    "handler@3": {"role": "harmless", "appears_in_worker_traces": true, "meaning": "Event counters and a timing debug log around both stages; try/finally re-raises, so outcomes and exceptions are unchanged. Shifts handler.py line numbers."},
+    "handler@4": {"role": "harmless", "appears_in_worker_traces": true, "meaning": "Docstrings and one comment only; shifts handler.py line numbers."},
+    "orders@3": {"role": "harmless", "appears_in_worker_traces": true, "meaning": "Adds a cancellation instruction the storefront calls (never the worker) and wraps the long raise lines; build_instruction behaves exactly as before."},
+    "orders@5": {"role": "harmless", "appears_in_worker_traces": true, "meaning": "Renames build_instruction to instruction_for (old name kept as an alias) and moves the settlement checks into settlement_problem(); same outcomes and exception messages, different frame names and lines."},
+    "config@7": {"role": "harmless", "appears_in_worker_traces": false, "meaning": "Receipts move from email to SMS; nothing on the worker path reads RECEIPT_CHANNEL."},
+    "checkout@4": {"role": "harmless", "appears_in_worker_traces": false, "meaning": "Card EMI tenures in the checkout options for orders of 3,000 rupees or more; storefront only."}
+  },
+  "expected_operation_by_family": {
+    "D1": "reprocess_inbox (only after the operator validates a corrected variant with the fixture test; no held-out fault has an allowlisted corrected variant)"
+  }
+}

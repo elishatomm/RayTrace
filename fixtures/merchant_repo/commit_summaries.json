@@ -1,0 +1,176 @@
+{
+  "schema_version": 1,
+  "description": "Ordinary commit summaries per variant. Several per variant so development and test runs can draw disjoint texts.",
+  "summaries": {
+    "config@2": [
+      "Align order reference key with checkout naming",
+      "Use order_ref as the order reference field",
+      "Rename order reference setting to order_ref",
+      "Switch ORDER_REFERENCE_FIELD to order_ref"
+    ],
+    "config@3": [
+      "Move webhook verification to the next signing secret",
+      "Point WEBHOOK_SECRET_REF at webhook_secret_next",
+      "Rotate webhook secret reference",
+      "Use the new webhook signing secret"
+    ],
+    "config@4": [
+      "Extend checkout session lifetime to 20 minutes",
+      "Raise checkout session TTL to 1200 seconds",
+      "Give shoppers longer checkout sessions",
+      "Tune checkout session expiry"
+    ],
+    "config@5": [
+      "Keep order_id as the entity reference key",
+      "Add checkout label for order references",
+      "Separate checkout reference label from entity key"
+    ],
+    "config@6": [
+      "Stage the next webhook secret separately",
+      "Verify with the primary secret until the provider rotates",
+      "Add NEXT_WEBHOOK_SECRET_REF for staged rotation"
+    ],
+    "config@7": [
+      "Send order receipts by SMS",
+      "Switch receipt channel from email to SMS",
+      "Use SMS for payment receipts",
+      "Move receipts to SMS for mobile shoppers"
+    ],
+    "config@8": [
+      "Match versioned capture events in fulfilment settings",
+      "Accept payment.captured.v2 ahead of the webhook API upgrade",
+      "Describe fulfilment events with a pattern",
+      "Prepare FULFIL_ON_EVENTS for versioned event names"
+    ],
+    "payload@2": [
+      "Read payment fields through a shared accessor",
+      "Extract payment entity lookup into a helper",
+      "Simplify payload parsing with payment_entity()",
+      "Tidy event parsing around the payment object"
+    ],
+    "payload@3": [
+      "Carry order totals in rupees from the parser",
+      "Convert amounts to rupees when parsing events",
+      "Use Decimal rupee amounts in parsed events",
+      "Parse payment amounts as rupees for receipts"
+    ],
+    "payload@4": [
+      "Document parsed event fields",
+      "Add docstring to parse_event",
+      "Describe parser output in a docstring",
+      "Note amount units in parse_event docs"
+    ],
+    "payload@5": [
+      "Read the payment entity through payment_entity()",
+      "Point payment accessor at the entity object",
+      "Return the entity from payment_entity()"
+    ],
+    "payload@6": [
+      "Keep paise for order amounts, add rupee display field",
+      "Add amount_display alongside amount_paise",
+      "Move rupee formatting to a display field"
+    ],
+    "payload@7": [
+      "Normalise provider status, method and currency codes",
+      "Lower-case provider codes when parsing events",
+      "Accept mixed-case enum values from the provider",
+      "Add provider_code helper for parsed event fields"
+    ],
+    "payload@8": [
+      "Group amount, refunds and currency into one money field",
+      "Parse payment amounts into a money object",
+      "Carry the refunded amount alongside the payment amount",
+      "Keep amount and currency together in parsed events"
+    ],
+    "payload@9": [
+      "Record capture time on parsed payment events",
+      "Start the dispatch SLA clock at capture",
+      "Add captured_at_ms to captured events",
+      "Carry the capture timestamp into the order flow"
+    ],
+    "orders@2": [
+      "Log fulfilment instructions at info level",
+      "Add logging to order instruction builder",
+      "Log ignored events at debug level",
+      "Include order and payment IDs in order logs"
+    ],
+    "orders@3": [
+      "Add cancellation instructions for the storefront",
+      "Let the storefront cancel orders before dispatch",
+      "Add cancellation_instruction with known reasons",
+      "Send cancellation reasons to the warehouse"
+    ],
+    "orders@4": [
+      "Split settlement checks out of build_instruction",
+      "Extract fulfilment and settlement helpers",
+      "Build fulfilment instructions from named fields",
+      "Tidy the order builder into smaller functions"
+    ],
+    "orders@5": [
+      "Rename build_instruction to instruction_for",
+      "Separate settlement checks from the order decision",
+      "Refactor the order instruction builder",
+      "Name parsed events consistently in orders.py"
+    ],
+    "orders@6": [
+      "Reject captures above the per-order amount limit",
+      "Add a sanity limit on order payment amounts",
+      "Treat captures above 1,00,000 rupees as invalid",
+      "Guard fulfilment against oversized payment amounts"
+    ],
+    "handler@2": [
+      "Log event type on entry to the handler",
+      "Add debug log for each handled event",
+      "Trace handled events at debug level"
+    ],
+    "handler@3": [
+      "Count handled events by type and outcome",
+      "Add handling-time debug log and event counters",
+      "Expose handled-event counts to the metrics endpoint",
+      "Time each handled event"
+    ],
+    "handler@4": [
+      "Document the handler's error boundaries",
+      "Explain how stage tags are kept in the handler",
+      "Add docstrings to handle_event and ErrorBoundary",
+      "Describe what the worker passes to the handler"
+    ],
+    "receiver@2": [
+      "Store webhook bodies in a stable layout",
+      "Normalise webhook JSON layout on receipt",
+      "Canonicalise incoming webhook bodies",
+      "Pretty-print delivery bodies for stored copies"
+    ],
+    "receiver@3": [
+      "Add body preview helper for receiver logs",
+      "Trim logged webhook bodies to 200 characters",
+      "Shorten receiver log previews"
+    ],
+    "receiver@4": [
+      "Verify signatures over delivered bytes; layout only for storage",
+      "Split storage layout from verification body",
+      "Add body_for_storage for stored copies"
+    ],
+    "checkout@2": [
+      "Offer UPI first at checkout",
+      "Make UPI the default checkout method",
+      "Reorder checkout methods: UPI, card, netbanking"
+    ],
+    "checkout@3": [
+      "List netbanking banks in code order",
+      "Sort netbanking bank list at checkout",
+      "Show netbanking banks in a stable order"
+    ],
+    "checkout@4": [
+      "Offer card EMI at checkout from 3,000 rupees",
+      "Add card instalment tenures to checkout options",
+      "Show EMI plans for larger card orders",
+      "List EMI tenures in checkout options"
+    ],
+    "notifications@2": [
+      "Reword order confirmation message",
+      "Update receipt notification copy",
+      "Friendlier payment pending message"
+    ]
+  }
+}

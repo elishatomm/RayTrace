@@ -1,0 +1,840 @@
+{
+  "document": "RayTrace release demonstrations (synthetic sandbox)",
+  "conditions": {
+    "model_mode": "rules (WORKBENCH_MODEL_MODE=rules for every command and server)",
+    "data_directory": "new and empty, under /tmp in the container; paths are not printed",
+    "timing": "wall clock per step, measured once (n=1) in one container; CLI steps include starting Python, API steps are one HTTP round trip to the local server; not a latency benchmark"
+  },
+  "versions": {
+    "application": "0.1.0",
+    "python": "3.12.16",
+    "sqlite": "3.46.1",
+    "policy": "policy-v3",
+    "validator": "val-7",
+    "receipt": "receipt-2"
+  },
+  "server_start_lines": {
+    "A": [
+      "RayTrace (synthetic sandbox) on http://127.0.0.1:57555/ ; execution mode rules",
+      "Model source: rules baseline (no model); set by WORKBENCH_MODEL_MODE=rules"
+    ],
+    "B_and_C": [
+      "RayTrace (synthetic sandbox) on http://127.0.0.1:58073/ ; execution mode rules",
+      "Model source: rules baseline (no model); set by WORKBENCH_MODEL_MODE=rules"
+    ]
+  },
+  "A_successful_recovery": {
+    "entry_points": "python -m recovery_workbench.cli (seed, diagnose, validate-fix, plan, refresh, plan, approve, execute, execute, receipt, receipt); then python -m recovery_workbench.api on the same data directory for the queue, the receipt route and the report",
+    "run_id": "run_53966a08d4",
+    "scenario": "worker_backlog",
+    "seed": 101,
+    "seed_cutoff_ms": 1793881800000,
+    "diagnosis": {
+      "diagnosis_id": "diag_977e158711554625",
+      "mode_label": "rules baseline rules-v3 (no model)",
+      "status": "validated",
+      "rules_version": "rules-v3",
+      "hypothesis": "merchant_worker_regression",
+      "faulting_change_id": "deploy_9b85880366",
+      "proposed_operation": "reprocess_inbox"
+    },
+    "fix_validation": {
+      "validation_id": "fixval_9b6080122c8c4d2d",
+      "fix_id": "payload@5",
+      "deployed_version": "deploy_e1b540bacd",
+      "reproduced": true,
+      "passed": true
+    },
+    "draft_plan": {
+      "plan_id": "plan_47e17137b1a0464e",
+      "plan_hash": "6a699ab0a01632154f567c7b79d71aa4aa0a4013e14e7dab5afb2c2459aa01d8",
+      "operation": "reprocess_inbox",
+      "target_count": 98,
+      "target_value_paise": 11959200,
+      "expires_at_ms": 1793883720000,
+      "exclusions_by_reason": {
+        "amount_mismatch": 2,
+        "cancelled": 3,
+        "conflicting_evidence": 2,
+        "multiple_captures": 2,
+        "refunded": 2,
+        "stale_snapshot": 5
+      }
+    },
+    "stale_only_orders": [
+      "order_SYNTHETIC_547a954d_0060",
+      "order_SYNTHETIC_547a954d_0065",
+      "order_SYNTHETIC_547a954d_0081",
+      "order_SYNTHETIC_547a954d_0094",
+      "order_SYNTHETIC_547a954d_0095"
+    ],
+    "refresh": {
+      "payments": 10,
+      "refreshed": 10,
+      "unknown_at_provider": 0,
+      "now_ms": 1793881980000
+    },
+    "plan": {
+      "plan_id": "plan_f7ffb5ae34314988",
+      "plan_hash": "9db6c8c60bee4995eaed5927d37f339485ca3d204b4ffcac9b135286f2acc12e",
+      "operation": "reprocess_inbox",
+      "target_count": 103,
+      "target_value_paise": 12502700,
+      "expires_at_ms": 1793883840000,
+      "exclusions_by_reason": {
+        "amount_mismatch": 2,
+        "cancelled": 3,
+        "conflicting_evidence": 2,
+        "multiple_captures": 2,
+        "refunded": 2
+      }
+    },
+    "target_order_ids": [
+      "order_SYNTHETIC_547a954d_0049",
+      "order_SYNTHETIC_547a954d_0050",
+      "order_SYNTHETIC_547a954d_0051",
+      "order_SYNTHETIC_547a954d_0052",
+      "order_SYNTHETIC_547a954d_0053",
+      "order_SYNTHETIC_547a954d_0054",
+      "order_SYNTHETIC_547a954d_0055",
+      "order_SYNTHETIC_547a954d_0056",
+      "order_SYNTHETIC_547a954d_0057",
+      "order_SYNTHETIC_547a954d_0058",
+      "order_SYNTHETIC_547a954d_0059",
+      "order_SYNTHETIC_547a954d_0060",
+      "order_SYNTHETIC_547a954d_0061",
+      "order_SYNTHETIC_547a954d_0062",
+      "order_SYNTHETIC_547a954d_0063",
+      "order_SYNTHETIC_547a954d_0065",
+      "order_SYNTHETIC_547a954d_0066",
+      "order_SYNTHETIC_547a954d_0067",
+      "order_SYNTHETIC_547a954d_0068",
+      "order_SYNTHETIC_547a954d_0069",
+      "order_SYNTHETIC_547a954d_0071",
+      "order_SYNTHETIC_547a954d_0072",
+      "order_SYNTHETIC_547a954d_0073",
+      "order_SYNTHETIC_547a954d_0074",
+      "order_SYNTHETIC_547a954d_0075",
+      "order_SYNTHETIC_547a954d_0076",
+      "order_SYNTHETIC_547a954d_0077",
+      "order_SYNTHETIC_547a954d_0079",
+      "order_SYNTHETIC_547a954d_0080",
+      "order_SYNTHETIC_547a954d_0081",
+      "order_SYNTHETIC_547a954d_0082",
+      "order_SYNTHETIC_547a954d_0083",
+      "order_SYNTHETIC_547a954d_0086",
+      "order_SYNTHETIC_547a954d_0087",
+      "order_SYNTHETIC_547a954d_0088",
+      "order_SYNTHETIC_547a954d_0089",
+      "order_SYNTHETIC_547a954d_0091",
+      "order_SYNTHETIC_547a954d_0092",
+      "order_SYNTHETIC_547a954d_0093",
+      "order_SYNTHETIC_547a954d_0094",
+      "order_SYNTHETIC_547a954d_0095",
+      "order_SYNTHETIC_547a954d_0096",
+      "order_SYNTHETIC_547a954d_0098",
+      "order_SYNTHETIC_547a954d_0099",
+      "order_SYNTHETIC_547a954d_0100",
+      "order_SYNTHETIC_547a954d_0101",
+      "order_SYNTHETIC_547a954d_0103",
+      "order_SYNTHETIC_547a954d_0104",
+      "order_SYNTHETIC_547a954d_0105",
+      "order_SYNTHETIC_547a954d_0106",
+      "order_SYNTHETIC_547a954d_0107",
+      "order_SYNTHETIC_547a954d_0109",
+      "order_SYNTHETIC_547a954d_0111",
+      "order_SYNTHETIC_547a954d_0112",
+      "order_SYNTHETIC_547a954d_0113",
+      "order_SYNTHETIC_547a954d_0114",
+      "order_SYNTHETIC_547a954d_0115",
+      "order_SYNTHETIC_547a954d_0116",
+      "order_SYNTHETIC_547a954d_0117",
+      "order_SYNTHETIC_547a954d_0119",
+      "order_SYNTHETIC_547a954d_0124",
+      "order_SYNTHETIC_547a954d_0125",
+      "order_SYNTHETIC_547a954d_0126",
+      "order_SYNTHETIC_547a954d_0127",
+      "order_SYNTHETIC_547a954d_0128",
+      "order_SYNTHETIC_547a954d_0129",
+      "order_SYNTHETIC_547a954d_0131",
+      "order_SYNTHETIC_547a954d_0132",
+      "order_SYNTHETIC_547a954d_0133",
+      "order_SYNTHETIC_547a954d_0134",
+      "order_SYNTHETIC_547a954d_0136",
+      "order_SYNTHETIC_547a954d_0137",
+      "order_SYNTHETIC_547a954d_0138",
+      "order_SYNTHETIC_547a954d_0139",
+      "order_SYNTHETIC_547a954d_0140",
+      "order_SYNTHETIC_547a954d_0141",
+      "order_SYNTHETIC_547a954d_0142",
+      "order_SYNTHETIC_547a954d_0143",
+      "order_SYNTHETIC_547a954d_0144",
+      "order_SYNTHETIC_547a954d_0145",
+      "order_SYNTHETIC_547a954d_0146",
+      "order_SYNTHETIC_547a954d_0147",
+      "order_SYNTHETIC_547a954d_0148",
+      "order_SYNTHETIC_547a954d_0149",
+      "order_SYNTHETIC_547a954d_0150",
+      "order_SYNTHETIC_547a954d_0151",
+      "order_SYNTHETIC_547a954d_0152",
+      "order_SYNTHETIC_547a954d_0153",
+      "order_SYNTHETIC_547a954d_0154",
+      "order_SYNTHETIC_547a954d_0155",
+      "order_SYNTHETIC_547a954d_0156",
+      "order_SYNTHETIC_547a954d_0157",
+      "order_SYNTHETIC_547a954d_0158",
+      "order_SYNTHETIC_547a954d_0159",
+      "order_SYNTHETIC_547a954d_0160",
+      "order_SYNTHETIC_547a954d_0161",
+      "order_SYNTHETIC_547a954d_0162",
+      "order_SYNTHETIC_547a954d_0163",
+      "order_SYNTHETIC_547a954d_0164",
+      "order_SYNTHETIC_547a954d_0165",
+      "order_SYNTHETIC_547a954d_0166",
+      "order_SYNTHETIC_547a954d_0167",
+      "order_SYNTHETIC_547a954d_0168"
+    ],
+    "approval": {
+      "approval_id": "appr_bab47b86631f483f",
+      "approved_at_ms": 1793882100000,
+      "expires_at_ms": 1793883000000,
+      "operator_id": "op_demo_operator",
+      "plan_hash": "9db6c8c60bee4995eaed5927d37f339485ca3d204b4ffcac9b135286f2acc12e",
+      "plan_id": "plan_f7ffb5ae34314988",
+      "run_id": "run_53966a08d4"
+    },
+    "queue_before_recovery": {
+      "as_of_ms": 1793881800000,
+      "captured_unprocessed_orders": 98,
+      "captured_unprocessed_value_paise": 11959200,
+      "example_order": {
+        "order_id": "order_SYNTHETIC_547a954d_0049",
+        "amount_paise": 62100,
+        "currency": "INR",
+        "state": "captured_processing_incomplete",
+        "next_step": "validate_fix_then_reprocess",
+        "blockers": [],
+        "evidence_links": {
+          "payment_ids": 1,
+          "observation_ids": 7,
+          "inbox_ids": 2,
+          "worker_attempt_ids": 6,
+          "delivery_attempt_ids": 2
+        }
+      }
+    },
+    "protected_local_effects": {
+      "after_seed": {
+        "fulfilments": 45,
+        "fulfilments_via_reprocess": 0,
+        "actions": 0
+      },
+      "after_preparing_and_approving": {
+        "fulfilments": 45,
+        "fulfilments_via_reprocess": 0,
+        "actions": 0
+      },
+      "after_execute": {
+        "fulfilments": 148,
+        "fulfilments_via_reprocess": 103,
+        "actions": 1
+      },
+      "after_execute_again": {
+        "fulfilments": 148,
+        "fulfilments_via_reprocess": 103,
+        "actions": 1
+      },
+      "after_two_receipt_exports": {
+        "fulfilments": 148,
+        "fulfilments_via_reprocess": 103,
+        "actions": 1
+      },
+      "preparing_and_approving_changed_no_order": true
+    },
+    "execution": {
+      "action_id": "act_f9418d1b25df9b209eff",
+      "status": "succeeded",
+      "replayed": false,
+      "reasons": [],
+      "restored_processing_value_paise": 12502700,
+      "additional_captured_paise": 0,
+      "executed_at_ms": 1793882160000,
+      "fulfilled_orders": 103
+    },
+    "execute_again": {
+      "action_id": "act_f9418d1b25df9b209eff",
+      "status": "succeeded",
+      "replayed": true,
+      "reasons": [],
+      "restored_processing_value_paise": 12502700,
+      "additional_captured_paise": 0,
+      "executed_at_ms": 1793882160000,
+      "fulfilled_orders": 103,
+      "same_action": true
+    },
+    "receipt": {
+      "receipt_version": "receipt-2",
+      "receipt_hash": "eb9d6f30f04d9ebc6694a7f153cc60d4465459c60ba07b6f698b7a3304c6afa6",
+      "newly_completed_orders": 103,
+      "results": {
+        "completed": 103,
+        "failed": 0,
+        "no_op": 0,
+        "refused": 0
+      },
+      "restored_processing_value_paise_by_currency": {
+        "INR": 12502700
+      },
+      "new_captures_caused_by_recovery": {
+        "additional_captured_paise": 0,
+        "new_captured_payment_ids": []
+      },
+      "duplicate_fulfilments": 0,
+      "unresolved_orders": 11,
+      "unresolved_value_paise": 1829100,
+      "committed_fulfilments_of_this_action": [
+        {
+          "currency": "INR",
+          "fulfilment_rows": 103,
+          "distinct_orders": 103,
+          "amount_paise": 12502700
+        }
+      ],
+      "two_exports_same_hash": true,
+      "two_exports_byte_identical": true,
+      "api_route_bytes_equal_cli_export": true,
+      "report_outcome": {
+        "reprocess_actions_succeeded": 1,
+        "orders_fulfilled_by_reprocessing": 103,
+        "restored_processing_value_paise": 12502700,
+        "additional_captured_paise": 0
+      }
+    },
+    "queue_after_recovery": {
+      "captured_unprocessed_orders": 0,
+      "captured_unprocessed_value_paise": 0,
+      "example_order": {
+        "state": "complete",
+        "next_step": "none",
+        "receipts": [
+          {
+            "action_id": "act_f9418d1b25df9b209eff",
+            "status": "succeeded",
+            "order_result": "completed"
+          }
+        ]
+      }
+    },
+    "wall_clock_ms": {
+      "steps": [
+        {
+          "step": "seed",
+          "wall_ms": 664.5
+        },
+        {
+          "step": "diagnose (rules)",
+          "wall_ms": 415.1
+        },
+        {
+          "step": "validate-fix",
+          "wall_ms": 370.3
+        },
+        {
+          "step": "plan",
+          "wall_ms": 400.2
+        },
+        {
+          "step": "refresh the stale-only orders' payments (read-only)",
+          "wall_ms": 368.8
+        },
+        {
+          "step": "plan again",
+          "wall_ms": 388.4
+        },
+        {
+          "step": "approve",
+          "wall_ms": 368.9
+        },
+        {
+          "step": "execute",
+          "wall_ms": 426.1
+        },
+        {
+          "step": "execute again",
+          "wall_ms": 371.3
+        },
+        {
+          "step": "receipt export 1",
+          "wall_ms": 383.0
+        },
+        {
+          "step": "receipt export 2",
+          "wall_ms": 380.8
+        },
+        {
+          "step": "API: queue as of the seed's cutoff",
+          "wall_ms": 22.0
+        },
+        {
+          "step": "API: example case as of the cutoff",
+          "wall_ms": 23.1
+        },
+        {
+          "step": "API: receipt JSON and Markdown",
+          "wall_ms": 21.3
+        }
+      ],
+      "total": 4603.8
+    }
+  },
+  "B1_approval_expired_on_the_replay_clock": {
+    "run_id": "run_ec0065d1b6",
+    "scenario": "worker_backlog",
+    "seed": 102,
+    "plan": {
+      "plan_id": "plan_dde2cdd299a04828",
+      "plan_hash": "8f02f89034e86434a078fc7a2871cfd83b3c69c43bda55bf82c4a3da81b93bc4",
+      "operation": "reprocess_inbox",
+      "target_count": 95,
+      "target_value_paise": 10191800,
+      "expires_at_ms": 1793970120000,
+      "exclusions_by_reason": {
+        "amount_mismatch": 2,
+        "cancelled": 3,
+        "conflicting_evidence": 2,
+        "multiple_captures": 2,
+        "refunded": 2,
+        "stale_snapshot": 3
+      }
+    },
+    "approval": {
+      "approval_id": "appr_1e616605dac943f8",
+      "operator_id": "op_demo_operator",
+      "plan_hash": "8f02f89034e86434a078fc7a2871cfd83b3c69c43bda55bf82c4a3da81b93bc4",
+      "approved_at_ms": 1793968380000,
+      "expires_at_ms": 1793969280000
+    },
+    "replay_clock_ms": {
+      "before_advance": 1793968380000,
+      "after_advance": 1793969280000
+    },
+    "execute": {
+      "http_status": 409,
+      "error": "PlanRejectedError",
+      "action_id": "act_0091199a5d988197c047",
+      "status": "rejected",
+      "replayed": false,
+      "reasons": [
+        "approval_expired: approval expired at 1793969280000, now 1793969340000"
+      ],
+      "restored_processing_value_paise": 0,
+      "additional_captured_paise": 0,
+      "executed_at_ms": 1793969340000,
+      "fulfilled_orders": 0
+    },
+    "receipt_of_the_refusal": {
+      "receipt_hash": "f4acbb45b782f569a06388ee25970c9b6065081c73fa1b0f17e9959f40e7e58a",
+      "status": "rejected",
+      "results": {
+        "completed": 0,
+        "failed": 0,
+        "no_op": 95,
+        "refused": 0
+      },
+      "failed_checks": {
+        "approval_expired": [
+          "approval expired at 1793969280000, now 1793969340000"
+        ]
+      },
+      "restored_processing_value_paise": 0,
+      "additional_captured_paise": 0
+    },
+    "protected_local_effects": {
+      "before": {
+        "fulfilments": 51,
+        "fulfilments_via_reprocess": 0,
+        "actions": 0
+      },
+      "after": {
+        "fulfilments": 51,
+        "fulfilments_via_reprocess": 0,
+        "actions": 1
+      },
+      "after_new_plan": {
+        "fulfilments": 51,
+        "fulfilments_via_reprocess": 0,
+        "actions": 1
+      },
+      "unchanged": true
+    },
+    "execute_again": {
+      "http_status": 409,
+      "replayed": true,
+      "same_action": true
+    },
+    "approve_the_same_plan_again": {
+      "http_status": 409,
+      "error": "StaleStateError",
+      "detail": "plan 'plan_dde2cdd299a04828' is invalidated; only a draft plan can be approved"
+    },
+    "new_plan_needing_its_own_approval": {
+      "plan_id": "plan_368ee9e879554641",
+      "plan_hash": "9b3d706eb1ca2e6f563033bf542e5f05216f3e1169bfc3314b01681566e67d60",
+      "operation": "reprocess_inbox",
+      "target_count": 95,
+      "target_value_paise": 10191800,
+      "expires_at_ms": 1793971320000,
+      "exclusions_by_reason": {
+        "amount_mismatch": 2,
+        "cancelled": 3,
+        "conflicting_evidence": 2,
+        "multiple_captures": 2,
+        "refunded": 2,
+        "stale_snapshot": 4
+      }
+    },
+    "wall_clock_ms": {
+      "steps": [
+        {
+          "step": "create run",
+          "wall_ms": 302.1
+        },
+        {
+          "step": "diagnose (rules)",
+          "wall_ms": 118.7
+        },
+        {
+          "step": "validate-fix",
+          "wall_ms": 2.9
+        },
+        {
+          "step": "plan",
+          "wall_ms": 22.5
+        },
+        {
+          "step": "approve",
+          "wall_ms": 1.7
+        },
+        {
+          "step": "advance replay clock +15 min",
+          "wall_ms": 1.7
+        },
+        {
+          "step": "execute",
+          "wall_ms": 49.4
+        },
+        {
+          "step": "execute again",
+          "wall_ms": 1.5
+        },
+        {
+          "step": "approve the same plan again",
+          "wall_ms": 1.2
+        },
+        {
+          "step": "plan again on current evidence",
+          "wall_ms": 18.4
+        }
+      ],
+      "total": 520.1
+    }
+  },
+  "B2_refund_after_approval": {
+    "run_id": "run_53966a08d4",
+    "scenario": "worker_backlog",
+    "seed": 101,
+    "plan": {
+      "plan_id": "plan_ade4a215d2854119",
+      "plan_hash": "d75c4ead7f596284e37d89ed9e0b75b26003f2f20028ee011b61eac41304a77e",
+      "operation": "reprocess_inbox",
+      "target_count": 98,
+      "target_value_paise": 11959200,
+      "expires_at_ms": 1793883720000,
+      "exclusions_by_reason": {
+        "amount_mismatch": 2,
+        "cancelled": 3,
+        "conflicting_evidence": 2,
+        "multiple_captures": 2,
+        "refunded": 2,
+        "stale_snapshot": 5
+      }
+    },
+    "approval": {
+      "approval_id": "appr_b01bbd4eac044627",
+      "operator_id": "op_demo_operator",
+      "plan_hash": "d75c4ead7f596284e37d89ed9e0b75b26003f2f20028ee011b61eac41304a77e",
+      "approved_at_ms": 1793881980000,
+      "expires_at_ms": 1793882880000
+    },
+    "business_change_after_approval": {
+      "kind": "refund of one approved target, signed as the simulated provider signs (cli webhook-request)",
+      "order_id": "order_SYNTHETIC_547a954d_0049",
+      "payment_id": "pay_SYNTHETIC_547a954d_00050",
+      "amount_paise": 62100,
+      "event_id": "evt_release_refund_0001",
+      "webhook_answer": {
+        "outcome": "accepted",
+        "event_id": "evt_release_refund_0001"
+      }
+    },
+    "execute": {
+      "http_status": 409,
+      "error": "PlanRejectedError",
+      "action_id": "act_7198642fff69df497a01",
+      "status": "rejected",
+      "replayed": false,
+      "reasons": [
+        "target_ineligible: order_SYNTHETIC_547a954d_0049: refunded",
+        "evidence_changed: the targets' state changed since the plan was built"
+      ],
+      "restored_processing_value_paise": 0,
+      "additional_captured_paise": 0,
+      "executed_at_ms": 1793882040001,
+      "fulfilled_orders": 0
+    },
+    "receipt_of_the_refusal": {
+      "receipt_hash": "b4aaa1af56c46853fe07fdf28ae11ae9d8c78966419f0572bbb6abbcc79bf2b5",
+      "status": "rejected",
+      "results": {
+        "completed": 0,
+        "failed": 0,
+        "no_op": 97,
+        "refused": 1
+      },
+      "failed_checks": {
+        "target_ineligible": [
+          "order_SYNTHETIC_547a954d_0049: refunded"
+        ],
+        "evidence_changed": [
+          "the targets' state changed since the plan was built"
+        ]
+      },
+      "restored_processing_value_paise": 0,
+      "additional_captured_paise": 0
+    },
+    "protected_local_effects": {
+      "before": {
+        "fulfilments": 45,
+        "fulfilments_via_reprocess": 0,
+        "actions": 0
+      },
+      "after": {
+        "fulfilments": 45,
+        "fulfilments_via_reprocess": 0,
+        "actions": 1
+      },
+      "unchanged": true
+    },
+    "refunded_order_in_the_queue": {
+      "state": "business_state_conflict",
+      "next_step": "manual_review",
+      "blockers": [
+        "refunded"
+      ]
+    },
+    "wall_clock_ms": {
+      "steps": [
+        {
+          "step": "create run",
+          "wall_ms": 307.3
+        },
+        {
+          "step": "diagnose (rules)",
+          "wall_ms": 58.5
+        },
+        {
+          "step": "validate-fix",
+          "wall_ms": 2.0
+        },
+        {
+          "step": "plan",
+          "wall_ms": 19.5
+        },
+        {
+          "step": "approve",
+          "wall_ms": 1.4
+        },
+        {
+          "step": "cli webhook-request (signs; reads only)",
+          "wall_ms": 368.9
+        },
+        {
+          "step": "POST the signed refund to the webhook route",
+          "wall_ms": 2.1
+        },
+        {
+          "step": "execute",
+          "wall_ms": 50.8
+        }
+      ],
+      "total": 810.5
+    }
+  },
+  "C_payment_state_unresolved": {
+    "run_id": "run_8581d2ff66",
+    "scenario": "late_authorization",
+    "seed": 101,
+    "unresolved_before_the_refresh": {
+      "by_state": {
+        "payment_state_unresolved": 0,
+        "capture_not_confirmed": 2
+      },
+      "unresolved_orders": 2
+    },
+    "order_id": "order_SYNTHETIC_920abafa_0181",
+    "case_before_the_refresh": {
+      "state": "capture_not_confirmed",
+      "next_step": "hold",
+      "blockers": [
+        "unresolved_attempt",
+        "not_captured"
+      ],
+      "state_condition": "a payment is authorised and none is captured",
+      "fulfilled": false,
+      "payments": [
+        {
+          "payment_id": "pay_SYNTHETIC_920abafa_00190",
+          "status": "authorized",
+          "late_authorization": false
+        }
+      ]
+    },
+    "diagnosis": {
+      "diagnosis_id": "diag_ced1abaa47c44c49",
+      "mode_label": "rules baseline rules-v3 (no model)",
+      "status": "validated",
+      "hypothesis": "ambiguous_payment_state",
+      "proposed_operation": "refresh_provider_state",
+      "next_check": "fetch_provider_snapshot"
+    },
+    "refresh": {
+      "payments_requested": 76,
+      "includes_the_order": true,
+      "refreshed": 76,
+      "unknown_at_provider": 0,
+      "now_ms": 1793880060000
+    },
+    "case_after_the_refresh": {
+      "state": "notification_not_accepted",
+      "next_step": "prepare_provider_replay",
+      "blockers": [
+        "capture_event_not_received"
+      ],
+      "state_condition": "captured at the provider, but no payment.captured event naming the order was durably received",
+      "fulfilled": false,
+      "payments": [
+        {
+          "payment_id": "pay_SYNTHETIC_920abafa_00190",
+          "status": "captured",
+          "late_authorization": false
+        }
+      ]
+    },
+    "still_counted_unresolved": true,
+    "readme_late_authorised_order_after_the_refresh": {
+      "order_id": "order_SYNTHETIC_920abafa_0341",
+      "state": "capture_not_confirmed",
+      "next_step": "hold",
+      "blockers": [
+        "unresolved_attempt",
+        "not_captured"
+      ],
+      "state_condition": "a payment is authorised and none is captured",
+      "fulfilled": false,
+      "payments": [
+        {
+          "payment_id": "pay_SYNTHETIC_920abafa_00354",
+          "status": "authorized",
+          "late_authorization": true
+        }
+      ],
+      "counted_unresolved": true
+    },
+    "unresolved_after_the_refresh": {
+      "by_state": {
+        "payment_state_unresolved": 0,
+        "capture_not_confirmed": 3
+      },
+      "unresolved_orders": 5
+    },
+    "escalation": {
+      "action_id": "act_2df6a74bc48fce44c3fe",
+      "operation": "escalate",
+      "evidence_needed": [
+        "fetch_provider_snapshot"
+      ]
+    },
+    "protected_local_effects": {
+      "before_refresh": {
+        "fulfilments": 305,
+        "fulfilments_via_reprocess": 0,
+        "actions": 0
+      },
+      "after_refresh": {
+        "fulfilments": 305,
+        "fulfilments_via_reprocess": 0,
+        "actions": 0
+      },
+      "after_escalation": {
+        "fulfilments": 305,
+        "fulfilments_via_reprocess": 0,
+        "actions": 1
+      },
+      "no_new_fulfilment": true
+    },
+    "wall_clock_ms": {
+      "steps": [
+        {
+          "step": "create run",
+          "wall_ms": 405.1
+        },
+        {
+          "step": "queue: uncertain payment states",
+          "wall_ms": 36.2
+        },
+        {
+          "step": "case before the refresh",
+          "wall_ms": 47.6
+        },
+        {
+          "step": "diagnose (rules)",
+          "wall_ms": 115.8
+        },
+        {
+          "step": "refresh (read-only provider snapshot)",
+          "wall_ms": 5.0
+        },
+        {
+          "step": "case after the refresh",
+          "wall_ms": 38.6
+        },
+        {
+          "step": "escalate",
+          "wall_ms": 1.6
+        }
+      ],
+      "total": 649.9
+    }
+  },
+  "model_invocations": {
+    "requests_at_the_model_url": 0,
+    "request_lines": [],
+    "diagnoses_by_mode": {
+      "A (cli data directory)": {
+        "rules": {
+          "diagnoses": 1,
+          "with_a_model_id": 0
+        }
+      },
+      "B and C (api data directory)": {
+        "rules": {
+          "diagnoses": 3,
+          "with_a_model_id": 0
+        }
+      }
+    },
+    "cases_evaluated": 4,
+    "cases_with_a_model_call": 0,
+    "rate": "0/4"
+  }
+}

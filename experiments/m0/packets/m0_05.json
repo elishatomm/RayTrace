@@ -1,0 +1,326 @@
+{
+  "packet_version": "m0-1",
+  "incident": {
+    "run_id": "run_6f8622bc",
+    "incident_id": "inc_21d2ec31",
+    "symptom": "Fewer orders are completing than usual",
+    "trigger": "order_completion_drop",
+    "cohort": {
+      "merchant_id": "mch_synthetic_01",
+      "integration_id": "int_webhook_01",
+      "methods": [
+        "upi",
+        "card",
+        "netbanking"
+      ]
+    },
+    "window_start_ms": 1794408000000,
+    "window_end_ms": 1794411600000,
+    "evidence_cutoff_ms": 1794411600000,
+    "summary_counts": {
+      "orders_with_attempts": 958,
+      "orders_completed": 702,
+      "payment_attempts": 951
+    }
+  },
+  "items": [
+    {
+      "evidence_id": "ev_trigger",
+      "kind": "incident_trigger",
+      "known_at_ms": 1794411540000,
+      "title": "Detector state at the evidence cutoff",
+      "facts": {
+        "fired": [
+          "order_completion_drop",
+          "authorisation_ratio_drop[upi]"
+        ],
+        "not_fired": [
+          "authorisation_ratio_drop[card]",
+          "authorisation_ratio_drop[netbanking]",
+          "processing_backlog_age",
+          "delivery_rejection_rate"
+        ],
+        "order_completion_ratio": 0.701,
+        "baseline_order_completion_ratio": 0.903,
+        "first_breach_ms": 1794410520000
+      },
+      "text": null
+    },
+    {
+      "evidence_id": "ev_metric_upi",
+      "kind": "metric",
+      "known_at_ms": 1794411540000,
+      "title": "Provider authorisation and capture for upi, mature cohort",
+      "facts": {
+        "method": "upi",
+        "mature_cohort_start_ms": 1794409200000,
+        "mature_cohort_end_ms": 1794411000000,
+        "attempts": 318,
+        "authorised": 187,
+        "captured": 184,
+        "unresolved": 4,
+        "authorisation_ratio": 0.588,
+        "authorisation_ratio_95ci": [
+          0.533,
+          0.641
+        ],
+        "baseline_attempts": 2456,
+        "baseline_authorisation_ratio": 0.919,
+        "baseline_95ci": [
+          0.908,
+          0.929
+        ]
+      },
+      "text": null
+    },
+    {
+      "evidence_id": "ev_metric_card",
+      "kind": "metric",
+      "known_at_ms": 1794411540000,
+      "title": "Provider authorisation and capture for card, mature cohort",
+      "facts": {
+        "method": "card",
+        "mature_cohort_start_ms": 1794409200000,
+        "mature_cohort_end_ms": 1794411000000,
+        "attempts": 174,
+        "authorised": 158,
+        "captured": 157,
+        "unresolved": 1,
+        "authorisation_ratio": 0.908,
+        "authorisation_ratio_95ci": [
+          0.856,
+          0.943
+        ],
+        "baseline_attempts": 1388,
+        "baseline_authorisation_ratio": 0.912,
+        "baseline_95ci": [
+          0.896,
+          0.926
+        ]
+      },
+      "text": null
+    },
+    {
+      "evidence_id": "ev_metric_netbanking",
+      "kind": "metric",
+      "known_at_ms": 1794411540000,
+      "title": "Provider authorisation and capture for netbanking, mature cohort",
+      "facts": {
+        "method": "netbanking",
+        "mature_cohort_start_ms": 1794409200000,
+        "mature_cohort_end_ms": 1794411000000,
+        "attempts": 63,
+        "authorised": 56,
+        "captured": 56,
+        "unresolved": 0,
+        "authorisation_ratio": 0.889,
+        "authorisation_ratio_95ci": [
+          0.788,
+          0.945
+        ],
+        "baseline_attempts": 512,
+        "baseline_authorisation_ratio": 0.895,
+        "baseline_95ci": [
+          0.865,
+          0.918
+        ]
+      },
+      "text": null
+    },
+    {
+      "evidence_id": "ev_processing",
+      "kind": "metric",
+      "known_at_ms": 1794411540000,
+      "title": "Merchant processing of captured payments, last 30 minutes",
+      "facts": {
+        "captured_orders": 371,
+        "processed": 369,
+        "pending_captured": 2,
+        "pending_captured_value_paise": 213800,
+        "processing_completion_ratio": 0.995,
+        "baseline_processing_completion_ratio": 0.997
+      },
+      "text": null
+    },
+    {
+      "evidence_id": "ev_provider_state",
+      "kind": "provider_state",
+      "known_at_ms": 1794411540000,
+      "title": "Provider payment states and snapshot freshness",
+      "facts": {
+        "snapshot_age_ms": 70000,
+        "observation_coverage": 0.988,
+        "payments_by_status_last_60m": {
+          "captured": 702,
+          "authorized": 9,
+          "failed": 229,
+          "created": 11
+        },
+        "failed_by_method_and_reason": {
+          "upi": {
+            "bank_unavailable": 131,
+            "payment_declined": 29,
+            "customer_cancelled": 18
+          },
+          "card": {
+            "payment_declined": 22,
+            "customer_cancelled": 11
+          },
+          "netbanking": {
+            "payment_declined": 9,
+            "customer_cancelled": 9
+          }
+        },
+        "upi_failures_error_source": {
+          "bank": 141,
+          "customer": 37
+        }
+      },
+      "text": null
+    },
+    {
+      "evidence_id": "ev_delivery",
+      "kind": "delivery_health",
+      "known_at_ms": 1794411540000,
+      "title": "Webhook delivery health for int_webhook_01",
+      "facts": {
+        "window": "last 60 minutes",
+        "accepted": 951,
+        "duplicates": 33,
+        "conflicting_ids": 0,
+        "rejected_signature": 0,
+        "rejected_schema": 0,
+        "p95_ack_latency_ms": 38,
+        "delivery_attempts": 984
+      },
+      "text": null
+    },
+    {
+      "evidence_id": "ev_worker",
+      "kind": "worker_health",
+      "known_at_ms": 1794411540000,
+      "title": "Order worker health",
+      "facts": {
+        "inbox_pending": 2,
+        "inbox_failed": 0,
+        "processed_last_30m": 474,
+        "oldest_unprocessed_age_ms": 6000,
+        "failed_attempts_last_60m": 0
+      },
+      "text": null
+    },
+    {
+      "evidence_id": "ev_fixture",
+      "kind": "fixture_check",
+      "known_at_ms": 1794411480000,
+      "title": "Prewritten fixture tests against the deployed version dep_7a5688",
+      "facts": {
+        "deployed_version": "dep_7a5688",
+        "tests_run": 4,
+        "tests_failed": 0,
+        "results": [
+          {
+            "test_id": "captured_payment_builds_fulfilment",
+            "passed": true
+          },
+          {
+            "test_id": "authorized_payment_changes_nothing",
+            "passed": true
+          },
+          {
+            "test_id": "failed_payment_changes_nothing",
+            "passed": true
+          },
+          {
+            "test_id": "signed_delivery_verifies",
+            "passed": true
+          }
+        ]
+      },
+      "text": null
+    },
+    {
+      "evidence_id": "ev_deploy_01be73",
+      "kind": "deployment",
+      "known_at_ms": 1794393620000,
+      "title": "Deployment dep_01be73 to merchant-app",
+      "facts": {
+        "deploy_id": "dep_01be73",
+        "service": "merchant-app",
+        "kind": "code",
+        "deployed_at_ms": 1794393600000,
+        "files_changed": [
+          "merchant_app/notifications.py"
+        ],
+        "summary": "Friendlier payment pending message"
+      },
+      "text": "diff --git a/merchant_app/notifications.py b/merchant_app/notifications.py\nindex e97eb9e..295ced8 100644\n--- a/merchant_app/notifications.py\n+++ b/merchant_app/notifications.py\n@@ -6,8 +6,8 @@\n \n \n def order_confirmation(order_id, amount_paise):\n-    return f\"Your order {order_id} is confirmed. Amount paid: INR {rupees(amount_paise)}.\"\n+    return f\"Thanks for your order {order_id}. We received INR {rupees(amount_paise)} and are packing it now.\"\n \n \n def payment_pending(order_id):\n-    return f\"We are still waiting for payment confirmation for order {order_id}.\"\n+    return f\"Payment for order {order_id} has not been confirmed yet. We will email you as soon as it is.\"\n"
+    },
+    {
+      "evidence_id": "ev_deploy_9c301a",
+      "kind": "deployment",
+      "known_at_ms": 1794405620000,
+      "title": "Deployment dep_9c301a to merchant-app",
+      "facts": {
+        "deploy_id": "dep_9c301a",
+        "service": "merchant-app",
+        "kind": "config",
+        "deployed_at_ms": 1794405600000,
+        "files_changed": [
+          "merchant_app/config.py"
+        ],
+        "summary": "Raise checkout session TTL to 1200 seconds"
+      },
+      "text": "diff --git a/merchant_app/config.py b/merchant_app/config.py\nindex 7e37456..466c57b 100644\n--- a/merchant_app/config.py\n+++ b/merchant_app/config.py\n@@ -11,6 +11,6 @@\n # Name of the signing secret deliveries are verified with; the value lives in the secret store.\n WEBHOOK_SECRET_REF = \"webhook_secret_primary\"\n \n-CHECKOUT_SESSION_TTL_SECONDS = 900\n+CHECKOUT_SESSION_TTL_SECONDS = 1200\n \n RECEIPT_CHANNEL = \"email\"\n"
+    },
+    {
+      "evidence_id": "ev_deploy_7a5688",
+      "kind": "deployment",
+      "known_at_ms": 1794408500000,
+      "title": "Deployment dep_7a5688 to merchant-app",
+      "facts": {
+        "deploy_id": "dep_7a5688",
+        "service": "merchant-app",
+        "kind": "code",
+        "deployed_at_ms": 1794408480000,
+        "files_changed": [
+          "merchant_app/receiver.py"
+        ],
+        "summary": "Add body preview helper for receiver logs"
+      },
+      "text": "diff --git a/merchant_app/receiver.py b/merchant_app/receiver.py\nindex 9002893..e3d6224 100644\n--- a/merchant_app/receiver.py\n+++ b/merchant_app/receiver.py\n@@ -1,5 +1,7 @@\n \"\"\"What the webhook receiver does with a delivery before checking its signature.\"\"\"\n from merchant_app import config\n+\n+PREVIEW_CHARS = 200\n \n \n def body_for_verification(raw_body):\n@@ -7,6 +9,11 @@\n     return raw_body\n \n \n+def body_preview(raw_body):\n+    \"\"\"Short, printable start of a delivery body for receiver logs.\"\"\"\n+    return raw_body[:PREVIEW_CHARS].decode(\"utf-8\", errors=\"replace\")\n+\n+\n def verification_secret_ref():\n     \"\"\"Name of the signing secret deliveries are verified with.\"\"\"\n     return config.WEBHOOK_SECRET_REF\n"
+    },
+    {
+      "evidence_id": "ev_log_network",
+      "kind": "log",
+      "known_at_ms": 1794410643000,
+      "title": "WARN log from platform-alerts",
+      "facts": {
+        "source": "platform-alerts",
+        "level": "WARN"
+      },
+      "text": "2026-11-11T15:24:00.000Z WARN platform-alerts: edge-net: p95 latency to provider API 410 ms (threshold 250 ms) for 4 min; recovered"
+    },
+    {
+      "evidence_id": "ev_log_support",
+      "kind": "log",
+      "known_at_ms": 1794411183000,
+      "title": "INFO log from support-desk",
+      "facts": {
+        "source": "support-desk",
+        "level": "INFO"
+      },
+      "text": "2026-11-11T15:33:00.000Z INFO support-desk: customers report UPI payment requests failing at their bank app; card works"
+    }
+  ],
+  "candidate_change_ids": [
+    "dep_01be73",
+    "dep_9c301a",
+    "dep_7a5688"
+  ],
+  "candidate_methods": [
+    "upi",
+    "card",
+    "netbanking"
+  ]
+}

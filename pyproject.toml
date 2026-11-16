@@ -1,0 +1,27 @@
+[project]
+name = "recovery-workbench"
+version = "0.1.0"
+description = "Local workbench that tells a failed payment apart from a paid order the merchant's own code failed to process. Synthetic sandbox only."
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+license = { text = "Proprietary. Copyright (c) 2026 Elisha Tom. All rights reserved. See LICENSE." }
+dependencies = [
+    "fastapi>=0.115",
+    "uvicorn>=0.30",
+    "pydantic>=2.9",
+    "httpx>=0.27",
+]
+
+[dependency-groups]
+dev = ["pytest>=8.3"]
+
+[build-system]
+requires = ["uv_build>=0.11,<0.12"]
+build-backend = "uv_build"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "--strict-markers"
+markers = [
+    "ollama: needs a running local Ollama with the configured model (deselect with -m 'not ollama')",
+]

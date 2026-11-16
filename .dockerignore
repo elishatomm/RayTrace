@@ -1,0 +1,21 @@
+# Build context for Dockerfile.test and Dockerfile: the checkout minus anything host-local, generated or secret.
+# frontend/dist stays out: the production Dockerfile builds the UI itself, in its Node stage.
+.git
+**/.venv
+**/node_modules
+frontend/dist
+**/local_data
+**/__pycache__
+**/*.pyc
+**/.pytest_cache
+**/*.sqlite
+**/*.sqlite-wal
+**/*.sqlite-shm
+**/*.db
+**/.env
+**/.env.*
+# The settings template holds no secret, and a test reads it.
+!.env.example
+**/*.pem
+**/*.key
+**/.DS_Store

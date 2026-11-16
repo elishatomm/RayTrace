@@ -1,0 +1,333 @@
+{
+  "packet_version": "m0-1",
+  "incident": {
+    "run_id": "run_32c64dca",
+    "incident_id": "inc_4035fedf",
+    "symptom": "Fewer orders are completing than usual",
+    "trigger": "order_completion_drop",
+    "cohort": {
+      "merchant_id": "mch_synthetic_01",
+      "integration_id": "int_webhook_01",
+      "methods": [
+        "upi",
+        "card",
+        "netbanking"
+      ]
+    },
+    "window_start_ms": 1794390300000,
+    "window_end_ms": 1794393900000,
+    "evidence_cutoff_ms": 1794393900000,
+    "summary_counts": {
+      "orders_with_attempts": 471,
+      "orders_completed": 30,
+      "payment_attempts": 467
+    }
+  },
+  "items": [
+    {
+      "evidence_id": "ev_trigger",
+      "kind": "incident_trigger",
+      "known_at_ms": 1794393840000,
+      "title": "Detector state at the evidence cutoff",
+      "facts": {
+        "fired": [
+          "order_completion_drop",
+          "processing_backlog_age"
+        ],
+        "not_fired": [
+          "authorisation_ratio_drop",
+          "delivery_rejection_rate"
+        ],
+        "order_completion_ratio": 0.064,
+        "baseline_order_completion_ratio": 0.897,
+        "first_breach_ms": 1794391440000
+      },
+      "text": null
+    },
+    {
+      "evidence_id": "ev_metric_upi",
+      "kind": "metric",
+      "known_at_ms": 1794393840000,
+      "title": "Provider authorisation and capture for upi, mature cohort",
+      "facts": {
+        "method": "upi",
+        "mature_cohort_start_ms": 1794391500000,
+        "mature_cohort_end_ms": 1794393300000,
+        "attempts": 142,
+        "authorised": 130,
+        "captured": 129,
+        "unresolved": 3,
+        "authorisation_ratio": 0.915,
+        "authorisation_ratio_95ci": [
+          0.858,
+          0.951
+        ],
+        "baseline_attempts": 2318,
+        "baseline_authorisation_ratio": 0.919,
+        "baseline_95ci": [
+          0.908,
+          0.93
+        ]
+      },
+      "text": null
+    },
+    {
+      "evidence_id": "ev_metric_card",
+      "kind": "metric",
+      "known_at_ms": 1794393840000,
+      "title": "Provider authorisation and capture for card, mature cohort",
+      "facts": {
+        "method": "card",
+        "mature_cohort_start_ms": 1794391500000,
+        "mature_cohort_end_ms": 1794393300000,
+        "attempts": 69,
+        "authorised": 63,
+        "captured": 62,
+        "unresolved": 1,
+        "authorisation_ratio": 0.913,
+        "authorisation_ratio_95ci": [
+          0.823,
+          0.96
+        ],
+        "baseline_attempts": 1250,
+        "baseline_authorisation_ratio": 0.911,
+        "baseline_95ci": [
+          0.894,
+          0.926
+        ]
+      },
+      "text": null
+    },
+    {
+      "evidence_id": "ev_metric_netbanking",
+      "kind": "metric",
+      "known_at_ms": 1794393840000,
+      "title": "Provider authorisation and capture for netbanking, mature cohort",
+      "facts": {
+        "method": "netbanking",
+        "mature_cohort_start_ms": 1794391500000,
+        "mature_cohort_end_ms": 1794393300000,
+        "attempts": 31,
+        "authorised": 27,
+        "captured": 27,
+        "unresolved": 0,
+        "authorisation_ratio": 0.871,
+        "authorisation_ratio_95ci": [
+          0.711,
+          0.949
+        ],
+        "baseline_attempts": 476,
+        "baseline_authorisation_ratio": 0.891,
+        "baseline_95ci": [
+          0.86,
+          0.916
+        ]
+      },
+      "text": null
+    },
+    {
+      "evidence_id": "ev_processing",
+      "kind": "metric",
+      "known_at_ms": 1794393840000,
+      "title": "Merchant processing of captured payments, last 30 minutes",
+      "facts": {
+        "captured_orders": 211,
+        "processed": 0,
+        "pending_captured": 211,
+        "pending_captured_value_paise": 24166300,
+        "processing_completion_ratio": 0.0,
+        "baseline_processing_completion_ratio": 0.997
+      },
+      "text": null
+    },
+    {
+      "evidence_id": "ev_provider_state",
+      "kind": "provider_state",
+      "known_at_ms": 1794393840000,
+      "title": "Provider payment states and snapshot freshness",
+      "facts": {
+        "snapshot_age_ms": 64000,
+        "observation_coverage": 0.993,
+        "payments_by_status_last_60m": {
+          "captured": 418,
+          "authorized": 5,
+          "failed": 41,
+          "created": 3
+        },
+        "failed_by_reason": {
+          "payment_declined": 24,
+          "customer_cancelled": 17
+        }
+      },
+      "text": null
+    },
+    {
+      "evidence_id": "ev_delivery",
+      "kind": "delivery_health",
+      "known_at_ms": 1794393840000,
+      "title": "Webhook delivery health for int_webhook_01",
+      "facts": {
+        "window": "last 60 minutes",
+        "accepted": 471,
+        "duplicates": 14,
+        "conflicting_ids": 0,
+        "rejected_signature": 0,
+        "rejected_schema": 0,
+        "p95_ack_latency_ms": 38,
+        "delivery_attempts": 485
+      },
+      "text": null
+    },
+    {
+      "evidence_id": "ev_worker",
+      "kind": "worker_health",
+      "known_at_ms": 1794393840000,
+      "title": "Order worker health",
+      "facts": {
+        "inbox_pending": 3,
+        "inbox_failed": 383,
+        "processed_last_30m": 0,
+        "oldest_unprocessed_age_ms": 2838000,
+        "retry_policy": "3 attempts, then failed"
+      },
+      "text": null
+    },
+    {
+      "evidence_id": "ev_worker_errors",
+      "kind": "worker_error",
+      "known_at_ms": 1794393888000,
+      "title": "Order worker failures, most recent stack trace",
+      "facts": {
+        "exception_category": null,
+        "failed_events": 383,
+        "failed_by_event_type": {
+          "payment.captured": 321,
+          "payment.authorized": 11,
+          "payment.failed": 51
+        },
+        "first_failure_ms": 1794391044000,
+        "last_failure_ms": 1794393882000
+      },
+      "text": "Traceback (most recent call last):\n  File \"merchant_app/handler.py\", line 27, in handle_event\n    parsed = payload.parse_event(event)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"merchant_app/payload.py\", line 23, in parse_event\n    \"payment_id\": entity[\"id\"],\n                  ~~~~~~^^^^^^\nKeyError: 'id'\n"
+    },
+    {
+      "evidence_id": "ev_fixture",
+      "kind": "fixture_check",
+      "known_at_ms": 1794393780000,
+      "title": "Prewritten fixture tests against the deployed version dep_8a0d43",
+      "facts": {
+        "deployed_version": "dep_8a0d43",
+        "tests_run": 4,
+        "tests_failed": 3,
+        "results": [
+          {
+            "test_id": "captured_payment_builds_fulfilment",
+            "passed": false,
+            "detail": "KeyError: 'id'",
+            "top_frame": "merchant_app/payload.py:23 in parse_event"
+          },
+          {
+            "test_id": "authorized_payment_changes_nothing",
+            "passed": false,
+            "detail": "KeyError: 'id'",
+            "top_frame": "merchant_app/payload.py:23 in parse_event"
+          },
+          {
+            "test_id": "failed_payment_changes_nothing",
+            "passed": false,
+            "detail": "KeyError: 'id'",
+            "top_frame": "merchant_app/payload.py:23 in parse_event"
+          },
+          {
+            "test_id": "signed_delivery_verifies",
+            "passed": true
+          }
+        ]
+      },
+      "text": null
+    },
+    {
+      "evidence_id": "ev_deploy_152064",
+      "kind": "deployment",
+      "known_at_ms": 1794385520000,
+      "title": "Deployment dep_152064 to merchant-app",
+      "facts": {
+        "deploy_id": "dep_152064",
+        "service": "merchant-app",
+        "kind": "config",
+        "deployed_at_ms": 1794385500000,
+        "files_changed": [
+          "merchant_app/config.py"
+        ],
+        "summary": "Extend checkout session lifetime to 20 minutes"
+      },
+      "text": "diff --git a/merchant_app/config.py b/merchant_app/config.py\nindex 7e37456..466c57b 100644\n--- a/merchant_app/config.py\n+++ b/merchant_app/config.py\n@@ -11,6 +11,6 @@\n # Name of the signing secret deliveries are verified with; the value lives in the secret store.\n WEBHOOK_SECRET_REF = \"webhook_secret_primary\"\n \n-CHECKOUT_SESSION_TTL_SECONDS = 900\n+CHECKOUT_SESSION_TTL_SECONDS = 1200\n \n RECEIPT_CHANNEL = \"email\"\n"
+    },
+    {
+      "evidence_id": "ev_deploy_9b8a4e",
+      "kind": "deployment",
+      "known_at_ms": 1794391040000,
+      "title": "Deployment dep_9b8a4e to merchant-app",
+      "facts": {
+        "deploy_id": "dep_9b8a4e",
+        "service": "merchant-app",
+        "kind": "code",
+        "deployed_at_ms": 1794391020000,
+        "files_changed": [
+          "merchant_app/payload.py"
+        ],
+        "summary": "Extract payment entity lookup into a helper"
+      },
+      "text": "diff --git a/merchant_app/payload.py b/merchant_app/payload.py\nindex e881edd..f205756 100644\n--- a/merchant_app/payload.py\n+++ b/merchant_app/payload.py\n@@ -8,11 +8,16 @@\n     \"\"\"The integration does not subscribe to this event type.\"\"\"\n \n \n+def payment_entity(event):\n+    \"\"\"The payment object an event carries.\"\"\"\n+    return event[\"payload\"][\"payment\"]\n+\n+\n def parse_event(event):\n     event_type = event[\"event\"]\n     if event_type not in SUPPORTED_EVENTS:\n         raise UnsupportedEvent(f\"unsupported event type {event_type!r}\")\n-    entity = event[\"payload\"][\"payment\"][\"entity\"]\n+    entity = payment_entity(event)\n     return {\n         \"event_type\": event_type,\n         \"payment_id\": entity[\"id\"],\n"
+    },
+    {
+      "evidence_id": "ev_deploy_8a0d43",
+      "kind": "deployment",
+      "known_at_ms": 1794393260000,
+      "title": "Deployment dep_8a0d43 to merchant-app",
+      "facts": {
+        "deploy_id": "dep_8a0d43",
+        "service": "merchant-app",
+        "kind": "code",
+        "deployed_at_ms": 1794393240000,
+        "files_changed": [
+          "merchant_app/handler.py"
+        ],
+        "summary": "Log event type on entry to the handler"
+      },
+      "text": "diff --git a/merchant_app/handler.py b/merchant_app/handler.py\nindex d631706..c06aa9b 100644\n--- a/merchant_app/handler.py\n+++ b/merchant_app/handler.py\n@@ -1,5 +1,9 @@\n \"\"\"Entry point the worker calls once for each committed webhook event.\"\"\"\n+import logging\n+\n from merchant_app import orders, payload\n+\n+log = logging.getLogger(__name__)\n \n \n class ErrorBoundary:\n@@ -18,6 +22,7 @@\n \n \n def handle_event(event):\n+    log.debug(\"handling %s created_at=%s\", event.get(\"event\"), event.get(\"created_at\"))\n     with ErrorBoundary(\"event_parse_error\"):\n         parsed = payload.parse_event(event)\n     with ErrorBoundary(\"order_validation_error\"):\n"
+    },
+    {
+      "evidence_id": "ev_log_deploy",
+      "kind": "log",
+      "known_at_ms": 1794393273000,
+      "title": "INFO log from deploy-bot",
+      "facts": {
+        "source": "deploy-bot",
+        "level": "INFO"
+      },
+      "text": "2026-11-11T10:34:30.000Z INFO deploy-bot: dep_8a0d43 rolled out to order-worker; 3/3 pods restarted and healthy"
+    },
+    {
+      "evidence_id": "ev_log_worker",
+      "kind": "log",
+      "known_at_ms": 1794393783000,
+      "title": "ERROR log from order-worker",
+      "facts": {
+        "source": "order-worker",
+        "level": "ERROR"
+      },
+      "text": "2026-11-11T10:43:00.000Z ERROR order-worker: event evt_7c41d0aa failed on attempt 3/3 and was moved to failed; see stack trace"
+    }
+  ],
+  "candidate_change_ids": [
+    "dep_152064",
+    "dep_9b8a4e",
+    "dep_8a0d43"
+  ],
+  "candidate_methods": [
+    "upi",
+    "card",
+    "netbanking"
+  ]
+}

@@ -1,0 +1,157 @@
+{
+ "answers_sha256": "89edd19b96a8dc3863e0f53c89a584506c5e52d046162c8d31ba46ff8d059cbe",
+ "application_settings": {
+  "model": "qwen3:8b",
+  "model_think": false,
+  "ollama_url": "http://127.0.0.1:11434",
+  "run_timeout_seconds": 90
+ },
+ "code_under_test": {
+  "diagnosis_py_sha256": "05f06d7b5c3d2025acaf47d7c0f392406358f73c47f8cdf6792b7d656e9a4163",
+  "package_dir": "app/src/recovery_workbench",
+  "package_sources_sha256": "b4e717f0bfaa2c099c7c92b2e6d123983c0c7e428a993480192731460a805514",
+  "prompt_version": "diag-p5",
+  "validator_version": "val-7"
+ },
+ "decision": {
+  "R": 1.0,
+  "counted_without_the_identical_output_rule": {
+   "R": 1.0,
+   "recovered": 2,
+   "row": 3,
+   "ship": "val-7 as built",
+   "triggers": 2
+  },
+  "recovered": 1,
+  "row": 3,
+  "rule": "PREREGISTRATION.md, fixed by the owner on 2026-11-13",
+  "same_decision_either_way": true,
+  "ship": "val-7 as built",
+  "triggers": 1
+ },
+ "determinism": {
+  "S_packets": 22,
+  "S_packets_with_identical_outputs_in_both_passes": 22
+ },
+ "diagnoses": {
+  "C": 48,
+  "S": 44,
+  "final_status": {
+   "C needs_review": 4,
+   "C validated": 44,
+   "S validated": 44
+  },
+  "first_answer": {
+   "C val-6 accepts, val-7 accepts": 9,
+   "C val-6 refuses, val-7 refuses": 39,
+   "S val-6 accepts, val-7 accepts": 34,
+   "S val-6 accepts, val-7 refuses": 2,
+   "S val-6 refuses, val-7 refuses": 8
+  },
+  "model_call_errors": 0
+ },
+ "model": {
+  "deadline_s": 90.0,
+  "keep_alive": "15m",
+  "max_repairs": 1,
+  "model": "qwen3:8b",
+  "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+  "ollama_version": "0.40.1",
+  "options": {
+   "num_ctx": 16384,
+   "num_predict": 6144,
+   "seed": 20261111,
+   "temperature": 0
+  },
+  "think": false
+ },
+ "preregistration": {
+  "commit": "4f88dda",
+  "file": "PREREGISTRATION.md",
+  "sha256": "9f44b758096f28c14c96d0740859da92f40bedab72ea47d178050a4733e2867b"
+ },
+ "reported_not_decided": {
+  "final_correctness_against_a_val6_run_of_the_same_first_answers": {
+   "C": {
+    "diagnoses with a first answer": 48,
+    "val-6 right -> val-7 right": 30,
+    "val-6 run outcome correct": 30,
+    "val-6 wrong -> val-7 wrong": 18,
+    "val-7 outcome correct": 30
+   },
+   "S": {
+    "diagnoses with a first answer": 44,
+    "val-6 right -> val-7 right": 28,
+    "val-6 run outcome correct": 28,
+    "val-6 wrong -> val-7 wrong": 16,
+    "val-7 outcome correct": 28
+   }
+  },
+  "repair_latency_every_repair": {
+   "count": 49,
+   "max_ms": 6487,
+   "mean_ms": 5160,
+   "median_ms": 5121,
+   "min_ms": 3891
+  },
+  "repair_latency_triggers": {
+   "count": 2,
+   "max_ms": 6400,
+   "mean_ms": 6396,
+   "median_ms": 6396.5,
+   "min_ms": 6393
+  },
+  "trigger_rate_in_C": {
+   "diagnoses": 48,
+   "share": 0.0,
+   "triggers": 0
+  },
+  "val6_run_live_repair_calls": 13
+ },
+ "triggers": {
+  "by_rule": {
+   "b": 1
+  },
+  "by_sample": {
+   "S": 2
+  },
+  "counted_once": 1,
+  "every_diagnosis": 2,
+  "list": [
+   {
+    "counted": true,
+    "first_change_correct": true,
+    "first_outcome_correct": true,
+    "label": "experiments/selective/model_all_20261111 heldout_24_13147",
+    "order": 20,
+    "packet_hash": "54110fd48789d237a22e5cf543468812d1d86eba655928948204d1c7645ac7a7",
+    "pass": 1,
+    "recovered": true,
+    "repair_call_ms": 6400,
+    "repair_outcome_correct": true,
+    "repair_passes_val7": true,
+    "rules": [
+     "b"
+    ],
+    "sample": "S"
+   },
+   {
+    "counted": false,
+    "first_change_correct": true,
+    "first_outcome_correct": true,
+    "label": "experiments/selective/model_all_20261111 heldout_24_13147",
+    "order": 42,
+    "packet_hash": "54110fd48789d237a22e5cf543468812d1d86eba655928948204d1c7645ac7a7",
+    "pass": 2,
+    "recovered": true,
+    "repair_call_ms": 6393,
+    "repair_outcome_correct": true,
+    "repair_passes_val7": true,
+    "rules": [
+     "b"
+    ],
+    "sample": "S"
+   }
+  ]
+ }
+}

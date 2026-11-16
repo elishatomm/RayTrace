@@ -1,0 +1,35 @@
+# The UI walkthrough (Agent U, phase 11; kept in the repository since owner decision Q36): the workbench API and
+# headless Chromium in one container. scripts/ui-walkthrough/run-walkthrough.sh assembles its context (repo/ and
+# walkthrough/), builds it and runs it with --network none: Chromium reaches the API over the container's own loopback.
+# Both base images are pinned by multi-arch index digest.
+FROM ghcr.io/astral-sh/uv:0.11.16@sha256:440fd6477af86a2f1b38080c539f1672cd22acb1b1a47e321dba5158ab08864d AS uv
+
+FROM mcr.microsoft.com/playwright/python:v1.65.1-noble@sha256:0ab41a37431309d72b7a26f40ef1fdb464a62740196b2143965a2f59dc090409
+
+COPY --from=uv /uv /usr/local/bin/uv
+
+ENV UV_PYTHON_DOWNLOADS=never \
+    UV_NO_CACHE=1 \
+    UV_COMPILE_BYTECODE=1 \
+    PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1
+
+# The image ships the browsers (/ms-playwright) but not the Python client: install it, hash-checked,
+# into its own venv so it never mixes with the project's locked environment.
+COPY walkthrough/requirements-walkthrough.txt /opt/walkthrough/requirements-walkthrough.txt
+RUN uv venv /opt/walkthrough/venv --python /usr/bin/python3.12 \
+ && uv pip install --python /opt/walkthrough/venv/bin/python --require-hashes \
+        -r /opt/walkthrough/requirements-walkthrough.txt
+
+# The project exactly as Dockerfile.test installs it: locked dependencies first, then the editable project.
+WORKDIR /opt/recovery-workbench
+COPY repo/pyproject.toml repo/uv.lock repo/.python-version ./
+RUN uv sync --frozen --no-install-project
+COPY repo/ ./
+RUN uv sync --frozen
+
+COPY walkthrough/run.sh walkthrough/walkthrough.py walkthrough/census.js /opt/walkthrough/
+RUN chmod 0555 /opt/walkthrough/run.sh
+
+USER pwuser
+ENTRYPOINT ["/opt/walkthrough/run.sh"]

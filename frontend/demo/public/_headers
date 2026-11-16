@@ -1,0 +1,8 @@
+# Response headers for static hosts that read this file (Cloudflare Pages and Netlify use this syntax): the same
+# Content-Security-Policy and security headers the RayTrace API sends with every answer (SECURITY_HEADERS in
+# src/recovery_workbench/api.py). scripts/demo/build-demo.sh fails if they differ from what the API sent while recording.
+/*
+  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'none'; frame-ancestors 'none'; form-action 'self'
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: no-referrer

@@ -1,0 +1,472 @@
+{
+  "packet_version": "pkt-2",
+  "incident": {
+    "run_id": "run_05d9903cbe",
+    "incident_id": "inc_0001",
+    "symptom": "Fewer orders are completing than usual",
+    "trigger": "delivery_rejection_spike",
+    "cohort": {
+      "merchant_id": "merchant_SYNTHETIC_A",
+      "integration_id": "int_SYNTHETIC_MAIN",
+      "methods": [
+        "card",
+        "netbanking",
+        "upi"
+      ]
+    },
+    "window_start_ms": 1793958600000,
+    "window_end_ms": 1793960400000,
+    "evidence_cutoff_ms": 1793964600000,
+    "summary_counts": {
+      "orders_with_attempts": 150,
+      "orders_completed": 76,
+      "payment_attempts": 153
+    }
+  },
+  "items": [
+    {
+      "evidence_id": "ev_trigger",
+      "kind": "incident_trigger",
+      "known_at_ms": 1793964600000,
+      "title": "Detector state at the evidence cutoff",
+      "facts": {
+        "fired": [
+          "delivery_rejection_spike",
+          "merchant_processing_gap",
+          "orders_not_completing"
+        ],
+        "not_fired": [
+          "method_authorization_drop[card]",
+          "method_authorization_drop[netbanking]",
+          "method_authorization_drop[upi]",
+          "unresolved_spike"
+        ],
+        "fired_since_open": [
+          "delivery_rejection_spike",
+          "merchant_processing_gap",
+          "orders_not_completing"
+        ],
+        "first_breach_ms": 1793960400000,
+        "reasons": {
+          "delivery_rejection_spike": "rejections_high",
+          "merchant_processing_gap": "captured_orders_unprocessed",
+          "method_authorization_drop[card]": "insufficient_samples",
+          "method_authorization_drop[netbanking]": "insufficient_samples",
+          "method_authorization_drop[upi]": "insufficient_samples",
+          "orders_not_completing": "degraded_in_two_successive_windows",
+          "unresolved_spike": "within_baseline"
+        }
+      },
+      "text": null
+    },
+    {
+      "evidence_id": "ev_metric_card",
+      "kind": "metric",
+      "known_at_ms": 1793964600000,
+      "title": "Provider authorisation and capture for card, mature cohort",
+      "facts": {
+        "method": "card",
+        "mature_cohort_start_ms": 1793962200000,
+        "mature_cohort_end_ms": 1793964000000,
+        "attempts": 9,
+        "authorised": 9,
+        "captured": 9,
+        "unresolved": 0,
+        "authorisation_ratio": 1.0,
+        "authorisation_ratio_95ci": [
+          0.701,
+          1.0
+        ],
+        "baseline_attempts": 31,
+        "baseline_authorisation_ratio": 1.0,
+        "baseline_95ci": [
+          0.89,
+          1.0
+        ],
+        "share_of_attempts": 0.273,
+        "baseline_share_of_attempts": 0.356
+      },
+      "text": null
+    },
+    {
+      "evidence_id": "ev_metric_netbanking",
+      "kind": "metric",
+      "known_at_ms": 1793964600000,
+      "title": "Provider authorisation and capture for netbanking, mature cohort",
+      "facts": {
+        "method": "netbanking",
+        "mature_cohort_start_ms": 1793962200000,
+        "mature_cohort_end_ms": 1793964000000,
+        "attempts": 8,
+        "authorised": 7,
+        "captured": 7,
+        "unresolved": 0,
+        "authorisation_ratio": 0.875,
+        "authorisation_ratio_95ci": [
+          0.529,
+          0.978
+        ],
+        "baseline_attempts": 13,
+        "baseline_authorisation_ratio": 1.0,
+        "baseline_95ci": [
+          0.772,
+          1.0
+        ],
+        "share_of_attempts": 0.242,
+        "baseline_share_of_attempts": 0.149
+      },
+      "text": null
+    },
+    {
+      "evidence_id": "ev_metric_upi",
+      "kind": "metric",
+      "known_at_ms": 1793964600000,
+      "title": "Provider authorisation and capture for upi, mature cohort",
+      "facts": {
+        "method": "upi",
+        "mature_cohort_start_ms": 1793962200000,
+        "mature_cohort_end_ms": 1793964000000,
+        "attempts": 16,
+        "authorised": 14,
+        "captured": 14,
+        "unresolved": 0,
+        "authorisation_ratio": 0.875,
+        "authorisation_ratio_95ci": [
+          0.64,
+          0.965
+        ],
+        "baseline_attempts": 43,
+        "baseline_authorisation_ratio": 0.93,
+        "baseline_95ci": [
+          0.814,
+          0.976
+        ],
+        "share_of_attempts": 0.485,
+        "baseline_share_of_attempts": 0.494
+      },
+      "text": null
+    },
+    {
+      "evidence_id": "ev_metric_all",
+      "kind": "metric",
+      "known_at_ms": 1793964600000,
+      "title": "Provider authorisation and capture for all, mature cohort",
+      "facts": {
+        "method": "all",
+        "mature_cohort_start_ms": 1793962200000,
+        "mature_cohort_end_ms": 1793964000000,
+        "attempts": 33,
+        "authorised": 30,
+        "captured": 30,
+        "unresolved": 0,
+        "authorisation_ratio": 0.909,
+        "authorisation_ratio_95ci": [
+          0.764,
+          0.969
+        ],
+        "baseline_attempts": 87,
+        "baseline_authorisation_ratio": 0.966,
+        "baseline_95ci": [
+          0.903,
+          0.988
+        ],
+        "share_of_attempts": 1.0,
+        "baseline_share_of_attempts": 1.0
+      },
+      "text": null
+    },
+    {
+      "evidence_id": "ev_metric_processing",
+      "kind": "metric",
+      "known_at_ms": 1793964600000,
+      "title": "Merchant processing of captured payments",
+      "facts": {
+        "captured_orders": 52,
+        "processed": 0,
+        "pending_captured": 52,
+        "held_for_review": 0,
+        "pending_captured_value_paise": 5605600,
+        "processing_completion_ratio": 0.0,
+        "baseline_processing_completion_ratio": 1.0,
+        "grace_ms": 300000,
+        "lookback_ms": 3600000
+      },
+      "text": null
+    },
+    {
+      "evidence_id": "ev_provider_state",
+      "kind": "provider_state",
+      "known_at_ms": 1793964600000,
+      "title": "Provider payment states and snapshot freshness",
+      "facts": {
+        "snapshot_age_ms": 0,
+        "observation_coverage": 0.993,
+        "payments_by_status": {
+          "captured": 141,
+          "failed": 11,
+          "unknown": 1
+        },
+        "failed_by_reason": {
+          "authentication_failed": 2,
+          "bank_technical_error": 5,
+          "insufficient_balance": 4
+        },
+        "failed_by_method_and_reason": {
+          "card": {
+            "bank_technical_error": 2,
+            "insufficient_balance": 1
+          },
+          "netbanking": {
+            "insufficient_balance": 2
+          },
+          "upi": {
+            "authentication_failed": 2,
+            "bank_technical_error": 3,
+            "insufficient_balance": 1
+          }
+        },
+        "failed_by_error_source": {
+          "bank": 5,
+          "customer": 6
+        },
+        "failed_then_authorised_later": 0,
+        "authorised_not_captured": 0,
+        "captured_without_received_event": 65,
+        "payments_needing_reconciliation": 0,
+        "reconciliation_reasons": {},
+        "stale_payments": 1,
+        "lookback_start_ms": 1793943000000
+      },
+      "text": null
+    },
+    {
+      "evidence_id": "ev_delivery",
+      "kind": "delivery_health",
+      "known_at_ms": 1793964600000,
+      "title": "Webhook delivery health",
+      "facts": {
+        "window_start_ms": 1793943000000,
+        "delivery_attempts": 735,
+        "accepted": 157,
+        "duplicates": 1,
+        "conflicting_ids": 0,
+        "rejected_signature": 577,
+        "rejected_schema": 0,
+        "rejected_size": 0,
+        "distinct_events_rejected": 140,
+        "first_rejection_ms": 1793960165285,
+        "accepted_since_first_rejection": 0
+      },
+      "text": null
+    },
+    {
+      "evidence_id": "ev_worker",
+      "kind": "worker_health",
+      "known_at_ms": 1793964600000,
+      "title": "Order worker health",
+      "facts": {
+        "inbox_pending": 0,
+        "inbox_failed": 0,
+        "inbox_manual_review": 0,
+        "oldest_unprocessed_age_ms": null,
+        "processed_last_30m": 0,
+        "failed_attempts_last_60m": 0,
+        "last_event_received_ms": 1793960141857,
+        "retry_policy": "3 attempts per event, then failed until approved reprocessing"
+      },
+      "text": null
+    },
+    {
+      "evidence_id": "ev_fixture",
+      "kind": "fixture_check",
+      "known_at_ms": 1793964600000,
+      "title": "Prewritten fixture tests against the deployed version deploy_f7f27048fc",
+      "facts": {
+        "deployed_version": "deploy_f7f27048fc",
+        "tests_run": 4,
+        "tests_failed": 1,
+        "results": [
+          {
+            "test_id": "captured_payment_builds_fulfilment",
+            "passed": true,
+            "detail": null,
+            "top_frame": null
+          },
+          {
+            "test_id": "authorized_payment_changes_nothing",
+            "passed": true,
+            "detail": null,
+            "top_frame": null
+          },
+          {
+            "test_id": "failed_payment_changes_nothing",
+            "passed": true,
+            "detail": null,
+            "top_frame": null
+          },
+          {
+            "test_id": "signed_delivery_verifies",
+            "passed": false,
+            "detail": "signature verification failed for a delivery signed by the provider",
+            "top_frame": null
+          }
+        ]
+      },
+      "text": null
+    },
+    {
+      "evidence_id": "ev_deploy_3603db43a9",
+      "kind": "deployment",
+      "known_at_ms": 1793958301000,
+      "title": "Deployment deploy_3603db43a9 to storefront",
+      "facts": {
+        "deploy_id": "deploy_3603db43a9",
+        "service": "storefront",
+        "kind": "code",
+        "deployed_at_ms": 1793958301000,
+        "files_changed": [
+          "merchant_app/checkout.py"
+        ],
+        "summary": "Show netbanking banks in a stable order"
+      },
+      "text": "diff --git a/merchant_app/checkout.py b/merchant_app/checkout.py\nindex c21ef6c..73641d6 100644\n--- a/merchant_app/checkout.py\n+++ b/merchant_app/checkout.py\n@@ -3,8 +3,8 @@\n \n METHOD_ORDER = (\"card\", \"upi\", \"netbanking\")\n \n-# Netbanking bank codes, most used first.\n-NETBANKING_BANKS = (\"NB04\", \"NB01\", \"NB03\", \"NB02\")\n+# Netbanking bank codes, in code order so customers can scan the list.\n+NETBANKING_BANKS = (\"NB01\", \"NB02\", \"NB03\", \"NB04\")\n \n \n def checkout_options(order_id, amount_paise):\n"
+    },
+    {
+      "evidence_id": "ev_deploy_f7f27048fc",
+      "kind": "deployment",
+      "known_at_ms": 1793960149000,
+      "title": "Deployment deploy_f7f27048fc to webhook_receiver",
+      "facts": {
+        "deploy_id": "deploy_f7f27048fc",
+        "service": "webhook_receiver",
+        "kind": "code",
+        "deployed_at_ms": 1793960149000,
+        "files_changed": [
+          "merchant_app/receiver.py"
+        ],
+        "summary": "Store webhook bodies in a stable layout"
+      },
+      "text": "diff --git a/merchant_app/receiver.py b/merchant_app/receiver.py\nindex 9002893..0db2cec 100644\n--- a/merchant_app/receiver.py\n+++ b/merchant_app/receiver.py\n@@ -1,10 +1,13 @@\n \"\"\"What the webhook receiver does with a delivery before checking its signature.\"\"\"\n+import json\n+\n from merchant_app import config\n \n \n def body_for_verification(raw_body):\n-    \"\"\"The bytes the signature is checked against: the body exactly as delivered.\"\"\"\n-    return raw_body\n+    \"\"\"The bytes the signature is checked against, in one stable layout so stored copies compare cleanly.\"\"\"\n+    document = json.loads(raw_body)\n+    return json.dumps(document, indent=2, sort_keys=True).encode(\"utf-8\")\n \n \n def verification_secret_ref():\n"
+    },
+    {
+      "evidence_id": "ev_log_01",
+      "kind": "log",
+      "known_at_ms": 1793958301000,
+      "title": "info log from deploy_pipeline",
+      "facts": {
+        "source": "deploy_pipeline",
+        "level": "info",
+        "occurred_at_ms": 1793958301000,
+        "occurrences": 1
+      },
+      "text": "deploy deploy_3603db43a9 rolled out to storefront: Show netbanking banks in a stable order"
+    },
+    {
+      "evidence_id": "ev_log_02",
+      "kind": "log",
+      "known_at_ms": 1793959958000,
+      "title": "warning log from edge_network",
+      "facts": {
+        "source": "edge_network",
+        "level": "warning",
+        "occurred_at_ms": 1793959958000,
+        "occurrences": 1
+      },
+      "text": "TLS handshake time to the payments endpoint up 60 ms after a route change"
+    },
+    {
+      "evidence_id": "ev_log_03",
+      "kind": "log",
+      "known_at_ms": 1793960149000,
+      "title": "info log from deploy_pipeline",
+      "facts": {
+        "source": "deploy_pipeline",
+        "level": "info",
+        "occurred_at_ms": 1793960149000,
+        "occurrences": 1
+      },
+      "text": "deploy deploy_f7f27048fc rolled out to webhook_receiver: Store webhook bodies in a stable layout"
+    },
+    {
+      "evidence_id": "ev_log_04",
+      "kind": "log",
+      "known_at_ms": 1793964584661,
+      "title": "warning log from webhook_receiver",
+      "facts": {
+        "source": "webhook_receiver",
+        "level": "warning",
+        "occurred_at_ms": 1793964584661,
+        "occurrences": 577
+      },
+      "text": "webhook delivery answered HTTP 401 (rejected_signature); sender will retry"
+    },
+    {
+      "evidence_id": "ev_journey_01",
+      "kind": "order_journey",
+      "known_at_ms": 1793964600000,
+      "title": "Order journey for order_SYNTHETIC_de7a9566_0149",
+      "facts": {
+        "order_id": "order_SYNTHETIC_de7a9566_0149",
+        "order_amount_paise": 28500,
+        "attempts": [
+          {
+            "payment_id": "pay_SYNTHETIC_de7a9566_00152",
+            "method": "card",
+            "observations": [
+              {
+                "status": "captured",
+                "occurred_at_ms": 1793964600000,
+                "known_at_ms": 1793964600000,
+                "source": "snapshot"
+              }
+            ]
+          }
+        ],
+        "projection": {
+          "status": "captured",
+          "exclusions": [],
+          "late_authorization": false,
+          "conflicts": []
+        }
+      },
+      "text": null
+    },
+    {
+      "evidence_id": "ev_journey_02",
+      "kind": "order_journey",
+      "known_at_ms": 1793964600000,
+      "title": "Order journey for order_SYNTHETIC_de7a9566_0150",
+      "facts": {
+        "order_id": "order_SYNTHETIC_de7a9566_0150",
+        "order_amount_paise": 69300,
+        "attempts": [
+          {
+            "payment_id": "pay_SYNTHETIC_de7a9566_00153",
+            "method": "card",
+            "observations": []
+          }
+        ],
+        "projection": {
+          "status": "unknown",
+          "exclusions": [
+            "unresolved_attempt",
+            "not_captured",
+            "stale_snapshot"
+          ],
+          "late_authorization": false,
+          "conflicts": []
+        }
+      },
+      "text": null
+    }
+  ],
+  "candidate_change_ids": [
+    "deploy_3603db43a9",
+    "deploy_f7f27048fc"
+  ],
+  "candidate_methods": [
+    "card",
+    "netbanking",
+    "upi"
+  ]
+}

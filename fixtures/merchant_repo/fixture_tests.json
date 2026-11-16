@@ -1,0 +1,144 @@
+{
+  "schema_version": 1,
+  "description": "Prewritten fixture tests of the merchant app. The same tests exist in every run and run only against the currently deployed composition.",
+  "tests": [
+    {
+      "test_id": "captured_payment_builds_fulfilment",
+      "kind": "handler",
+      "description": "A captured payment event yields one fulfilment instruction for its order.",
+      "event": {
+        "entity": "event",
+        "account_id": "acc_SYNTHETIC_A",
+        "event": "payment.captured",
+        "contains": ["payment"],
+        "payload": {
+          "payment": {
+            "entity": {
+              "id": "pay_SYNTHETIC_9001",
+              "entity": "payment",
+              "amount": 120000,
+              "currency": "INR",
+              "status": "captured",
+              "order_id": "order_SYNTHETIC_9001",
+              "method": "upi",
+              "captured": true,
+              "amount_refunded": 0,
+              "error_code": null,
+              "error_source": null,
+              "error_step": null,
+              "error_reason": null,
+              "created_at": 1794387600
+            }
+          }
+        },
+        "created_at": 1794387610
+      },
+      "expected": {
+        "action": "fulfil",
+        "order_id": "order_SYNTHETIC_9001",
+        "payment_id": "pay_SYNTHETIC_9001",
+        "amount_paise": 120000,
+        "currency": "INR"
+      }
+    },
+    {
+      "test_id": "authorized_payment_changes_nothing",
+      "kind": "handler",
+      "description": "An authorisation without capture does not fulfil the order.",
+      "event": {
+        "entity": "event",
+        "account_id": "acc_SYNTHETIC_A",
+        "event": "payment.authorized",
+        "contains": ["payment"],
+        "payload": {
+          "payment": {
+            "entity": {
+              "id": "pay_SYNTHETIC_9002",
+              "entity": "payment",
+              "amount": 45000,
+              "currency": "INR",
+              "status": "authorized",
+              "order_id": "order_SYNTHETIC_9002",
+              "method": "card",
+              "captured": false,
+              "amount_refunded": 0,
+              "error_code": null,
+              "error_source": null,
+              "error_step": null,
+              "error_reason": null,
+              "created_at": 1794387620
+            }
+          }
+        },
+        "created_at": 1794387625
+      },
+      "expected": {"action": "ignore"}
+    },
+    {
+      "test_id": "failed_payment_changes_nothing",
+      "kind": "handler",
+      "description": "A failed payment does not fulfil the order.",
+      "event": {
+        "entity": "event",
+        "account_id": "acc_SYNTHETIC_A",
+        "event": "payment.failed",
+        "contains": ["payment"],
+        "payload": {
+          "payment": {
+            "entity": {
+              "id": "pay_SYNTHETIC_9003",
+              "entity": "payment",
+              "amount": 78000,
+              "currency": "INR",
+              "status": "failed",
+              "order_id": "order_SYNTHETIC_9003",
+              "method": "netbanking",
+              "captured": false,
+              "amount_refunded": 0,
+              "error_code": "DECLINED",
+              "error_source": "bank",
+              "error_step": "payment_authorization",
+              "error_reason": "payment_declined",
+              "created_at": 1794387640
+            }
+          }
+        },
+        "created_at": 1794387646
+      },
+      "expected": {"action": "ignore"}
+    },
+    {
+      "test_id": "signed_delivery_verifies",
+      "kind": "receiver",
+      "description": "A delivery signed with the provider's current signing secret passes the receiver's verification.",
+      "event": {
+        "entity": "event",
+        "account_id": "acc_SYNTHETIC_A",
+        "event": "payment.captured",
+        "contains": ["payment"],
+        "payload": {
+          "payment": {
+            "entity": {
+              "id": "pay_SYNTHETIC_9004",
+              "entity": "payment",
+              "amount": 99900,
+              "currency": "INR",
+              "status": "captured",
+              "order_id": "order_SYNTHETIC_9004",
+              "method": "card",
+              "captured": true,
+              "amount_refunded": 0,
+              "error_code": null,
+              "error_source": null,
+              "error_step": null,
+              "error_reason": null,
+              "created_at": 1794387660
+            }
+          }
+        },
+        "created_at": 1794387668
+      },
+      "expected": {"verified": true}
+    }
+  ]
+}

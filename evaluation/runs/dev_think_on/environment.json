@@ -1,0 +1,57 @@
+{
+  "hardware": {
+    "cpu": "Apple M5 Pro",
+    "machine": "arm64",
+    "memory_gb": 24.0,
+    "model": "Mac17,8"
+  },
+  "model": {
+    "deadline_s": 180.0,
+    "keep_alive": "15m",
+    "max_repairs": 1,
+    "model": "qwen3:8b",
+    "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+    "ollama_version": "0.40.1",
+    "options": {
+      "min_p": 0,
+      "num_ctx": 16384,
+      "num_predict": 6144,
+      "seed": 20261111,
+      "temperature": 0.6,
+      "top_k": 20,
+      "top_p": 0.95
+    },
+    "prompt_version": "diag-p2",
+    "think": true
+  },
+  "os": {
+    "platform": "macOS-26.6.2-arm64-arm-64bit",
+    "release": "25.6.0"
+  },
+  "packages": {
+    "fastapi": "0.162.4",
+    "httpx": "0.28.1",
+    "pydantic": "2.14.3",
+    "pytest": "9.2.0",
+    "uvicorn": "0.54.0"
+  },
+  "policy": {
+    "approval_ttl_seconds": 900,
+    "plan_ttl_seconds": 1800,
+    "stale_after_seconds": 3600
+  },
+  "python": "3.12.13",
+  "systems": [
+    "rules",
+    "model"
+  ],
+  "versions": {
+    "evaluation_manifest": "eval-v2",
+    "family_generator": "families-v2",
+    "packet": "pkt-2",
+    "rules": "rules-v2",
+    "validator": "val-4",
+    "workbench": "0.1.0",
+    "world_generator": "world-v3"
+  }
+}

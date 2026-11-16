@@ -1,0 +1,30 @@
+# Test image for the Python suite. Run it through scripts/test-in-docker.sh, which gives the
+# container no network, a read-only root filesystem and an in-memory /tmp.
+# Both base images are pinned by multi-arch index digest; bump a tag and its digest together.
+FROM ghcr.io/astral-sh/uv:0.11.16@sha256:440fd6477af86a2f1b38080c539f1672cd22acb1b1a47e321dba5158ab08864d AS uv
+
+FROM python:3.12.16-slim-trixie@sha256:5e2bdb1b0d542d5039cffb8181c65930093949194a65c365dfb1b0fe13a4fa5b
+
+COPY --from=uv /uv /usr/local/bin/uv
+
+ENV UV_PYTHON_DOWNLOADS=never \
+    UV_NO_CACHE=1 \
+    UV_COMPILE_BYTECODE=1 \
+    PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1
+
+WORKDIR /opt/recovery-workbench
+
+# Dependencies alone first, so a change to source or tests reuses this layer.
+COPY pyproject.toml uv.lock .python-version ./
+RUN uv sync --frozen --no-install-project
+
+# The project stays an editable install: the simulator finds fixtures/ relative to src/.
+COPY . .
+RUN uv sync --frozen
+
+RUN useradd --create-home --uid 10001 tester
+USER tester
+ENV PATH=/opt/recovery-workbench/.venv/bin:$PATH
+
+ENTRYPOINT ["python", "-m", "pytest", "-p", "no:cacheprovider"]

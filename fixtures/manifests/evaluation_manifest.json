@@ -1,0 +1,558 @@
+{
+  "manifest_version": "eval-v2",
+  "generator_version": "families-v2",
+  "notice": "Oracle file. Frozen evaluation runs: 6 families x 8 (3 dev, 5 test). Read only by the generator, the evaluator and tests; runtime tools, packets and the model must never read it. eval-v2 (phase 4) changes from eval-v1: three D1 runs use delayed onset. The faulting deploy lands in a traffic lull and an innocent deploy lands inside the lull, touching a file in the stack trace, so failures begin after both deploys. Seeds are unchanged; since world-v3 no run or entity ID contains a seed or scenario name (IDs are hash-derived). No test-split run has been diagnosed under eval-v1 or eval-v2 before the frozen run.",
+  "runs": [
+    {
+      "run_key": "d1_dev_1",
+      "family": "D1",
+      "variant": "top_frame_in_changed_file",
+      "split": "dev",
+      "seed": 1001,
+      "params": {
+        "fault": "payload@2",
+        "categories": true,
+        "harmless": "handler@2",
+        "harmless_position": "after",
+        "onset": "prompt"
+      }
+    },
+    {
+      "run_key": "d1_dev_2",
+      "family": "D1",
+      "variant": "upstream_of_failing_frame",
+      "split": "dev",
+      "seed": 1002,
+      "params": {
+        "fault": "payload@3",
+        "categories": false,
+        "harmless": "checkout@3",
+        "harmless_position": "before",
+        "onset": "prompt"
+      }
+    },
+    {
+      "run_key": "d1_dev_3",
+      "family": "D1",
+      "variant": "configuration_only",
+      "split": "dev",
+      "seed": 1003,
+      "params": {
+        "fault": "config@2",
+        "categories": true,
+        "harmless": "handler@2",
+        "harmless_position": "gap",
+        "onset": "delayed"
+      }
+    },
+    {
+      "run_key": "d1_test_1",
+      "family": "D1",
+      "variant": "top_frame_in_changed_file",
+      "split": "test",
+      "seed": 2001,
+      "params": {
+        "fault": "payload@2",
+        "categories": false,
+        "harmless": "handler@2",
+        "harmless_position": "gap",
+        "onset": "delayed"
+      }
+    },
+    {
+      "run_key": "d1_test_2",
+      "family": "D1",
+      "variant": "top_frame_in_changed_file",
+      "split": "test",
+      "seed": 2002,
+      "params": {
+        "fault": "payload@2",
+        "categories": true,
+        "harmless": "notifications@2",
+        "harmless_position": "before",
+        "onset": "prompt"
+      }
+    },
+    {
+      "run_key": "d1_test_3",
+      "family": "D1",
+      "variant": "upstream_of_failing_frame",
+      "split": "test",
+      "seed": 2003,
+      "params": {
+        "fault": "payload@3",
+        "categories": true,
+        "harmless": "orders@2",
+        "harmless_position": "after",
+        "onset": "prompt"
+      }
+    },
+    {
+      "run_key": "d1_test_4",
+      "family": "D1",
+      "variant": "upstream_of_failing_frame",
+      "split": "test",
+      "seed": 2004,
+      "params": {
+        "fault": "payload@3",
+        "categories": false,
+        "harmless": "orders@2",
+        "harmless_position": "gap",
+        "onset": "delayed"
+      }
+    },
+    {
+      "run_key": "d1_test_5",
+      "family": "D1",
+      "variant": "configuration_only",
+      "split": "test",
+      "seed": 2005,
+      "params": {
+        "fault": "config@2",
+        "categories": false,
+        "harmless": "handler@2",
+        "harmless_position": "after",
+        "onset": "prompt"
+      }
+    },
+    {
+      "run_key": "d2_dev_1",
+      "family": "D2",
+      "variant": "severe_method_drop",
+      "split": "dev",
+      "seed": 1011,
+      "params": {
+        "method": "upi",
+        "magnitude": "severe"
+      }
+    },
+    {
+      "run_key": "d2_dev_2",
+      "family": "D2",
+      "variant": "moderate_method_drop",
+      "split": "dev",
+      "seed": 1012,
+      "params": {
+        "method": "card",
+        "magnitude": "moderate"
+      }
+    },
+    {
+      "run_key": "d2_dev_3",
+      "family": "D2",
+      "variant": "severe_method_drop",
+      "split": "dev",
+      "seed": 1013,
+      "params": {
+        "method": "netbanking",
+        "magnitude": "severe"
+      }
+    },
+    {
+      "run_key": "d2_test_1",
+      "family": "D2",
+      "variant": "moderate_method_drop",
+      "split": "test",
+      "seed": 2011,
+      "params": {
+        "method": "upi",
+        "magnitude": "moderate"
+      }
+    },
+    {
+      "run_key": "d2_test_2",
+      "family": "D2",
+      "variant": "severe_method_drop",
+      "split": "test",
+      "seed": 2012,
+      "params": {
+        "method": "card",
+        "magnitude": "severe"
+      }
+    },
+    {
+      "run_key": "d2_test_3",
+      "family": "D2",
+      "variant": "moderate_method_drop",
+      "split": "test",
+      "seed": 2013,
+      "params": {
+        "method": "netbanking",
+        "magnitude": "moderate"
+      }
+    },
+    {
+      "run_key": "d2_test_4",
+      "family": "D2",
+      "variant": "severe_method_drop",
+      "split": "test",
+      "seed": 2014,
+      "params": {
+        "method": "upi",
+        "magnitude": "severe"
+      }
+    },
+    {
+      "run_key": "d2_test_5",
+      "family": "D2",
+      "variant": "moderate_method_drop",
+      "split": "test",
+      "seed": 2015,
+      "params": {
+        "method": "card",
+        "magnitude": "moderate"
+      }
+    },
+    {
+      "run_key": "d3_dev_1",
+      "family": "D3",
+      "variant": "receiver_code",
+      "split": "dev",
+      "seed": 1021,
+      "params": {
+        "fault": "receiver@2",
+        "harmless": "checkout@3",
+        "harmless_position": "before"
+      }
+    },
+    {
+      "run_key": "d3_dev_2",
+      "family": "D3",
+      "variant": "receiver_config",
+      "split": "dev",
+      "seed": 1022,
+      "params": {
+        "fault": "config@3",
+        "harmless_position": "none"
+      }
+    },
+    {
+      "run_key": "d3_dev_3",
+      "family": "D3",
+      "variant": "receiver_code",
+      "split": "dev",
+      "seed": 1023,
+      "params": {
+        "fault": "receiver@2",
+        "harmless": "orders@2",
+        "harmless_position": "after"
+      }
+    },
+    {
+      "run_key": "d3_test_1",
+      "family": "D3",
+      "variant": "receiver_code",
+      "split": "test",
+      "seed": 2021,
+      "params": {
+        "fault": "receiver@2",
+        "harmless_position": "none"
+      }
+    },
+    {
+      "run_key": "d3_test_2",
+      "family": "D3",
+      "variant": "receiver_config",
+      "split": "test",
+      "seed": 2022,
+      "params": {
+        "fault": "config@3",
+        "harmless": "notifications@2",
+        "harmless_position": "before"
+      }
+    },
+    {
+      "run_key": "d3_test_3",
+      "family": "D3",
+      "variant": "receiver_code",
+      "split": "test",
+      "seed": 2023,
+      "params": {
+        "fault": "receiver@2",
+        "harmless": "handler@2",
+        "harmless_position": "after"
+      }
+    },
+    {
+      "run_key": "d3_test_4",
+      "family": "D3",
+      "variant": "receiver_config",
+      "split": "test",
+      "seed": 2024,
+      "params": {
+        "fault": "config@3",
+        "harmless": "orders@2",
+        "harmless_position": "after"
+      }
+    },
+    {
+      "run_key": "d3_test_5",
+      "family": "D3",
+      "variant": "receiver_config",
+      "split": "test",
+      "seed": 2025,
+      "params": {
+        "fault": "config@3",
+        "harmless_position": "none"
+      }
+    },
+    {
+      "run_key": "d4_dev_1",
+      "family": "D4",
+      "variant": "late_authorization",
+      "split": "dev",
+      "seed": 1031,
+      "params": {
+        "mode": "late_authorization"
+      }
+    },
+    {
+      "run_key": "d4_dev_2",
+      "family": "D4",
+      "variant": "stale_snapshot",
+      "split": "dev",
+      "seed": 1032,
+      "params": {
+        "mode": "stale_snapshot"
+      }
+    },
+    {
+      "run_key": "d4_dev_3",
+      "family": "D4",
+      "variant": "same_time_contradiction",
+      "split": "dev",
+      "seed": 1033,
+      "params": {
+        "mode": "same_time_contradiction"
+      }
+    },
+    {
+      "run_key": "d4_test_1",
+      "family": "D4",
+      "variant": "late_authorization",
+      "split": "test",
+      "seed": 2031,
+      "params": {
+        "mode": "late_authorization"
+      }
+    },
+    {
+      "run_key": "d4_test_2",
+      "family": "D4",
+      "variant": "stale_snapshot",
+      "split": "test",
+      "seed": 2032,
+      "params": {
+        "mode": "stale_snapshot"
+      }
+    },
+    {
+      "run_key": "d4_test_3",
+      "family": "D4",
+      "variant": "same_time_contradiction",
+      "split": "test",
+      "seed": 2033,
+      "params": {
+        "mode": "same_time_contradiction"
+      }
+    },
+    {
+      "run_key": "d4_test_4",
+      "family": "D4",
+      "variant": "late_authorization",
+      "split": "test",
+      "seed": 2034,
+      "params": {
+        "mode": "late_authorization"
+      }
+    },
+    {
+      "run_key": "d4_test_5",
+      "family": "D4",
+      "variant": "same_time_contradiction",
+      "split": "test",
+      "seed": 2035,
+      "params": {
+        "mode": "same_time_contradiction"
+      }
+    },
+    {
+      "run_key": "d5_dev_1",
+      "family": "D5",
+      "variant": "mix_shift",
+      "split": "dev",
+      "seed": 1041,
+      "params": {
+        "mode": "mix_shift"
+      }
+    },
+    {
+      "run_key": "d5_dev_2",
+      "family": "D5",
+      "variant": "sparse_cohort",
+      "split": "dev",
+      "seed": 1042,
+      "params": {
+        "mode": "sparse_cohort"
+      }
+    },
+    {
+      "run_key": "d5_dev_3",
+      "family": "D5",
+      "variant": "missing_observations",
+      "split": "dev",
+      "seed": 1043,
+      "params": {
+        "mode": "missing_observations"
+      }
+    },
+    {
+      "run_key": "d5_test_1",
+      "family": "D5",
+      "variant": "mix_shift",
+      "split": "test",
+      "seed": 2041,
+      "params": {
+        "mode": "mix_shift"
+      }
+    },
+    {
+      "run_key": "d5_test_2",
+      "family": "D5",
+      "variant": "sparse_cohort",
+      "split": "test",
+      "seed": 2042,
+      "params": {
+        "mode": "sparse_cohort"
+      }
+    },
+    {
+      "run_key": "d5_test_3",
+      "family": "D5",
+      "variant": "missing_observations",
+      "split": "test",
+      "seed": 2043,
+      "params": {
+        "mode": "missing_observations"
+      }
+    },
+    {
+      "run_key": "d5_test_4",
+      "family": "D5",
+      "variant": "mix_shift",
+      "split": "test",
+      "seed": 2044,
+      "params": {
+        "mode": "mix_shift"
+      }
+    },
+    {
+      "run_key": "d5_test_5",
+      "family": "D5",
+      "variant": "missing_observations",
+      "split": "test",
+      "seed": 2045,
+      "params": {
+        "mode": "missing_observations"
+      }
+    },
+    {
+      "run_key": "d6_dev_1",
+      "family": "D6",
+      "variant": "innocent_deploy_near_method_drop",
+      "split": "dev",
+      "seed": 1051,
+      "params": {
+        "base": "D2",
+        "method": "upi",
+        "magnitude": "severe",
+        "innocent": "checkout@3"
+      }
+    },
+    {
+      "run_key": "d6_dev_2",
+      "family": "D6",
+      "variant": "innocent_deploy_near_mix_shift",
+      "split": "dev",
+      "seed": 1052,
+      "params": {
+        "base": "D5",
+        "innocent": "config@4"
+      }
+    },
+    {
+      "run_key": "d6_dev_3",
+      "family": "D6",
+      "variant": "innocent_deploy_near_method_drop",
+      "split": "dev",
+      "seed": 1053,
+      "params": {
+        "base": "D2",
+        "method": "card",
+        "magnitude": "moderate",
+        "innocent": "orders@2"
+      }
+    },
+    {
+      "run_key": "d6_test_1",
+      "family": "D6",
+      "variant": "innocent_deploy_near_method_drop",
+      "split": "test",
+      "seed": 2051,
+      "params": {
+        "base": "D2",
+        "method": "netbanking",
+        "magnitude": "severe",
+        "innocent": "notifications@2"
+      }
+    },
+    {
+      "run_key": "d6_test_2",
+      "family": "D6",
+      "variant": "innocent_deploy_near_mix_shift",
+      "split": "test",
+      "seed": 2052,
+      "params": {
+        "base": "D5",
+        "innocent": "checkout@3"
+      }
+    },
+    {
+      "run_key": "d6_test_3",
+      "family": "D6",
+      "variant": "innocent_deploy_near_method_drop",
+      "split": "test",
+      "seed": 2053,
+      "params": {
+        "base": "D2",
+        "method": "upi",
+        "magnitude": "moderate",
+        "innocent": "config@4"
+      }
+    },
+    {
+      "run_key": "d6_test_4",
+      "family": "D6",
+      "variant": "innocent_deploy_near_mix_shift",
+      "split": "test",
+      "seed": 2054,
+      "params": {
+        "base": "D5",
+        "innocent": "orders@2"
+      }
+    },
+    {
+      "run_key": "d6_test_5",
+      "family": "D6",
+      "variant": "innocent_deploy_near_method_drop",
+      "split": "test",
+      "seed": 2055,
+      "params": {
+        "base": "D2",
+        "method": "card",
+        "magnitude": "severe",
+        "innocent": "handler@2"
+      }
+    }
+  ]
+}

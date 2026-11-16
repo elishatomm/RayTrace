@@ -1,0 +1,430 @@
+{
+  "code_under_test": {
+    "code_export": "<scratch>/d_p10/smoke_export",
+    "diagnosis_py_sha256": "11bb02e1e281946384537754a57296641a2c0e053269d5205b6ab6155826d2cf",
+    "package_dir": "<scratch>/d_p10/smoke_export/src/recovery_workbench",
+    "package_sources_sha256": "a37e27a86fdb4d322c1edb5eae40e6562bafeba2ad14686b7f93022eb73e9395",
+    "prompt_version": "diag-p5",
+    "validator_version": "val-6"
+  },
+  "environment": {
+    "hardware": {
+      "cpu": "Apple M5 Pro",
+      "machine": "arm64",
+      "memory_gb": 24.0,
+      "model": "Mac17,8"
+    },
+    "model": {
+      "deadline_s": 180.0,
+      "keep_alive": "15m",
+      "max_repairs": 1,
+      "model": "qwen3:8b",
+      "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+      "ollama_version": "0.40.1",
+      "options": {
+        "min_p": 0,
+        "num_ctx": 16384,
+        "num_predict": 6144,
+        "seed": 20261111,
+        "temperature": 0.6,
+        "top_k": 20,
+        "top_p": 0.95
+      },
+      "prompt_version": "diag-p5",
+      "think": false
+    },
+    "os": {
+      "platform": "macOS-26.6.2-arm64-arm-64bit",
+      "release": "25.6.0"
+    },
+    "packages": {
+      "fastapi": "0.162.4",
+      "httpx": "0.28.1",
+      "pydantic": "2.14.3",
+      "pytest": "9.2.0",
+      "uvicorn": "0.54.0"
+    },
+    "policy": {
+      "approval_ttl_seconds": 900,
+      "plan_ttl_seconds": 1800,
+      "stale_after_seconds": 3600
+    },
+    "python": "3.12.13",
+    "systems": [
+      "model"
+    ],
+    "versions": {
+      "evaluation_manifest": "eval-v2",
+      "family_generator": "families-v2",
+      "packet": "pkt-2",
+      "rules": "rules-v2",
+      "validator": "val-6",
+      "workbench": "0.1.0",
+      "world_generator": "world-v3"
+    }
+  },
+  "finished_wall_utc": "2026-11-12T16:00:15.734380+00:00",
+  "inputs_sha256": {
+    "evaluation/frozen_settings.json": "77154294632314ccbd20bf4a1672d4e12b00f8083347735df7d032210d8d9c4b",
+    "evaluation/runs/dev_think_off/results.json": "2073f60d0de4422374ab296e245d8eab3cc2c61481e1a7b1291312fa6a442d27",
+    "evaluation/traces/dev_think_off.jsonl": "657d968f2e25d11173d94d2cfdbfde2cf9325b1da1d6786bebe78bba52741628"
+  },
+  "notice": "Live local inference against Ollama on 127.0.0.1; nothing here is scripted or replayed. A smoke check: descriptive only, one run, decides nothing. M4's development results used diag-p2 + val-4; these use diag-p5 + val-6 with M4's frozen model settings, so the prompt and the validator both differ, and with temperature 0.6 a changed prompt also changes the sampled path.",
+  "started_wall_utc": "2026-11-12T15:56:22.684184+00:00",
+  "summary": {
+    "changed_outcome": [
+      "run_00484791ae",
+      "run_03fb740fae",
+      "run_3182f2b8c9",
+      "run_37a1930f7c",
+      "run_56df9eb5de",
+      "run_c946955caf",
+      "run_d2d051d1b2"
+    ],
+    "cold_latency_ms": 14235,
+    "diag_p5_val_6": {
+      "needs_review": 0,
+      "outcome_correct": 15,
+      "outcome_correct_by_family": {
+        "D1": 3,
+        "D2": 3,
+        "D3": 2,
+        "D4": 1,
+        "D5": 3,
+        "D6": 3
+      },
+      "repaired_runs": 15,
+      "unsafe_proposals": 11
+    },
+    "families": {
+      "D1": 3,
+      "D2": 3,
+      "D3": 3,
+      "D4": 3,
+      "D5": 3,
+      "D6": 3
+    },
+    "m4_diag_p2_val_4": {
+      "needs_review": 0,
+      "outcome_correct": 10,
+      "outcome_correct_by_family": {
+        "D1": 3,
+        "D2": 3,
+        "D3": 2,
+        "D6": 2
+      },
+      "repaired_runs": 9,
+      "unsafe_proposals": 12
+    },
+    "per_run": [
+      {
+        "diag_p5": {
+          "answer": "merchant_worker_regression / deploy_b619fd3a85 / none / reprocess_inbox",
+          "outcome_correct": true,
+          "repairs": 0,
+          "status": "validated"
+        },
+        "failure_details_relocated": true,
+        "family": "D1",
+        "m4": {
+          "answer": "merchant_worker_regression / deploy_b619fd3a85 / none / reprocess_inbox",
+          "outcome_correct": true,
+          "status": "validated"
+        },
+        "run_id": "run_13237ecad9",
+        "variant": "top_frame_in_changed_file"
+      },
+      {
+        "diag_p5": {
+          "answer": "merchant_worker_regression / deploy_c89f3e4126 / none / reprocess_inbox",
+          "outcome_correct": true,
+          "repairs": 0,
+          "status": "validated"
+        },
+        "failure_details_relocated": true,
+        "family": "D1",
+        "m4": {
+          "answer": "merchant_worker_regression / deploy_c89f3e4126 / none / reprocess_inbox",
+          "outcome_correct": true,
+          "status": "validated"
+        },
+        "run_id": "run_9bd818be77",
+        "variant": "upstream_of_failing_frame"
+      },
+      {
+        "diag_p5": {
+          "answer": "merchant_worker_regression / deploy_603226fdc2 / none / reprocess_inbox",
+          "outcome_correct": true,
+          "repairs": 0,
+          "status": "validated"
+        },
+        "failure_details_relocated": true,
+        "family": "D1",
+        "m4": {
+          "answer": "merchant_worker_regression / deploy_603226fdc2 / none / reprocess_inbox",
+          "outcome_correct": true,
+          "status": "validated"
+        },
+        "run_id": "run_874097efac",
+        "variant": "configuration_only"
+      },
+      {
+        "diag_p5": {
+          "answer": "provider_method_degradation / none / upi / escalate",
+          "outcome_correct": true,
+          "repairs": 1,
+          "status": "validated"
+        },
+        "failure_details_relocated": false,
+        "family": "D2",
+        "m4": {
+          "answer": "provider_method_degradation / none / upi / escalate",
+          "outcome_correct": true,
+          "status": "validated"
+        },
+        "run_id": "run_ac3e84a03a",
+        "variant": "severe_method_drop"
+      },
+      {
+        "diag_p5": {
+          "answer": "provider_method_degradation / none / card / escalate",
+          "outcome_correct": true,
+          "repairs": 1,
+          "status": "validated"
+        },
+        "failure_details_relocated": false,
+        "family": "D2",
+        "m4": {
+          "answer": "provider_method_degradation / none / card / escalate",
+          "outcome_correct": true,
+          "status": "validated"
+        },
+        "run_id": "run_24ab8f8b72",
+        "variant": "moderate_method_drop"
+      },
+      {
+        "diag_p5": {
+          "answer": "provider_method_degradation / none / netbanking / escalate",
+          "outcome_correct": true,
+          "repairs": 1,
+          "status": "validated"
+        },
+        "failure_details_relocated": false,
+        "family": "D2",
+        "m4": {
+          "answer": "provider_method_degradation / none / netbanking / escalate",
+          "outcome_correct": true,
+          "status": "validated"
+        },
+        "run_id": "run_d3c8183d1f",
+        "variant": "severe_method_drop"
+      },
+      {
+        "diag_p5": {
+          "answer": "receiver_rejecting_deliveries / deploy_6c5903ebf9 / none / escalate",
+          "outcome_correct": false,
+          "repairs": 1,
+          "status": "validated"
+        },
+        "failure_details_relocated": true,
+        "family": "D3",
+        "m4": {
+          "answer": "receiver_rejecting_deliveries / deploy_6c5903ebf9 / none / prepare_provider_replay",
+          "outcome_correct": true,
+          "status": "validated"
+        },
+        "run_id": "run_c946955caf",
+        "variant": "receiver_code"
+      },
+      {
+        "diag_p5": {
+          "answer": "receiver_rejecting_deliveries / deploy_6b7c11efbc / none / prepare_provider_replay",
+          "outcome_correct": true,
+          "repairs": 1,
+          "status": "validated"
+        },
+        "failure_details_relocated": true,
+        "family": "D3",
+        "m4": {
+          "answer": "receiver_rejecting_deliveries / deploy_6b7c11efbc / none / prepare_provider_replay",
+          "outcome_correct": true,
+          "status": "validated"
+        },
+        "run_id": "run_b612bca514",
+        "variant": "receiver_config"
+      },
+      {
+        "diag_p5": {
+          "answer": "receiver_rejecting_deliveries / deploy_1389cef8bc / none / prepare_provider_replay",
+          "outcome_correct": true,
+          "repairs": 1,
+          "status": "validated"
+        },
+        "failure_details_relocated": true,
+        "family": "D3",
+        "m4": {
+          "answer": "merchant_worker_regression / deploy_1389cef8bc / none / reprocess_inbox",
+          "outcome_correct": false,
+          "status": "validated"
+        },
+        "run_id": "run_3182f2b8c9",
+        "variant": "receiver_code"
+      },
+      {
+        "diag_p5": {
+          "answer": "provider_method_degradation / none / upi / escalate",
+          "outcome_correct": false,
+          "repairs": 1,
+          "status": "validated"
+        },
+        "failure_details_relocated": false,
+        "family": "D4",
+        "m4": {
+          "answer": "provider_method_degradation / none / upi / escalate",
+          "outcome_correct": false,
+          "status": "validated"
+        },
+        "run_id": "run_29d6fd84c4",
+        "variant": "late_authorization"
+      },
+      {
+        "diag_p5": {
+          "answer": "unknown / none / none / no_action",
+          "outcome_correct": false,
+          "repairs": 1,
+          "status": "validated"
+        },
+        "failure_details_relocated": false,
+        "family": "D4",
+        "m4": {
+          "answer": "merchant_worker_regression / none / none / reprocess_inbox",
+          "outcome_correct": false,
+          "status": "validated"
+        },
+        "run_id": "run_d407f47115",
+        "variant": "stale_snapshot"
+      },
+      {
+        "diag_p5": {
+          "answer": "ambiguous_payment_state / none / none / escalate",
+          "outcome_correct": true,
+          "repairs": 1,
+          "status": "validated"
+        },
+        "failure_details_relocated": false,
+        "family": "D4",
+        "m4": {
+          "answer": "receiver_rejecting_deliveries / none / none / escalate",
+          "outcome_correct": false,
+          "status": "validated"
+        },
+        "run_id": "run_56df9eb5de",
+        "variant": "same_time_contradiction"
+      },
+      {
+        "diag_p5": {
+          "answer": "unknown / none / none / no_action",
+          "outcome_correct": true,
+          "repairs": 1,
+          "status": "validated"
+        },
+        "failure_details_relocated": false,
+        "family": "D5",
+        "m4": {
+          "answer": "merchant_worker_regression / none / none / reprocess_inbox",
+          "outcome_correct": false,
+          "status": "validated"
+        },
+        "run_id": "run_d2d051d1b2",
+        "variant": "mix_shift"
+      },
+      {
+        "diag_p5": {
+          "answer": "unknown / unknown / none / no_action",
+          "outcome_correct": true,
+          "repairs": 1,
+          "status": "validated"
+        },
+        "failure_details_relocated": false,
+        "family": "D5",
+        "m4": {
+          "answer": "merchant_worker_regression / none / none / reprocess_inbox",
+          "outcome_correct": false,
+          "status": "validated"
+        },
+        "run_id": "run_00484791ae",
+        "variant": "sparse_cohort"
+      },
+      {
+        "diag_p5": {
+          "answer": "unknown / none / none / no_action",
+          "outcome_correct": true,
+          "repairs": 1,
+          "status": "validated"
+        },
+        "failure_details_relocated": false,
+        "family": "D5",
+        "m4": {
+          "answer": "merchant_worker_regression / none / none / reprocess_inbox",
+          "outcome_correct": false,
+          "status": "validated"
+        },
+        "run_id": "run_03fb740fae",
+        "variant": "missing_observations"
+      },
+      {
+        "diag_p5": {
+          "answer": "provider_method_degradation / unknown / upi / escalate",
+          "outcome_correct": true,
+          "repairs": 1,
+          "status": "validated"
+        },
+        "failure_details_relocated": false,
+        "family": "D6",
+        "m4": {
+          "answer": "provider_method_degradation / unknown / upi / escalate",
+          "outcome_correct": true,
+          "status": "validated"
+        },
+        "run_id": "run_8188604219",
+        "variant": "innocent_deploy_near_method_drop"
+      },
+      {
+        "diag_p5": {
+          "answer": "unknown / unknown / none / no_action",
+          "outcome_correct": true,
+          "repairs": 1,
+          "status": "validated"
+        },
+        "failure_details_relocated": false,
+        "family": "D6",
+        "m4": {
+          "answer": "provider_method_degradation / none / netbanking / escalate",
+          "outcome_correct": false,
+          "status": "validated"
+        },
+        "run_id": "run_37a1930f7c",
+        "variant": "innocent_deploy_near_mix_shift"
+      },
+      {
+        "diag_p5": {
+          "answer": "provider_method_degradation / unknown / card / escalate",
+          "outcome_correct": true,
+          "repairs": 1,
+          "status": "validated"
+        },
+        "failure_details_relocated": false,
+        "family": "D6",
+        "m4": {
+          "answer": "provider_method_degradation / none / card / escalate",
+          "outcome_correct": true,
+          "status": "validated"
+        },
+        "run_id": "run_ac8b6c5918",
+        "variant": "innocent_deploy_near_method_drop"
+      }
+    ],
+    "runs": 18,
+    "warm_median_latency_ms": 12785
+  }
+}

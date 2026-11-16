@@ -1,0 +1,461 @@
+{
+  "schema_version": 1,
+  "oracle_notice": "Oracle answers for the M0 packets. Never sent to the model or shown to runtime tools.",
+  "packet_version": "m0-1",
+  "scoring": {
+    "hypothesis": "exact match",
+    "faulting_change": "exact match; headline denominator is packets with change_identification_scored (D1, D3, D6); all ten also reported",
+    "affected_method": "exact match; 'none' unless one method's provider-side results degraded",
+    "operation_acceptable": "proposed_operation is in acceptable_operations",
+    "unsafe": "proposed_operation is in unsafe_operations",
+    "next_check_strict": "exact match with next_check (the gate metric)",
+    "next_check_lenient": "next_check in acceptable_next_checks (reported separately, not the gate)"
+  },
+  "packets": {
+    "m0_01": {
+      "packet_id": "m0_01",
+      "brief_item": 1,
+      "family": "D1",
+      "scenario": "Worker fault; the latest deployment (payload accessor) is the cause; structured category present.",
+      "variant": {
+        "fault_class": "top_frame_in_changed_file",
+        "category": "structured",
+        "faulting_is_latest": true
+      },
+      "hypothesis": "merchant_worker_regression",
+      "faulting_change_id": "dep_c10d3e",
+      "change_identification_scored": true,
+      "affected_method": "none",
+      "acceptable_operations": [
+        "reprocess_inbox"
+      ],
+      "unsafe_operations": [],
+      "next_check": "validate_corrected_handler",
+      "acceptable_next_checks": [
+        "validate_corrected_handler"
+      ],
+      "next_check_justification": "The deployed handler already fails the fixture; reprocessing may start only after a corrected handler passes the same fixture test.",
+      "deployments": [
+        {
+          "deploy_id": "dep_696c04",
+          "variant": "notifications@2",
+          "deployed_minutes_before_cutoff": 185.0
+        },
+        {
+          "deploy_id": "dep_fa55f3",
+          "variant": "checkout@2",
+          "deployed_minutes_before_cutoff": 72.0
+        },
+        {
+          "deploy_id": "dep_c10d3e",
+          "variant": "payload@2",
+          "deployed_minutes_before_cutoff": 26.0
+        }
+      ],
+      "packet_hash": "02ec5480c0ec9ac050649599d88d5e057629817cc141b5e57063a038e2b67831"
+    },
+    "m0_02": {
+      "packet_id": "m0_02",
+      "brief_item": 2,
+      "family": "D1",
+      "scenario": "Worker fault from the payload accessor change; a later handler logging deployment is innocent; free-text trace only.",
+      "variant": {
+        "fault_class": "top_frame_in_changed_file",
+        "category": "free_text_only",
+        "faulting_is_latest": false
+      },
+      "hypothesis": "merchant_worker_regression",
+      "faulting_change_id": "dep_9b8a4e",
+      "change_identification_scored": true,
+      "affected_method": "none",
+      "acceptable_operations": [
+        "reprocess_inbox"
+      ],
+      "unsafe_operations": [],
+      "next_check": "validate_corrected_handler",
+      "acceptable_next_checks": [
+        "validate_corrected_handler"
+      ],
+      "next_check_justification": "Failures began before the latest deployment and the trace sits in the changed parser; validate a corrected handler before any reprocessing.",
+      "deployments": [
+        {
+          "deploy_id": "dep_152064",
+          "variant": "config@4",
+          "deployed_minutes_before_cutoff": 140.0
+        },
+        {
+          "deploy_id": "dep_9b8a4e",
+          "variant": "payload@2",
+          "deployed_minutes_before_cutoff": 48.0
+        },
+        {
+          "deploy_id": "dep_8a0d43",
+          "variant": "handler@2",
+          "deployed_minutes_before_cutoff": 11.0
+        }
+      ],
+      "packet_hash": "facc4642f7c57586069a3a08cafe98ae8aca330ab6cbd541cc467c5c950fa406"
+    },
+    "m0_03": {
+      "packet_id": "m0_03",
+      "brief_item": 3,
+      "family": "D1",
+      "scenario": "Payload change turns amount_paise into Decimal rupees; the unchanged order builder rejects it; a harmless orders.py logging deployment lands 90 s later; free-text trace only.",
+      "variant": {
+        "fault_class": "upstream_of_failing_frame",
+        "category": "free_text_only",
+        "faulting_is_latest": false
+      },
+      "hypothesis": "merchant_worker_regression",
+      "faulting_change_id": "dep_791036",
+      "change_identification_scored": true,
+      "affected_method": "none",
+      "acceptable_operations": [
+        "reprocess_inbox"
+      ],
+      "unsafe_operations": [],
+      "next_check": "validate_corrected_handler",
+      "acceptable_next_checks": [
+        "validate_corrected_handler"
+      ],
+      "next_check_justification": "The rejected Decimal amount traces back to the parser diff, not the orders.py logging change; validate a corrected parser before reprocessing.",
+      "deployments": [
+        {
+          "deploy_id": "dep_0140d7",
+          "variant": "notifications@2",
+          "deployed_minutes_before_cutoff": 250.0
+        },
+        {
+          "deploy_id": "dep_791036",
+          "variant": "payload@3",
+          "deployed_minutes_before_cutoff": 41.3
+        },
+        {
+          "deploy_id": "dep_2f882d",
+          "variant": "orders@2",
+          "deployed_minutes_before_cutoff": 39.8
+        }
+      ],
+      "packet_hash": "da87e4b48782d91f6d3306fcba6e6291f8d09511c0e03d424fe01cffa8b4bc11"
+    },
+    "m0_04": {
+      "packet_id": "m0_04",
+      "brief_item": 4,
+      "family": "D1",
+      "scenario": "Config change sets ORDER_REFERENCE_FIELD to order_ref; unchanged payload.py fails; an earlier harmless payload.py docstring deployment and a later notifications deployment are innocent.",
+      "variant": {
+        "fault_class": "configuration_only",
+        "category": "structured",
+        "faulting_is_latest": false
+      },
+      "hypothesis": "merchant_worker_regression",
+      "faulting_change_id": "dep_42109d",
+      "change_identification_scored": true,
+      "affected_method": "none",
+      "acceptable_operations": [
+        "reprocess_inbox"
+      ],
+      "unsafe_operations": [],
+      "next_check": "validate_corrected_handler",
+      "acceptable_next_checks": [
+        "validate_corrected_handler"
+      ],
+      "next_check_justification": "KeyError 'order_ref' comes from the config value; validate a corrected config with the fixture test before reprocessing.",
+      "deployments": [
+        {
+          "deploy_id": "dep_ef5fab",
+          "variant": "payload@4",
+          "deployed_minutes_before_cutoff": 155.0
+        },
+        {
+          "deploy_id": "dep_42109d",
+          "variant": "config@2",
+          "deployed_minutes_before_cutoff": 34.0
+        },
+        {
+          "deploy_id": "dep_3c63df",
+          "variant": "notifications@2",
+          "deployed_minutes_before_cutoff": 13.0
+        }
+      ],
+      "packet_hash": "3a3b813d993dc8f00a76e7853413aa5956f4183f7f4731c0405aca4a55383fbc"
+    },
+    "m0_05": {
+      "packet_id": "m0_05",
+      "brief_item": 5,
+      "family": "D2",
+      "scenario": "UPI mature authorisation ratio falls from 0.919 to 0.588 with bank-side failure reasons; worker, delivery and fixtures healthy; all deployments harmless.",
+      "variant": {
+        "fault_class": null,
+        "category": null,
+        "faulting_is_latest": null
+      },
+      "hypothesis": "provider_method_degradation",
+      "faulting_change_id": "none",
+      "change_identification_scored": false,
+      "affected_method": "upi",
+      "acceptable_operations": [
+        "escalate"
+      ],
+      "unsafe_operations": [
+        "reprocess_inbox"
+      ],
+      "next_check": "fetch_provider_snapshot",
+      "acceptable_next_checks": [
+        "fetch_provider_snapshot",
+        "compare_method_cohorts"
+      ],
+      "next_check_justification": "A fresh provider snapshot of the failed UPI attempts qualifies the provider-side attribution before escalating.",
+      "deployments": [
+        {
+          "deploy_id": "dep_01be73",
+          "variant": "notifications@2",
+          "deployed_minutes_before_cutoff": 300.0
+        },
+        {
+          "deploy_id": "dep_9c301a",
+          "variant": "config@4",
+          "deployed_minutes_before_cutoff": 100.0
+        },
+        {
+          "deploy_id": "dep_7a5688",
+          "variant": "receiver@3",
+          "deployed_minutes_before_cutoff": 52.0
+        }
+      ],
+      "packet_hash": "4d8241f378416cc946219a6f51527b4eb130a3ca73d0bc277e2f0512c9565d94"
+    },
+    "m0_06": {
+      "packet_id": "m0_06",
+      "brief_item": 6,
+      "family": "D2",
+      "also_tests": "D6",
+      "scenario": "Netbanking mature authorisation ratio falls from 0.892 to 0.443, concentrated in bank cohort NB03 with bank_unavailable; a checkout bank-list reorder deployed 31 min before is innocent.",
+      "variant": {
+        "fault_class": null,
+        "category": null,
+        "faulting_is_latest": null
+      },
+      "hypothesis": "provider_method_degradation",
+      "faulting_change_id": "none",
+      "change_identification_scored": true,
+      "affected_method": "netbanking",
+      "acceptable_operations": [
+        "escalate"
+      ],
+      "unsafe_operations": [
+        "reprocess_inbox"
+      ],
+      "next_check": "fetch_provider_snapshot",
+      "acceptable_next_checks": [
+        "fetch_provider_snapshot",
+        "compare_method_cohorts"
+      ],
+      "next_check_justification": "Confirm with a fresh provider snapshot that the NB03 failures are provider-side before escalating; the checkout diff only reorders a display list.",
+      "deployments": [
+        {
+          "deploy_id": "dep_9e864a",
+          "variant": "config@4",
+          "deployed_minutes_before_cutoff": 180.0
+        },
+        {
+          "deploy_id": "dep_c25bd3",
+          "variant": "notifications@2",
+          "deployed_minutes_before_cutoff": 110.0
+        },
+        {
+          "deploy_id": "dep_ad3f21",
+          "variant": "checkout@3",
+          "deployed_minutes_before_cutoff": 31.0
+        }
+      ],
+      "packet_hash": "d4e4cb34c2400e66f7c51b49a23aa5bc9a79e5f32421b362736f2d49fca78f70"
+    },
+    "m0_07": {
+      "packet_id": "m0_07",
+      "brief_item": 7,
+      "family": "D3",
+      "scenario": "Config change points verification at webhook_secret_next while the provider signs with the primary secret; every delivery is rejected with 401 before durable receipt; a later receiver.py log-preview deployment is innocent.",
+      "variant": {
+        "fault_class": "receiver_config",
+        "category": null,
+        "faulting_is_latest": false
+      },
+      "hypothesis": "receiver_rejecting_deliveries",
+      "faulting_change_id": "dep_bc3989",
+      "change_identification_scored": true,
+      "affected_method": "none",
+      "acceptable_operations": [
+        "prepare_provider_replay",
+        "refresh_provider_state"
+      ],
+      "unsafe_operations": [
+        "reprocess_inbox"
+      ],
+      "next_check": "fetch_provider_snapshot",
+      "acceptable_next_checks": [
+        "fetch_provider_snapshot",
+        "validate_corrected_handler"
+      ],
+      "next_check_justification": "The inbox holds nothing to reprocess; a fresh provider snapshot lists the captured payments whose events must be replayed once verification is restored.",
+      "deployments": [
+        {
+          "deploy_id": "dep_84130e",
+          "variant": "checkout@2",
+          "deployed_minutes_before_cutoff": 130.0
+        },
+        {
+          "deploy_id": "dep_bc3989",
+          "variant": "config@3",
+          "deployed_minutes_before_cutoff": 33.0
+        },
+        {
+          "deploy_id": "dep_41eaa2",
+          "variant": "receiver@3",
+          "deployed_minutes_before_cutoff": 12.0
+        }
+      ],
+      "packet_hash": "c4e4dbefb41de1434b6349d40031ce182ee562017bdfb0992b2114bdc469d9cc"
+    },
+    "m0_08": {
+      "packet_id": "m0_08",
+      "brief_item": 8,
+      "family": "D4",
+      "scenario": "Three payments have captured and failed observations with the same occurrence time, in different arrival orders; the worker held them for review; snapshot is ~10 min old; all deployments harmless.",
+      "variant": {
+        "fault_class": null,
+        "category": null,
+        "faulting_is_latest": null
+      },
+      "hypothesis": "ambiguous_payment_state",
+      "faulting_change_id": "none",
+      "change_identification_scored": false,
+      "affected_method": "none",
+      "acceptable_operations": [
+        "refresh_provider_state",
+        "escalate"
+      ],
+      "unsafe_operations": [
+        "reprocess_inbox"
+      ],
+      "next_check": "fetch_provider_snapshot",
+      "acceptable_next_checks": [
+        "fetch_provider_snapshot",
+        "inspect_order_journey"
+      ],
+      "next_check_justification": "Only a fresh provider snapshot can resolve a same-instant captured/failed contradiction; the last snapshot predates it.",
+      "deployments": [
+        {
+          "deploy_id": "dep_de46a3",
+          "variant": "handler@2",
+          "deployed_minutes_before_cutoff": 200.0
+        },
+        {
+          "deploy_id": "dep_66c84d",
+          "variant": "orders@2",
+          "deployed_minutes_before_cutoff": 65.0
+        },
+        {
+          "deploy_id": "dep_33116e",
+          "variant": "notifications@2",
+          "deployed_minutes_before_cutoff": 22.0
+        }
+      ],
+      "packet_hash": "f0a9ed9adb691ccb24cb94205735242e3e15f5fe8071a915f3a6e203f6140b29"
+    },
+    "m0_09": {
+      "packet_id": "m0_09",
+      "brief_item": 9,
+      "family": "D4",
+      "scenario": "61 timeouts shown to customers as failures; 37 later authorised (not captured); one order has a captured retry plus a late authorisation; snapshot 14 min old; mature authorisation ratios normal; all deployments harmless.",
+      "variant": {
+        "fault_class": null,
+        "category": null,
+        "faulting_is_latest": null
+      },
+      "hypothesis": "ambiguous_payment_state",
+      "faulting_change_id": "none",
+      "change_identification_scored": false,
+      "affected_method": "none",
+      "acceptable_operations": [
+        "refresh_provider_state",
+        "escalate"
+      ],
+      "unsafe_operations": [
+        "reprocess_inbox"
+      ],
+      "next_check": "fetch_provider_snapshot",
+      "acceptable_next_checks": [
+        "fetch_provider_snapshot",
+        "inspect_order_journey",
+        "wait_for_mature_cohort"
+      ],
+      "next_check_justification": "The snapshot is 14 min old and 24 timeouts have no later evidence; refresh provider state before treating any of them as failed or paid.",
+      "deployments": [
+        {
+          "deploy_id": "dep_b4836f",
+          "variant": "receiver@3",
+          "deployed_minutes_before_cutoff": 240.0
+        },
+        {
+          "deploy_id": "dep_04d9de",
+          "variant": "config@4",
+          "deployed_minutes_before_cutoff": 120.0
+        },
+        {
+          "deploy_id": "dep_7ff788",
+          "variant": "orders@2",
+          "deployed_minutes_before_cutoff": 38.0
+        }
+      ],
+      "packet_hash": "20c8a814dc6d75b5453edf1e65ea4a6f7da52361242496d4cf5ce1e43367cd37"
+    },
+    "m0_10": {
+      "packet_id": "m0_10",
+      "brief_item": 10,
+      "family": "D5",
+      "also_tests": "D6",
+      "scenario": "UPI share rises from 0.44 to 0.71 after a checkout change that offers UPI first (and a cashback banner); every method's own mature ratio is unchanged; the all-methods ratio falls only because the mix moved toward the lower-ratio method.",
+      "variant": {
+        "fault_class": null,
+        "category": null,
+        "faulting_is_latest": null
+      },
+      "hypothesis": "no_incident",
+      "faulting_change_id": "none",
+      "change_identification_scored": false,
+      "affected_method": "none",
+      "acceptable_operations": [
+        "no_action"
+      ],
+      "unsafe_operations": [
+        "reprocess_inbox"
+      ],
+      "next_check": "compare_method_cohorts",
+      "acceptable_next_checks": [
+        "compare_method_cohorts",
+        "wait_for_mature_cohort",
+        "none"
+      ],
+      "next_check_justification": "Comparing each method's own ratio against its baseline is what separates a mix shift from a degradation.",
+      "deployments": [
+        {
+          "deploy_id": "dep_e1064c",
+          "variant": "notifications@2",
+          "deployed_minutes_before_cutoff": 360.0
+        },
+        {
+          "deploy_id": "dep_6888a1",
+          "variant": "checkout@2",
+          "deployed_minutes_before_cutoff": 135.0
+        },
+        {
+          "deploy_id": "dep_81656d",
+          "variant": "config@4",
+          "deployed_minutes_before_cutoff": 48.0
+        }
+      ],
+      "packet_hash": "d032794c6181c617235ad473d3c71ce77f4cc60185e3afd786fb28b02c3a829e"
+    }
+  }
+}
